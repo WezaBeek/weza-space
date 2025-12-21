@@ -6,18 +6,21 @@
     <title>Weza Technologies | Automation Core</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        /* (نفس الستايل القديم بالظبط - تم اختصاره هنا لتوفير المساحة، استخدم نفس الستايل) */
         :root { --bg-dark: #020617; --card-bg: #0f172a; --accent-blue: #0ea5e9; --accent-gold: #f59e0b; --text-main: #f8fafc; --text-muted: #94a3b8; --border-color: #1e293b; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Cairo', sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding-bottom: 120px; }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Cairo', sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding-bottom: 60px; /* تم تعديل المسافة السفلية */ }
+        
         .lang-switcher { position: fixed; top: 20px; left: 20px; z-index: 1000; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); border: 1px solid var(--border-color); border-radius: 8px; padding: 6px 12px; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-family: 'Cairo', sans-serif; }
         .lang-link { text-decoration: none; font-size: 0.85rem; font-weight: 700; color: var(--text-muted); transition: all 0.3s ease; letter-spacing: 1px; }
         .lang-link:hover { color: #fff; } .lang-link.active { color: var(--accent-blue); cursor: default; } .lang-sep { color: var(--border-color); font-size: 0.8rem; }
+        
         header { text-align: center; margin-bottom: 20px; margin-top: 20px; }
         .system-title { font-size: 1.8rem; margin: 5px 0; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .subtitle { color: var(--accent-gold); font-size: 0.85rem; letter-spacing: 1px; }
+        
         .docs-btn-container { margin-bottom: 30px; }
         .docs-link { display: inline-flex; align-items: center; gap: 8px; background: rgba(15, 23, 42, 0.6); border: 1px solid #334155; padding: 8px 15px; border-radius: 20px; text-decoration: none; color: #94a3b8; font-size: 0.8rem; transition: 0.3s; }
         .docs-link:hover { background: #1e293b; color: #fff; border-color: var(--accent-blue); }
+        
         .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 100%; max-width: 1100px; }
         .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; position: relative; transition: transform 0.3s; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3); display: flex; flex-direction: column; }
         .card:hover { border-color: var(--accent-blue); transform: translateY(-3px); }
@@ -38,8 +41,62 @@
         .text-badge { font-size: 0.7rem; background: rgba(245, 158, 11, 0.15); color: var(--accent-gold); padding: 2px 6px; border-radius: 4px; margin-right: 5px; border: 1px solid rgba(245, 158, 11, 0.3); }
         .view-more-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); width: 100%; padding: 8px; margin-top: 15px; border-radius: 6px; cursor: pointer; font-family: 'Cairo'; transition: 0.3s; font-size: 0.9rem; }
         .view-more-btn:hover { background: var(--border-color); color: #fff; }
-        .footer-container { position: fixed; bottom: 30px; left: 0; width: 100%; padding: 0 20px; display: flex; justify-content: space-between; align-items: flex-end; box-sizing: border-box; pointer-events: none; z-index: 100; }
-        .footer-card { pointer-events: auto; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border: 1px solid #334155; border-radius: 10px; padding: 12px; width: 280px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); display: flex; flex-direction: column; position: relative; overflow: hidden; }
+
+        /* --- تعديلات الفوتر (Responsive Logic) --- */
+        .footer-container {
+            position: fixed; 
+            bottom: 30px; 
+            left: 0; 
+            width: 100%; 
+            padding: 0 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end; 
+            box-sizing: border-box; 
+            pointer-events: none; 
+            z-index: 100;
+        }
+
+        .footer-card {
+            pointer-events: auto; 
+            background: rgba(15, 23, 42, 0.95); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid #334155; 
+            border-radius: 10px; 
+            padding: 12px; 
+            width: 280px; 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); 
+            display: flex; 
+            flex-direction: column; 
+            position: relative; 
+            overflow: hidden;
+        }
+
+        /* --- هذا هو الجزء السحري لإصلاح الموبايل --- */
+        @media (max-width: 768px) {
+            .footer-container {
+                position: relative; /* إلغاء التثبيت في الموبايل */
+                bottom: auto;
+                flex-direction: column; /* ترتيب العناصر تحت بعض */
+                gap: 15px;
+                margin-top: 20px;
+                align-items: center;
+                pointer-events: auto;
+                padding-bottom: 40px; /* مسافة للتوقيع */
+            }
+            .footer-card {
+                width: 100%; /* عرض كامل في الموبايل */
+                max-width: 100%;
+            }
+            .bottom-brand {
+                position: relative; /* التوقيع ينزل تحت خالص */
+                bottom: auto;
+                margin-top: 20px;
+                padding-bottom: 10px;
+            }
+        }
+        /* ------------------------------------------- */
+
         .footer-watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60%; opacity: 0.05; pointer-events: none; z-index: 0; }
         .footer-content { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 8px; }
         .f-title { font-size: 0.8rem; color: var(--accent-blue); font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #334155; padding-bottom: 5px; }
@@ -54,7 +111,13 @@
         .pay-link.insta { border-color: #a855f7; color: #d8b4fe; background: rgba(168, 85, 247, 0.1); }
         .pay-link.visa { border-color: #3b82f6; color: #93c5fd; background: rgba(59, 130, 246, 0.1); }
         .pay-static { grid-column: span 2; font-size: 0.7rem; padding: 4px; text-align: center; border: 1px solid #dc2626; color: #fecaca; background: rgba(220, 38, 38, 0.25); border-radius: 5px; margin-top: 2px; cursor: not-allowed; font-weight: bold; user-select: none; }
+        
         .bottom-brand { position: fixed; bottom: 5px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 200; width: 100%; }
+        /* تعديل للموبايل للتوقيع لضمان ظهوره */
+        @media (max-width: 768px) {
+             .bottom-brand { position: relative; bottom: auto; margin-top: 10px; left: auto; transform: none; width: 100%; }
+        }
+
         .brand-tiny { font-size: 10px; color: #334155; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin: 0; line-height: 1.2; }
         .brand-phone { font-size: 9px; color: #1e293b; font-weight: bold; font-family: sans-serif; margin: 0; }
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.92); backdrop-filter: blur(5px); }
@@ -71,7 +134,6 @@
         .m-price { color: var(--accent-blue); font-weight: bold; font-size: 1rem; }
         .m-old-price { text-decoration: line-through; color: #64748b; font-size: 0.8rem; margin-left: 5px; }
         .charity-banner { background: rgba(16, 185, 129, 0.1); border: 1px dashed #10b981; color: #10b981; padding: 10px; margin: 10px 20px; text-align: center; border-radius: 8px; font-size: 0.9rem; font-weight: bold; }
-        
         .date-display { font-size: 0.75rem; color: #64748b; margin-top: 5px; font-family: monospace; letter-spacing: 1px; }
     </style>
 </head>
@@ -117,6 +179,7 @@
             <button onclick="openMenu()" class="view-more-btn">عرض قاعدة البيانات الكاملة</button>
         </div>
     </div>
+
     <div class="footer-container">
         <div class="footer-card">
             <img src="logo.jpg" alt="Watermark" class="footer-watermark">
@@ -145,10 +208,12 @@
             </div>
         </div>
     </div>
+
     <div class="bottom-brand">
         <p class="brand-tiny">WezaTECHNOLOGIES</p>
         <p class="brand-phone">01207799717</p>
     </div>
+
     <div id="menuModal" class="modal">
         <div class="modal-content">
             <img src="logo.jpg" alt="Logo" class="modal-watermark">
@@ -211,7 +276,6 @@
         function closeMenu() { document.getElementById('menuModal').style.display = 'none'; }
         window.onclick = function(event) { if (event.target == document.getElementById('menuModal')) { closeMenu(); } }
         
-        // كود التاريخ الأوتوماتيكي بالعربي
         const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById('dateDisplayAr').innerText = "تاريخ التحديث: " + new Date().toLocaleDateString('ar-EG', dateOptions);
     </script>
