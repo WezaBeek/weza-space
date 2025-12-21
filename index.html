@@ -29,71 +29,50 @@
             padding-bottom: 120px;
         }
 
-        /* === زر تبديل اللغة === */
+        /* زر تبديل اللغة */
         .lang-switcher {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 6px 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            font-family: 'Cairo', sans-serif;
+            position: fixed; top: 20px; left: 20px; z-index: 1000;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color); border-radius: 8px;
+            padding: 6px 12px; display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-family: 'Cairo', sans-serif;
         }
-
-        .lang-link {
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-        }
-
+        .lang-link { text-decoration: none; font-size: 0.85rem; font-weight: 700; color: var(--text-muted); transition: all 0.3s ease; letter-spacing: 1px; }
         .lang-link:hover { color: #fff; }
         .lang-link.active { color: var(--accent-blue); cursor: default; }
         .lang-sep { color: var(--border-color); font-size: 0.8rem; }
 
-        /* الهيدر المعدل */
-        header { text-align: center; margin-bottom: 30px; margin-top: 20px; }
+        /* الهيدر */
+        header { text-align: center; margin-bottom: 20px; margin-top: 20px; }
         .system-title { font-size: 1.8rem; margin: 5px 0; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .subtitle { color: var(--accent-gold); font-size: 0.85rem; letter-spacing: 1px; }
 
+        /* زر الوثائق الجديد */
+        .docs-btn-container { margin-bottom: 30px; }
+        .docs-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(15, 23, 42, 0.6); border: 1px solid #334155;
+            padding: 8px 15px; border-radius: 20px; text-decoration: none;
+            color: #94a3b8; font-size: 0.8rem; transition: 0.3s;
+        }
+        .docs-link:hover { background: #1e293b; color: #fff; border-color: var(--accent-blue); }
+
         /* الشبكة الرئيسية */
         .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 1100px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px; width: 100%; max-width: 1100px;
         }
 
         .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            position: relative;
-            transition: transform 0.3s;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 20px; position: relative;
+            transition: transform 0.3s; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            display: flex; flex-direction: column;
         }
-
         .card:hover { border-color: var(--accent-blue); transform: translateY(-3px); }
 
-        .card-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;
-        }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
         .card-title { font-size: 1rem; font-weight: 700; color: var(--accent-blue); }
-
         .admin-msg { font-size: 0.9rem; line-height: 1.6; color: #cbd5e1; margin-bottom: 15px; }
         .status-box { background: rgba(16, 185, 129, 0.1); border: 1px dashed #10b981; color: #10b981; padding: 8px; border-radius: 6px; text-align: center; font-size: 0.9rem; font-weight: bold; margin-top: auto; }
         .action-btn { background: linear-gradient(45deg, var(--accent-blue), #2563eb); color: white; border: none; width: 100%; padding: 10px; border-radius: 6px; font-weight: bold; font-family: 'Cairo'; cursor: pointer; margin-top: 15px; }
@@ -104,64 +83,33 @@
         .feature-content h4 { margin: 0 0 2px 0; color: #fff; font-size: 0.95rem; }
         .feature-content p { margin: 0; font-size: 0.8rem; color: var(--text-muted); }
 
-        /* معاينة الأسعار */
         .price-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #1e293b; }
         .item-name { font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; color: #fff; }
         .item-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px;}
         .price-tag { font-weight: 700; color: #fff; font-size: 0.95rem; }
-        
-        .text-badge {
-            font-size: 0.7rem; background: rgba(245, 158, 11, 0.15); color: var(--accent-gold);
-            padding: 2px 6px; border-radius: 4px; margin-right: 5px; border: 1px solid rgba(245, 158, 11, 0.3);
-        }
-
+        .text-badge { font-size: 0.7rem; background: rgba(245, 158, 11, 0.15); color: var(--accent-gold); padding: 2px 6px; border-radius: 4px; margin-right: 5px; border: 1px solid rgba(245, 158, 11, 0.3); }
         .view-more-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); width: 100%; padding: 8px; margin-top: 15px; border-radius: 6px; cursor: pointer; font-family: 'Cairo'; transition: 0.3s; font-size: 0.9rem; }
         .view-more-btn:hover { background: var(--border-color); color: #fff; }
 
         /* الفوتر العائم */
         .footer-container {
-            position: fixed;
-            bottom: 30px; /* تم الرفع قليلاً */
-            left: 0;
-            width: 100%;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            box-sizing: border-box;
-            pointer-events: none;
-            z-index: 100;
+            position: fixed; bottom: 30px; left: 0; width: 100%; padding: 0 20px;
+            display: flex; justify-content: space-between; align-items: flex-end;
+            box-sizing: border-box; pointer-events: none; z-index: 100;
         }
-
         .footer-card {
-            pointer-events: auto;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid #334155;
-            border-radius: 10px;
-            padding: 12px;
-            width: 280px; 
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-            display: flex;
-            flex-direction: column;
-            position: relative; overflow: hidden;
+            pointer-events: auto; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px);
+            border: 1px solid #334155; border-radius: 10px; padding: 12px; width: 280px; 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); display: flex; flex-direction: column; position: relative; overflow: hidden;
         }
-        
         .footer-watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60%; opacity: 0.05; pointer-events: none; z-index: 0; }
         .footer-content { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 8px; }
         .f-title { font-size: 0.8rem; color: var(--accent-blue); font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #334155; padding-bottom: 5px; }
-        
         .address-box { margin-bottom: 5px; }
         .addr-label { color: var(--accent-gold); font-weight: bold; font-size: 0.8rem; display: block; margin-bottom: 2px; }
         .addr-detail { color: #cbd5e1; font-size: 0.7rem; line-height: 1.4; display: block; padding-right: 10px; border-right: 2px solid #334155; }
-
         .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-        .pay-link { 
-            font-size: 0.7rem; padding: 5px; border-radius: 5px; 
-            background: #1e293b; color: #cbd5e1; border: 1px solid #334155; font-weight: bold;
-            display: flex; justify-content: center; align-items: center;
-            transition: 0.2s; text-decoration: none; cursor: pointer;
-        }
+        .pay-link { font-size: 0.7rem; padding: 5px; border-radius: 5px; background: #1e293b; color: #cbd5e1; border: 1px solid #334155; font-weight: bold; display: flex; justify-content: center; align-items: center; transition: 0.2s; text-decoration: none; cursor: pointer; }
         .pay-link:hover { transform: translateY(-2px); filter: brightness(1.2); }
         .pay-link.vodafone { border-color: #ef4444; color: #fca5a5; background: rgba(239, 68, 68, 0.1); }
         .pay-link.orange { border-color: #f97316; color: #fdba74; background: rgba(249, 115, 22, 0.1); }
@@ -169,69 +117,25 @@
         .pay-link.visa { border-color: #3b82f6; color: #93c5fd; background: rgba(59, 130, 246, 0.1); }
         .pay-static { grid-column: span 2; font-size: 0.7rem; padding: 4px; text-align: center; border: 1px solid #dc2626; color: #fecaca; background: rgba(220, 38, 38, 0.25); border-radius: 5px; margin-top: 2px; cursor: not-allowed; font-weight: bold; user-select: none; }
 
-        /* === التوقيع السفلي الجديد === */
-        .bottom-brand {
-            position: fixed;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            z-index: 200;
-            width: 100%;
-        }
-        .brand-tiny {
-            font-size: 10px; /* صغير جداً */
-            color: #334155;
-            font-weight: 900;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin: 0;
-            line-height: 1.2;
-        }
-        .brand-phone {
-            font-size: 9px;
-            color: #1e293b;
-            font-weight: bold;
-            font-family: sans-serif;
-            margin: 0;
-        }
+        .bottom-brand { position: fixed; bottom: 5px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 200; width: 100%; }
+        .brand-tiny { font-size: 10px; color: #334155; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin: 0; line-height: 1.2; }
+        .brand-phone { font-size: 9px; color: #1e293b; font-weight: bold; font-family: sans-serif; margin: 0; }
 
-        /* النافذة المنبثقة */
+        /* Modal */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.92); backdrop-filter: blur(5px); }
-        .modal-content { 
-            background: #1e293b; margin: 2% auto; width: 95%; max-width: 650px; 
-            border-radius: 10px; border: 1px solid var(--accent-gold); 
-            height: 90vh; display: flex; flex-direction: column; 
-            box-shadow: 0 0 40px rgba(245, 158, 11, 0.1);
-            position: relative; overflow: hidden;
-        }
+        .modal-content { background: #1e293b; margin: 2% auto; width: 95%; max-width: 650px; border-radius: 10px; border: 1px solid var(--accent-gold); height: 90vh; display: flex; flex-direction: column; box-shadow: 0 0 40px rgba(245, 158, 11, 0.1); position: relative; overflow: hidden; }
         .modal-watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; opacity: 0.05; pointer-events: none; z-index: 0; }
         .modal-header { padding: 15px; text-align: center; border-bottom: 2px solid #334155; background: #0f172a; border-radius: 10px 10px 0 0; position: relative; z-index: 1; }
         .modal-body { padding: 0; overflow-y: auto; flex: 1; z-index: 1; }
         .close-btn { position: absolute; left: 15px; top: 15px; color: #fff; font-size: 24px; cursor: pointer; }
         .menu-section { padding: 10px 20px; }
-        .cat-title { 
-            color: var(--accent-gold); font-size: 1rem; font-weight: bold; 
-            margin: 15px 0 10px 0; border-right: 3px solid var(--accent-gold); 
-            padding-right: 10px; background: rgba(245, 158, 11, 0.05); padding: 5px 10px;
-        }
+        .cat-title { color: var(--accent-gold); font-size: 1rem; font-weight: bold; margin: 15px 0 10px 0; border-right: 3px solid var(--accent-gold); padding-right: 10px; background: rgba(245, 158, 11, 0.05); padding: 5px 10px; }
         .menu-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #334155; }
         .m-name { font-weight: bold; color: #e2e8f0; font-size: 0.95rem; }
         .m-desc { font-size: 0.8rem; color: #94a3b8; display: block; margin-top: 2px; }
         .m-price { color: var(--accent-blue); font-weight: bold; font-size: 1rem; }
         .m-old-price { text-decoration: line-through; color: #64748b; font-size: 0.8rem; margin-left: 5px; }
-        
-        .charity-banner {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px dashed #10b981;
-            color: #10b981;
-            padding: 10px;
-            margin: 10px 20px;
-            text-align: center;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
+        .charity-banner { background: rgba(16, 185, 129, 0.1); border: 1px dashed #10b981; color: #10b981; padding: 10px; margin: 10px 20px; text-align: center; border-radius: 8px; font-size: 0.9rem; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -246,6 +150,12 @@
         <h1 class="system-title">نظام الإدارة الذكي والأتمتة</h1>
         <p class="subtitle">تم تطويره خصيصاً لـ: ملوك الفسيخ والرنجة</p>
     </header>
+
+    <div class="docs-btn-container" style="text-align: center;">
+        <a href="system-map.html" class="docs-link">
+            <span>⚙️</span> عرض وثائق ومسار النظام (Technical Docs)
+        </a>
+    </div>
 
     <div class="dashboard-grid">
         <div class="card">
@@ -288,7 +198,6 @@
                 </div>
             </div>
         </div>
-
         <div class="footer-card">
             <img src="logo.jpg" alt="Watermark" class="footer-watermark">
             <div class="footer-content">
@@ -318,17 +227,11 @@
                 <p style="color: #94a3b8; margin:5px 0 0 0; font-size: 0.9rem;">الأسعار محدثة بتاريخ اليوم</p>
             </div>
             <div class="modal-body">
-                
-                <div class="charity-banner">
-                    لكل مواطن مش مقتدر كيلو سمك ببلاش ❤️<br>
-                    (فوارغ - شبار - بوري - شوخرم)
-                </div>
-
+                <div class="charity-banner">لكل مواطن مش مقتدر كيلو سمك ببلاش ❤️<br>(فوارغ - شبار - بوري - شوخرم)</div>
                 <div class="menu-section">
                     <div class="cat-title">🔥 عروض ملوك الفسيخ والرنجة</div>
                     <div class="menu-item"><div><span class="m-name">عرض الميكس</span><span class="m-desc">4 فسيخ + 2 رنجة</span></div><span class="m-price">200 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">عرض الجمبري الجامبو</span><span class="m-desc">الجمبو اللي نايم علي جمبه (بدل 1000)</span></div><span class="m-price">450 EGP</span></div>
-
                     <div class="cat-title">🐟 قسم الشبار (البلطي)</div>
                     <div class="menu-item"><div><span class="m-name">شبار أخضر (ممتاز)</span><span class="m-desc"></span></div><span class="m-price">100 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">شبار أخضر</span><span class="m-desc">عرض خاص</span></div><span class="m-price">60 EGP <span class="m-old-price">140</span></span></div>
@@ -336,14 +239,12 @@
                     <div class="menu-item"><div><span class="m-name">شبار أبيض (وسط)</span><span class="m-desc">حجم أول</span></div><span class="m-price">50 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">شبار أبيض (وسط)</span><span class="m-desc">حجم ثاني</span></div><span class="m-price">65 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">شبار أبيض (دباشي)</span><span class="m-desc"></span></div><span class="m-price">75 EGP</span></div>
-
                     <div class="cat-title">🦈 عالم البوري والفسيخ</div>
                     <div class="menu-item"><div><span class="m-name">بوري مبطرخ</span><span class="m-desc"></span></div><span class="m-price">90 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">بوري مبطرخ (صافي)</span><span class="m-desc"></span></div><span class="m-price">150 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">بوري مبطرخ (كوامل)</span><span class="m-desc">وسط</span></div><span class="m-price">180 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">بوري مبطرخ (كوامل)</span><span class="m-desc">كبير</span></div><span class="m-price">220 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">بوري بلدي</span><span class="m-desc">الواحدة كيلو ونص</span></div><span class="m-price">180 EGP</span></div>
-
                     <div class="cat-title">🦐 الفسفور والقشريات</div>
                     <div class="menu-item"><div><span class="m-name">جمبري سلق (وسط)</span><span class="m-desc"></span></div><span class="m-price">140 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">جمبري جامبو</span><span class="m-desc"></span></div><span class="m-price">350 EGP</span></div>
@@ -355,7 +256,6 @@
                     <div class="menu-item"><div><span class="m-name">شيكال</span><span class="m-desc">ببلاش لكل مواطن</span></div><span class="m-price">10 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">بلح بحر</span><span class="m-desc"></span></div><span class="m-price">80 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">طبق بطارخ (صافي)</span><span class="m-desc">نصف كيلو</span></div><span class="m-price">320 EGP</span></div>
-
                     <div class="cat-title">🌊 أسماك البحر</div>
                     <div class="menu-item"><div><span class="m-name">غطيان (موسى)</span><span class="m-desc"></span></div><span class="m-price">180 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">اللوت</span><span class="m-desc"></span></div><span class="m-price">160 EGP</span></div>
@@ -365,21 +265,15 @@
                     <div class="menu-item"><div><span class="m-name">مرجان (حر)</span><span class="m-desc"></span></div><span class="m-price">100 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">بربوني (فاخر)</span><span class="m-desc"></span></div><span class="m-price">120 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">مكرونة</span><span class="m-desc"></span></div><span class="m-price">100 EGP</span></div>
-
                     <div class="cat-title">🛒 فرشة الغلابة</div>
                     <div class="menu-item"><div><span class="m-name">فوارغ</span><span class="m-desc"></span></div><span class="m-price">75 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">أبو كرش</span><span class="m-desc"></span></div><span class="m-price">65 EGP</span></div>
                     <div class="menu-item"><div><span class="m-name">شوخرم</span><span class="m-desc"></span></div><span class="m-price">30 EGP</span></div>
-                    
-                    <div class="menu-item" style="border:none; margin-top:20px; text-align:center;">
-                        <span class="m-desc" style="width:100%; color: #fecaca;">معاك فلوس وقولت معكش ربنا هيحسبك</span>
-                    </div>
-
+                    <div class="menu-item" style="border:none; margin-top:20px; text-align:center;"><span class="m-desc" style="width:100%; color: #fecaca;">معاك فلوس وقولت معكش ربنا هيحسبك</span></div>
                 </div>
             </div>
         </div>
     </div>
-
     <script>
         function openMenu() { document.getElementById('menuModal').style.display = 'block'; }
         function closeMenu() { document.getElementById('menuModal').style.display = 'none'; }
