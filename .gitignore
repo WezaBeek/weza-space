@@ -118,8 +118,8 @@ dist
 .pnp.*
 
 # Vite
-dist/
-dist-ssr/
+# dist/
+# dist-ssr/
 *.local
 
 # Editor directories and files
