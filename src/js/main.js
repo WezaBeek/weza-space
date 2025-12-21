@@ -1,8 +1,12 @@
 import '../css/style.css';
 import arTemplate from '../templates/ar.html?raw';
 import enTemplate from '../templates/en.html?raw';
+import activeRoadmapAr from '../templates/roadmap-ar.html?raw';
+import activeRoadmapEn from '../templates/roadmap-en.html?raw';
+import masterPlanAr from '../templates/master-plan-ar.html?raw';
+import masterPlanEn from '../templates/master-plan-en.html?raw';
 
-// Technical Maps as Templates
+// Technical Maps as Templates (Legacy)
 const arMapTemplate = `
 <div class="mini-header">
     <div class="brand-tiny">WezaTECHNOLOGIES</div>
@@ -45,6 +49,9 @@ window.setLanguage = function (lang) {
     const app = document.getElementById('app');
     if (!app) return;
 
+    // Reset Scroll
+    window.scrollTo(0, 0);
+
     if (lang === 'ar') {
         app.innerHTML = arTemplate;
         document.documentElement.lang = 'ar';
@@ -57,10 +64,25 @@ window.setLanguage = function (lang) {
         app.innerHTML = arMapTemplate;
     } else if (lang === 'map-en') {
         app.innerHTML = enMapTemplate;
+    } else if (lang === 'roadmap-ar') {
+        app.innerHTML = activeRoadmapAr;
+        document.documentElement.lang = 'ar';
+        document.documentElement.dir = 'rtl';
+    } else if (lang === 'roadmap-en') {
+        app.innerHTML = activeRoadmapEn;
+        document.documentElement.lang = 'en';
+        document.documentElement.dir = 'ltr';
+    } else if (lang === 'master-ar') {
+        app.innerHTML = masterPlanAr;
+        document.documentElement.lang = 'ar';
+        document.documentElement.dir = 'rtl';
+    } else if (lang === 'master-en') {
+        app.innerHTML = masterPlanEn;
+        document.documentElement.lang = 'en';
+        document.documentElement.dir = 'ltr';
     }
 
     updateDate(lang);
-    window.scrollTo(0, 0);
 };
 
 window.openMenu = function () {

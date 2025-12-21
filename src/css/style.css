@@ -337,3 +337,155 @@ header { text-align: center; margin-bottom: 20px; margin-top: 20px; }
 .m-old-price { text-decoration: line-through; color: #64748b; font-size: 0.8rem; margin-left: 5px; }
 .charity-banner { background: rgba(16, 185, 129, 0.1); border: 1px dashed #10b981; color: #10b981; padding: 10px; margin: 10px 20px; text-align: center; border-radius: 8px; font-size: 0.9rem; font-weight: bold; }
 .date-display { font-size: 0.75rem; color: #64748b; margin-top: 5px; font-family: monospace; letter-spacing: 1px; }
+
+/* --- Roadmap Specific Styles --- */
+.roadmap-container { padding: 20px; max-width: 900px; margin: 0 auto; }
+.roadmap-timeline { position: relative; padding: 20px 0; }
+.roadmap-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: var(--border-color);
+    transform: translateX(-50%);
+}
+
+.timeline-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    position: relative;
+    width: 45%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.timeline-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); border-color: var(--accent-blue); }
+
+/* Right & Left positioning for Desktop */
+.timeline-card.left { margin-left: 0; margin-right: auto; text-align: left; }
+.timeline-card.right { margin-right: 0; margin-left: auto; text-align: right; }
+
+.timeline-card.left[dir='rtl'] { text-align: right; } 
+.timeline-card.right[dir='rtl'] { text-align: left; }
+
+/* The Dot on the Line */
+.timeline-dot {
+    position: absolute;
+    top: 25px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 3px solid var(--border-color);
+    z-index: 2;
+    transition: 0.3s;
+}
+
+/* Positioning the dot based on direction */
+.timeline-card.left .timeline-dot { right: -59px; } /* Adjust for center line */
+.timeline-card.right .timeline-dot { left: -59px; }
+
+/* Status Colors */
+.t-done { border-color: var(--success-green); color: var(--success-green); }
+.t-done .timeline-dot { background: var(--success-green); box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); border-color: var(--success-green); }
+
+.t-active { border-color: var(--accent-gold); }
+.t-active .timeline-dot { background: var(--accent-gold); box-shadow: 0 0 15px rgba(245, 158, 11, 0.6); border-color: var(--accent-gold); animation: pulse 2s infinite; }
+
+.t-future { border-color: var(--border-color); opacity: 0.7; }
+
+.t-date { display: inline-block; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.05); font-size: 0.8rem; margin-bottom: 10px; font-weight: bold; }
+.t-done .t-date { color: var(--success-green); background: rgba(16, 185, 129, 0.1); }
+.t-active .t-date { color: var(--accent-gold); background: rgba(245, 158, 11, 0.1); }
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+@media (max-width: 768px) {
+    .roadmap-timeline::before { left: 20px; }
+    .timeline-card { width: 85%; margin-left: 50px !important; margin-right: 0 !important; text-align: start !important; }
+    .timeline-dot { left: -39px !important; right: auto !important; }
+}
+
+
+/* --- Master Plan Styles --- */
+.master-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--accent-blue);
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+.section-divider {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 40px 0 20px 0;
+}
+.section-divider h2 { margin: 0; color: var(--accent-gold); white-space: nowrap; }
+.section-divider .line { height: 1px; background: #334155; width: 100%; }
+
+/* Journey Steps Visualization */
+.journey-map {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.j-step {
+    background: #0f172a;
+    border: 1px solid #334155;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    position: relative;
+    color: #cbd5e1;
+}
+.j-step::after {
+    content: '?';
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-blue);
+}
+.j-step:first-child::after { display: none; }
+.j-step.highlight { border-color: var(--success-green); color: #fff; box-shadow: 0 0 10px rgba(16, 185, 129, 0.2); }
+
+/* Intent Grid */
+.intent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.intent-card {
+    background: var(--card-bg);
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 20px;
+    transition: 0.3s;
+}
+.intent-card:hover { border-color: var(--accent-blue); transform: translateY(-5px); }
+.intent-head { font-weight: bold; color: #fff; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 8px; font-size: 1.1rem; }
+.intent-list { list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #94a3b8; }
+.intent-list li { margin-bottom: 5px; position: relative; padding-right: 15px; }
+.intent-list li::before { content: '•'; color: var(--accent-blue); position: absolute; right: 0; }
+
+/* Vision 2026 Badges */
+.vision-box {
+    background: linear-gradient(to left, rgba(245, 158, 11, 0.1), transparent);
+    border-right: 4px solid var(--accent-gold);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
