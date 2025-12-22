@@ -1,4 +1,4 @@
-import '../css/style.css';
+import '../css/weza-core.css';
 
 // Import Templates
 import arTemplate from '../templates/ar.html?raw';
