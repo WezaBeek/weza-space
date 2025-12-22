@@ -676,11 +676,20 @@ svg {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    opacity: 0.05;
+    width: clamp(280px, 80vw, 500px);
+    opacity: 0.12;
     pointer-events: none;
     z-index: 5;
-    animation: pulseWatermark 10s infinite alternate;
+    animation: pulseWatermark 8s infinite alternate ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-watermark img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.2));
 }
 
 @keyframes pulseWatermark {
