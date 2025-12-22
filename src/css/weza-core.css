@@ -666,6 +666,26 @@ svg {
     box-shadow: 0 0 50px rgba(0, 210, 255, 0.2);
 }
 
+/* Custom Scrollbar for Modal content */
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 40px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
+    border-radius: 40px;
+    border: 2px solid transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-blue);
+}
+
 .modal-header-box {
     text-align: center;
     margin-bottom: 30px;
