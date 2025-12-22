@@ -1,278 +1,421 @@
-<div class="lang-switcher">
-    <button onclick="window.setLanguage('en')" class="lang-link">EN</button>
-    <span class="lang-sep">|</span>
-    <button onclick="window.setLanguage('ar')" class="lang-link active">AR</button>
-</div>
-
-<header>
-    <h1 class="system-title">نظام الإدارة الذكي والأتمتة</h1>
-    <p class="subtitle">تم تطويره خصيصاً لـ: ملوك الفسيخ والرنجة</p>
-</header>
-
-<div class="docs-btn-container"
-    style="text-align: center; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-    <button onclick="window.setLanguage('master-ar')" class="docs-link"
-        style="border-color: var(--accent-gold); color: var(--accent-gold); background: rgba(245, 158, 11, 0.1);">
-        <span>👑</span> الخطة الشاملة (Master Plan)
-    </button>
-    <button onclick="window.setLanguage('roadmap-ar')" class="docs-link"
-        style="border-color: var(--accent-blue); color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);">
-        <span>🚀</span> خارطة الطريق (Roadmap)
-    </button>
-    <button onclick="window.setLanguage('map-ar')" class="docs-link">
-        <span>⚙️</span> الوثائق التقنية
-    </button>
-</div>
-
-<div class="dashboard-grid">
-    <div class="card">
-        <div class="card-header"><span class="card-title">👑 مساحة العميل (Admin)</span></div>
-        <p class="admin-msg">أهلاً بك يا <strong>إسلام</strong>.<br>هذا النظام يربط "شيت الأسعار" بالرد التلقائي، لضمان
-            أن العميل يحصل دائماً على السعر المحدث لحظياً.</p>
-        <div class="status-box">🔒 الحالة: جاهز للإطلاق التجريبي</div>
-        <button class="action-btn">طلب تفعيل النظام</button>
-    </div>
-    <div class="card">
-        <div class="card-header"><span class="card-title">🤖 قدرات الأتمتة (Automation)</span></div>
-        <div class="ai-feature">
-            <div class="ai-dot online"></div>
-            <div class="feature-content">
-                <h4>الرد الفوري (Auto-Reply)</h4>
-                <p>الرد على (بكام؟، العنوان) في &lt; 1 ثانية.</p>
-            </div>
-        </div>
-        <div class="ai-feature">
-            <div class="ai-dot online"></div>
-            <div class="feature-content">
-                <h4>إدارة الزحام (Queue Logic)</h4>
-                <p>فلترة التعليقات وتحويل الجادين للواتساب.</p>
-            </div>
-        </div>
-        <div class="ai-feature">
-            <div class="ai-dot"></div>
-            <div class="feature-content">
-                <h4>أتمتة المخزون (Inventory AI)</h4>
-                <p>تنبيه عند نفاذ الكمية.</p>
-            </div>
+<section class="hero">
+    <div class="premium-badge">
+        <div class="badge-inner">
+            <span class="status-dot"></span>
+            Intelligence Core v4.0 Active
         </div>
     </div>
-    <div class="card">
-        <div class="card-header"><span class="card-title">📡 قاعدة بيانات الأصناف (Live)</span><span
-                style="font-size: 0.7rem; color: #10b981;">● متصل</span></div>
-        <div class="price-list-preview">
-            <div class="price-row">
-                <div class="item-info"><span class="item-name">عرض ميكس <span class="text-badge">الأكثر
-                            طلباً</span></span><span class="item-sub">4 فسيخ + 2 رنجة</span></div><span
-                    class="price-tag">200 EGP</span>
-            </div>
-            <div class="price-row">
-                <div class="item-info"><span class="item-name">شبار أخضر (ممتاز)</span><span class="item-sub">بلدي
-                        طازج</span></div><span class="price-tag">100 EGP</span>
-            </div>
-            <div class="price-row">
-                <div class="item-info"><span class="item-name">الجمبو النايم علي جنبه</span><span class="item-sub">عرض
-                        اليوم (بدلاً من 1000)</span></div><span class="price-tag">450 EGP</span>
-            </div>
-            <div class="price-row">
-                <div class="item-info"><span class="item-name">كيلو شيكال</span><span class="item-sub">لكل مواطن</span>
-                </div><span class="price-tag">10 EGP</span>
-            </div>
-        </div>
-        <button class="view-more-btn" onclick="window.openMenu()">عرض قاعدة البيانات الكاملة</button>
+    <h1 class="h-title" style="line-height: 1.4; font-size: clamp(1.8rem, 6vw, 3.8rem);">
+        <span class="text-gradient" style="padding: 10px 20px; display: block; white-space: nowrap;">أتمتة ذكية بمواصفات
+            عالمية</span>
+        <a href="https://www.facebook.com/muluk.alfasikh" target="_blank" class="highlight-kings"
+            style="padding: 10px 20px; display: block; white-space: nowrap; text-decoration: none;">لملوك الفسيخ
+            والرنجة</a>
+    </h1>
+    <p class="h-sub">
+        لقد صممنا "العقل الرقمي" المتكامل لـ <a href="https://www.facebook.com/muluk.alfasikh" target="_blank"
+            class="highlight-kings">إسلام</a>.
+        هذه المنظومة ليست مجرد تقنية، بل هي إستراتيجية سيطرة كاملة على السوق وضمان لتصدر <a
+            href="https://www.facebook.com/muluk.alfasikh" target="_blank" class="highlight-kings">"ملوك الفسيخ
+            والرنجة"</a> المشهد الرقمي.
+    </p>
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <button class="btn-shimmer" onclick="window.openMenu()">تصفح القائمة المحدثة</button>
+        <button onclick="window.setLanguage('master-ar')" class="btn-secondary"
+            style="border-radius: 16px; padding: 16px 32px;">الخطة الإستراتيجية</button>
+    </div>
+</section>
+
+<!-- Tech Stack Section -->
+<div class="tech-stack">
+    <div class="tech-item">
+        <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" class="tech-icon" alt="Node.js">
+        <span class="tech-label">Node.js Engine</span>
+    </div>
+    <div class="tech-item">
+        <img src="https://cdn.worldvectorlogo.com/logos/vitejs.svg" class="tech-icon" alt="Vite">
+        <span class="tech-label">Vite Core</span>
+    </div>
+    <div class="tech-item">
+        <img src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg" class="tech-icon" alt="Cloud">
+        <span class="tech-label">AI Intelligence</span>
+    </div>
+    <div class="tech-item">
+        <img src="https://www.vectorlogo.zone/logos/visualstudio_code/visualstudio_code-icon.svg" class="tech-icon"
+            alt="Automation">
+        <span class="tech-label">Automation Core</span>
     </div>
 </div>
 
-<div class="footer-container">
-    <div class="footer-card">
-        <img src="/src/assets/images/logo.jpg" alt="Watermark" class="footer-watermark">
-        <div class="footer-content">
-            <div class="f-title">💳 طرق الدفع المتاحة</div>
-            <div class="payment-grid">
-                <a href="#" class="pay-link vodafone">Vodafone Cash</a>
-                <a href="#" class="pay-link orange">Orange Cash</a>
-                <a href="#" class="pay-link insta">InstaPay</a>
-                <a href="#" class="pay-link visa">Visa</a>
-                <span class="pay-static">الدفع الكاش (قريباً)</span>
-            </div>
-        </div>
+<div class="stats-bar">
+    <div class="stat-item">
+        <span class="stat-num">50K+</span>
+        <span class="stat-lbl">رسائل مدارة</span>
     </div>
-    <div class="footer-card">
-        <img src="/src/assets/images/logo.jpg" alt="Watermark" class="footer-watermark">
-        <div class="footer-content">
-            <div class="f-title">📍 فروعنا (Our Branches)</div>
-            <div class="address-box">
-                <span class="addr-label">فرع بورسعيد :</span>
-                <span class="addr-detail">مساكن البنك الأصفر – أمام باب نادي الرباط</span>
-            </div>
-            <div class="address-box" style="margin-bottom: 0;"> <span class="addr-label">فرع بورفؤاد :</span>
-                <span class="addr-detail" style="border: none;">أمام مسجد الشعراوي (قهوة سهر سابقاً)</span>
-            </div>
-        </div>
+    <div class="stat-item">
+        <span class="stat-num">1.2s</span>
+        <span class="stat-lbl">وقت الاستجابة</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-num">#1</span>
+        <span class="stat-lbl">على مستوى البحث</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-num">24/7</span>
+        <span class="stat-lbl">عمل متواصل</span>
     </div>
 </div>
 
-<div class="bottom-brand">
-    <p class="brand-tiny">WezaTECHNOLOGIES</p>
-    <p class="brand-phone">01207799717</p>
+<div class="bento-grid">
+    <!-- Big Card 1: AI Brain -->
+    <div class="bento-card bento-1">
+        <span class="card-label">01 / Central Intelligence</span>
+        <h3>العقل المركزي (Neuro-Logic)</h3>
+        <p>نظام ذكاء اصطناعي يحلل نية العميل ويرد عليه فوراً بلهجة بورسعيدية أصيلة. يحول المحادثات العابرة إلى مبيعات
+            مؤكدة دون تدخل بشري.</p>
+        <div style="margin-top: 40px; display: flex; gap: 15px;">
+            <span
+                style="background: rgba(0,210,255,0.1); padding: 5px 15px; border-radius: 8px; font-size: 0.8rem;">NLP</span>
+            <span
+                style="background: rgba(157,80,187,0.1); padding: 5px 15px; border-radius: 8px; font-size: 0.8rem;">Auto-Response</span>
+        </div>
+    </div>
+
+    <!-- Small Card 2: Google Search -->
+    <div class="bento-card bento-2" style="border-color: var(--accent-gold);">
+        <span class="card-label">02 / Search Alpha</span>
+        <h3>السيطرة على جوجل</h3>
+        <p>أن تصبح الخيار الأول حين يبحث أي عميل عن "فسيخ" أو "أسماك". هندسة حسابات جوجل لتصدر الثلاثة الأوائل.</p>
+    </div>
+
+    <!-- Small Card 3: Mobile App -->
+    <div class="bento-card bento-3" style="border-color: var(--accent-purple);">
+        <span class="card-label">03 / Mobility</span>
+        <h3>تطبيق <a href="https://www.facebook.com/muluk.alfasikh" target="_blank" class="highlight-kings">ملوك الفسيخ
+                والرنجة</a></h3>
+        <p>تجربة تسوق "بضغطة واحدة" من الموبايل مباشرة، مع نظام تنبيهات للعروض الحصرية.</p>
+    </div>
+
+    <!-- Big Card 4: Brand Empire -->
+    <div class="bento-card bento-4">
+        <span class="card-label">04 / Global Identity</span>
+        <h3>بناء الإمبراطورية والبراند</h3>
+        <p>تحويل <a href="https://www.facebook.com/muluk.alfasikh" target="_blank" class="highlight-kings">"ملوك الفسيخ
+                والرنجة"</a> من محل محلي إلى علامة تجارية عابرة
+            للمحافظات. تصميم
+            الهوية البصرية التي تفرض هيبتها في كل مكان.</p>
+        <button onclick="window.setLanguage('master-ar')" class="btn-secondary" style="margin-top: 30px;">استكشف تفاصيل
+            المنظومة</button>
+    </div>
+
+    <!-- Medium/Small Card 5: Social Media -->
+    <div class="bento-card" style="grid-column: span 6;">
+        <span class="card-label">05 / Social Engine</span>
+        <h3>إدارة الإعلام الرقمي</h3>
+        <p>أتمتة وإدارة منصات السوشيال ميديا بالكامل. صناعة محتوى يرسخ اسم <a
+                href="https://www.facebook.com/muluk.alfasikh" target="_blank" class="highlight-kings">إسلام</a> في
+            قلب كل بيت مصري.</p>
+    </div>
+
+    <!-- Medium/Small Card 6: Smart Logistics -->
+    <div class="bento-card" style="grid-column: span 6;">
+        <span class="card-label">06 / Digital Flow</span>
+        <h3>المتجر المتطور (Web-Core)</h3>
+        <p>موقع إلكتروني فائق الأداء يتزامن لحظياً مع المخزون والأسعار، ليكون الواجهة الرقمية الأقوى لـ <a
+                href="https://www.facebook.com/muluk.alfasikh" target="_blank" class="highlight-kings">"ملوك الفسيخ
+                والرنجة"</a>.
+        </p>
+    </div>
 </div>
 
+<!-- Evolution Journey Section -->
+<section class="journey-section">
+    <div class="journey-header">
+        <span class="card-label">Strategic Roadmap</span>
+        <h2 style="font-size: 3rem; font-weight: 900; margin-top: 10px;">خريطة السيطرة 2026</h2>
+    </div>
+
+    <div class="journey-container">
+        <div class="journey-step">
+            <span class="step-year">Q1 2026 — التأسيس</span>
+            <h4 class="step-title">البنية التحتية والربط اللحظي</h4>
+            <p class="step-desc">بناء "المخ" الرقمي، ربط المخزون بالرد الآلي، وتفعيل لوحة التحكم لـ <a
+                    href="https://www.facebook.com/muluk.alfasikh" target="_blank" class="highlight-kings">"إسلام"</a>
+                لمتابعة
+                العمليات لحظة بلحظة.</p>
+        </div>
+
+        <div class="journey-step" style="animation-delay: 0.2s;">
+            <span class="step-year">Q2 2026 — الذكاء</span>
+            <h4 class="step-title">الأتمتة الشاملة ومحرك النوايا</h4>
+            <p class="step-desc">تفعيل محرك الذكاء الاصطناعي لفهم رغبات العملاء، والربط التلقائي مع واتساب لإتمام
+                الحجوزات بدون تدخل بشري.</p>
+        </div>
+
+        <div class="journey-step" style="animation-delay: 0.4s;">
+            <span class="step-year">Q3 2026 — الانتشار</span>
+            <h4 class="step-title">التوسع القومي واللوجستيات الرقمية</h4>
+            <p class="step-desc">افتتاح فروع القاهرة والدلتا مع نظام لوجستي مدار بالكامل تقنياً لضمان جودة وسرعة التوصيل
+                لكل بيت في مصر.</p>
+        </div>
+
+        <div class="journey-step" style="animation-delay: 0.6s;">
+            <span class="step-year">Q4 2026 — السيادة</span>
+            <h4 class="step-title">الهيمنة السوقية والبراند العالمي</h4>
+            <p class="step-desc">الانطلاق نحو الأسواق العربية وتفعيل نظام الولاء الرقمي العالمي للسيطرة على سوق الأسماك
+                المملحة والمدخنة.</p>
+        </div>
+    </div>
+</section>
+
+<footer style="text-align: center; padding: 80px 20px; border-top: 1px solid var(--glass-border); margin-top: 50px;">
+    <a href="https://www.facebook.com/Wezuo/" target="_blank" class="brand-logo"
+        style="font-size: 2rem; margin-bottom: 15px; display: inline-block; color: #fff; text-decoration: none; font-weight: 900; letter-spacing: 1px;">WezaTECHNOLOGIES</a>
+    <p style="color: var(--text-muted); margin-bottom: 30px;">نحن نبني مستقبل التجارة الرقمية.</p>
+
+    <div class="connect-area" style="display: flex; justify-content: center; gap: 20px;">
+        <a href="https://wa.me/201207799717" target="_blank"
+            style="text-decoration: none; transition: 0.3s; display: inline-block;">
+            <svg viewBox="0 0 24 24" width="60" height="60" fill="#25D366" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+        </a>
+        <a href="https://www.facebook.com/Wezuo/" target="_blank"
+            style="text-decoration: none; transition: 0.3s; display: inline-block;">
+            <svg viewBox="0 0 24 24" width="60" height="60" fill="#1877F2" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+        </a>
+    </div>
+</footer>
+
+<!-- Modals -->
 <div id="menuModal" class="modal">
+    <!-- Pulse Watermark -->
+    <div class="modal-watermark">WezaTECHNOLOGIES x <a href="https://www.facebook.com/muluk.alfasikh" target="_blank"
+            class="highlight-kings" style="text-decoration: none;">ملوك الفسيخ والرنجة</a></div>
+
     <div class="modal-content">
-        <img src="/src/assets/images/logo.jpg" alt="Logo" class="modal-watermark">
-        <div class="modal-header">
-            <span class="close-btn" onclick="window.closeMenu()">&times;</span>
-            <h2 style="color: var(--accent-gold); margin:0; font-size: 1.4rem;">✨ كله يصلي علي النبي ✨</h2>
-            <p style="color: #94a3b8; margin:5px 0 0 0; font-size: 0.9rem;">وادعلنا دعوة حلوة</p>
-            <div class="date-display" id="dateDisplayAr"></div>
+        <span class="close-btn" onclick="window.closeMenu()">&times;</span>
+
+        <div class="modal-header-box">
+            <h2 style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 10px;">✨ كله يصلي علي النبي ✨</h2>
+            <p style="color: #fff; font-weight: 700;">وادعلنا دعوة حلوة</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;">تاريخ التحديث: الإثنين، ٢٢ ديسمبر
+                ٢٠٢٥</p>
         </div>
-        <div class="modal-body">
-            <div class="charity-banner">لكل مواطن مش مقتدر كيلو سمك ببلاش ❤️<br>(فوارغ - شبار - بوري - شوخرم)</div>
-            <div class="menu-section">
-                <div class="cat-title">🔥 عروض ملوك الفسيخ والرنجة</div>
-                <div class="menu-item">
-                    <div><span class="m-name">عرض الميكس</span><span class="m-desc">4 فسيخ + 2 رنجة</span></div><span
-                        class="m-price">200 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">عرض الجمبري الجامبو</span><span class="m-desc">الجمبو اللي نايم علي جمبه
-                            (بدل 1000)</span></div><span class="m-price">450 EGP</span>
-                </div>
-                <div class="cat-title">🐟 قسم الشبار (البلطي)</div>
-                <div class="menu-item">
-                    <div><span class="m-name">شبار أخضر (ممتاز)</span><span class="m-desc"></span></div><span
-                        class="m-price">100 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">شبار أخضر</span><span class="m-desc">عرض خاص</span></div><span
-                        class="m-price">60 EGP <span class="m-old-price">140</span></span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">شبار أبيض</span><span class="m-desc"></span></div><span class="m-price">40
-                        EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">شبار أبيض (وسط)</span><span class="m-desc">حجم أول</span></div><span
-                        class="m-price">50 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">شبار أبيض (وسط)</span><span class="m-desc">حجم ثاني</span></div><span
-                        class="m-price">65 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">شبار أبيض (دباشي)</span><span class="m-desc"></span></div><span
-                        class="m-price">75 EGP</span>
-                </div>
-                <div class="cat-title">🦈 عالم البوري والفسيخ</div>
-                <div class="menu-item">
-                    <div><span class="m-name">بوري مبطرخ</span><span class="m-desc"></span></div><span
-                        class="m-price">90 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">بوري مبطرخ (صافي)</span><span class="m-desc"></span></div><span
-                        class="m-price">150 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">بوري مبطرخ (كوامل)</span><span class="m-desc">وسط</span></div><span
-                        class="m-price">180 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">بوري مبطرخ (كوامل)</span><span class="m-desc">كبير</span></div><span
-                        class="m-price">220 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">بوري بلدي</span><span class="m-desc">الواحدة كيلو ونص</span></div><span
-                        class="m-price">180 EGP</span>
-                </div>
-                <div class="cat-title">🦐 الفسفور والقشريات</div>
-                <div class="menu-item">
-                    <div><span class="m-name">جمبري سلق (وسط)</span><span class="m-desc"></span></div><span
-                        class="m-price">140 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">جمبري جامبو</span><span class="m-desc"></span></div><span
-                        class="m-price">350 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">جمبري خشابي</span><span class="m-desc"></span></div><span
-                        class="m-price">400 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">سبييا (حر)</span><span class="m-desc"></span></div><span
-                        class="m-price">320 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">كاليماري (قرطيس)</span><span class="m-desc"></span></div><span
-                        class="m-price">200 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">كابوريا (مبطرخة)</span><span class="m-desc">أمهات</span></div><span
-                        class="m-price">100 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">كابوريا (دكورة)</span><span class="m-desc"></span></div><span
-                        class="m-price">65 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">شيكال</span><span class="m-desc">ببلاش لكل مواطن</span></div><span
-                        class="m-price">10 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">بلح بحر</span><span class="m-desc"></span></div><span class="m-price">80
-                        EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">طبق بطارخ (صافي)</span><span class="m-desc">نصف كيلو</span></div><span
-                        class="m-price">320 EGP</span>
-                </div>
-                <div class="cat-title">🌊 أسماك البحر</div>
-                <div class="menu-item">
-                    <div><span class="m-name">غطيان (موسى)</span><span class="m-desc"></span></div><span
-                        class="m-price">180 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">اللوت</span><span class="m-desc"></span></div><span class="m-price">160
-                        EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">باغة (أمهات)</span><span class="m-desc"></span></div><span
-                        class="m-price">160 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">سهيلي مبطرخ</span><span class="m-desc"></span></div><span
-                        class="m-price">220 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">سردينة</span><span class="m-desc"></span></div><span class="m-price">120
-                        EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">مرجان (حر)</span><span class="m-desc"></span></div><span
-                        class="m-price">100 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">بربوني (فاخر)</span><span class="m-desc"></span></div><span
-                        class="m-price">120 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">مكرونة</span><span class="m-desc"></span></div><span class="m-price">100
-                        EGP</span>
-                </div>
-                <div class="cat-title">🛒 فرشة الغلابة</div>
-                <div class="menu-item">
-                    <div><span class="m-name">فوارغ</span><span class="m-desc"></span></div><span class="m-price">75
-                        EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">أبو كرش</span><span class="m-desc"></span></div><span class="m-price">65
-                        EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">شوخرم</span><span class="m-desc"></span></div><span class="m-price">30
-                        EGP</span>
-                </div>
-                <div class="menu-item" style="border:none; margin-top:20px; text-align:center;"><span class="m-desc"
-                        style="width:100%; color: #fecaca;">معاك فلوس وقولت معكش ربنا هيحسبك</span></div>
+
+        <div class="charity-alert">
+            لكل مواطن مش مقتدر كيلو سمك ببلاش ❤️<br>
+            <span style="font-size: 0.8rem; opacity: 0.8;">(فوارغ - شبار - بوري - شوخرم)</span>
+        </div>
+
+        <!-- Section: Offers -->
+        <div class="category-row">🔥 عروض <a href="https://www.facebook.com/muluk.alfasikh" target="_blank"
+                class="highlight-kings" style="text-decoration: none;">ملوك الفسيخ والرنجة</a></div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>عرض الميكس الملكي</h4>
+                <p>4 فسيخ + 2 رنجة</p>
             </div>
+            <div class="item-price">200 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>جمبري جامبو فاخر 🍤</h4>
+                <p>عرض تحطيم الأسعار</p>
+            </div>
+            <div class="item-price">450 EGP <span class="old-price">1000</span></div>
+        </div>
+
+        <!-- Section: Tilapia -->
+        <div class="category-row">🐟 قسم الشبار (البلطي)</div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>شبار أخضر</h4>
+            </div>
+            <div class="item-price">60 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>شبار أخضر ممتاز</h4>
+            </div>
+            <div class="item-price">80 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>شبار أخضر فاخر</h4>
+            </div>
+            <div class="item-price">100 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>شبار أبيض وسط</h4>
+            </div>
+            <div class="item-price">60 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>شبار أبيض (بط)</h4>
+            </div>
+            <div class="item-price">70 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>شبار أبيض دباشي</h4>
+            </div>
+            <div class="item-price">75 EGP</div>
+        </div>
+
+        <!-- Section: Mullet -->
+        <div class="category-row">🦈 عالم البوري والفسيخ</div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>بوري</h4>
+            </div>
+            <div class="item-price">100 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>بوري (حجم كبير)</h4>
+            </div>
+            <div class="item-price">130 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>بوري مبطرخ ومنشي</h4>
+            </div>
+            <div class="item-price">120 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>بوري مبطرخ (بالواحد)</h4>
+            </div>
+            <div class="item-price">140 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>بوري مبطرخ كوامل (3 في الكيلو)</h4>
+            </div>
+            <div class="item-price">180 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>بوري مبطرخ كوامل</h4>
+            </div>
+            <div class="item-price">220 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>بوري فوارغ</h4>
+            </div>
+            <div class="item-price">75 EGP</div>
+        </div>
+
+        <!-- Section: Diverse -->
+        <div class="category-row">🌊 فواكه البحر</div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>جمبري أبيض تقشير</h4>
+            </div>
+            <div class="item-price">80 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>جمبري وسط سليق</h4>
+            </div>
+            <div class="item-price">150 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>سيبيا / سبيط (تنظيف/بدون) 🦑</h4>
+            </div>
+            <div class="item-price">300 - 400 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>كاري ماري</h4>
+            </div>
+            <div class="item-price">140 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4> سهيلي مبطرخ</h4>
+            </div>
+            <div class="item-price">200 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>بربوني أحمر سويسي</h4>
+            </div>
+            <div class="item-price">100 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>بربوني حر أحمر</h4>
+            </div>
+            <div class="item-price">220 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>غطيان موسى (وسط - كبير)</h4>
+            </div>
+            <div class="item-price">160 - 260 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>باغا أمهات</h4>
+            </div>
+            <div class="item-price">120 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>لوت حي</h4>
+            </div>
+            <div class="item-price">160 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>حنشـان (ثعابين) 🐍</h4>
+            </div>
+            <div class="item-price">سعر اليوم (حي)</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>أروص (Sea Bass)</h4>
+            </div>
+            <div class="item-price">سعر اليوم (حي)</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>سردين عماني</h4>
+            </div>
+            <div class="item-price">60 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>شخرم كبير حي</h4>
+            </div>
+            <div class="item-price">60 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>كابوريا نتي 🦀</h4>
+            </div>
+            <div class="item-price">65 EGP</div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 0.9rem;">
+            📍 الأسعار متاحة في جميع الفروع (بورسعيد & بورفؤاد)
+        </div>
+
+        <div
+            style="text-align: center; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;">
+            <p style="color: var(--accent-gold); font-weight: 800; font-size: 1.2rem;">" معاك فلوس هتاكل معكش برضوا
+                هتاكل "</p>
+            <div id="dateDisplayAr" style="margin-top: 15px; font-size: 0.8rem; color: var(--text-muted);"></div>
         </div>
     </div>
 </div>

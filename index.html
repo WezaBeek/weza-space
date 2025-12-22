@@ -9,6 +9,21 @@
 </head>
 
 <body>
+    <div class="bg-orchestra">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <!-- Persistent Navigation -->
+    <nav class="nav-container">
+        <div class="brand-logo">WezaTECHNOLOGIES</div>
+        <div id="nav-actions" class="lang-switch-box">
+            <!-- Dynamically updated by JS if needed, or kept static -->
+            <button id="btn-ar" onclick="window.setLanguage('ar')" class="lang-btn">AR</button>
+            <button id="btn-en" onclick="window.setLanguage('en')" class="lang-btn">EN</button>
+        </div>
+    </nav>
+
     <!-- App Container for SPA -->
     <div id="app"></div>
 

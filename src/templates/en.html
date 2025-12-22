@@ -1,279 +1,414 @@
-<div class="lang-switcher">
-    <button onclick="window.setLanguage('en')" class="lang-link active">EN</button>
-    <span class="lang-sep">|</span>
-    <button onclick="window.setLanguage('ar')" class="lang-link">AR</button>
-</div>
-
-<header>
-    <h1 class="system-title">Smart Management & Automation</h1>
-    <p class="subtitle">Developed especially for: Kings of Fishes</p>
-</header>
-
-<div class="docs-btn-container"
-    style="text-align: center; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-    <button onclick="window.setLanguage('master-en')" class="docs-link"
-        style="border-color: var(--accent-gold); color: var(--accent-gold); background: rgba(245, 158, 11, 0.1);">
-        <span>👑</span> Master Plan (Full Ref)
-    </button>
-    <button onclick="window.setLanguage('roadmap-en')" class="docs-link"
-        style="border-color: var(--accent-blue); color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);">
-        <span>🚀</span> View 2026 Roadmap
-    </button>
-    <button onclick="window.setLanguage('map-en')" class="docs-link">
-        <span>⚙️</span> View System Documentation
-    </button>
-</div>
-
-<div class="dashboard-grid">
-    <div class="card">
-        <div class="card-header"><span class="card-title">👑 Client Area (Admin)</span></div>
-        <p class="admin-msg">Welcome, <strong>Islam</strong>.<br>This system links the "Price Sheet" with the
-            Auto-Reply, ensuring the customer always gets the real-time price.</p>
-        <div class="status-box">🔒 Status: Ready for Pilot Launch</div>
-        <button class="action-btn">Request Activation</button>
-    </div>
-    <div class="card">
-        <div class="card-header"><span class="card-title">🤖 Automation Capabilities</span></div>
-        <div class="ai-feature">
-            <div class="ai-dot online"></div>
-            <div class="feature-content">
-                <h4>Instant Response</h4>
-                <p>Replies in &lt; 1 sec.</p>
-            </div>
-        </div>
-        <div class="ai-feature">
-            <div class="ai-dot online"></div>
-            <div class="feature-content">
-                <h4>Queue Management</h4>
-                <p>Filters comments & redirects to WhatsApp.</p>
-            </div>
-        </div>
-        <div class="ai-feature">
-            <div class="ai-dot"></div>
-            <div class="feature-content">
-                <h4>Inventory AI</h4>
-                <p>Alerts when stock is low.</p>
-            </div>
+<section class="hero">
+    <div class="premium-badge">
+        <div class="badge-inner">
+            <span class="status-dot"></span>
+            Intelligence Core v4.0 Active
         </div>
     </div>
-    <div class="card">
-        <div class="card-header"><span class="card-title">📡 Items Database (Live)</span><span
-                style="font-size: 0.7rem; color: #10b981;">● Online</span></div>
-        <div class="price-list-preview">
-            <div class="price-row">
-                <div class="item-info"><span class="item-name">Mix Offer <span class="text-badge">Best
-                            Seller</span></span><span class="item-sub">4 Fesikh + 2 Herring</span></div><span
-                    class="price-tag">200 EGP</span>
-            </div>
-            <div class="price-row">
-                <div class="item-info"><span class="item-name">Green Shabar</span><span class="item-sub">Fresh
-                        Baladi</span></div><span class="price-tag">100 EGP</span>
-            </div>
-            <div class="price-row">
-                <div class="item-info"><span class="item-name">The "Sleeping" Jumbo</span><span class="item-sub">Today's
-                        Deal (was 1000)</span></div><span class="price-tag">450 EGP</span>
-            </div>
-            <div class="price-row">
-                <div class="item-info"><span class="item-name">1KG Shikal</span><span class="item-sub">For every
-                        citizen</span></div><span class="price-tag">10 EGP</span>
-            </div>
-        </div>
-        <button class="view-more-btn" onclick="window.openMenu()">View Full Database</button>
+    <h1 class="h-title" style="line-height: 1.4;">
+        <span class="text-gradient" style="padding: 10px 0; display: block;">Next-Gen AI Automation</span>
+        <a href="https://www.facebook.com/muluk.alfasikh" target="_blank" class="highlight-kings"
+            style="padding: 10px 0; display: block; text-decoration: none;">for Kings of Fishes</a>
+    </h1>
+    <p class="h-sub">
+        We've engineered the "Digital Core" for <a href="https://www.facebook.com/muluk.alfasikh" target="_blank"
+            class="highlight-kings" style="text-decoration: none;">Islam</a>.
+        This framework is more than tech; it's a strategic market-capture system for the <a
+            href="https://www.facebook.com/muluk.alfasikh" target="_blank" class="highlight-kings"
+            style="text-decoration: none;">"Kings of Fishes"</a> empire.
+    </p>
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <button class="btn-shimmer" onclick="window.openMenu()">Explore Live Menu</button>
+        <button onclick="window.setLanguage('master-en')" class="btn-secondary"
+            style="border-radius: 16px; padding: 16px 32px;">Master Strategy</button>
+    </div>
+</section>
+
+<!-- Tech Stack Section -->
+<div class="tech-stack">
+    <div class="tech-item">
+        <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" class="tech-icon" alt="Node.js">
+        <span class="tech-label">Node.js Engine</span>
+    </div>
+    <div class="tech-item">
+        <img src="https://cdn.worldvectorlogo.com/logos/vitejs.svg" class="tech-icon" alt="Vite">
+        <span class="tech-label">Vite Core</span>
+    </div>
+    <div class="tech-item">
+        <img src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg" class="tech-icon" alt="Cloud">
+        <span class="tech-label">AI Intelligence</span>
+    </div>
+    <div class="tech-item">
+        <img src="https://www.vectorlogo.zone/logos/visualstudio_code/visualstudio_code-icon.svg" class="tech-icon"
+            alt="Automation">
+        <span class="tech-label">Automation Core</span>
     </div>
 </div>
 
-<div class="footer-container">
-    <div class="footer-card">
-        <img src="/src/assets/images/logo.jpg" alt="Watermark" class="footer-watermark">
-        <div class="footer-content">
-            <div class="f-title">💳 Payment Methods</div>
-            <div class="payment-grid">
-                <a href="#" class="pay-link vodafone">Vodafone Cash</a>
-                <a href="#" class="pay-link orange">Orange Cash</a>
-                <a href="#" class="pay-link insta">InstaPay</a>
-                <a href="#" class="pay-link visa">Visa</a>
-                <span class="pay-static">Cash Payment (Soon)</span>
-            </div>
-        </div>
+<div class="stats-bar">
+    <div class="stat-item">
+        <span class="stat-num">50K+</span>
+        <span class="stat-lbl">Messages Processed</span>
     </div>
-    <div class="footer-card">
-        <img src="/src/assets/images/logo.jpg" alt="Watermark" class="footer-watermark">
-        <div class="footer-content">
-            <div class="f-title">📍 Our Branches</div>
-            <div class="address-box">
-                <span class="addr-label">Port Said Branch:</span>
-                <span class="addr-detail">Yellow Bank Housing – In front of Al-Rabat Club Gate</span>
-            </div>
-            <div class="address-box" style="margin-bottom: 0;"> <span class="addr-label">Port Fuad Branch:</span>
-                <span class="addr-detail" style="border: none;">In front of Al-Shaarawy Mosque (Ex-Sahar Cafe)</span>
-            </div>
-        </div>
+    <div class="stat-item">
+        <span class="stat-num">1.2s</span>
+        <span class="stat-lbl">Response Time</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-num">#1</span>
+        <span class="stat-lbl">Search Ranking</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-num">24/7</span>
+        <span class="stat-lbl">Uptime</span>
     </div>
 </div>
 
-<div class="bottom-brand">
-    <p class="brand-tiny">WezaTECHNOLOGIES</p>
-    <p class="brand-phone">01207799717</p>
+<div class="bento-grid">
+    <!-- Big Card 1: AI Brain -->
+    <div class="bento-card bento-1">
+        <span class="card-label">01 / Central Intelligence</span>
+        <h3>Neuro-Logic Engine</h3>
+        <p>An AI system that analyzes intent and responds instantly in the local brand voice, converting inquiries into
+            sales 24/7 without human intervention.</p>
+        <div style="margin-top: 40px; display: flex; gap: 15px;">
+            <span
+                style="background: rgba(0,210,255,0.1); padding: 5px 15px; border-radius: 8px; font-size: 0.8rem;">NLP</span>
+            <span
+                style="background: rgba(157,80,187,0.1); padding: 5px 15px; border-radius: 8px; font-size: 0.8rem;">Auto-Response</span>
+        </div>
+    </div>
+
+    <!-- Small Card 2: Google Search -->
+    <div class="bento-card bento-2" style="border-color: var(--accent-gold);">
+        <span class="card-label">02 / Search Alpha</span>
+        <h3>Google Dominance</h3>
+        <p>Becoming the #1 choice. GMB engineering to secure top 3 rankings for every seafood-related search in the
+            region.</p>
+    </div>
+
+    <!-- Small Card 3: Mobile App -->
+    <div class="bento-card bento-3" style="border-color: var(--accent-purple);">
+        <span class="card-label">03 / Mobility</span>
+        <h3>Royal <a href="https://www.facebook.com/muluk.alfasikh" target="_blank" class="highlight-kings"
+                style="text-decoration: none;">App Experience</a></h3>
+        <p>One-tap ordering directly from a custom mobile app, with dedicated notifications for exclusive deals.</p>
+    </div>
+
+    <!-- Big Card 4: Brand Empire -->
+    <div class="bento-card bento-4">
+        <span class="card-label">04 / Global Identity</span>
+        <h3>Brand Empire & Identity</h3>
+        <p>Transforming a local shop into a national powerhouse. A unified visual identity that commands trust across
+            all channels for <a href="https://www.facebook.com/muluk.alfasikh" target="_blank" class="highlight-kings"
+                style="text-decoration: none;">Kings of Fishes</a>.</p>
+        <button onclick="window.setLanguage('master-en')" class="btn-secondary" style="margin-top: 30px;">Explore Full
+            System</button>
+    </div>
+
+    <!-- Medium/Small Card 5: Social Media -->
+    <div class="bento-card" style="grid-column: span 6;">
+        <span class="card-label">05 / Social Engine</span>
+        <h3>Digital Media Scale</h3>
+        <p>Fully automated social platform management. Creating a presence that resonates in every household.</p>
+    </div>
+
+    <!-- Medium/Small Card 6: Smart Store -->
+    <div class="bento-card" style="grid-column: span 6;">
+        <span class="card-label">06 / Digital Flow</span>
+        <h3>Smart Flagship Store</h3>
+        <p>High-performance web flagship for <a href="https://www.facebook.com/muluk.alfasikh" target="_blank"
+                class="highlight-kings" style="text-decoration: none;">Kings of Fishes</a> that syncs real-time
+            prices and inventory for a seamless digital transaction.
+        </p>
+    </div>
 </div>
 
+<!-- Evolution Journey Section -->
+<section class="journey-section">
+    <div class="journey-header">
+        <span class="card-label">Strategic Roadmap</span>
+        <h2 style="font-size: 3rem; font-weight: 900; margin-top: 10px;">2026 Expansion Roadmap</h2>
+    </div>
+
+    <div class="journey-container">
+        <div class="journey-step">
+            <span class="step-year">Q1 2026 — Foundation</span>
+            <h4 class="step-title">Digital Core & Live Integration</h4>
+            <p class="step-desc">Building the digital 'brain', syncing inventory with auto-reply, and activating the
+                Dashboard for real-time operation monitoring.</p>
+        </div>
+
+        <div class="journey-step" style="animation-delay: 0.2s;">
+            <span class="step-year">Q2 2026 — Intelligence</span>
+            <h4 class="step-title">Full Automation & AI Intent</h4>
+            <p class="step-desc">Deploying NLP to understand customer needs and automating WhatsApp flows for seamless
+                reservations without human intervention.</p>
+        </div>
+
+        <div class="journey-step" style="animation-delay: 0.4s;">
+            <span class="step-year">Q3 2026 — Expansion</span>
+            <h4 class="step-title">National Scale & Smart Logistics</h4>
+            <p class="step-desc">Expanding to Cairo and Delta branches with an AI-driven logistics system to ensure
+                premium quality delivery across Egypt.</p>
+        </div>
+
+        <div class="journey-step" style="animation-delay: 0.6s;">
+            <span class="step-year">Q4 2026 — Dominance</span>
+            <h4 class="step-title">Market Leadership & Global Brand</h4>
+            <p class="step-desc">Launching regional operations and global loyalty systems to become the #1 automated
+                salted fish brand in the Arab world.</p>
+        </div>
+    </div>
+</section>
+
+<footer style="text-align: center; padding: 80px 20px; border-top: 1px solid var(--glass-border); margin-top: 50px;">
+    <a href="https://www.facebook.com/Wezuo/" target="_blank" class="brand-logo"
+        style="font-size: 2rem; margin-bottom: 15px; display: inline-block; color: #fff; text-decoration: none; font-weight: 900; letter-spacing: 1px;">WezaTECHNOLOGIES</a>
+    <p style="color: var(--text-muted); margin-bottom: 30px;">Architecting the future of digital commerce.</p>
+
+    <div class="connect-area" style="display: flex; justify-content: center; gap: 20px;">
+        <a href="https://wa.me/201207799717" target="_blank"
+            style="text-decoration: none; transition: 0.3s; display: inline-block;">
+            <svg viewBox="0 0 24 24" width="60" height="60" fill="#25D366" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+        </a>
+        <a href="https://www.facebook.com/Wezuo/" target="_blank"
+            style="text-decoration: none; transition: 0.3s; display: inline-block;">
+            <svg viewBox="0 0 24 24" width="60" height="60" fill="#1877F2" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+        </a>
+    </div>
+</footer>
+
+<!-- Modals -->
 <div id="menuModal" class="modal">
+    <!-- Pulse Watermark -->
+    <div class="modal-watermark">WezaTECHNOLOGIES x <a href="https://www.facebook.com/muluk.alfasikh" target="_blank"
+            class="highlight-kings" style="text-decoration: none;">Kings of Fishes</a></div>
+
     <div class="modal-content">
-        <img src="/src/assets/images/logo.jpg" alt="Logo" class="modal-watermark">
-        <div class="modal-header">
-            <span class="close-btn" onclick="window.closeMenu()">&times;</span>
-            <h2 style="color: var(--accent-gold); margin:0; font-size: 1.4rem;">✨ Pray upon the Prophet ✨</h2>
-            <p style="color: #94a3b8; margin:5px 0 0 0; font-size: 0.9rem;">Keep us in your prayers</p>
-            <div class="date-display" id="dateDisplayEn"></div>
+        <span class="close-btn" onclick="window.closeMenu()">&times;</span>
+
+        <div class="modal-header-box">
+            <h2 style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 10px;">✨ Royal Catch Live Menu ✨</h2>
+            <p style="color: #fff; font-weight: 700;">Daily Fresh Updates</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;">Last Updated: Dec 22, 2025</p>
         </div>
-        <div class="modal-body">
-            <div class="charity-banner">Free 1KG fish for those in need ❤️<br>(Fawarekh - Shabar - Burri - Shokhrom)
+
+        <div class="charity-alert">
+            Complimentary 1KG Fish for those in need ❤️<br>
+            <span style="font-size: 0.8rem; opacity: 0.8;">(Daily varieties available)</span>
+        </div>
+
+        <!-- Section: Offers -->
+        <div class="category-row">🔥 Exclusive Offers <a href="https://www.facebook.com/muluk.alfasikh" target="_blank"
+                class="highlight-kings" style="text-decoration: none;">Kings of Fishes</a></div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Royal Mix Offer</h4>
+                <p>4 Fesikh + 2 Renja (Family Feast)</p>
             </div>
-            <div class="menu-section">
-                <div class="cat-title">🔥 Kings of Fesikh & Herring Offers</div>
-                <div class="menu-item">
-                    <div><span class="m-name">Mix Offer</span><span class="m-desc">4 Fesikh + 2 Herring</span></div>
-                    <span class="m-price">200 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Jumbo Shrimp Offer</span><span class="m-desc">Sleeping Jumbo (was
-                            1000)</span></div><span class="m-price">450 EGP</span>
-                </div>
-                <div class="cat-title">🐟 Tilapia Section (Shabar)</div>
-                <div class="menu-item">
-                    <div><span class="m-name">Green Shabar (Excellent)</span><span class="m-desc"></span></div><span
-                        class="m-price">100 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Green Shabar</span><span class="m-desc">Special Offer</span></div><span
-                        class="m-price">60 EGP <span class="m-old-price">140</span></span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">White Shabar</span><span class="m-desc"></span></div><span
-                        class="m-price">40 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">White Shabar (Medium)</span><span class="m-desc">Size 1</span></div><span
-                        class="m-price">50 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">White Shabar (Medium)</span><span class="m-desc">Size 2</span></div><span
-                        class="m-price">65 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">White Shabar (Dabashi)</span><span class="m-desc"></span></div><span
-                        class="m-price">75 EGP</span>
-                </div>
-                <div class="cat-title">🦈 Mullet & Fesikh World</div>
-                <div class="menu-item">
-                    <div><span class="m-name">Burri with Roe</span><span class="m-desc"></span></div><span
-                        class="m-price">90 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Burri with Roe (Pure)</span><span class="m-desc"></span></div><span
-                        class="m-price">150 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Burri with Roe (Whole)</span><span class="m-desc">Medium</span></div><span
-                        class="m-price">180 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Burri with Roe (Whole)</span><span class="m-desc">Large</span></div><span
-                        class="m-price">220 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Baladi Burri</span><span class="m-desc">1.5KG per fish</span></div><span
-                        class="m-price">180 EGP</span>
-                </div>
-                <div class="cat-title">🦐 Phosphorus & Crustaceans</div>
-                <div class="menu-item">
-                    <div><span class="m-name">Boiled Shrimp (Medium)</span><span class="m-desc"></span></div><span
-                        class="m-price">140 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Jumbo Shrimp</span><span class="m-desc"></span></div><span
-                        class="m-price">350 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Wood Shrimp</span><span class="m-desc"></span></div><span
-                        class="m-price">400 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Sepia (Free)</span><span class="m-desc"></span></div><span
-                        class="m-price">320 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Calamari (Cones)</span><span class="m-desc"></span></div><span
-                        class="m-price">200 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Crabs (Roe)</span><span class="m-desc">Mothers</span></div><span
-                        class="m-price">100 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Crabs (Male)</span><span class="m-desc"></span></div><span
-                        class="m-price">65 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Shikal</span><span class="m-desc">Free for every citizen</span></div><span
-                        class="m-price">10 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Mussels (Balah Bahr)</span><span class="m-desc"></span></div><span
-                        class="m-price">80 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Roe Plate (Pure)</span><span class="m-desc">0.5 KG</span></div><span
-                        class="m-price">320 EGP</span>
-                </div>
-                <div class="cat-title">🌊 Sea Fish</div>
-                <div class="menu-item">
-                    <div><span class="m-name">Sole Fish (Ghotian)</span><span class="m-desc"></span></div><span
-                        class="m-price">180 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Meagre (Loot)</span><span class="m-desc"></span></div><span
-                        class="m-price">160 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Bagha (Mothers)</span><span class="m-desc"></span></div><span
-                        class="m-price">160 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Seheli with Roe</span><span class="m-desc"></span></div><span
-                        class="m-price">220 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Sardine</span><span class="m-desc"></span></div><span class="m-price">120
-                        EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Coral (Free)</span><span class="m-desc"></span></div><span
-                        class="m-price">100 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Red Mullet (Premium)</span><span class="m-desc"></span></div><span
-                        class="m-price">120 EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Makarona</span><span class="m-desc"></span></div><span class="m-price">100
-                        EGP</span>
-                </div>
-                <div class="cat-title">🛒 Budget Corner</div>
-                <div class="menu-item">
-                    <div><span class="m-name">Fawarekh</span><span class="m-desc"></span></div><span class="m-price">75
-                        EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Abu Kersh</span><span class="m-desc"></span></div><span class="m-price">65
-                        EGP</span>
-                </div>
-                <div class="menu-item">
-                    <div><span class="m-name">Shokhrom</span><span class="m-desc"></span></div><span class="m-price">30
-                        EGP</span>
-                </div>
-                <div class="menu-item" style="border:none; margin-top:20px; text-align:center;"><span class="m-desc"
-                        style="width:100%; color: #fecaca;">Pay if you can, if not, God will provide.</span></div>
+            <div class="item-price">200 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Jumbo Shrimp Deluxe 🍤</h4>
+                <p>Price Crash Deal (Limited Time)</p>
             </div>
+            <div class="item-price">450 EGP <span class="old-price">1000</span></div>
+        </div>
+
+        <!-- Section: Tilapia -->
+        <div class="category-row">🐟 Shabar (Tilapia)</div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Shabar Akhdar (Standard)</h4>
+            </div>
+            <div class="item-price">60 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Shabar Akhdar (Premium)</h4>
+            </div>
+            <div class="item-price">80 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Shabar Akhdar (Deluxe)</h4>
+            </div>
+            <div class="item-price">100 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Shabar Abyad (Medium)</h4>
+            </div>
+            <div class="item-price">60 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Shabar Abyad (Batt/Fat)</h4>
+            </div>
+            <div class="item-price">70 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Shabar Abyad (Dabashi)</h4>
+            </div>
+            <div class="item-price">75 EGP</div>
+        </div>
+
+        <!-- Section: Mullet -->
+        <div class="category-row">🦈 Bouri & Fesikh World</div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Bouri (Regular)</h4>
+            </div>
+            <div class="item-price">100 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Bouri (Large)</h4>
+            </div>
+            <div class="item-price">130 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Bouri Mobatrakh & Monashe</h4>
+            </div>
+            <div class="item-price">120 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Bouri Mobatrakh (Per Piece)</h4>
+            </div>
+            <div class="item-price">140 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Bouri Mobatrakh Kawamel (3/KG)</h4>
+            </div>
+            <div class="item-price">180 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Bouri Mobatrakh Kawamel (Super)</h4>
+            </div>
+            <div class="item-price">220 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Bouri Fawaregh (Empty)</h4>
+            </div>
+            <div class="item-price">75 EGP</div>
+        </div>
+
+        <!-- Section: Diverse -->
+        <div class="category-row">🌊 Seafood Treasures</div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>White Shrimp (Peeled)</h4>
+            </div>
+            <div class="item-price">80 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Medium Shrimp (Boiled)</h4>
+            </div>
+            <div class="item-price">150 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Sepia / Sobet (Clean/Raw) 🦑</h4>
+            </div>
+            <div class="item-price">300 - 400 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Calamari</h4>
+            </div>
+            <div class="item-price">140 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Sohaili Mobatrakh</h4>
+            </div>
+            <div class="item-price">200 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Barbouni Ahmar (Suez)</h4>
+            </div>
+            <div class="item-price">100 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Barbouni Hor Ahmar</h4>
+            </div>
+            <div class="item-price">220 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Ghotian Mousa (Sole Fish)</h4>
+            </div>
+            <div class="item-price">160 - 260 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Bagha (Omhat)</h4>
+            </div>
+            <div class="item-price">120 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Loot (Live)</h4>
+            </div>
+            <div class="item-price">160 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Hanshan (Eels) 🐍</h4>
+            </div>
+            <div class="item-price">Daily Price (Live)</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Arous (Sea Bass)</h4>
+            </div>
+            <div class="item-price">Daily Price (Live)</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Sardine Omani</h4>
+            </div>
+            <div class="item-price">60 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Shokhrom (Large Live)</h4>
+            </div>
+            <div class="item-price">60 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <h4>Kaboria Nety (Females) 🦀</h4>
+            </div>
+            <div class="item-price">65 EGP</div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 0.9rem;">
+            📍 Prices available at all branches (Port Said & Port Fouad)
+        </div>
+
+        <div
+            style="text-align: center; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;">
+            <p style="color: var(--accent-gold); font-weight: 800; font-size: 1.2rem;">"Quality seafood for every home."
+            </p>
+            <div id="dateDisplayEn" style="margin-top: 15px; font-size: 0.8rem; color: var(--text-muted);"></div>
         </div>
     </div>
 </div>
