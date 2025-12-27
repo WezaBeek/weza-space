@@ -692,18 +692,22 @@ svg {
 }
 
 .modal-watermark {
-    position: fixed;
+    position: absolute;
+    /* Scrolls naturally with the content */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: clamp(280px, 80vw, 500px);
-    opacity: 0.12;
+    width: clamp(250px, 85vw, 500px);
+    opacity: 0.45;
+    /* Much clearer (5 degrees up as requested) */
     pointer-events: none;
-    z-index: 5;
+    z-index: 1;
     animation: pulseWatermark 8s infinite alternate ease-in-out;
     display: flex;
     justify-content: center;
     align-items: center;
+    filter: brightness(0.9) contrast(1.2);
+    /* Enhanced details and features */
 }
 
 .modal-watermark img {

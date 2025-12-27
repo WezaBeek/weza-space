@@ -9,6 +9,8 @@ import masterPlanAr from '../templates/master-plan-ar.html?raw';
 import masterPlanEn from '../templates/master-plan-en.html?raw';
 import mapAr from '../templates/map-ar.html?raw';
 import mapEn from '../templates/map-en.html?raw';
+import teamAr from '../templates/team-ar.html?raw';
+import teamEn from '../templates/team-en.html?raw';
 
 /**
  * Core Navigation & Language Logic
@@ -58,6 +60,14 @@ window.setLanguage = function (view) {
                 app.innerHTML = mapEn;
                 setDocumentMeta('en', 'ltr');
                 break;
+            case 'team-ar':
+                app.innerHTML = teamAr;
+                setDocumentMeta('ar', 'rtl');
+                break;
+            case 'team-en':
+                app.innerHTML = teamEn;
+                setDocumentMeta('en', 'ltr');
+                break;
             default:
                 app.innerHTML = arTemplate;
                 setDocumentMeta('ar', 'rtl');
@@ -80,6 +90,11 @@ function updateNavActiveButtons(view) {
     if (btnAr && btnEn) {
         btnAr.classList.toggle('active', !isEn);
         btnEn.classList.toggle('active', isEn);
+    }
+
+    const btnTeam = document.getElementById('btn-team');
+    if (btnTeam) {
+        btnTeam.innerText = isEn ? 'Meet the Team' : 'فريق العمل';
     }
 }
 

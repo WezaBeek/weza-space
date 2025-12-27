@@ -22,7 +22,9 @@
     <nav class="nav-container">
         <div class="brand-logo">WezaTECHNOLOGIES</div>
         <div id="nav-actions" class="lang-switch-box">
-            <!-- Dynamically updated by JS if needed, or kept static -->
+            <button id="btn-team"
+                onclick="window.setLanguage(document.documentElement.lang === 'ar' ? 'team-ar' : 'team-en')"
+                class="lang-btn" style="width: auto; padding: 0 15px;">Meet the Team</button>
             <button id="btn-ar" onclick="window.setLanguage('ar')" class="lang-btn">AR</button>
             <button id="btn-en" onclick="window.setLanguage('en')" class="lang-btn">EN</button>
         </div>

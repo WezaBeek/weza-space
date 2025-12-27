@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منيو ملوك الفسيخ المدمج 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #000212;
+            --accent-blue: #00d2ff;
+            --accent-gold: #ffcc33;
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #000;
+            color: var(--text-main);
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 450px;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent-blue);
+            border-radius: 30px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0, 210, 255, 0.15);
+        }
+
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            opacity: 0.08;
+            z-index: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .header h1 {
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+            font-weight: 900;
+        }
+
+        .header p {
+            font-size: 0.8rem;
+            color: #fff;
+            background: var(--accent-blue);
+            color: #000;
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 5px;
+            font-weight: 700;
+        }
+
+        .charity-box {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px dashed #10b981;
+            color: #10b981;
+            padding: 10px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.75rem;
+            margin-bottom: 15px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .category-title {
+            color: var(--accent-gold);
+            font-weight: 900;
+            font-size: 0.95rem;
+            border-right: 3px solid var(--accent-gold);
+            padding-right: 10px;
+            margin: 15px 0 10px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .item-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px 10px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .item-name {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .item-price {
+            font-size: 0.8rem;
+            font-weight: 900;
+            color: var(--accent-blue);
+            margin-top: 2px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 10;
+            position: relative;
+        }
+
+        .slogan {
+            color: var(--accent-gold);
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        .loc {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+        <img src="Logo.jpg" class="watermark">
+
+        <div class="header">
+            <h1>✨ كله يصلي علي النبي ✨</h1>
+            <p>وادعلنا دعوة حلوة</p>
+        </div>
+
+        <div class="charity-box">
+            لكل مواطن مش مقتدر كيلو سمك ببلاش ❤️<br>
+            (فوارغ - شبار - بوري - شوخرم)
+        </div>
+
+        <div class="category-title">🔥 عروض ملوك الفسيخ</div>
+        <div class="item-grid">
+            <div class="item">
+                <span class="item-name">ميكس ملكي (4+2)</span>
+                <span class="item-price">200 EGP</span>
+            </div>
+            <div class="item">
+                <span class="item-name">جمبري جامبو 🍤</span>
+                <span class="item-price">450 EGP</span>
+            </div>
+        </div>
+
+        <div class="category-title">🐟 قسم الشبار</div>
+        <div class="item-grid">
+            <div class="item">
+                <span class="item-name">شبار أخضر</span>
+                <span class="item-price">60 - 100 EGP</span>
+            </div>
+            <div class="item">
+                <span class="item-name">شبار أبيض</span>
+                <span class="item-price">60 - 75 EGP</span>
+            </div>
+        </div>
+
+        <div class="category-title">🦈 عالم البوري والفسيخ</div>
+        <div class="item-grid">
+            <div class="item">
+                <span class="item-name">بوري</span>
+                <span class="item-price">80 - 180 EGP</span>
+            </div>
+            <div class="item">
+                <span class="item-name">بوري مبطرخ</span>
+                <span class="item-price">100 - 200 EGP</span>
+            </div>
+            <div class="item">
+                <span class="item-name">فوارغ</span>
+                <span class="item-price">75 - 90 EGP</span>
+            </div>
+        </div>
+
+        <div class="category-title">🌊 فواكه البحر</div>
+        <div class="item-grid">
+            <div class="item"><span class="item-name">جمبري تقشير</span><span class="item-price">80 EGP</span></div>
+            <div class="item"><span class="item-name">سيبيا/سبيط 🦑</span><span class="item-price">200 EGP</span></div>
+            <div class="item"><span class="item-name">كاري ماري</span><span class="item-price">120 EGP</span></div>
+            <div class="item"><span class="item-name">باغا أمهات</span><span class="item-price">120 EGP</span></div>
+            <div class="item"><span class="item-name">لوت حي</span><span class="item-price">160 EGP</span></div>
+            <div class="item"><span class="item-name">حنشـان بلدي 🐍</span><span class="item-price">220 EGP</span></div>
+            <div class="item"><span class="item-name">بربوني أحمر</span><span class="item-price">200 EGP</span></div>
+            <div class="item"><span class="item-name">غطيان موسى</span><span class="item-price">150-220 EGP</span></div>
+            <div class="item"><span class="item-name">كابوريا نتي 🦀</span><span class="item-price">100 EGP</span></div>
+            <div class="item"><span class="item-name">مكرونة/مرجان</span><span class="item-price">120 EGP</span></div>
+            <div class="item"><span class="item-name">دنيس ديبة</span><span class="item-price">300 EGP</span></div>
+            <div class="item"><span class="item-name">أصناف أخرى</span><span class="item-price">10 - 65 EGP</span></div>
+        </div>
+
+        <div class="footer">
+            <div class="slogan">" معكش برضوا هتاكل "</div>
+            <div class="loc">📍 بورسعيد & بورفؤاد | Weza 2026</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

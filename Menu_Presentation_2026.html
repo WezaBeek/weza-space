@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة أسعار ملوك الفسيخ والرنجة 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #000212;
+            --card-bg: rgba(10, 14, 35, 0.95);
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --accent-gold: #ffcc33;
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+            --border-glow: rgba(0, 210, 255, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #000;
+            color: var(--text-main);
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* Page Container (Mobile View Simulation) */
+        .page {
+            width: 100%;
+            max-width: 500px;
+            background: var(--bg-dark);
+            border: 1px solid var(--accent-blue);
+            border-radius: 40px;
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 100px rgba(0, 210, 255, 0.2);
+            margin-bottom: 50px;
+            min-height: 850px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .watermark {
+            position: fixed;
+            /* Stays visible while scrolling */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            /* Relative to screen width */
+            max-width: 450px;
+            opacity: 0.15;
+            /* Subtle but clear */
+            pointer-events: none;
+            z-index: 0;
+            filter: grayscale(1) brightness(1.2);
+            /* Blends better as background */
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header h1 {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 204, 51, 0.3);
+        }
+
+        .header p {
+            background: var(--accent-blue);
+            color: #000;
+            display: inline-block;
+            padding: 4px 15px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        .date-badge {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 15px;
+            display: block;
+        }
+
+        .charity-card {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px dashed #10b981;
+            color: #10b981;
+            padding: 18px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+            line-height: 1.6;
+            position: relative;
+            z-index: 10;
+        }
+
+        .category-header {
+            background: rgba(255, 204, 51, 0.05);
+            border-right: 4px solid var(--accent-gold);
+            padding: 10px 18px;
+            color: var(--accent-gold);
+            font-weight: 900;
+            font-size: 1.1rem;
+            margin: 25px 0 15px;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 10;
+        }
+
+        .item-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #fff;
+        }
+
+        .item-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .item-price {
+            font-weight: 950;
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+            white-space: nowrap;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: auto;
+            padding: 40px 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .location-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .slogan {
+            color: var(--accent-gold);
+            font-weight: 900;
+            font-size: 1.3rem;
+            text-shadow: 0 0 15px rgba(255, 204, 51, 0.2);
+            margin-bottom: 15px;
+        }
+
+        .wt-brand-footer {
+            opacity: 0.4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .wt-brand-footer .name {
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        .wt-brand-footer .phone {
+            font-size: 0.7rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        @media print {
+            .page {
+                box-shadow: none;
+                margin-bottom: 0;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PAGE 1 -->
+    <div class="page" id="page1">
+        <img src="Logo.jpg" class="watermark" alt="Logo">
+
+        <div class="header">
+            <h1>✨ كله يصلي علي النبي ✨</h1>
+            <p>وادعلنا دعوة حلوة</p>
+            <span class="date-badge">تاريخ التحديث: الجمعة، ٢٦ ديسمبر ٢٠٢٥</span>
+        </div>
+
+        <div class="charity-card">
+            لكل مواطن مش مقتدر كيلو سمك ببلاش ❤️<br>
+            <span style="font-size: 0.85rem; opacity: 0.8;">(فوارغ - شبار - بوري - شوخرم)</span>
+        </div>
+
+        <!-- Section 1 -->
+        <div class="category-header">🔥 عروض ملوك الفسيخ والرنجة</div>
+        <div class="menu-item">
+            <div class="item-info">
+                <div class="item-name">عرض الميكس الملكي</div>
+                <div class="item-desc">4 فسيخ + 2 رنجة</div>
+            </div>
+            <div class="item-price">200 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <div class="item-name">جمبري جامبو فاخر 🍤</div>
+                <div class="item-desc">عرض تحطيم الأسعار</div>
+            </div>
+            <div class="item-price">450 EGP <span class="old-price">1000</span></div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="category-header">🐟 قسم الشبار (البلطي)</div>
+        <div class="menu-item">
+            <div class="item-info">
+                <div class="item-name">شبار أخضر (أصناف)</div>
+            </div>
+            <div class="item-price">60 - 100 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <div class="item-name">شبار أبيض (وسط - بط - دباشي)</div>
+            </div>
+            <div class="item-price">60 - 70 - 75 EGP</div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="category-header">🦈 عالم البوري والفسيخ</div>
+        <div class="menu-item">
+            <div class="item-info">
+                <div class="item-name">بوري (أحجام)</div>
+            </div>
+            <div class="item-price">80 - 90 - 180 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <div class="item-name">بوري مبطرخ</div>
+            </div>
+            <div class="item-price">100 - 140 - 180 - 200 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info">
+                <div class="item-name">فوارغ (وسط - كبير)</div>
+            </div>
+            <div class="item-price">75 - 90 EGP</div>
+        </div>
+
+        <div class="footer">
+            <div class="location-info">تابع الصفحة الثانية لباقي الأصناف ⬅️</div>
+            <div class="wt-brand-footer">
+                <span class="name">Weza Technologies™</span>
+                <span class="phone">01207799717</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page" id="page2">
+        <img src="Logo.jpg" class="watermark" alt="Logo">
+
+        <!-- Section 4 -->
+        <div class="category-header">🌊 فواكه البحر (أصناف متنوعة)</div>
+        <div class="menu-item">
+            <div class="item-name">جمبري أبيض تقشير</div>
+            <div class="item-price">80 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-name">سيبيا / سبيط 🦑</div>
+            <div class="item-price">200 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-name">كاري ماري</div>
+            <div class="item-price">120 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-name">باغا أمهات</div>
+            <div class="item-price">120 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-name">لوت حي</div>
+            <div class="item-price">160 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-name">حنشـان بلدي صنار 🐍</div>
+            <div class="item-price">220 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-name">بربوني حر أحمر</div>
+            <div class="item-price">200 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-name">غطيان موسى (أصناف)</div>
+            <div class="item-price">150 - 220 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-name">كابوريا نتي مبطرخة 🦀</div>
+            <div class="item-price">100 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-name">مكرونة</div>
+            <div class="item-price">120 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-name">مرجان (وسط - كبير)</div>
+            <div class="item-price">100 - 120 EGP</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-name">دنيس (بلدي - مزارع)</div>
+            <div class="item-price">100 - 300 EGP</div>
+        </div>
+
+        <div class="footer">
+            <div class="location-info">📍 الأسعار متاحة في جميع الفروع (بورسعيد & بورفؤاد)</div>
+            <div class="slogan">" معاك فلوس هتاكل معكش برضوا هتاكل "</div>
+            <div class="wt-brand-footer">
+                <span class="name">Weza Technologies™</span>
+                <span class="phone">01207799717</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
