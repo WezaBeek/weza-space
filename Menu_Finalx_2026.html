@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منيو ملوك الفسيخ - نسخة الطباعة المدمجة (2026)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #000212;
+            --accent-cyan: #00d2ff;
+            --accent-cyan-deep: #00a8cc;
+            --accent-gold: #ffcc33;
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #000;
+            color: var(--text-main);
+            font-family: 'Cairo', sans-serif;
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .menu-page {
+            width: 210mm;
+            height: 297mm;
+            background: var(--bg-dark);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            padding: 15mm 12mm;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0, 210, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+            overflow: hidden;
+            /* Ensures nothing spills out of the A4 box */
+        }
+
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 75%;
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: 1;
+            filter: brightness(0.9) contrast(1.2);
+        }
+
+        .content-wrap {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .header h1 {
+            color: var(--accent-gold);
+            font-size: 1.45rem;
+            font-weight: 950;
+            margin-bottom: 3px;
+            text-shadow: 0 0 20px rgba(255, 204, 51, 0.3);
+        }
+
+        .header .sub-text {
+            color: var(--accent-cyan);
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin: 15px 0 8px;
+        }
+
+        .section-title h2 {
+            color: var(--accent-gold);
+            font-size: 1rem;
+            font-weight: 950;
+        }
+
+        .title-text {
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 1px;
+            display: inline-block;
+        }
+
+        .price-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1px 0;
+        }
+
+        .item-name {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: #fff;
+            text-align: right;
+            flex: 1;
+        }
+
+        .item-price {
+            font-weight: 950;
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            text-align: left;
+            margin-right: 15px;
+            font-family: monospace;
+        }
+
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            padding-top: 15px;
+            padding-bottom: 5px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .slogan-box p {
+            color: var(--accent-gold);
+            font-weight: 950;
+            font-size: 1.15rem;
+            text-shadow: 0 0 15px rgba(255, 204, 51, 0.2);
+        }
+
+        .wt-brand {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.5;
+        }
+
+        .wt-brand .owner {
+            font-size: 0.7rem;
+            color: var(--accent-cyan-deep);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .wt-brand .phone {
+            font-size: 0.65rem;
+            color: var(--accent-cyan-deep);
+            font-weight: 600;
+            margin-top: -1px;
+            line-height: 1.1;
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            body {
+                padding: 0;
+                background: #000;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .menu-page {
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .back-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="back-nav" style="position: fixed; top: 15px; left: 15px; z-index: 1000;">
+        <a href="/" class="back-btn"
+            style="background: rgba(0, 210, 255, 0.1); border: 1px solid var(--accent-cyan); color: #fff; padding: 8px 16px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.85rem; backdrop-filter: blur(10px); transition: 0.3s; display: inline-block;">←
+            العودة للموقع</a>
+    </div>
+
+    <!-- PAGE 1 (FRONT) -->
+    <div class="menu-page">
+        <img src="Logo.jpg" class="watermark">
+        <div class="content-wrap">
+            <div class="header">
+                <h1>✨ صلوا على النبي ✨</h1>
+                <div class="sub-text">وادعولنا دعوة حلوة</div>
+                <div style="color: var(--text-muted); margin-top: 3px; font-weight: 600; font-size: 0.8rem;">"خلي الناس
+                    تاكل"</div>
+            </div>
+
+            <!-- Fesikh Section -->
+            <div class="section-title">
+                <h2>🔥 <span class="title-text">عروض ملوك الفسيخ والرنجة</span> <span
+                        style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted);">(أصل التمليح)</span>
+                </h2>
+            </div>
+            <div class="price-list">
+                <div class="item">
+                    <span class="item-name" style="font-size: 1.05rem;">🔥 فسيخ ..</span>
+                    <span class="item-price" style="color: var(--accent-gold); font-size: 1.15rem;">..</span>
+                </div>
+                <div class="item">
+                    <span class="item-name" style="font-size: 1.05rem;">🔥 فسيخ ..</span>
+                    <span class="item-price" style="color: var(--accent-gold); font-size: 1.15rem;">..</span>
+                </div>
+                <div class="item">
+                    <span class="item-name" style="font-size: 1.05rem;">فسيخ + 2 رنجة 3</span>
+                    <span class="item-price" style="color: var(--accent-gold); font-size: 1.15rem;">..</span>
+                </div>
+                <div class="item">
+                    <span class="item-name" style="font-size: 1.05rem;">4 فسيخ + 2 رنجة</span>
+                    <span class="item-price" style="color: var(--accent-gold); font-size: 1.15rem;">..</span>
+                </div>
+            </div>
+
+            <!-- Shabar Section -->
+            <div class="section-title" style="margin-top: 18px;">
+                <h2>🐟 <span class="title-text">الشبار البورسعيدي</span></h2>
+            </div>
+            <div class="price-list">
+                <div class="item"><span class="item-name">شبار أخضر ممتاز</span><span class="item-price">..</span></div>
+                <div class="item"><span class="item-name">شبار أخضر</span><span class="item-price">..</span></div>
+                <div class="item"><span class="item-name">شبار أبيض علف</span><span class="item-price">.. / ..</span>
+                </div>
+                <div class="item"><span class="item-name">شبار عين سالم</span><span class="item-price">..</span></div>
+                <div class="item"><span class="item-name">شخرم</span><span class="item-price">..</span></div>
+                <div class="item"><span class="item-name">ررقاد</span><span class="item-price">..</span></div>
+            </div>
+
+            <!-- Mullet Section -->
+            <div class="section-title" style="margin-top: 18px;">
+                <h2>🐟 <span class="title-text">البوري والمبطرخ</span> <span
+                        style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted);">(للّي بيفهم)</span></h2>
+            </div>
+            <div class="price-list">
+                <div class="item"><span class="item-name">بوري مبطرخ كوامل</span><span class="item-price">.. / ..</span>
+                </div>
+                <div class="item"><span class="item-name">بوري مبطرخ صافي</span><span class="item-price">.. / ..</span>
+                </div>
+                <div class="item"><span class="item-name">بوري مبطرخ (على منشي)</span><span class="item-price">..</span>
+                </div>
+                <div class="item"><span class="item-name">فوارغ كبيرة</span><span class="item-price">.. / ..</span>
+                </div>
+                <div class="item"><span class="item-name">سهيرلي مبطرخ (بالوحدة)</span><span
+                        class="item-price">..</span></div>
+            </div>
+
+            <div class="footer">
+                <div class="wt-brand">
+                    <span class="owner">Weza Technologies™</span>
+                    <span class="phone">01207799717</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2 (BACK) -->
+    <div class="menu-page">
+        <img src="Logo.jpg" class="watermark">
+        <div class="content-wrap">
+            <div class="header">
+                <h1>🦐 الفسفور والجمبري 🦐</h1>
+                <div class="sub-text">سيبيا ولا سبيط؟ الاثنين عندنا</div>
+            </div>
+
+            <div class="price-list">
+                <div class="item" style="border-bottom: 1px dotted rgba(255,255,255,0.1); padding-bottom: 3px;">
+                    <span class="item-name">جمبري جامبو فاخر (20 ف الكيلو)</span>
+                    <span class="item-price">..</span>
+                </div>
+                <div class="item"><span class="item-name">جمبري أحمر خشابي</span><span class="item-price">..</span>
+                </div>
+                <div class="item"><span class="item-name">جمبري أبيض (إلحق يا متلحقش)</span><span
+                        class="item-price">..</span></div>
+                <div class="item"><span class="item-name">سيبيا ولا سبيط (تنظيف / بدون)</span><span
+                        class="item-price">.. / ..</span></div>
+                <div class="item"><span class="item-name">كاليماري سوبر</span><span class="item-price">..</span></div>
+                <div class="item"><span class="item-name">كابوريا نُتي مبطرخة</span><span class="item-price">..</span>
+                </div>
+                <div class="item"><span class="item-name">كابوريا دكوره حشو</span><span class="item-price">..</span>
+                </div>
+                <div class="item"><span class="item-name">بكلاويز</span><span class="item-price">..</span></div>
+                <div class="item"><span class="item-name">شيكال مبطرخ (بالوحدة)</span><span class="item-price">..</span>
+                </div>
+                <div class="item"><span class="item-name">شيكال لحم (نظيف)</span><span class="item-price">..</span>
+                </div>
+            </div>
+
+            <!-- Diverse Section -->
+            <div class="section-title" style="margin-top: 18px;">
+                <h2>💎 <span class="title-text">كنوز البحر</span> <span
+                        style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted);">(طازة من الشبكة)</span>
+                </h2>
+            </div>
+            <div class="price-list">
+                <div class="item"><span class="item-name">لوت حي صينار</span><span class="item-price">..</span></div>
+                <div class="item"><span class="item-name">دنيس وسط وسوبر</span><span class="item-price">.. / ..</span>
+                </div>
+                <div class="item"><span class="item-name">غطيان موسى</span><span class="item-price">..</span></div>
+                <div class="item"><span class="item-name">مكرونة سوبر</span><span class="item-price">..</span></div>
+                <div class="item"><span class="item-name">باغا أمهات</span><span class="item-price">..</span></div>
+                <div class="item"><span class="item-name">دراك</span><span class="item-price">..</span></div>
+                <div class="item"><span class="item-name">مرجان حر</span><span class="item-price">..</span></div>
+            </div>
+
+            <div class="footer">
+                <div class="slogan-box">
+                    <p>معاك فلوس هتاكل .. معكش برضه هتاكل 🖤</p>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 8px;">📍 الأسعار سارية في فرعي
+                    بورسعيد وبورفؤاد</p>
+                <div class="wt-brand">
+                    <span class="owner">Weza Technologies™</span>
+                    <span class="phone">01207799717</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
