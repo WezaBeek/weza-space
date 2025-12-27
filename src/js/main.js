@@ -97,9 +97,16 @@ function updateNavActiveButtons(view) {
         btnTeam.innerText = isEn ? 'Meet the Team' : 'فريق العمل';
     }
 
-    const btnMenuLink = document.getElementById('btn-menu-link');
-    if (btnMenuLink) {
-        btnMenuLink.innerText = isEn ? 'Price List' : 'قائمة الأسعار';
+    // Robust check for both IDs to handle potential cache mismatches
+    const btnMenu = document.getElementById('btn-menu-link') || document.getElementById('btn-menu-original');
+    if (btnMenu) {
+        console.log('Updating menu button text to:', isEn ? 'Price List' : 'قائمة الأسعار'); // Debug
+        btnMenu.innerText = isEn ? 'Price List' : 'قائمة الأسعار';
+
+        // Ensure the link is correct even if onclick is stale
+        btnMenu.onclick = function () {
+            window.location.href = isEn ? '/Menu_English_2026.html' : '/Menu_Final_2026.html';
+        };
     }
 }
 
