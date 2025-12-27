@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weza Technologies | Automation Core</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon-DayvHE-0-DayvHE-0.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32-D2_gF4wf-D2_gF4wf.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16-D-X2fdZS-D-X2fdZS.png">
-    <link rel="manifest" href="./assets/site-BwHFeIBa-BwHFeIBa.webmanifest">
-  <script type="module" crossorigin src="./assets/index-M33gjMIw.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon-DayvHE-0-DayvHE-0-DayvHE-0.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32-D2_gF4wf-D2_gF4wf-D2_gF4wf.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16-D-X2fdZS-D-X2fdZS-D-X2fdZS.png">
+    <link rel="manifest" href="./assets/site-BwHFeIBa-BwHFeIBa-BwHFeIBa.webmanifest">
+  <script type="module" crossorigin src="./assets/index-DITaqo_n.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-44gNrXxd.css">
 </head>
 
@@ -24,6 +24,13 @@
     <nav class="nav-container">
         <div class="brand-logo">WezaTECHNOLOGIES</div>
         <div id="nav-actions" class="lang-switch-box">
+            <!-- New Menu Button -->
+            <button id="btn-menu-link"
+                onclick="window.location.href = (document.documentElement.lang === 'ar' ? '/Menu_Final_2026.html' : '/Menu_English_2026.html')"
+                class="lang-btn"
+                style="width: auto; padding: 0 15px; background: rgba(0,210,255,0.1); border: 1px solid var(--accent-blue); color: #fff;">قائمة
+                الأسعار</button>
+
             <button id="btn-team"
                 onclick="window.setLanguage(document.documentElement.lang === 'ar' ? 'team-ar' : 'team-en')"
                 class="lang-btn" style="width: auto; padding: 0 15px;">Meet the Team</button>
@@ -34,7 +41,7 @@
 
     <!-- App Container for SPA -->
     <div id="app"></div>
-
+
 </body>
 
 </html>

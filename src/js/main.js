@@ -96,6 +96,11 @@ function updateNavActiveButtons(view) {
     if (btnTeam) {
         btnTeam.innerText = isEn ? 'Meet the Team' : 'فريق العمل';
     }
+
+    const btnMenuLink = document.getElementById('btn-menu-link');
+    if (btnMenuLink) {
+        btnMenuLink.innerText = isEn ? 'Price List' : 'قائمة الأسعار';
+    }
 }
 
 /**
