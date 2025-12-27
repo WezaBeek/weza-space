@@ -1,0 +1,212 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2025-12-25",
+        "currency": "EGP",
+        "brand": "Weza Technologies"
+    },
+    "categories": [
+        {
+            "id": "offers",
+            "name_ar": "عروض ملوك الفسيخ والرنجة",
+            "name_en": "Fesikh & Renga Offers",
+            "items": [
+                {
+                    "id": "offer_7_fesikh",
+                    "name_ar": "7 فسيخ (عرض نااار)",
+                    "price": 100,
+                    "is_hot_deal": true
+                },
+                {
+                    "id": "offer_5_fesikh",
+                    "name_ar": "5 فسيخ",
+                    "price": 200
+                },
+                {
+                    "id": "offer_mix",
+                    "name_ar": "4 فسيخ + 2 رنجة",
+                    "price": 200
+                },
+                {
+                    "id": "offer_3_mabtrokh",
+                    "name_ar": "3 فسيخ مبطرخ",
+                    "price": 250
+                }
+            ]
+        },
+        {
+            "id": "shabar",
+            "name_ar": "الشبار البورسعيدي",
+            "name_en": "Authentic Shabar",
+            "items": [
+                {
+                    "id": "shabar_green_premium",
+                    "name_ar": "شبار أخضر ممتاز",
+                    "price": 100,
+                    "old_price": 160
+                },
+                {
+                    "id": "shabar_green",
+                    "name_ar": "شبار أخضر",
+                    "price": 60
+                },
+                {
+                    "id": "shabar_white_alaf",
+                    "name_ar": "شبار أبيض علف",
+                    "price": "60 / 70"
+                },
+                {
+                    "id": "shabar_ain_salem",
+                    "name_ar": "شبار عين سالم",
+                    "price": 40
+                },
+                {
+                    "id": "shakhram",
+                    "name_ar": "شخرم",
+                    "price": 60,
+                    "old_price": "100 / 150"
+                },
+                {
+                    "id": "raqqad",
+                    "name_ar": "ررقاد",
+                    "price": 50,
+                    "note": "مش ب100 يا حرامي"
+                }
+            ]
+        },
+        {
+            "id": "mullet",
+            "name_ar": "البوري والمبطرخ",
+            "name_en": "Mullet & Mabtrokh",
+            "items": [
+                {
+                    "id": "bouri_kawamel",
+                    "name_ar": "بوري مبطرخ كوامل",
+                    "price": "180 / 200"
+                },
+                {
+                    "id": "bouri_safi",
+                    "name_ar": "بوري مبطرخ صافي",
+                    "price": "140 / 170"
+                },
+                {
+                    "id": "bouri_menshi",
+                    "name_ar": "بوري مبطرخ (على منشي)",
+                    "price": 100
+                },
+                {
+                    "id": "fawaregh_large",
+                    "name_ar": "فوارغ كبيرة",
+                    "price": "65 / 90"
+                },
+                {
+                    "id": "sehierly",
+                    "name_ar": "سهيرلي مبطرخ (بالوحدة)",
+                    "price": 300,
+                    "old_price": 500
+                }
+            ]
+        },
+        {
+            "id": "shrimp_phosphorus",
+            "name_ar": "الفسفور والجمبري",
+            "name_en": "Phosphorus & Shrimp",
+            "items": [
+                {
+                    "id": "shrimp_jumbo",
+                    "name_ar": "جمبري جامبو فاخر (20 وحداية)",
+                    "price": 450,
+                    "old_price": 1000
+                },
+                {
+                    "id": "shrimp_red",
+                    "name_ar": "جمبري أحمر خشابي",
+                    "price": 350
+                },
+                {
+                    "id": "shrimp_white",
+                    "name_ar": "جمبري أبيض",
+                    "price": 50,
+                    "note": "إلحق يا متلحقش"
+                },
+                {
+                    "id": "sepia_squid",
+                    "name_ar": "سيبيا ولا سبيط",
+                    "price": "250 / 350"
+                },
+                {
+                    "id": "calamari_super",
+                    "name_ar": "كاليماري سوبر",
+                    "price": 230
+                },
+                {
+                    "id": "crab_female",
+                    "name_ar": "كابوريا نُتي مبطرخة",
+                    "price": 80
+                },
+                {
+                    "id": "crab_male",
+                    "name_ar": "كابوريا دكوره حشو",
+                    "price": 70
+                },
+                {
+                    "id": "baklawiz",
+                    "name_ar": "بكلاويز",
+                    "price": 70
+                },
+                {
+                    "id": "shikal_mabtrokh",
+                    "name_ar": "شيكال مبطرخ (بالوحدة)",
+                    "price": 100
+                },
+                {
+                    "id": "shikal_meat",
+                    "name_ar": "شيكال لحم (نظيف)",
+                    "price": 10
+                }
+            ]
+        },
+        {
+            "id": "treasures",
+            "name_ar": "كنوز البحر",
+            "name_en": "Sea Treasures",
+            "items": [
+                {
+                    "id": "loot_live",
+                    "name_ar": "لوت حي صينار",
+                    "price": 150
+                },
+                {
+                    "id": "denis_super",
+                    "name_ar": "دنيس وسط وسوبر",
+                    "price": "100 / 125"
+                },
+                {
+                    "id": "mousa",
+                    "name_ar": "غطيان موسى",
+                    "price": 230
+                },
+                {
+                    "id": "macarona_super",
+                    "name_ar": "مكرونة سوبر",
+                    "price": 120
+                },
+                {
+                    "id": "baga",
+                    "name_ar": "باغا أمهات",
+                    "price": 110
+                },
+                {
+                    "id": "drak",
+                    "name_ar": "دراك",
+                    "price": 100
+                },
+                {
+                    "id": "morgan",
+                    "name_ar": "مرجان حر",
+                    "price": 120
+                }
+            ]
+        }
+    ]
+}
