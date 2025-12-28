@@ -144,15 +144,11 @@ function initWatermarkParallax() {
         const scrollTop = modalContent.scrollTop;
 
         // Parallax Effect:
-        // moveFactor = scrollTop means it moves down exactly as much as we scroll, 
-        // effectively staying 'fixed' on screen while content scrolls behind it.
-        // We use 0.95 to let it drift up SLIGHTLY so it feels like it's in the background depth.
+        // Moves down with the scroll to stay visible (sticky-like feel)
+        // Removed scaling as requested to keep movement independent and comfortable
         const moveFactor = scrollTop * 0.95;
 
-        // Scale increases significantly as you scroll down
-        const scaleFactor = 1 + (scrollTop * 0.0008);
-
-        watermark.style.transform = `translate(-50%, calc(-50% + ${moveFactor}px)) scale(${scaleFactor})`;
+        watermark.style.transform = `translate(-50%, calc(-50% + ${moveFactor}px))`;
     });
 }
 
