@@ -728,7 +728,6 @@ svg {
     align-items: center;
     filter: brightness(0.9) contrast(1.2);
     /* Enhanced details and features */
-    transition: transform 0.1s ease-out;
     /* Smooths out the JS updates */
 }
 
