@@ -130,6 +130,27 @@ function initScrollAnimations() {
     steps.forEach(step => observer.observe(step));
 }
 
+/**
+ * Modal Watermark Parallax logic
+ */
+function initModalParallax() {
+    const modalContent = document.querySelector('.modal-content');
+    const watermark = document.querySelector('.modal-watermark');
+
+    if (!modalContent || !watermark) return;
+
+    modalContent.addEventListener('scroll', () => {
+        const scrollTop = modalContent.scrollTop;
+
+        // Move the watermark vertically relative to scroll
+        const translateY = scrollTop * 0.15;
+        // Scale the watermark slightly as user scrolls
+        const scale = 1 + (scrollTop * 0.0001);
+
+        watermark.style.transform = `translate(-50%, calc(-50% + ${translateY}px)) scale(${scale})`;
+    });
+}
+
 function setDocumentMeta(lang, dir) {
     document.documentElement.lang = lang;
     document.documentElement.dir = dir;
@@ -140,7 +161,10 @@ function setDocumentMeta(lang, dir) {
  */
 window.openMenu = function () {
     const modal = document.getElementById('menuModal');
-    if (modal) modal.style.display = 'block';
+    if (modal) {
+        modal.style.display = 'block';
+        initModalParallax(); // Trigger parallax init when opening
+    }
 };
 
 window.closeMenu = function () {
