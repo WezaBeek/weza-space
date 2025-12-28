@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #02050a; /* لون خلفية موقعك */
-            --primary: #00d4ff; /* الأزرق النيون */
+            --bg-dark: #02050a;
+            /* لون خلفية موقعك */
+            --primary: #00d4ff;
+            /* الأزرق النيون */
             --secondary: #0056b3;
             --accent: #ff0055;
             --glass-bg: rgba(10, 25, 47, 0.7);
@@ -26,7 +29,7 @@
         body {
             font-family: 'Cairo', sans-serif;
             background-color: var(--bg-dark);
-            background-image: 
+            background-image:
                 radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(255, 0, 85, 0.03) 0%, transparent 40%);
             color: var(--text-main);
@@ -55,13 +58,16 @@
             margin-bottom: 10px;
         }
 
-        .logo span { color: var(--primary); }
+        .logo span {
+            color: var(--primary);
+        }
 
         h1 {
             font-size: 2.8rem;
             font-weight: 900;
             background: linear-gradient(90deg, #fff, var(--primary));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
         }
@@ -82,7 +88,7 @@
             border-radius: 12px;
             margin-bottom: 50px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .intro-card h3 {
@@ -112,8 +118,18 @@
             border-radius: 10px;
         }
 
-        .pain-item h4 { color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .pain-item p { font-size: 0.9rem; color: var(--text-muted); }
+        .pain-item h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pain-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
 
         .solution-item {
             background: rgba(0, 212, 255, 0.05);
@@ -121,8 +137,12 @@
             padding: 20px;
             border-radius: 10px;
         }
-        .solution-item h4 { color: var(--primary); margin-bottom: 10px; }
-        
+
+        .solution-item h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
         /* TIMELINE 2026 */
         .section-title {
             font-size: 2rem;
@@ -131,8 +151,13 @@
             align-items: center;
             gap: 15px;
         }
+
         .section-title::before {
-            content: ''; width: 8px; height: 35px; background: var(--primary); border-radius: 4px;
+            content: '';
+            width: 8px;
+            height: 35px;
+            background: var(--primary);
+            border-radius: 4px;
         }
 
         .timeline-box {
@@ -175,7 +200,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             padding-bottom: 10px;
         }
 
@@ -188,8 +213,18 @@
             font-weight: 700;
         }
 
-        .phase h3 { font-size: 1.4rem; color: #fff; margin-bottom: 5px; }
-        .phase h3 span { color: var(--text-muted); font-size: 1rem; font-weight: 400; margin-right: 10px; }
+        .phase h3 {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .phase h3 span {
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 400;
+            margin-right: 10px;
+        }
 
         .phase-content ul {
             list-style: none;
@@ -213,7 +248,7 @@
 
         /* FUTURE SECTION */
         .future-box {
-            background: linear-gradient(135deg, rgba(0,212,255,0.05), transparent);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), transparent);
             border: 1px solid rgba(0, 212, 255, 0.2);
             padding: 30px;
             border-radius: 15px;
@@ -239,7 +274,7 @@
             margin-right: auto;
             width: fit-content;
         }
-        
+
         .btn-print:hover {
             transform: scale(1.05);
             box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
@@ -247,24 +282,65 @@
 
         /* PRINT STYLES */
         @media print {
-            body { background: #fff; color: #000; }
-            .intro-card, .phase, .pain-item, .solution-item { 
-                border: 1px solid #ccc; background: none; box-shadow: none; color: #000; 
+            body {
+                background: #fff;
+                color: #000;
             }
-            h1, h3, h4, span { color: #000 !important; background: none !important; -webkit-text-fill-color: initial; }
-            .btn-print { display: none; }
-            .timeline-box { border-right: 2px solid #000; }
-            .phase::after { border-color: #000; background: #fff; }
+
+            .intro-card,
+            .phase,
+            .pain-item,
+            .solution-item {
+                border: 1px solid #ccc;
+                background: none;
+                box-shadow: none;
+                color: #000;
+            }
+
+            h1,
+            h3,
+            h4,
+            span {
+                color: #000 !important;
+                background: none !important;
+                -webkit-text-fill-color: initial;
+            }
+
+            .btn-print {
+                display: none;
+            }
+
+            .timeline-box {
+                border-right: 2px solid #000;
+            }
+
+            .phase::after {
+                border-color: #000;
+                background: #fff;
+            }
         }
-        
+
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .timeline-box { border-right: none; padding-right: 0; }
-            .phase::after { display: none; }
-            .pain-grid { grid-template-columns: 1fr; }
+            h1 {
+                font-size: 2rem;
+            }
+
+            .timeline-box {
+                border-right: none;
+                padding-right: 0;
+            }
+
+            .phase::after {
+                display: none;
+            }
+
+            .pain-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -277,8 +353,10 @@
         <div class="intro-card">
             <h3>شوف يا ريس إسلام..</h3>
             <p>احنا مش جايين نبيع "موقع" ونمشي. احنا درسنا السوق، وعارفين الوجع اللي بيحصل كل موسم.</p>
-            <p>عارفين لما الزبون يقولك "العرض ده مش حقيقي"، وعارفين وجع الدماغ بتاع "الأسعار متغيرة"، ومشاكل الشحن والمرتجعات اللي بتحرق الدم والفلوس.</p>
-            <p><strong>الخلاصة:</strong> أنت تقعد باشا على الكرسي، والسيستم بتاعنا يشيل عنك "الدوشة" دي كلها، مقابل نسبة رمزية من الأوردرات الناجحة فقط. نجاحك هو نجاحنا.</p>
+            <p>عارفين لما الزبون يقولك "العرض ده مش حقيقي"، وعارفين وجع الدماغ بتاع "الأسعار متغيرة"، ومشاكل الشحن
+                والمرتجعات اللي بتحرق الدم والفلوس.</p>
+            <p><strong>الخلاصة:</strong> أنت تقعد باشا على الكرسي، والسيستم بتاعنا يشيل عنك "الدوشة" دي كلها، مقابل نسبة
+                رمزية من الأوردرات الناجحة فقط. نجاحك هو نجاحنا.</p>
         </div>
 
         <h2 class="section-title" style="font-size: 1.5rem;">التشخيص والعلاج</h2>
@@ -300,9 +378,9 @@
         </div>
 
         <h2 class="section-title">خارطة طريق 2026 (سنة التنظيف والسيطرة)</h2>
-        
+
         <div class="timeline-box">
-            
+
             <div class="phase">
                 <div class="phase-header">
                     <h3>تحسين الواجهة والسمعة <span>(المرحلة الأولى)</span></h3>
@@ -311,7 +389,8 @@
                 <div class="phase-content">
                     <p>الهدف: نثبت للناس إن "الملوك" مش بس اسم، دي خدمة عالمية.</p>
                     <ul>
-                        <li>بناء هوية رقمية كاملة (Google Business Identity) عشان أي حد في مصر يكتب "فسيخ" تطلعله أنت أول واحد بـ 5 نجوم.</li>
+                        <li>بناء هوية رقمية كاملة (Google Business Identity) عشان أي حد في مصر يكتب "فسيخ" تطلعله أنت
+                            أول واحد بـ 5 نجوم.</li>
                         <li>توحيد الأسعار والعروض أونلاين عشان نلغي كلمة "أصل أنا شوفت سعر تاني".</li>
                         <li>نسخة تجريبية (V1) للمتجر الإلكتروني لاستقبال الطلبات السهلة.</li>
                     </ul>
@@ -327,7 +406,8 @@
                     <p>الهدف: نحول "الشات" لفلوس، ونوقف نزيف المرتجعات.</p>
                     <ul>
                         <li>تفعيل "المساعد الذكي": بيرد على الرسايل، بيبعت المنيو، وبيتمم البيعة وأنت نايم.</li>
-                        <li>نظام "كشف الجدية": السيستم بيعرف الزبون ده طلب قبل كدا واستلم ولا لأ، عشان ما تطلعش أوردر لواحد بيعكس.</li>
+                        <li>نظام "كشف الجدية": السيستم بيعرف الزبون ده طلب قبل كدا واستلم ولا لأ، عشان ما تطلعش أوردر
+                            لواحد بيعكس.</li>
                         <li>إدخال عائد زيادة 20% من الرسايل المهملة اللي كانت بتضيع زمان.</li>
                     </ul>
                 </div>
@@ -342,7 +422,8 @@
                     <p>الهدف: المشاكل تتحل من غير ما ترفع سماعة التليفون.</p>
                     <ul>
                         <li>لوحة تحكم (Dashboard) بتوريك كل حاجة بتحصل في المحل (مبيعات، نواقص، شكاوى) بضغطة زر.</li>
-                        <li>حل مشاكل الشحن: ربط الأوردر برقم المندوب وتتبع حالة التوصيل عشان الزبون ما يرنش عليك يسألك "الأكل فين".</li>
+                        <li>حل مشاكل الشحن: ربط الأوردر برقم المندوب وتتبع حالة التوصيل عشان الزبون ما يرنش عليك يسألك
+                            "الأكل فين".</li>
                     </ul>
                 </div>
             </div>
@@ -365,20 +446,24 @@
 
         <div class="future-box">
             <h3 style="color: var(--primary); margin-bottom: 10px;">وماذا بعد؟ (رؤية 2027)</h3>
-            <p style="color: #fff;">في 2027، مش هيكون مجرد موقع.. هنطلق <strong>تطبيق ملوك الفسيخ والرنجة</strong> الرسمي.</p>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;">توسع في القاهرة، تصدير للخارج، وبراند بينافس البراندات العالمية.</p>
+            <p style="color: #fff;">في 2027، مش هيكون مجرد موقع.. هنطلق <strong>تطبيق ملوك الفسيخ والرنجة</strong>
+                الرسمي.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;">توسع في القاهرة، تصدير للخارج،
+                وبراند بينافس البراندات العالمية.</p>
         </div>
 
-        <div style="text-align: center; margin-top: 60px; border-top: 1px solid var(--glass-border); padding-top: 30px;">
+        <div
+            style="text-align: center; margin-top: 60px; border-top: 1px solid var(--glass-border); padding-top: 30px;">
             <p style="font-size: 1.1rem; color: #fff; margin-bottom: 20px;">
                 "أنت عليك الصنعة والجودة.. واحنا علينا نخلي العالم كله يعرفها ويدفع تمنها."
             </p>
             <p style="color: var(--text-muted); font-size: 0.9rem;">شريك النجاح: Weza Technologies</p>
-            
+
             <button class="btn-print" onclick="window.print()">📥 حفظ الخطة (PDF)</button>
         </div>
 
     </div>
 
 </body>
+
 </html>
