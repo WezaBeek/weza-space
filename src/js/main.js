@@ -144,9 +144,9 @@ function initWatermarkParallax() {
         const scrollTop = modalContent.scrollTop;
 
         // Parallax Effect:
-        // Moves down with the scroll to stay visible (sticky-like feel)
-        // Removed scaling as requested to keep movement independent and comfortable
-        const moveFactor = scrollTop * 0.95;
+        // Moves vertically at 40% of scroll speed.
+        // This creates a smooth, noticeable movement that is neither fixed nor static.
+        const moveFactor = scrollTop * 0.4;
 
         watermark.style.transform = `translate(-50%, calc(-50% + ${moveFactor}px))`;
     });
