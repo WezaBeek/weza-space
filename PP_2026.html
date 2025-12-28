@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خارطة الطريق الاستراتيجية 2026 - Weza x Kings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #000212;
+            --primary: #00d2ff;
+            --primary-glow: rgba(0, 210, 255, 0.3);
+            --accent-purple: #9d50bb;
+            --accent-gold: #ffcc33;
+            --glass-bg: rgba(10, 14, 35, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Dynamic Background */
+        .bg-orchestra {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #0a0e23 0%, #000212 100%);
+        }
+
+        .glow-orb {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            animation: float 20s infinite alternate;
+        }
+
+        .orb-1 {
+            background: var(--primary);
+            top: -200px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            background: var(--accent-purple);
+            bottom: -200px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(100px, 50px) scale(1.1);
+            }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Navigation */
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+            color: #000;
+            transform: translateX(-5px);
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .brand-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            font-weight: 950;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff 40%, rgba(255, 255, 255, 0.7) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* CARDS */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 35px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .intro-msg h3 {
+            color: var(--primary);
+            font-weight: 900;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .intro-msg p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #e6f1ff;
+        }
+
+        /* GRID */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .analysis-box {
+            padding: 25px;
+            border-radius: 20px;
+        }
+
+        .analysis-box.pain {
+            background: rgba(255, 59, 48, 0.05);
+            border: 1px dashed rgba(255, 59, 48, 0.2);
+        }
+
+        .analysis-box.solution {
+            background: rgba(0, 210, 255, 0.05);
+            border: 1px dashed var(--primary);
+        }
+
+        .analysis-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .pain h4 {
+            color: #ff3b30;
+        }
+
+        .solution h4 {
+            color: var(--primary);
+        }
+
+        .analysis-box ul {
+            list-style: none;
+        }
+
+        .analysis-box li {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .analysis-box li::before {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: currentColor;
+        }
+
+        /* TIMELINE */
+        .section-header {
+            margin-bottom: 40px;
+            border-right: 4px solid var(--primary);
+            padding-right: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            right: 15px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent-purple), transparent);
+        }
+
+        .phase-step {
+            position: relative;
+            padding-right: 50px;
+            margin-bottom: 40px;
+        }
+
+        .phase-step::after {
+            content: '';
+            position: absolute;
+            right: 9px;
+            top: 30px;
+            width: 14px;
+            height: 14px;
+            background: var(--primary);
+            border: 3px solid var(--bg-dark);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--primary);
+            z-index: 2;
+        }
+
+        .phase-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .phase-card h3 {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .phase-card h3 span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .phase-tag {
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .phase-card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .phase-card li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #ced6e0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .phase-card li::before {
+            content: '▹';
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* FOOTER BOX */
+        .future-vision {
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(157, 80, 187, 0.1));
+            border: 1px solid var(--primary-glow);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .future-vision h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-action {
+            display: block;
+            width: fit-content;
+            margin: 40px auto 0;
+            padding: 18px 45px;
+            background: linear-gradient(90deg, #9d50bb, #00d2ff);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 900;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(157, 80, 187, 0.3);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-action:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .nav-header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .phase-step {
+                padding-right: 30px;
+            }
+
+            .phase-step::after {
+                right: -6px;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media print {
+
+            .bg-orchestra,
+            .back-btn,
+            .btn-action {
+                display: none;
+            }
+
+            body {
+                background: #fff;
+                color: #000;
+            }
+
+            .glass-card,
+            .phase-card {
+                border: 1px solid #000;
+                background: none;
+                color: #000;
+                box-shadow: none;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4 {
+                color: #000 !important;
+                -webkit-text-fill-color: initial !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-orchestra">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <div class="container">
+        <nav class="nav-header">
+            <a href="/" class="back-btn">← العودة للرئيسية</a>
+            <div class="brand-logo">WezaTECHNOLOGIES</div>
+        </nav>
+
+        <header>
+            <h1>الإمبراطورية الرقمية 2026</h1>
+            <p class="subtitle">خطة التوسع الاستراتيجي والسيطرة على السوق لـ "ملوك الفسيخ والرنجة"</p>
+        </header>
+
+        <section class="glass-card intro-msg">
+            <h3>شوف يا ريس إسلام..</h3>
+            <p>احنا مش جايين نبيع "موقع" ونمشي. احنا درسنا السوق، وعارفين الوجع اللي بيحصل كل موسم والضغط اللي بيكون
+                عليك.</p>
+            <p>عارفين لما الزبون يتوه بين الأسعار، والمشاكل اللي بتحصل في الشحن، والرسايل اللي بتضيع في وسط الزحمة.</p>
+            <p><strong>هدفنا:</strong> أنت تركز في "الصنعة" والجودة، وتكبر البراند بتاعك، والسيستم بتاعنا يشيل عنك كل
+                "الدوشة" الإدارية والتقنية.</p>
+        </section>
+
+        <div class="stat-grid">
+            <div class="analysis-box pain">
+                <h4>⚠️ نقاط الضعف الحالية</h4>
+                <ul>
+                    <li>تضارب الأسعار بين الفرع ومنشورات الفيسبوك.</li>
+                    <li>أوردرات وهمية وعملاء غير جادين بيحرقوا مجهود.</li>
+                    <li>ضياع مئات الطلبات بسبب تأخير الرد على الرسائل.</li>
+                    <li>صعوبة تتبع حالة الأوردر بعد خروجه من المحل.</li>
+                </ul>
+            </div>
+            <div class="analysis-box solution">
+                <h4>💎 حلول Weza Smart Tech</h4>
+                <ul>
+                    <li>متجر موحد مربوط بالمخازن لتحديث الأسعار لحظياً.</li>
+                    <li>نظام "فلترة وتأكيد" يضمن جدية العميل قبل التحضير.</li>
+                    <li>رد آلي ذكي (AI Bot) يغلق البيعة في ثوانٍ 24/7.</li>
+                    <li>لوحة تحكم كاملة تظهر لك أرباحك وأدائك بضغطة زر.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2>خارطة طريق السيادة (2026)</h2>
+        </div>
+
+        <div class="timeline">
+            <div class="phase-step">
+                <div class="phase-card">
+                    <h3>
+                        التأسيس والسمعة الرقمية
+                        <span class="phase-tag">Q1 - 2026</span>
+                    </h3>
+                    <ul>
+                        <li>بناء الهوية الرقمية الموحدة (GMB) لضمان المركز الأول في نتائج البحث.</li>
+                        <li>إطلاق النسخة الأولى من المتجر (V1) لتلقي الطلبات المنظمة.</li>
+                        <li>توحيد قاعدة بيانات الأسعار لإنهاء أي تضارب أمام العميل.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase-step">
+                <div class="phase-card">
+                    <h3>
+                        محرك الذكاء والرد الآلي
+                        <span class="phase-tag">Q2 - 2026</span>
+                    </h3>
+                    <ul>
+                        <li>تفعيل المساعد الذكي للرد الفوري على واتساب وفيسبوك وتحويل الاستفسارات لطلبات.</li>
+                        <li>نظام "كشف الجدية" لتقليل نسبة المرتجعات بنسبة 40%.</li>
+                        <li>جمع وتحليل داتا العملاء لإعادة استهدافهم في المواسم (شم النسيم/العيد).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase-step">
+                <div class="phase-card">
+                    <h3>
+                        السيطرة اللوجستية والربط
+                        <span class="phase-tag">Q3 - 2026</span>
+                    </h3>
+                    <ul>
+                        <li>لوحة تحكم (Dashboard) متكاملة لإدارة فروع بورسعيد وبورفؤاد من مكان واحد.</li>
+                        <li>ربط شركات الشحن والمندوبين بالنظام لتتبع الأوردر لحظة بلحظة.</li>
+                        <li>أتمتة نظام الشكاوى والتقييمات لرفع جودة الخدمة.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase-step">
+                <div class="phase-card">
+                    <h3>
+                        التوسع والانتشار القومي
+                        <span class="phase-tag">Q4 - 2026</span>
+                    </h3>
+                    <ul>
+                        <li>فتح باب الشحن للمحافظات بنظام "التوصيل الآمن" المبرد.</li>
+                        <li>تجهيز الأرضية لإطلاق تطبيق الموبايل الرسمي للملوك.</li>
+                        <li>إطلاق نظام الولاء ونقاط المكافآت لعملاء الملوك الدائمين.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="future-vision">
+            <h3>رؤية 2027: الانطلاق للعالمية</h3>
+            <p>في 2027، لن يكون مجرد متجر.. بل سيصبح <strong>تطبيق ملوك الفسيخ والرنجة</strong> هو المرجع الأول للأسماك
+                في مصر، مع خطة للتصدير للخارج والوصول لكل بيت في الوطن العربي.</p>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 80px;">
+            <p style="font-size: 1.2rem; font-weight: 700; color: var(--accent-gold);">" أنت عليك الصنعة.. واحنا علينا
+                نخلي العالم يشوفها " ❤️</p>
+            <button class="btn-action" onclick="window.print()">📥 حفظ الخطة للعرض (PDF)</button>
+        </div>
+    </div>
+</body>
+
+</html>

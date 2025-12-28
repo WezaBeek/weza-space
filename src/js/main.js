@@ -79,7 +79,6 @@ window.setLanguage = function (view) {
 
         // Re-initialize animations after content swap
         initScrollAnimations();
-        initWatermarkParallax();
     }, 200);
 };
 
@@ -101,13 +100,15 @@ function updateNavActiveButtons(view) {
     // Robust check for both IDs to handle potential cache mismatches
     const btnMenu = document.getElementById('btn-menu-link') || document.getElementById('btn-menu-original');
     if (btnMenu) {
-        console.log('Updating menu button text to:', isEn ? 'Price List' : 'قائمة الأسعار'); // Debug
         btnMenu.innerText = isEn ? 'Price List' : 'قائمة الأسعار';
-
-        // Ensure the link is correct even if onclick is stale
         btnMenu.onclick = function () {
             window.location.href = isEn ? '/Menu_English_2026.html' : '/Menu_Final_2026.html';
         };
+    }
+
+    const btnStrategy = document.getElementById('btn-strategy-link');
+    if (btnStrategy) {
+        btnStrategy.innerText = isEn ? 'Strategic Plan' : 'الخطة الاستراتيجية';
     }
 }
 
@@ -129,27 +130,6 @@ function initScrollAnimations() {
 
     const steps = document.querySelectorAll('.journey-step');
     steps.forEach(step => observer.observe(step));
-}
-
-function initWatermarkParallax() {
-    const modalContent = document.querySelector('.modal-content');
-    const watermark = document.querySelector('.modal-watermark');
-
-    if (!modalContent || !watermark) return;
-
-    // Reset transform to initial state
-    watermark.style.transform = 'translate(-50%, -50%) scale(1)';
-
-    modalContent.addEventListener('scroll', () => {
-        const scrollTop = modalContent.scrollTop;
-
-        // Parallax Effect:
-        // Moves vertically at 00.01% of scroll speed.
-        // This creates a smooth, noticeable movement that is neither fixed nor static.
-        const moveFactor = scrollTop * 0.4;
-
-        watermark.style.transform = `translate(-50%, calc(-50% + ${moveFactor}px))`;
-    });
 }
 
 function setDocumentMeta(lang, dir) {

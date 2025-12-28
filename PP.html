@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خارطة الطريق الاستراتيجية - Weza x Kings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #02050a; /* لون خلفية موقعك */
+            --primary: #00d4ff; /* الأزرق النيون */
+            --secondary: #0056b3;
+            --accent: #ff0055;
+            --glass-bg: rgba(10, 25, 47, 0.7);
+            --glass-border: rgba(0, 212, 255, 0.1);
+            --text-main: #ffffff;
+            --text-muted: #8892b0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 85, 0.03) 0%, transparent 40%);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .logo span { color: var(--primary); }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* INTRO CARD - The Hook */
+        .intro-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-right: 4px solid var(--primary);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 50px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .intro-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .intro-card p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: #e6f1ff;
+        }
+
+        /* PAIN POINTS GRID */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .pain-item {
+            background: rgba(255, 50, 50, 0.05);
+            border: 1px dashed rgba(255, 50, 50, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .pain-item h4 { color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .pain-item p { font-size: 0.9rem; color: var(--text-muted); }
+
+        .solution-item {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px dashed var(--primary);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .solution-item h4 { color: var(--primary); margin-bottom: 10px; }
+        
+        /* TIMELINE 2026 */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .section-title::before {
+            content: ''; width: 8px; height: 35px; background: var(--primary); border-radius: 4px;
+        }
+
+        .timeline-box {
+            position: relative;
+            padding-right: 30px;
+            border-right: 2px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .phase {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .phase:hover {
+            transform: translateX(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+        }
+
+        .phase::after {
+            content: '';
+            position: absolute;
+            right: -37px;
+            top: 30px;
+            width: 12px;
+            height: 12px;
+            background: var(--bg-dark);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 10px;
+        }
+
+        .phase-badge {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .phase h3 { font-size: 1.4rem; color: #fff; margin-bottom: 5px; }
+        .phase h3 span { color: var(--text-muted); font-size: 1rem; font-weight: 400; margin-right: 10px; }
+
+        .phase-content ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .phase-content li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            color: #ced6e0;
+            font-size: 0.95rem;
+        }
+
+        .phase-content li::before {
+            content: '▹';
+            color: var(--primary);
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        /* FUTURE SECTION */
+        .future-box {
+            background: linear-gradient(135deg, rgba(0,212,255,0.05), transparent);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* CTA BUTTON */
+        .btn-print {
+            background: var(--primary);
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+            margin-top: 30px;
+            transition: 0.3s;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+        }
+        
+        .btn-print:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body { background: #fff; color: #000; }
+            .intro-card, .phase, .pain-item, .solution-item { 
+                border: 1px solid #ccc; background: none; box-shadow: none; color: #000; 
+            }
+            h1, h3, h4, span { color: #000 !important; background: none !important; -webkit-text-fill-color: initial; }
+            .btn-print { display: none; }
+            .timeline-box { border-right: 2px solid #000; }
+            .phase::after { border-color: #000; background: #fff; }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .timeline-box { border-right: none; padding-right: 0; }
+            .phase::after { display: none; }
+            .pain-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">Weza<span>Technologies</span></div>
+            <h1>الإمبراطورية الرقمية</h1>
+            <p class="subtitle">استراتيجية التحول الرقمي الكامل لـ "ملوك الفسيخ والرنجة"</p>
+        </header>
+
+        <div class="intro-card">
+            <h3>شوف يا ريس إسلام..</h3>
+            <p>احنا مش جايين نبيع "موقع" ونمشي. احنا درسنا السوق، وعارفين الوجع اللي بيحصل كل موسم.</p>
+            <p>عارفين لما الزبون يقولك "العرض ده مش حقيقي"، وعارفين وجع الدماغ بتاع "الأسعار متغيرة"، ومشاكل الشحن والمرتجعات اللي بتحرق الدم والفلوس.</p>
+            <p><strong>الخلاصة:</strong> أنت تقعد باشا على الكرسي، والسيستم بتاعنا يشيل عنك "الدوشة" دي كلها، مقابل نسبة رمزية من الأوردرات الناجحة فقط. نجاحك هو نجاحنا.</p>
+        </div>
+
+        <h2 class="section-title" style="font-size: 1.5rem;">التشخيص والعلاج</h2>
+        <div class="pain-grid">
+            <div class="pain-item">
+                <h4>⚠️ المشاكل الحالية</h4>
+                <p>- تضارب الأسعار بين الفرع والفيسبوك.</p>
+                <p>- زبائن بتطلب أوردرات وهمية أو بترفض الاستلام.</p>
+                <p>- ضياع مئات الرسائل وسط الزحمة (فلوس بتترمي في الأرض).</p>
+                <p>- تقييمات سلبية بسبب سوء تفاهم بسيط.</p>
+            </div>
+            <div class="solution-item">
+                <h4>💎 حلول Weza Tech</h4>
+                <p>- متجر إلكتروني مربوط بالمخزن (السعر واحد لحظياً).</p>
+                <p>- نظام تحقق ذكي من جدية الزبون قبل ما السمك يطلع من المحل.</p>
+                <p>- رد آلي فوري يلم كل الزباين ويحولهم لأوردرات.</p>
+                <p>- تحويل المشاكل لتقييمات 5 نجوم على جوجل.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">خارطة طريق 2026 (سنة التنظيف والسيطرة)</h2>
+        
+        <div class="timeline-box">
+            
+            <div class="phase">
+                <div class="phase-header">
+                    <h3>تحسين الواجهة والسمعة <span>(المرحلة الأولى)</span></h3>
+                    <span class="phase-badge">Q1 - 2026</span>
+                </div>
+                <div class="phase-content">
+                    <p>الهدف: نثبت للناس إن "الملوك" مش بس اسم، دي خدمة عالمية.</p>
+                    <ul>
+                        <li>بناء هوية رقمية كاملة (Google Business Identity) عشان أي حد في مصر يكتب "فسيخ" تطلعله أنت أول واحد بـ 5 نجوم.</li>
+                        <li>توحيد الأسعار والعروض أونلاين عشان نلغي كلمة "أصل أنا شوفت سعر تاني".</li>
+                        <li>نسخة تجريبية (V1) للمتجر الإلكتروني لاستقبال الطلبات السهلة.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <h3>فلترة الزبائن والرد الآلي <span>(المرحلة الثانية)</span></h3>
+                    <span class="phase-badge">Q2 - 2026</span>
+                </div>
+                <div class="phase-content">
+                    <p>الهدف: نحول "الشات" لفلوس، ونوقف نزيف المرتجعات.</p>
+                    <ul>
+                        <li>تفعيل "المساعد الذكي": بيرد على الرسايل، بيبعت المنيو، وبيتمم البيعة وأنت نايم.</li>
+                        <li>نظام "كشف الجدية": السيستم بيعرف الزبون ده طلب قبل كدا واستلم ولا لأ، عشان ما تطلعش أوردر لواحد بيعكس.</li>
+                        <li>إدخال عائد زيادة 20% من الرسايل المهملة اللي كانت بتضيع زمان.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <h3>السيطرة اللوجستية <span>(المرحلة الثالثة)</span></h3>
+                    <span class="phase-badge">Q3 - 2026</span>
+                </div>
+                <div class="phase-content">
+                    <p>الهدف: المشاكل تتحل من غير ما ترفع سماعة التليفون.</p>
+                    <ul>
+                        <li>لوحة تحكم (Dashboard) بتوريك كل حاجة بتحصل في المحل (مبيعات، نواقص، شكاوى) بضغطة زر.</li>
+                        <li>حل مشاكل الشحن: ربط الأوردر برقم المندوب وتتبع حالة التوصيل عشان الزبون ما يرنش عليك يسألك "الأكل فين".</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <h3>الاستعداد للانفجار الكبير <span>(المرحلة الرابعة)</span></h3>
+                    <span class="phase-badge">Q4 - 2026</span>
+                </div>
+                <div class="phase-content">
+                    <p>الهدف: تجميع الداتا عشان لما نفتح في 2027 نكون جاهزنا.</p>
+                    <ul>
+                        <li>تحليل بيانات العملاء: مين بيحب إيه؟ ومين فيهم من القاهرة ومين من بورسعيد؟</li>
+                        <li>تجهيز الأرضية لإطلاق "تطبيق الموبايل" والشحن للمحافظات بشكل موسع.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="future-box">
+            <h3 style="color: var(--primary); margin-bottom: 10px;">وماذا بعد؟ (رؤية 2027)</h3>
+            <p style="color: #fff;">في 2027، مش هيكون مجرد موقع.. هنطلق <strong>تطبيق ملوك الفسيخ والرنجة</strong> الرسمي.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;">توسع في القاهرة، تصدير للخارج، وبراند بينافس البراندات العالمية.</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 60px; border-top: 1px solid var(--glass-border); padding-top: 30px;">
+            <p style="font-size: 1.1rem; color: #fff; margin-bottom: 20px;">
+                "أنت عليك الصنعة والجودة.. واحنا علينا نخلي العالم كله يعرفها ويدفع تمنها."
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">شريك النجاح: Weza Technologies</p>
+            
+            <button class="btn-print" onclick="window.print()">📥 حفظ الخطة (PDF)</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
