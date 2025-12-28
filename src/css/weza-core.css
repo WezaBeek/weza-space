@@ -714,35 +714,28 @@ svg {
 
 .modal-watermark {
     position: absolute;
+    /* Scrolls naturally with the content */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: clamp(250px, 85vw, 500px);
     opacity: 0.45;
+    /* Much clearer (5 degrees up as requested) */
     pointer-events: none;
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     filter: brightness(0.9) contrast(1.2);
-    /* Transform managed by JS parallax */
+    /* Enhanced details and features */
     transition: transform 0.1s ease-out;
+    /* Smooths out the JS updates */
 }
 
 .modal-watermark img {
     width: 100%;
     height: auto;
     filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.2));
-    animation: pulseWatermark 8s infinite alternate ease-in-out;
-}
-
-@keyframes pulseWatermark {
-    0% {
-        transform: scale(1) rotate(0deg);
-    }
-    100% {
-        transform: scale(1.08) rotate(3deg);
-    }
 }
 
 .category-row {
