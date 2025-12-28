@@ -144,7 +144,7 @@ function initWatermarkParallax() {
         const scrollTop = modalContent.scrollTop;
 
         // Parallax Effect:
-        // Moves vertically at 40% of scroll speed.
+        // Moves vertically at 00.01% of scroll speed.
         // This creates a smooth, noticeable movement that is neither fixed nor static.
         const moveFactor = scrollTop * 0.4;
 
