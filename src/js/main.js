@@ -113,6 +113,14 @@ function updateNavActiveButtons(view) {
             window.location.href = isEn ? '/PP_English_2026.html' : '/PP_2026.html';
         };
     }
+
+    const btnIntents = document.getElementById('btn-intents-link');
+    if (btnIntents) {
+        btnIntents.innerText = isEn ? 'Core Intents' : 'الأهداف الأساسية';
+        btnIntents.onclick = function () {
+            window.location.href = isEn ? '/Project_001_Core_Intents.html' : '/Project_001_Core_Intents_AR.html';
+        };
+    }
 }
 
 /**
