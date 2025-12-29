@@ -116,7 +116,7 @@ function updateNavActiveButtons(view) {
 
     const btnIntents = document.getElementById('btn-intents-link');
     if (btnIntents) {
-        btnIntents.innerText = isEn ? 'Core Intents' : 'الأهداف الأساسية';
+        btnIntents.innerText = isEn ? 'Project 001' : 'مشروع 001';
         btnIntents.onclick = function () {
             window.location.href = isEn ? '/Project_001_Core_Intents.html' : '/Project_001_Core_Intents_AR.html';
         };
