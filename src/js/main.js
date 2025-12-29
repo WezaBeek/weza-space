@@ -106,9 +106,17 @@ function updateNavActiveButtons(view) {
         };
     }
 
+    const btnPlan = document.getElementById('btn-plan-link');
+    if (btnPlan) {
+        btnPlan.innerText = isEn ? 'Strategic Plan' : 'الخطة الاستراتيجية';
+        btnPlan.onclick = function () {
+            window.location.href = isEn ? '/Plan_English_2026.html' : '/Plan_2026.html';
+        };
+    }
+
     const btnStrategy = document.getElementById('btn-strategy-link');
     if (btnStrategy) {
-        btnStrategy.innerText = isEn ? 'Strategic Plan' : 'الخطة الاستراتيجية';
+        btnStrategy.innerText = isEn ? 'Roadmap' : 'خارطة الطريق';
         btnStrategy.onclick = function () {
             window.location.href = isEn ? '/PP_English_2026.html' : '/PP_2026.html';
         };

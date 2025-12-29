@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strategic Roadmap 2026 - Weza x Kings</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-dark: #000212;
@@ -168,76 +169,63 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .intro-msg h3 {
-            color: var(--primary);
-            font-weight: 900;
-            font-size: 1.6rem;
+        /* PROBLEM SECTION */
+        .problem-section {
+            border-left: 4px solid #ff3366;
+        }
+
+        .problem-section h3 {
+            color: #ff3366;
+            font-size: 1.5rem;
             margin-bottom: 15px;
-        }
-
-        .intro-msg p {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            color: #e6f1ff;
-        }
-
-        /* GRID */
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 60px;
-        }
-
-        .analysis-box {
-            padding: 25px;
-            border-radius: 20px;
-        }
-
-        .analysis-box.pain {
-            background: rgba(255, 59, 48, 0.05);
-            border: 1px dashed rgba(255, 59, 48, 0.2);
-        }
-
-        .analysis-box.solution {
-            background: rgba(0, 210, 255, 0.05);
-            border: 1px dashed var(--primary);
-        }
-
-        .analysis-box h4 {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.2rem;
-            font-weight: 800;
-            margin-bottom: 15px;
+            gap: 10px;
+            font-weight: 900;
         }
 
-        .pain h4 {
-            color: #ff3b30;
+        .highlight-quote {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 16px;
+            border-left: 4px solid var(--primary);
+            margin: 20px 0 10px;
+            color: #fff;
+            font-style: italic;
+            font-weight: 700;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
         }
 
-        .solution h4 {
+        /* OPPORTUNITY SECTION */
+        .special-gold-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(255, 204, 51, 0.4);
+        }
+
+        .opportunity-box {
+            background: linear-gradient(135deg, rgba(255, 204, 51, 0.08), rgba(0, 210, 255, 0.02));
+            border: 1px solid rgba(255, 204, 51, 0.3);
+            padding: 25px;
+            border-radius: 24px;
+        }
+
+        .highlight-box-gold {
+            background: rgba(20, 20, 20, 0.6);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px dashed var(--accent-gold);
+            color: #fff;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .highlight-name {
             color: var(--primary);
-        }
-
-        .analysis-box ul {
-            list-style: none;
-        }
-
-        .analysis-box li {
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-            color: var(--text-muted);
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .analysis-box li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: currentColor;
+            font-weight: 900;
         }
 
         /* TIMELINE */
@@ -245,6 +233,7 @@
             margin-bottom: 40px;
             border-left: 4px solid var(--primary);
             padding-left: 20px;
+            margin-top: 60px;
         }
 
         .section-header h2 {
@@ -294,50 +283,56 @@
             transition: 0.3s;
         }
 
+        .phase-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
         .phase-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: #fff;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 900;
         }
 
-        .phase-card h3 span {
+        .phase-project {
+            color: var(--primary);
             font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 400;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 10px;
         }
 
-        .phase-tag {
+        .tech-tag {
             background: rgba(0, 210, 255, 0.1);
             color: var(--primary);
             padding: 4px 12px;
             border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 800;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-right: 8px;
+            display: inline-block;
         }
 
         .phase-card ul {
             list-style: none;
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         .phase-card li {
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+            margin-bottom: 12px;
+            font-size: 1rem;
             color: #ced6e0;
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .phase-card li::before {
-            content: '▹';
-            color: var(--primary);
-            font-weight: bold;
+        .phase-card li i {
+            color: var(--accent-gold);
+            margin-top: 5px;
         }
 
-        /* FOOTER BOX */
+        /* VISION BOX */
         .future-vision {
             background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(157, 80, 187, 0.1));
             border: 1px solid var(--primary-glow);
@@ -378,19 +373,14 @@
             .nav-header {
                 flex-direction: column-reverse;
                 gap: 20px;
-                text-align: center;
             }
 
             .phase-step {
-                padding-left: 30px;
+                padding-left: 35px;
             }
 
             .phase-step::after {
                 left: -6px;
-            }
-
-            .section-header h2 {
-                font-size: 1.5rem;
             }
         }
 
@@ -418,7 +408,8 @@
             h1,
             h2,
             h3,
-            h4 {
+            h4,
+            .highlight-name {
                 color: #000 !important;
                 -webkit-text-fill-color: initial !important;
             }
@@ -439,38 +430,42 @@
         </nav>
 
         <header>
-            <h1>Digital Empire 2026</h1>
-            <p class="subtitle">Strategic Expansion and Market Dominance Plan for "Kings of Fesikh & Renga"</p>
+            <div class="brand-logo" style="font-size: 1rem; opacity: 0.8;">Weza Technologies</div>
+            <h1>Digital Dominance Ecosystem</h1>
+            <p class="subtitle">Full Transformation Strategy for "Kings of Fesikh & Renga" | Vision 2026</p>
         </header>
 
-        <section class="glass-card intro-msg">
-            <h3>Look, Chief Islam..</h3>
-            <p>We are not just here to sell a "website" and leave. We've studied the market, and we know the pain points
-                that happen every season and the pressure on you.</p>
-            <p>We know how customers get lost between prices, the shipping issues, and the messages that go missing in
-                the crowd.</p>
-            <p><strong>Our Goal:</strong> You focus on the "craft" and quality, grow your brand, and our system takes
-                care of all the administrative and technical "noise".</p>
-        </section>
-
-        <div class="stat-grid">
-            <div class="analysis-box pain">
-                <h4>⚠️ Current Pain Points</h4>
-                <ul>
-                    <li>Pricing inconsistencies between branches and social media.</li>
-                    <li>Fake orders and non-serious customers wasting effort.</li>
-                    <li>Loss of hundreds of requests due to delayed responses.</li>
-                    <li>Difficulty in tracking order status after it leaves the shop.</li>
-                </ul>
+        <div class="glass-card problem-section">
+            <h3><i class="fas fa-sync-alt fa-spin"></i> Moving Forward... Or Running in Circles?</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 15px;">Mr. Islam, in the endless daily race... we run between
+                tasks, reports, and emails. We speed up, but we must ask ourselves: <strong>"Are we actually moving
+                    forward?"</strong></p>
+            <p style="font-size: 1.1rem;">Constant busyness does not mean progress. Continuous effort without a "System"
+                becomes exhaustion, not achievement. True success isn't running faster, it's <strong>breaking out of the
+                    loop</strong>.</p>
+            <div class="highlight-quote">
+                "Change is inevitable, even in the seafood world. Everything is becoming fully automated. The fear of
+                change is natural, but the real danger is standing still while the world evolves around us."
             </div>
-            <div class="analysis-box solution">
-                <h4>💎 Weza Smart Tech Solutions</h4>
-                <ul>
-                    <li>Unified store linked to inventory for real-time price updates.</li>
-                    <li>"Filter and Confirm" system to ensure customer seriousness before preparation.</li>
-                    <li>Intelligent Auto-Response (AI Bot) that closes sales 24/7 in seconds.</li>
-                    <li>Full dashboard showing your profits and performance at a button click.</li>
-                </ul>
+        </div>
+
+        <div class="opportunity-section" style="margin-top: 60px;">
+            <h2 class="special-gold-title">Why This Partnership is a "Lifetime Opportunity"?</h2>
+            <div class="opportunity-box glass-card">
+                <p style="text-align: center; font-size: 1.2rem; font-weight: 700;">The market isn't just fish and bait
+                    anymore... It's "Data" and Speed.</p>
+                <div class="highlight-box-gold">
+                    We at <span class="highlight-name">Weza Technologies</span> are not here just to sell tech, but to
+                    liberate you from this loop.
+                    <br><br>
+                    We are here to uncover the <span
+                        style="color: var(--accent-gold); font-weight: 900;">"Treasure"</span> you own (The Brand) and
+                    turn it into massive, sustainable revenue.
+                    <br><br>
+                    Partnering with us today saves you years of trial and error, giving you a "Full Team" ready to turn
+                    your store into Egypt's strongest brand with a single click. This isn't just a deal, it's a <strong
+                        style="color: var(--primary);">Historic Leap</strong>.
+                </div>
             </div>
         </div>
 
@@ -481,32 +476,46 @@
         <div class="timeline">
             <div class="phase-step">
                 <div class="phase-card">
-                    <h3>
-                        Foundation & Digital Reputation
-                        <span class="phase-tag">Q1 - 2026</span>
-                    </h3>
+                    <span class="phase-project">Project: Search Alpha</span>
+                    <h3>Search & Reputation Dominance</h3>
+                    <div>
+                        <span class="tech-tag">Google Identity</span>
+                        <span class="tech-tag">Reputation Management</span>
+                    </div>
+                    <p style="margin-top: 20px; font-weight: 600; color: #fff;">"Before opening the floodgates, we must
+                        fix the plumbing. Our goal: When anyone types 'Best Fesikh', YOU appear as the Authority."</p>
                     <ul>
-                        <li>Building unified digital identity (GMB) to ensure #1 spot in search results.</li>
-                        <li>Launching Store V1 for organized order intake.</li>
-                        <li>Unifying pricing database to eliminate customer confusion.</li>
+                        <li><i class="fas fa-check-circle"></i> Build a complete digital identity on Google (Photos,
+                            Menu, Location) to guarantee trust.</li>
+                        <li><i class="fas fa-check-circle"></i> Convert old issues and comments into opportunities,
+                            boosting ratings to 5 Stars.</li>
+                        <li><i class="fas fa-check-circle"></i> Dominate keywords to be the undisputed #1 search result.
+                        </li>
                     </ul>
                 </div>
             </div>
 
             <div class="phase-step">
                 <div class="phase-card">
-                    <h3>
-                        Intelligence Engine & Auto-Response
-                        <span class="phase-tag">Q2 - 2026</span>
-                    </h3>
+                    <span class="phase-project">Project: Neuro-Logic</span>
+                    <h3>Auto-Response & Sales Engine</h3>
+                    <div>
+                        <span class="tech-tag">AI Chatbot</span>
+                        <span class="tech-tag">Auto-Sales</span>
+                    </div>
+                    <p style="margin-top: 20px; color: #fff;">Stop running in circles. The system handles routine
+                        replies so you can focus on growth.</p>
                     <ul>
-                        <li>Activating smart assistant for instant replies on WhatsApp/Facebook.</li>
-                        <li>"Seriousness Detection" system to reduce returns by 40%.</li>
-                        <li>Collecting and analyzing customer data for seasonal retargeting.</li>
+                        <li><i class="fas fa-check-circle"></i> Instant 24/7 Response: Precise answers and closing
+                            orders automatically.</li>
+                        <li><i class="fas fa-check-circle"></i> Serious Buyer Filter: Converting casual chats into
+                            confirmed sales without human intervention.</li>
+                        <li><i class="fas fa-check-circle"></i> Customer Retargeting: Re-engaging those who asked but
+                            didn't buy with custom offers.</li>
                     </ul>
-                    <div style="margin-top: 20px; text-align: right;">
+                    <div style="margin-top: 25px; text-align: right;">
                         <button onclick="window.location.href = '/Project_001_Core_Intents.html'" class="btn-secondary"
-                            style="font-size: 0.8rem; padding: 10px 20px; border-radius: 12px; border-color: var(--primary); cursor: pointer; background: rgba(0,210,255,0.08); color: #fff;">Stage
+                            style="font-size: 0.8rem; padding: 10px 20px; border-radius: 12px; border: 1px solid var(--primary); cursor: pointer; background: rgba(0,210,255,0.08); color: #fff;">Stage
                             Details</button>
                     </div>
                 </div>
@@ -514,28 +523,19 @@
 
             <div class="phase-step">
                 <div class="phase-card">
-                    <h3>
-                        Logistical Control & Integration
-                        <span class="phase-tag">Q3 - 2026</span>
-                    </h3>
+                    <span class="phase-project">Project: Web-Core</span>
+                    <h3>Integrated Store & System</h3>
+                    <div>
+                        <span class="tech-tag">E-Commerce</span>
+                        <span class="tech-tag">Inventory Sync</span>
+                    </div>
+                    <p style="margin-top: 20px; color: #fff;">Your digital branch that never sleeps. A fully integrated
+                        system linking inventory to sales instantly.</p>
                     <ul>
-                        <li>Integrated Dashboard to manage Port Said and Port Fouad from one place.</li>
-                        <li>Linking shipping companies and couriers for real-time order tracking.</li>
-                        <li>Automating complaints and ratings system to raise service quality.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="phase-step">
-                <div class="phase-card">
-                    <h3>
-                        Expansion & National Outreach
-                        <span class="phase-tag">Q4 - 2026</span>
-                    </h3>
-                    <ul>
-                        <li>Opening shipping to all governorates with "Safe Chilled Delivery".</li>
-                        <li>Preparing the ground for launching the official "Kings" mobile app.</li>
-                        <li>Launching loyalty and reward points system for permanent customers.</li>
+                        <li><i class="fas fa-check-circle"></i> One-Click Orders: Fast, easy buying experience, with
+                            printed orders sent directly to the kitchen.</li>
+                        <li><i class="fas fa-check-circle"></i> Customer Data (The Real Treasure): Knowing every
+                            customer's preference to send the right offer.</li>
                     </ul>
                 </div>
             </div>
@@ -548,9 +548,10 @@
         </div>
 
         <div style="text-align: center; margin-bottom: 80px;">
-            <p style="font-size: 1.2rem; font-weight: 700; color: var(--accent-gold);">" You handle the craft.. and
-                we'll make the world see it " ❤️</p>
-            <button class="btn-action" onclick="window.print()">📥 Save Plan for Presentation (PDF)</button>
+            <p style="font-size: 1.2rem; font-weight: 900; color: #fff;">"Success is a decision to break the loop... And
+                we are ready to start."</p>
+            <p style="color: var(--text-muted); margin-top: 10px;">Weza Technologies | Partner of Success</p>
+            <button class="btn-action" onclick="window.print()">📥 Let's Do This (Save Plan)</button>
         </div>
     </div>
 </body>
