@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
     <link rel="manifest" href="./site.webmanifest">
+    <script type="module" crossorigin src="./assets/index-CECu8CJt.js"></script>
     <script type="module" crossorigin src="./assets/index-rlWlhX1Z.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-CHcqaDfp.css">
 </head>
@@ -23,6 +24,7 @@
     <nav class="nav-container">
         <div class="brand-logo">WezaTECHNOLOGIES</div>
         <div id="nav-actions" class="lang-switch-box">
+            
             <button id="btn-team"
                 onclick="window.setLanguage(document.documentElement.lang === 'ar' ? 'team-ar' : 'team-en')"
                 class="lang-btn" style="width: auto; padding: 0 15px;">Meet the Team</button>
@@ -41,13 +43,14 @@
                 const heroSection = document.querySelector('.hero-buttons') || document.querySelector('#app');
                 
                 if (heroSection) {
-                    // إيقاف البحث
+                    // إيقاف البحث بمجرد العثور على المكان
                     clearInterval(finder);
 
                     // إنشاء حاوية الأزرار الجديدة
                     const newNav = document.createElement('div');
                     newNav.className = "secondary-nav-injected";
-                    // ستايل الكود لضمان الظهور بشكل ممتاز
+                    
+                    // تنسيق الحاوية لتظهر بشكل مرتب في المنتصف
                     newNav.style.cssText = `
                         margin-top: 25px; 
                         display: flex; 
@@ -61,7 +64,6 @@
                     `;
 
                     // محتوى الأزرار (بالعربي والإنجليزي حسب الحاجة)
-                    // نستخدم روابط مباشرة أسرع وأضمن
                     newNav.innerHTML = `
                         <a href="/Menu_Final_2026.html" style="color: #ddd; text-decoration: none; font-size: 0.9rem; border: 1px solid rgba(0, 210, 255, 0.3); background: rgba(0, 210, 255, 0.05); padding: 8px 18px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif;">
                            📄 قائمة الأسعار
@@ -77,11 +79,12 @@
                         </a>
                     `;
 
-                    // إذا وجدنا الكلاس المحدد نضعها بعده، وإلا نضعها في نهاية التطبيق
+                    // وضع الأزرار في المكان المناسب
                     if(document.querySelector('.hero-buttons')) {
+                        // لو لقينا الأزرار القديمة، نحط الجديدة تحتها
                         document.querySelector('.hero-buttons').after(newNav);
                     } else {
-                        // fallback location (bottom center)
+                        // لو ملقيناش، نحطها ثابتة تحت في الصفحة
                          newNav.style.position = "fixed";
                          newNav.style.bottom = "40px";
                          newNav.style.left = "50%";
