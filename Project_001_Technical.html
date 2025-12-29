@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Report: Project 001</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            background: #fdfdfd;
+        }
+
+        .report-header {
+            border-bottom: 2px solid #000;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 24pt;
+            margin: 0;
+            color: #000;
+        }
+
+        .meta {
+            font-size: 10pt;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 18pt;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .purpose-box {
+            background: #f4f6f7;
+            border-left: 5px solid #34495e;
+            padding: 15px;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        li::before {
+            content: "■";
+            color: #34495e;
+            font-size: 8pt;
+            margin-right: 15px;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                margin: 1cm;
+            }
+
+            .report-header {
+                border-bottom-width: 3px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="report-header">
+        <h1>Project 001 – Core Intents Foundation</h1>
+        <div class="meta">Foundation Phases 1–3 | Automation Logic Roadmap</div>
+    </div>
+
+    <section>
+        <h2>Intent 1 – Buy Fish</h2>
+        <div class="purpose-box">
+            PURPOSE: Enable direct ordering of fish products through a structured WhatsApp flow.
+        </div>
+        <ul>
+            <li>Greeting & Entry Detection</li>
+            <li>Product Categories</li>
+            <li>Item Selection</li>
+            <li>Weight Selection</li>
+            <li>Preparation Notes</li>
+            <li>Order Summary</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Intent 2 – Ask Prices</h2>
+        <div class="purpose-box">
+            PURPOSE: Price transparency integrated within the ordering experience.
+        </div>
+        <ul>
+            <li>Price shown during item selection</li>
+            <li>Weight-based pricing logic</li>
+            <li>No standalone price list</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Intent 3 – Ask About Delivery</h2>
+        <div class="purpose-box">
+            PURPOSE: Clarify delivery availability, cost, and timing before payment.
+        </div>
+        <ul>
+            <li>Location or address capture</li>
+            <li>Delivery availability validation</li>
+            <li>Delivery fee & ETA confirmation</li>
+            <li>Order summary update</li>
+        </ul>
+    </section>
+</body>
+
+</html>
