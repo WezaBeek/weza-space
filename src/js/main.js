@@ -97,30 +97,6 @@ function updateNavActiveButtons(view) {
         btnTeam.innerText = isEn ? 'Meet the Team' : 'فريق العمل';
     }
 
-    // Robust check for both IDs to handle potential cache mismatches
-    const btnMenu = document.getElementById('btn-menu-link') || document.getElementById('btn-menu-original');
-    if (btnMenu) {
-        btnMenu.innerText = isEn ? 'Price List' : 'قائمة الأسعار';
-        btnMenu.onclick = function () {
-            window.location.href = isEn ? '/Menu_English_2026.html' : '/Menu_Final_2026.html';
-        };
-    }
-
-    const btnStrategy = document.getElementById('btn-strategy-link');
-    if (btnStrategy) {
-        btnStrategy.innerText = isEn ? 'Strategic Plan' : 'الخطة الاستراتيجية';
-        btnStrategy.onclick = function () {
-            window.location.href = isEn ? '/PP_English_2026.html' : '/PP_2026.html';
-        };
-    }
-
-    const btnIntents = document.getElementById('btn-intents-link');
-    if (btnIntents) {
-        btnIntents.innerText = isEn ? 'Project 001' : 'مشروع 001';
-        btnIntents.onclick = function () {
-            window.location.href = isEn ? '/Project_001_Core_Intents.html' : '/Project_001_Core_Intents_AR.html';
-        };
-    }
 }
 
 /**
