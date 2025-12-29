@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 001 - Core Intents Foundation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #000212;
+            --primary: #00d2ff;
+            --accent-purple: #9d50bb;
+            --glass-bg: rgba(10, 14, 35, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% -20%, #1a1b3b 0%, #000212 100%);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+        }
+
+        .intent-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .intent-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .intent-number {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        .purpose {
+            background: rgba(255, 255, 255, 0.03);
+            border-right: 3px solid var(--accent-purple);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #ced6e0;
+        }
+
+        ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        li {
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        li:hover {
+            background: rgba(0, 210, 255, 0.05);
+            color: var(--primary);
+        }
+
+        li::before {
+            content: '✔️';
+            font-size: 0.8rem;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <div class="header">
+            <span class="badge">Technical Specification</span>
+            <h1>Project 001 – Core Intents</h1>
+            <p style="color: var(--text-muted);">Foundation (1–3) for Automation Flow</p>
+        </div>
+
+        <!-- Intent 1 -->
+        <div class="intent-card">
+            <span class="intent-number">Intent 1</span>
+            <h2>Buy Fish (طلب أسماك)</h2>
+            <div class="purpose">
+                <strong>Purpose:</strong> Enable direct ordering of fish products through a structured WhatsApp flow.
+            </div>
+            <ul>
+                <li>Greeting & Entry Detection</li>
+                <li>Product Categories</li>
+                <li>Item Selection</li>
+                <li>Weight Selection</li>
+                <li>Preparation Notes</li>
+                <li>Order Summary</li>
+            </ul>
+        </div>
+
+        <!-- Intent 2 -->
+        <div class="intent-card">
+            <span class="intent-number">Intent 2</span>
+            <h2>Ask Prices (الاستفسار عن الأسعار)</h2>
+            <div class="purpose">
+                <strong>Purpose:</strong> Price transparency integrated within the ordering experience.
+            </div>
+            <ul>
+                <li>Price shown during item selection</li>
+                <li>Weight-based pricing logic</li>
+                <li>No standalone price list</li>
+            </ul>
+        </div>
+
+        <!-- Intent 3 -->
+        <div class="intent-card">
+            <span class="intent-number">Intent 3</span>
+            <h2>Ask About Delivery (الاستفسار عن التوصيل)</h2>
+            <div class="purpose">
+                <strong>Purpose:</strong> Clarify delivery availability, cost, and timing before payment.
+            </div>
+            <ul>
+                <li>Location or address capture</li>
+                <li>Delivery availability validation</li>
+                <li>Delivery fee & ETA confirmation</li>
+                <li>Order summary update</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            Weza Technologies — Internal Documentation Framework v1.0
+        </div>
+    </div>
+</body>
+
+</html>

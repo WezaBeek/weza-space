@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 001 – Full Master Reference</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #000212;
+            --primary: #00d2ff;
+            --accent-purple: #9d50bb;
+            --accent-gold: #ffcc33;
+            --glass-bg: rgba(10, 14, 35, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% -20%, #1a1b3b 0%, #000212 100%);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(157, 80, 187, 0.1);
+            border: 1px solid var(--accent-purple);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-weight: 800;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .phase-card {
+            background: linear-gradient(135deg, rgba(157, 80, 187, 0.1), rgba(0, 210, 255, 0.05));
+            border: 1px solid var(--glass-border);
+            border-left: 5px solid var(--accent-purple);
+            border-radius: 24px;
+            padding: 35px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .intent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+
+        @media (max-width: 500px) {
+            .intent-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .intent-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 25px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .intent-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .intent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .intent-label {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        h2,
+        h3 {
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3::before {
+            content: '';
+            width: 3px;
+            height: 18px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .journey-flow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .flow-step {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .flow-arrow {
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            padding: 8px 0;
+            font-size: 0.95rem;
+            color: #ced6e0;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        li::before {
+            content: '▹';
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: rgba(255, 204, 51, 0.05);
+            border-right: 3px solid var(--accent-gold);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+
+        .draft-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <div class="header">
+            <span class="badge">Master Documentation</span>
+            <h1>Project 001 – Full Master Reference</h1>
+            <p style="color: var(--text-muted);">Complete WHAT Foundation + Intents 1–4 (Draft)</p>
+        </div>
+
+        <!-- Phase WHAT -->
+        <div class="phase-card">
+            <h3>Phase WHAT – Master Definition</h3>
+            <div class="highlight-box">
+                <strong>Rule:</strong> Any and every message from a customer MUST map to a specific intent. No dead
+                ends.
+            </div>
+            <p style="margin-bottom: 10px; font-weight: 700; color: var(--accent-purple);">Customer Journey (External
+                Path):</p>
+            <div class="journey-flow">
+                <span class="flow-step">Entry</span> <span class="flow-arrow">→</span>
+                <span class="flow-step">Greeting</span> <span class="flow-arrow">→</span>
+                <span class="flow-step">Menu</span> <span class="flow-arrow">→</span>
+                <span class="flow-step">Selection</span> <span class="flow-arrow">→</span>
+                <span class="flow-step">Quantity</span> <span class="flow-arrow">→</span>
+                <span class="flow-step">Summary</span> <span class="flow-arrow">→</span>
+                <span class="flow-step">Payment</span> <span class="flow-arrow">→</span>
+                <span class="flow-step">Confirmation</span> <span class="flow-arrow">→</span>
+                <span class="flow-step">Preparing</span> <span class="flow-arrow">→</span>
+                <span class="flow-step">Out for Delivery</span> <span class="flow-arrow">→</span>
+                <span class="flow-step">Delivered</span> <span class="flow-arrow">→</span>
+                <span class="flow-step" style="border-color: var(--accent-gold);">Mandatory Feedback</span>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">
+                * Feedback is mandatory: essential for trust, reviews, and social proof.
+            </p>
+        </div>
+
+        <div class="intent-grid">
+            <!-- Intent 1 -->
+            <div class="intent-card">
+                <div class="intent-header">
+                    <span class="intent-label">Intent 1</span>
+                </div>
+                <h3>Buy Fish (طلب أسماك)</h3>
+                <ul>
+                    <li>Greeting & Intent Detection</li>
+                    <li>Category selection</li>
+                    <li>Item selection</li>
+                    <li>Weight options (1kg, 1.5kg, 2kg, 2.5kg, 3–5kg)</li>
+                    <li>Preparation notes</li>
+                    <li>Order summary & confirmation</li>
+                </ul>
+            </div>
+
+            <!-- Intent 2 -->
+            <div class="intent-card">
+                <div class="intent-header">
+                    <span class="intent-label">Intent 2</span>
+                </div>
+                <h3>Ask Prices (الأسعار)</h3>
+                <ul>
+                    <li>Prices shown during selection only</li>
+                    <li>Weight-based pricing logic</li>
+                    <li>No standalone price list (integrated flow)</li>
+                </ul>
+            </div>
+
+            <!-- Intent 3 -->
+            <div class="intent-card">
+                <div class="intent-header">
+                    <span class="intent-label">Intent 3</span>
+                </div>
+                <h3>Ask About Delivery (التوصيل)</h3>
+                <ul>
+                    <li>Capture location/address</li>
+                    <li>Validate delivery availability</li>
+                    <li>Confirm delivery fee & ETA</li>
+                    <li>Update order summary</li>
+                </ul>
+            </div>
+
+            <!-- Intent 4 -->
+            <div class="intent-card" style="border-color: rgba(157, 80, 187, 0.3);">
+                <div class="intent-header">
+                    <span class="intent-label" style="color: var(--accent-purple);">Intent 4 <span
+                            class="draft-badge">DRAFT</span></span>
+                </div>
+                <h3>Payment Questions (الدفع)</h3>
+                <ul>
+                    <li>Explain payment methods clearly</li>
+                    <li>Available: Digital wallets, cards</li>
+                    <li><strong>COD Policy:</strong> Not available for new customers</li>
+                    <li>Future COD only for trusted returning customers</li>
+                    <li>Always reassure before payment trigger</li>
+                    <li>Link payment explanation back to active order</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            Weza Technologies — Full Master Framework v1.0
+        </div>
+    </div>
+</body>
+
+</html>
