@@ -109,6 +109,9 @@ function updateNavActiveButtons(view) {
     const btnStrategy = document.getElementById('btn-strategy-link');
     if (btnStrategy) {
         btnStrategy.innerText = isEn ? 'Strategic Plan' : 'الخطة الاستراتيجية';
+        btnStrategy.onclick = function () {
+            window.location.href = isEn ? '/PP_English_2026.html' : '/PP_2026.html';
+        };
     }
 }
 
