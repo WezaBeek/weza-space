@@ -13,6 +13,11 @@
     <script type="module" crossorigin src="./assets/index-CECu8CJt.js"></script>
     <script type="module" crossorigin src="./assets/index-rlWlhX1Z.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-CHcqaDfp.css">
+    
+    <style>
+        /* إخفاء الزر غير المرغوب فيه عبر CSS كخطوة أولى للأمان */
+        a[href*="PP"], a[href*="Strategy"] { display: none !important; }
+    </style>
 </head>
 
 <body>
@@ -24,9 +29,7 @@
     <nav class="nav-container">
         <div class="brand-logo">WezaTECHNOLOGIES</div>
         <div id="nav-actions" class="lang-switch-box">
-            <button id="btn-team"
-                onclick="window.setLanguage(document.documentElement.lang === 'ar' ? 'team-ar' : 'team-en')"
-                class="lang-btn" style="width: auto; padding: 0 15px;">Meet the Team</button>
+            <button id="btn-team" onclick="window.setLanguage(document.documentElement.lang === 'ar' ? 'team-ar' : 'team-en')" class="lang-btn" style="width: auto; padding: 0 15px;">Meet the Team</button>
             <button id="btn-ar" onclick="window.setLanguage('ar')" class="lang-btn">AR</button>
             <button id="btn-en" onclick="window.setLanguage('en')" class="lang-btn">EN</button>
         </div>
@@ -37,17 +40,25 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const finder = setInterval(() => {
-                const heroSection = document.querySelector('.hero-buttons') || document.querySelector('#app');
+                // البحث عن الحاوية الرئيسية
+                const heroSection = document.querySelector('.hero-buttons');
                 
                 if (heroSection) {
                     clearInterval(finder);
 
+                    // 1. حذف زر "الخطة الاستراتيجية" المكرر
+                    const buttons = heroSection.querySelectorAll('a, button');
+                    buttons.forEach(btn => {
+                        if (btn.textContent.includes('الاستراتيجية') || btn.textContent.includes('Strategy')) {
+                            btn.remove(); // حذف العنصر نهائياً
+                        }
+                    });
+
+                    // 2. إنشاء الشريط السفلي (شفاف وزجاجي جداً)
                     const newNav = document.createElement('div');
                     newNav.className = "secondary-nav-injected";
-                    
-                    // تنسيق الحاوية
                     newNav.style.cssText = `
-                        margin-top: 25px; 
+                        margin-top: 30px; 
                         display: flex; 
                         flex-wrap: wrap; 
                         gap: 15px; 
@@ -58,27 +69,20 @@
                         animation: fadeIn 1s ease-in-out;
                     `;
 
-                    // المحتوى: زرين فقط (المنيو والخطة) بتصميم شفاف وأنيق
+                    // الأزرار السفلية (تم حذف المكرر والإبقاء على المهم)
                     newNav.innerHTML = `
-                        <a href="/Menu_Final_2026.html" style="color: #ddd; text-decoration: none; font-size: 1rem; border: 1px solid rgba(0, 210, 255, 0.4); background: rgba(0, 210, 255, 0.1); padding: 10px 25px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif; font-weight: bold; backdrop-filter: blur(5px);">
+                        <a href="/Menu_Final_2026.html" style="color: #fff; text-decoration: none; font-size: 1rem; border: 1px solid rgba(0, 210, 255, 0.5); background: rgba(0, 210, 255, 0.15); padding: 12px 30px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif; font-weight: 700; backdrop-filter: blur(5px);">
                            📄 قائمة الأسعار
                         </a>
-                        <a href="/Plan_2026.html" style="color: #FFD700; text-decoration: none; font-size: 1rem; border: 1px solid rgba(255, 215, 0, 0.4); background: rgba(255, 215, 0, 0.1); padding: 10px 25px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif; font-weight: bold; backdrop-filter: blur(5px);">
-                           🚀 رؤية 2026 (الخطة)
+                        <a href="/Plan_2026.html" style="color: #FFD700; text-decoration: none; font-size: 1rem; border: 1px solid rgba(255, 215, 0, 0.5); background: rgba(255, 215, 0, 0.15); padding: 12px 30px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif; font-weight: 700; backdrop-filter: blur(5px);">
+                           🚀 رؤية 2026 (العرض)
                         </a>
                     `;
 
-                    if(document.querySelector('.hero-buttons')) {
-                        document.querySelector('.hero-buttons').after(newNav);
-                    } else {
-                         newNav.style.position = "fixed";
-                         newNav.style.bottom = "40px";
-                         newNav.style.left = "50%";
-                         newNav.style.transform = "translateX(-50%)";
-                         document.body.appendChild(newNav);
-                    }
+                    // وضع الأزرار الجديدة تحت القديمة
+                    heroSection.after(newNav);
                 }
-            }, 100);
+            }, 50);
         });
     </script>
 </body>
