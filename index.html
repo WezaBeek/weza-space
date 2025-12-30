@@ -15,7 +15,13 @@
     <link rel="stylesheet" crossorigin href="./assets/index-CHcqaDfp.css">
     
     <style>
-        /* تحسين شكل اللوجو ليكون زر تفاعلي */
+        /* --- 1. إخفاء الزر القديم المكرر (الخطة الاستراتيجية) --- */
+        /* هذا الكود يبحث عن أي زر يحتوي على رابط للخطة ويخفيه */
+        a[href*="PP"], a[href*="Strategy"], a[href*="Plan_2026"]:not(.new-added-btn) { 
+            display: none !important; 
+        }
+
+        /* --- 2. تحسين شكل اللوجو ليكون زر تفاعلي --- */
         .brand-logo {
             cursor: pointer;
             transition: all 0.3s ease;
@@ -23,13 +29,11 @@
             display: inline-block;
         }
         
-        /* تأثير التوهج عند الوقوف على اللوجو */
         .brand-logo:hover {
             transform: scale(1.05);
             text-shadow: 0 0 20px rgba(0, 210, 255, 0.8), 0 0 40px rgba(0, 210, 255, 0.4);
         }
 
-        /* إضافة تلميح صغير (Tooltip) يظهر عند الوقوف */
         .brand-logo:hover::after {
             content: "من نحن؟";
             position: absolute;
@@ -42,11 +46,7 @@
             padding: 2px 8px;
             border-radius: 4px;
             white-space: nowrap;
-            opacity: 1;
         }
-
-        /* إخفاء الأزرار غير المرغوب فيها */
-        a[href*="PP"], a[href*="Strategy"] { display: none !important; }
     </style>
 </head>
 
@@ -79,19 +79,19 @@
                 if (heroSection) {
                     clearInterval(finder);
 
-                    // حذف الزر القديم المكرر "الخطة الاستراتيجية" إن وجد
+                    // حذف الزر القديم المزعج برمجياً أيضاً لزيادة التأكيد
                     const oldButtons = document.querySelectorAll('.hero-buttons a, .hero-buttons button');
                     oldButtons.forEach(btn => {
                         if(btn.textContent.includes('الاستراتيجية') || btn.textContent.includes('Strategy')) {
-                            btn.style.display = 'none';
+                            btn.remove();
                         }
                     });
 
-                    // إنشاء الشريط السفلي الجديد
+                    // إنشاء الشريط الجديد للأزرار (قائمة الأسعار + رؤية 2026)
                     const newNav = document.createElement('div');
                     newNav.className = "secondary-nav-injected";
                     newNav.style.cssText = `
-                        margin-top: 30px; 
+                        margin-top: 20px; 
                         display: flex; 
                         flex-wrap: wrap; 
                         gap: 15px; 
@@ -102,13 +102,13 @@
                         animation: fadeIn 1s ease-in-out;
                     `;
 
-                    // إضافة الزرين الأساسيين فقط
+                    // هنا نضيف زر "قائمة الأسعار" وزر "الخطة" (الجدد والنضاف)
                     newNav.innerHTML = `
-                        <a href="/Menu_Final_2026.html" style="color: #fff; text-decoration: none; font-size: 1rem; border: 1px solid rgba(0, 210, 255, 0.5); background: rgba(0, 210, 255, 0.15); padding: 12px 30px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif; font-weight: 700; backdrop-filter: blur(5px);">
+                        <a href="/Menu_Final_2026.html" class="new-added-btn" style="color: #fff; text-decoration: none; font-size: 1rem; border: 1px solid rgba(0, 210, 255, 0.6); background: rgba(0, 210, 255, 0.15); padding: 12px 35px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif; font-weight: 700; backdrop-filter: blur(5px); box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);">
                            📄 قائمة الأسعار
                         </a>
-                        <a href="/Plan_2026.html" style="color: #FFD700; text-decoration: none; font-size: 1rem; border: 1px solid rgba(255, 215, 0, 0.5); background: rgba(255, 215, 0, 0.15); padding: 12px 30px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif; font-weight: 700; backdrop-filter: blur(5px);">
-                           🚀 رؤية 2026 (العرض)
+                        <a href="/Plan_2026.html" class="new-added-btn" style="color: #FFD700; text-decoration: none; font-size: 1rem; border: 1px solid rgba(255, 215, 0, 0.6); background: rgba(255, 215, 0, 0.1); padding: 12px 35px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif; font-weight: 700; backdrop-filter: blur(5px);">
+                           🚀 رؤية 2026
                         </a>
                     `;
 
