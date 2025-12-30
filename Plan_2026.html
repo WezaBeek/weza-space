@@ -6,7 +6,6 @@
     <title>خارطة الطريق الملكية - Weza x Kings</title>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
             --bg-dark: #050a10;
@@ -16,7 +15,7 @@
             --border-light: rgba(255, 255, 255, 0.1);
             --text-main: #ffffff;
             --text-sub: #cdd6da;
-            --glass-nav: rgba(20, 20, 20, 0.9); /* لون الشريط السفلي */
+            --glass-nav: rgba(20, 20, 20, 0.85); /* تعديل المتغير للشفافية */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,7 +35,7 @@
 
         .container { max-width: 950px; margin: 0 auto; padding: 20px; }
 
-        /* --- 1. الشريط السفلي العائم (الجديد والموحد) --- */
+        /* --- 1. الشريط السفلي العائم (شفاف وزجاجي) --- */
         .floating-nav {
             position: fixed;
             bottom: 25px;
@@ -44,17 +43,18 @@
             transform: translateX(-50%);
             width: 90%;
             max-width: 400px;
-            background: var(--glass-nav);
+            /* التعديل هنا: شفافية + ضبابية */
+            background: rgba(10, 10, 20, 0.7);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 50px;
             padding: 10px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 99999;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
         .nav-link {
@@ -63,7 +63,7 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
-            color: #888;
+            color: #999;
             transition: 0.3s;
             font-size: 0.8rem;
         }
@@ -75,350 +75,55 @@
         .nav-link:hover { transform: translateY(-3px); color: var(--primary); }
 
 
-        /* --- بقية تنسيقات الخطة الأصلية (كما هي) --- */
-
-        /* HEADER */
-        header {
-            text-align: center;
-            padding: 50px 0 20px;
-            position: relative;
-        }
-
-        .brand-badge {
-            display: inline-block;
-            background: rgba(0, 229, 255, 0.1);
-            color: var(--primary);
-            padding: 6px 20px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            border: 2px solid rgba(0, 229, 255, 0.3);
-            letter-spacing: 1px;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #fff, #e0e0e0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-sub);
-            max-width: 700px;
-            margin: 0 auto;
-            font-weight: 700;
-        }
-
-        /* PROBLEM SECTION */
-        .problem-section {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(0,0,0,0));
-            border: 1px solid var(--border-light);
-            border-right: 4px solid #ff3366;
-            padding: 25px;
-            border-radius: 16px;
-            margin: 30px 0 30px;
-        }
-
-        .problem-section h3 {
-            color: #ff3366;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 900;
-        }
-
-        .problem-section p {
-            font-size: 1.1rem;
-            color: #eceff1;
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-
-        .highlight-quote {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 12px;
-            border-right: 4px solid var(--primary);
-            margin: 20px 0 10px;
-            color: #fff;
-            font-style: italic;
-            font-weight: 700;
-            font-size: 1rem;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-        }
-
-        /* OPPORTUNITY SECTION */
-        .opportunity-section {
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .special-gold-title {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--gold);
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
-            position: relative;
-            padding-bottom: 15px;
-        }
+        /* --- بقية التنسيقات (كما هي في نسختك الأصلية) --- */
+        header { text-align: center; padding: 50px 0 20px; position: relative; }
+        .brand-badge { display: inline-block; background: rgba(0, 229, 255, 0.1); color: var(--primary); padding: 6px 20px; border-radius: 30px; font-size: 0.9rem; font-weight: 800; margin-bottom: 15px; border: 2px solid rgba(0, 229, 255, 0.3); letter-spacing: 1px; box-shadow: 0 0 20px rgba(0, 229, 255, 0.2); }
+        h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 10px; background: linear-gradient(to right, #fff, #e0e0e0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .subtitle { font-size: 1.2rem; color: var(--text-sub); max-width: 700px; margin: 0 auto; font-weight: 700; }
         
-        .special-gold-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            border-radius: 2px;
-        }
+        .problem-section { background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(0,0,0,0)); border: 1px solid var(--border-light); border-right: 4px solid #ff3366; padding: 25px; border-radius: 16px; margin: 30px 0 30px; }
+        .problem-section h3 { color: #ff3366; font-size: 1.5rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-weight: 900; }
+        .problem-section p { font-size: 1.1rem; color: #eceff1; margin-bottom: 12px; font-weight: 700; }
+        .highlight-quote { background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 12px; border-right: 4px solid var(--primary); margin: 20px 0 10px; color: #fff; font-style: italic; font-weight: 700; font-size: 1rem; box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
 
-        .opportunity-box {
-            background: linear-gradient(135deg, rgba(255, 193, 7, 0.08), rgba(0, 229, 255, 0.02));
-            border: 2px solid rgba(255, 193, 7, 0.3);
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .opportunity-box::before {
-            content: '💎';
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            font-size: 5rem;
-            opacity: 0.1;
-            transform: rotate(-20deg);
-        }
-
-        .opportunity-box p.intro {
-            font-size: 1.15rem;
-            color: #fff;
-            margin-bottom: 20px;
-            font-weight: 800;
-            text-align: center;
-        }
-
-        .highlight-box-gold {
-            background: rgba(20, 20, 20, 0.8);
-            padding: 20px;
-            border-radius: 15px;
-            border: 2px dashed var(--gold);
-            color: #fff;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-align: center;
-        }
-
-        .highlight-name {
-            color: var(--primary);
-            font-weight: 900;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
-        }
-        
+        .opportunity-section { margin-bottom: 40px; position: relative; }
+        .special-gold-title { text-align: center; font-size: 2rem; font-weight: 900; color: var(--gold); margin-bottom: 20px; text-shadow: 0 0 20px rgba(255, 193, 7, 0.4); position: relative; padding-bottom: 15px; }
+        .special-gold-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); border-radius: 2px; }
+        .opportunity-box { background: linear-gradient(135deg, rgba(255, 193, 7, 0.08), rgba(0, 229, 255, 0.02)); border: 2px solid rgba(255, 193, 7, 0.3); padding: 25px; border-radius: 20px; box-shadow: 0 15px 50px rgba(0,0,0,0.4); position: relative; overflow: hidden; }
+        .opportunity-box::before { content: '💎'; position: absolute; top: -20px; left: 20px; font-size: 5rem; opacity: 0.1; transform: rotate(-20deg); }
+        .opportunity-box p.intro { font-size: 1.15rem; color: #fff; margin-bottom: 20px; font-weight: 800; text-align: center; }
+        .highlight-box-gold { background: rgba(20, 20, 20, 0.8); padding: 20px; border-radius: 15px; border: 2px dashed var(--gold); color: #fff; font-weight: 700; font-size: 1.1rem; text-align: center; }
+        .highlight-name { color: var(--primary); font-weight: 900; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 0 15px rgba(0, 229, 255, 0.6); }
         .gold-text { color: var(--gold); font-weight: 900; }
 
-
-        /* ROADMAP */
-        .roadmap-title {
-            text-align: center;
-            font-size: 2rem;
-            margin: 0 auto 30px;
-            position: relative;
-            color: #fff;
-            width: fit-content;
-            display: block;
-            font-weight: 900;
-        }
+        .roadmap-title { text-align: center; font-size: 2rem; margin: 0 auto 30px; position: relative; color: #fff; width: fit-content; display: block; font-weight: 900; }
+        .roadmap-title::after { content: ''; display: block; width: 100px; height: 4px; background: linear-gradient(90deg, var(--primary), var(--gold)); margin: 15px auto 0; border-radius: 3px; }
         
-        .roadmap-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--gold));
-            margin: 15px auto 0;
-            border-radius: 3px;
-        }
-
-        .phase-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 20px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .phase-card:hover {
-            transform: translateY(-5px) scale(1.01);
-            border-color: var(--primary);
-            box-shadow: 0 20px 50px rgba(0, 229, 255, 0.15);
-        }
-
-        .phase-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-
-        .phase-title h4 {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 5px;
-            font-weight: 900;
-        }
-
-        .phase-title span {
-            font-size: 0.9rem;
-            color: var(--primary);
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .phase-number {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.04);
-            line-height: 1;
-            position: absolute;
-            left: 20px;
-            top: 10px;
-        }
-
-        .tech-tag {
-            background: rgba(0, 229, 255, 0.08);
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            color: var(--text-main);
-            border: 1px solid rgba(0, 229, 255, 0.2);
-            margin-top: 5px;
-            display: inline-block;
-            font-weight: 700;
-        }
-
-        p.phase-intro {
-            color: #fff;
-            font-weight: 800;
-            margin-bottom: 15px;
-            border-bottom: 2px dashed rgba(0, 229, 255, 0.3);
-            padding-bottom: 10px;
-            font-size: 1.1rem;
-            line-height: 1.5;
-        }
+        .phase-card { background: var(--glass-bg); border: 1px solid var(--border-light); border-radius: 16px; padding: 25px; margin-bottom: 20px; transition: all 0.4s ease; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .phase-card:hover { transform: translateY(-5px) scale(1.01); border-color: var(--primary); box-shadow: 0 20px 50px rgba(0, 229, 255, 0.15); }
+        .phase-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .phase-title h4 { font-size: 1.5rem; color: #fff; margin-bottom: 5px; font-weight: 900; }
+        .phase-title span { font-size: 0.9rem; color: var(--primary); font-weight: 800; letter-spacing: 1px; }
+        .phase-number { font-size: 3.5rem; font-weight: 900; color: rgba(255, 255, 255, 0.04); line-height: 1; position: absolute; left: 20px; top: 10px; }
+        .tech-tag { background: rgba(0, 229, 255, 0.08); padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; color: var(--text-main); border: 1px solid rgba(0, 229, 255, 0.2); margin-top: 5px; display: inline-block; font-weight: 700; }
+        p.phase-intro { color: #fff; font-weight: 800; margin-bottom: 15px; border-bottom: 2px dashed rgba(0, 229, 255, 0.3); padding-bottom: 10px; font-size: 1.1rem; line-height: 1.5; }
+        p.phase-desc-normal { color: var(--text-sub); font-weight: 700; margin-bottom: 15px; font-size: 1rem; }
         
-        p.phase-desc-normal {
-            color: var(--text-sub);
-            font-weight: 700;
-            margin-bottom: 15px;
-            font-size: 1rem;
-        }
+        ul.benefits { list-style: none; margin-top: 15px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; }
+        ul.benefits li { margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px; font-size: 1rem; color: #fff; font-weight: 700; }
+        ul.benefits li i { color: var(--gold); margin-top: 5px; font-size: 0.9rem; flex-shrink: 0; }
 
-        ul.benefits {
-            list-style: none;
-            margin-top: 15px;
-            background: rgba(0,0,0,0.2);
-            padding: 15px;
-            border-radius: 12px;
-        }
-
-        ul.benefits li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 1rem;
-            color: #fff;
-            font-weight: 700;
-        }
-
-        ul.benefits li i {
-            color: var(--gold);
-            margin-top: 5px;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        /* VISION BOX */
-        .vision-box {
-            text-align: center;
-            padding: 40px 30px;
-            background: linear-gradient(to bottom, rgba(0, 229, 255, 0.05), transparent);
-            border: 2px dashed rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            margin-top: 50px;
-        }
-        
+        .vision-box { text-align: center; padding: 40px 30px; background: linear-gradient(to bottom, rgba(0, 229, 255, 0.05), transparent); border: 2px dashed rgba(255, 255, 255, 0.2); border-radius: 20px; margin-top: 50px; }
         .vision-box h3 { font-size: 1.6rem; font-weight: 900; margin-bottom: 10px;}
         .vision-box p { font-size: 1.1rem; font-weight: 700; color: var(--text-sub); }
 
-        /* CTA */
-        .footer-cta {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-light);
-        }
-        
+        .footer-cta { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-light); }
         .footer-cta p.quote { font-size: 1.2rem; color: #fff; font-weight: 900; margin-bottom: 15px; }
+        .print-btn { background: linear-gradient(90deg, var(--primary), #0077ff); color: #fff; font-family: 'Almarai', sans-serif; font-weight: 900; padding: 15px 50px; border-radius: 50px; border: none; cursor: pointer; font-size: 1.1rem; box-shadow: 0 0 30px rgba(0, 229, 255, 0.4); transition: 0.4s; margin-top: 20px; letter-spacing: 1px; }
+        .print-btn:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 10px 50px rgba(0, 229, 255, 0.6); }
 
-        .print-btn {
-            background: linear-gradient(90deg, var(--primary), #0077ff);
-            color: #fff;
-            font-family: 'Almarai', sans-serif;
-            font-weight: 900;
-            padding: 15px 50px;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
-            transition: 0.4s;
-            margin-top: 20px;
-            letter-spacing: 1px;
-        }
-
-        .print-btn:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 10px 50px rgba(0, 229, 255, 0.6);
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .phase-number { display: none; }
-            .special-gold-title { font-size: 1.6rem; }
-            .opportunity-box { padding: 20px; }
-        }
-
-        @media print {
-            .print-btn { display: none; }
-            .floating-nav { display: none; } /* إخفاء الشريط عند الطباعة */
-            body { background: #fff; color: #000; padding: 0; }
-            .phase-card, .problem-section, .opportunity-box, .highlight-box-gold { border: 1px solid #000; color: #000; background: #fff; box-shadow: none; margin-bottom: 15px; }
-            h1, h3, h4, span, i, p { color: #000 !important; background: none !important; -webkit-text-fill-color: initial; font-weight: bold !important; }
-        }
+        @media (max-width: 768px) { h1 { font-size: 2.2rem; } .phase-number { display: none; } .special-gold-title { font-size: 1.6rem; } .opportunity-box { padding: 20px; } }
+        @media print { .print-btn { display: none; } .floating-nav { display: none; } body { background: #fff; color: #000; padding: 0; } .phase-card, .problem-section, .opportunity-box, .highlight-box-gold { border: 1px solid #000; color: #000; background: #fff; box-shadow: none; margin-bottom: 15px; } h1, h3, h4, span, i, p { color: #000 !important; background: none !important; -webkit-text-fill-color: initial; font-weight: bold !important; } }
     </style>
 </head>
 <body>
@@ -438,7 +143,6 @@
         </a>
     </nav>
 
-
     <div class="container">
         <header>
             <div class="brand-badge">Weza Technologies</div>
@@ -448,11 +152,8 @@
 
         <div class="problem-section">
             <h3><i class="fas fa-sync-alt fa-spin" style="font-size: 1.4rem;"></i> هل نتحرك للأمام.. أم نجري في دائرة؟</h3>
-            
             <p>يا ريس إسلام، في سباق اليومي الذي لا ينتهي.. نركض بين المهام، التقارير، والإيميلات. نزداد سرعة، لكن نسأل أنفسنا: <strong>"هل نتحرك للأمام فعلاً؟"</strong></p>
-            
             <p>الانشغال الدائم لا يعني التقدم، والجهد المستمر بلا "سيستم" يتحول لاستنزاف وليس إنجاز. النجاح الحقيقي ليس في الجري أسرع، بل في <strong>الخروج من الدائرة</strong>.</p>
-            
             <div class="highlight-quote">
                 "التطور قادم قادم لا محالة، حتى في عالم الأسماك.. كل شيء يتحول ليكون آلياً بالكامل. الخوف من التغيير شعور طبيعي، لكن الخطر الحقيقي هو أن نظل واقفين بينما يتغير العالم من حولنا."
             </div>
@@ -460,10 +161,8 @@
 
         <div class="opportunity-section">
             <h2 class="special-gold-title">لماذا هذه الشراكة "فرصة عمر"؟</h2>
-            
             <div class="opportunity-box">
                 <p class="intro">السوق مابقاش سمك وطعم بس.. السوق بقى "داتا" وسرعة.</p>
-                
                 <div class="highlight-box-gold">
                     نحن في <span class="highlight-name">Weza Technologies</span> لسنا هنا لنبيع تكنولوجيا، بل لنخرجك من هذه الدائرة.
                     <br><br>
@@ -473,7 +172,6 @@
                 </div>
             </div>
         </div>
-
 
         <h2 class="roadmap-title">خارطة الطريق التنفيذية</h2>
 
@@ -551,11 +249,8 @@
         <div class="footer-cta">
             <p class="quote">"النجاح قرار بالخروج من الدائرة.. ونحن جاهزين للبدء فوراً."</p>
             <p style="color: var(--text-sub); font-size: 1rem; margin-top: 10px; font-weight: 700;">Weza Technologies | Partner of Success</p>
-            
             <button class="print-btn" onclick="window.print()">توكلنا على الله (حفظ الخطة)</button>
         </div>
-
     </div>
-
 </body>
 </html>
