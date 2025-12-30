@@ -1,1 +1,2 @@
-Temporary landing page for Weza.space while the main platform is under development
+“This repository contains Release v1 (Presentation Version).
+Archived files moved to /_archive.”
