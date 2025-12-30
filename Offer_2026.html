@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض التكلفة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: #000212; color: #fff; font-family: 'Almarai'; padding: 20px; padding-bottom: 120px; text-align: center; margin: 0; }
+        .container { max-width: 700px; margin: 0 auto; }
+        
+        /* كروت الأسعار */
+        .card { background: #0a0e23; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; margin-bottom: 30px; position: relative; overflow: hidden; }
+        .card.premium { border: 2px solid #00d2ff; box-shadow: 0 0 30px rgba(0, 210, 255, 0.15); }
+        .card.standard { border: 1px solid #9d50bb; box-shadow: 0 0 20px rgba(157, 80, 187, 0.1); }
+        
+        .price { font-size: 2.5rem; font-weight: 900; margin: 15px 0; }
+        .price-sub { font-size: 1.2rem; color: #fff; font-weight: bold; }
+        
+        ul { list-style: none; padding: 0; text-align: right; color: #ccc; margin-top: 25px; }
+        li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.95rem; }
+        
+        /* الشريط السفلي */
+        .floating-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); padding: 10px 30px; border-radius: 50px; border: 1px solid #444; display: flex; gap: 30px; z-index: 9999; }
+        .nav-link { color: #999; text-decoration: none; font-size: 1.2rem; }
+        .nav-link:hover { color: #00d2ff; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 style="margin-bottom: 10px;">عرض تكلفة المنظومة</h1>
+        <p style="color: #888; margin-bottom: 40px;">Weza Technologies × Kings of Feseekh</p>
+
+        <div class="card premium">
+            <div style="background: #00d2ff; color: #000; display: inline-block; padding: 5px 20px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; margin-bottom: 10px;">العرض الأساسي (Full System)</div>
+            <div class="price" style="color: #00d2ff;">85,000 جنيه</div>
+            <div style="color: #888; font-size: 0.9rem;">تنفيذ مرة واحدة</div>
+            <div class="price-sub">3,500 جنيه / شهر</div>
+            <div style="color: #888; font-size: 0.9rem;">تشغيل - صيانة - تحسين مستمر</div>
+            
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 25px 0;">
+            
+            <ul>
+                <li><i class="fas fa-check-circle" style="color: #00d2ff;"></i> Customer Journey كامل من أول رسالة لحد Review</li>
+                <li><i class="fas fa-check-circle" style="color: #00d2ff;"></i> WhatsApp Flow ذكي + Intent System</li>
+                <li><i class="fas fa-check-circle" style="color: #00d2ff;"></i> فلترة العملاء الجادين</li>
+                <li><i class="fas fa-check-circle" style="color: #00d2ff;"></i> منع الطلبات الوهمية وضياع الوقت</li>
+                <li><i class="fas fa-check-circle" style="color: #00d2ff;"></i> ربط الدفع + التوصيل + التأكيد</li>
+                <li><i class="fas fa-check-circle" style="color: #00d2ff;"></i> تقارير تشغيل شهرية</li>
+            </ul>
+        </div>
+
+        <div class="card standard">
+            <div style="background: #9d50bb; color: #fff; display: inline-block; padding: 5px 20px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; margin-bottom: 10px;">العرض البديل (غير قابل للرفض)</div>
+            <div class="price" style="color: #9d50bb;">35,000 جنيه</div>
+            <div style="color: #888; font-size: 0.9rem;">تنفيذ مرة واحدة</div>
+            <div class="price-sub">2,000 جنيه / شهر</div>
+            <div style="color: #888; font-size: 0.9rem;">تشغيل أساسي</div>
+            
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 25px 0;">
+            
+            <ul>
+                <li><i class="fas fa-check" style="color: #9d50bb;"></i> Intent أساسي (بيع - أسعار - توصيل)</li>
+                <li><i class="fas fa-check" style="color: #9d50bb;"></i> WhatsApp Flow واضح ومنظم</li>
+                <li><i class="fas fa-check" style="color: #9d50bb;"></i> تأكيد الطلب + تقليل الإلغاءات</li>
+                <li><i class="fas fa-check" style="color: #9d50bb;"></i> قابل للتطوير لاحقاً بدون إعادة بناء</li>
+            </ul>
+        </div>
+
+        <div class="card" style="border: 1px dashed #555; text-align: right;">
+            <h3 style="color: var(--gold); text-align: center; color: #ffcc33; margin-top: 0;">📌 تكاليف تشغيل خارجية (حقيقي)</h3>
+            <ul style="font-size: 0.95rem;">
+                <li>🔌 WhatsApp API: من 500 لـ 900 جنيه/شهر</li>
+                <li>💻 سيرفر النظام: 1,200 جنيه/شهر</li>
+                <li>🌐 دومين + استضافة: 1,800 جنيه/سنة</li>
+                <li>💳 Vodafone Cash: بدون تكلفة (توثيق فقط)</li>
+            </ul>
+            <p style="text-align: center; color: #666; font-size: 0.8rem; margin-top: 15px;">هذه التكاليف لا تذهب لنا، بل هي تكلفة تشغيل المنظومة نفسها.</p>
+        </div>
+
+    </div>
+
+    <nav class="floating-nav">
+        <a href="index.html" class="nav-link"><i class="fas fa-home"></i></a>
+        <a href="Plan_2026.html" class="nav-link"><i class="fas fa-arrow-right"></i></a>
+    </nav>
+
+</body>
+</html>
