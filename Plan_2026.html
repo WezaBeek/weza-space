@@ -6,21 +6,30 @@
     <title>خارطة الطريق الملكية - Weza x Kings</title>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
             --bg-dark: #050a10; --primary: #00e5ff; --gold: #ffc107; --glass-bg: rgba(20, 30, 40, 0.7);
             --border-light: rgba(255, 255, 255, 0.1); --text-main: #ffffff; --text-sub: #cdd6da;
-            --glass-nav: rgba(0, 0, 0, 0.6); /* شفافية عالية للشريط */
+            --glass-nav: rgba(0, 0, 0, 0.6); /* شفافية الشريط */
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Almarai', sans-serif; background-color: var(--bg-dark);
+            font-family: 'Almarai', sans-serif;
+            background-color: var(--bg-dark);
             background-image: radial-gradient(circle at top right, rgba(0, 229, 255, 0.1), transparent 45%), radial-gradient(circle at bottom left, rgba(255, 193, 7, 0.08), transparent 45%);
-            color: var(--text-main); line-height: 1.6; overflow-x: hidden; padding-bottom: 100px;
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 400;
+            padding-bottom: 100px;
         }
+
         .container { max-width: 950px; margin: 0 auto; padding: 20px; }
-        
-        /* الشريط الشفاف الموحد */
+
+        /* الشريط السفلي العائم (التصميم الجديد) */
         .floating-nav {
             position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px;
             background: var(--glass-nav); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
@@ -34,34 +43,72 @@
         .nav-link.active { color: var(--gold); }
         .nav-link:hover { transform: translateY(-3px); color: var(--primary); }
 
-        /* المحتوى */
-        header { text-align: center; padding: 50px 0 20px; }
+        /* المحتوى والتنسيقات الأصلية */
+        header { text-align: center; padding: 50px 0 20px; position: relative; }
         .brand-badge { display: inline-block; background: rgba(0, 229, 255, 0.1); color: var(--primary); padding: 6px 20px; border-radius: 30px; font-weight: 800; border: 2px solid rgba(0, 229, 255, 0.3); margin-bottom: 15px; }
-        h1 { font-size: 2.8rem; font-weight: 900; background: linear-gradient(to right, #fff, #e0e0e0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 10px; background: linear-gradient(to right, #fff, #e0e0e0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .subtitle { font-size: 1.2rem; color: var(--text-sub); font-weight: 700; }
-        .problem-section { background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(0,0,0,0)); border: 1px solid var(--border-light); border-right: 4px solid #ff3366; padding: 25px; border-radius: 16px; margin: 30px 0; }
-        .problem-section h3 { color: #ff3366; font-size: 1.5rem; font-weight: 900; }
-        .highlight-quote { background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 12px; border-right: 4px solid var(--primary); font-style: italic; margin-top: 20px; }
-        .opportunity-box { background: linear-gradient(135deg, rgba(255, 193, 7, 0.08), rgba(0, 229, 255, 0.02)); border: 2px solid rgba(255, 193, 7, 0.3); padding: 25px; border-radius: 20px; margin-bottom: 40px; text-align: center; }
-        .highlight-box-gold { background: rgba(20, 20, 20, 0.8); padding: 20px; border-radius: 15px; border: 2px dashed var(--gold); margin-top: 20px; font-weight: 700; }
-        .roadmap-title { text-align: center; font-size: 2rem; margin: 30px auto; font-weight: 900; color: #fff; }
-        .phase-card { background: var(--glass-bg); border: 1px solid var(--border-light); border-radius: 16px; padding: 25px; margin-bottom: 20px; position: relative; overflow: hidden; transition: 0.4s; }
-        .phase-number { font-size: 3.5rem; font-weight: 900; color: rgba(255, 255, 255, 0.04); position: absolute; left: 20px; top: 10px; }
-        .phase-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .phase-title h4 { font-size: 1.5rem; color: #fff; font-weight: 900; }
-        .tech-tag { background: rgba(0, 229, 255, 0.08); padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; border: 1px solid rgba(0, 229, 255, 0.2); }
+        
+        .problem-section { background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(0,0,0,0)); border: 1px solid var(--border-light); border-right: 4px solid #ff3366; padding: 25px; border-radius: 16px; margin: 30px 0 30px; }
+        .problem-section h3 { color: #ff3366; font-size: 1.5rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-weight: 900; }
+        .problem-section p { font-size: 1.1rem; color: #eceff1; margin-bottom: 12px; font-weight: 700; }
+        .highlight-quote { background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 12px; border-right: 4px solid var(--primary); margin: 20px 0 10px; color: #fff; font-style: italic; font-weight: 700; font-size: 1rem; box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
+
+        .opportunity-section { margin-bottom: 40px; position: relative; }
+        .special-gold-title { text-align: center; font-size: 2rem; font-weight: 900; color: var(--gold); margin-bottom: 20px; }
+        .opportunity-box { background: linear-gradient(135deg, rgba(255, 193, 7, 0.08), rgba(0, 229, 255, 0.02)); border: 2px solid rgba(255, 193, 7, 0.3); padding: 25px; border-radius: 20px; box-shadow: 0 15px 50px rgba(0,0,0,0.4); text-align: center; }
+        .opportunity-box p.intro { font-size: 1.15rem; color: #fff; margin-bottom: 20px; font-weight: 800; }
+        .highlight-box-gold { background: rgba(20, 20, 20, 0.8); padding: 20px; border-radius: 15px; border: 2px dashed var(--gold); color: #fff; font-weight: 700; font-size: 1.1rem; }
+        .highlight-name { color: var(--primary); font-weight: 900; font-size: 1.2rem; }
+        .gold-text { color: var(--gold); font-weight: 900; }
+
+        .roadmap-title { text-align: center; font-size: 2rem; margin: 0 auto 30px; font-weight: 900; color: #fff; }
+        
+        .phase-card { background: var(--glass-bg); border: 1px solid var(--border-light); border-radius: 16px; padding: 25px; margin-bottom: 20px; transition: all 0.4s ease; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .phase-card:hover { transform: translateY(-5px) scale(1.01); border-color: var(--primary); box-shadow: 0 20px 50px rgba(0, 229, 255, 0.15); }
+        .phase-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .phase-title h4 { font-size: 1.5rem; color: #fff; margin-bottom: 5px; font-weight: 900; }
+        .phase-title span { font-size: 0.9rem; color: var(--primary); font-weight: 800; letter-spacing: 1px; }
+        .phase-number { font-size: 3.5rem; font-weight: 900; color: rgba(255, 255, 255, 0.04); line-height: 1; position: absolute; left: 20px; top: 10px; }
+        .tech-tag { background: rgba(0, 229, 255, 0.08); padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; color: var(--text-main); border: 1px solid rgba(0, 229, 255, 0.2); margin-top: 5px; display: inline-block; font-weight: 700; }
+        p.phase-intro { color: #fff; font-weight: 800; margin-bottom: 15px; border-bottom: 2px dashed rgba(0, 229, 255, 0.3); padding-bottom: 10px; font-size: 1.1rem; line-height: 1.5; }
+        p.phase-desc-normal { color: var(--text-sub); font-weight: 700; margin-bottom: 15px; font-size: 1rem; }
+        
+        ul.benefits { list-style: none; margin-top: 15px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; }
+        ul.benefits li { margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px; font-size: 1rem; color: #fff; font-weight: 700; }
+        ul.benefits li i { color: var(--gold); margin-top: 5px; font-size: 0.9rem; flex-shrink: 0; }
+
         .vision-box { text-align: center; padding: 40px 30px; background: linear-gradient(to bottom, rgba(0, 229, 255, 0.05), transparent); border: 2px dashed rgba(255, 255, 255, 0.2); border-radius: 20px; margin-top: 50px; }
+        .vision-box h3 { font-size: 1.6rem; font-weight: 900; margin-bottom: 10px;}
+        .vision-box p { font-size: 1.1rem; font-weight: 700; color: var(--text-sub); }
+
         .footer-cta { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-light); }
-        .print-btn { background: linear-gradient(90deg, var(--primary), #0077ff); color: #fff; font-weight: 900; padding: 15px 50px; border-radius: 50px; border: none; cursor: pointer; margin-top: 20px; }
-        @media print { .floating-nav, .print-btn { display: none; } body { background: #fff; color: #000; } }
+        .footer-cta p.quote { font-size: 1.2rem; color: #fff; font-weight: 900; margin-bottom: 15px; }
+        .print-btn { background: linear-gradient(90deg, var(--primary), #0077ff); color: #fff; font-weight: 900; padding: 15px 50px; border-radius: 50px; border: none; cursor: pointer; font-size: 1.1rem; box-shadow: 0 0 30px rgba(0, 229, 255, 0.4); transition: 0.4s; margin-top: 20px; letter-spacing: 1px; }
+        .print-btn:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 10px 50px rgba(0, 229, 255, 0.6); }
+
+        @media print { .print-btn, .floating-nav { display: none; } body { background: #fff; color: #000; padding: 0; } .phase-card, .problem-section, .opportunity-box, .highlight-box-gold { border: 1px solid #000; color: #000; background: #fff; box-shadow: none; margin-bottom: 15px; } h1, h3, h4, span, i, p { color: #000 !important; background: none !important; -webkit-text-fill-color: initial; font-weight: bold !important; } }
     </style>
 </head>
 <body>
+
     <nav class="floating-nav">
-        <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>الرئيسية</span></a>
-        <a href="Menu_Final_2026.html" class="nav-link"><i class="fas fa-utensils"></i><span>المنيو</span></a>
-        <a href="PP_2026.html" class="nav-link"><i class="fas fa-map-signs"></i><span>الخارطة</span></a>
-        <a href="https://wa.me/201207799717" class="nav-link" target="_blank"><i class="fab fa-whatsapp"></i><span>تواصل</span></a>
+        <a href="index.html" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span>الرئيسية</span>
+        </a>
+        <a href="Menu_Final_2026.html" class="nav-link">
+            <i class="fas fa-utensils"></i>
+            <span>المنيو</span>
+        </a>
+        <a href="PP_2026.html" class="nav-link">
+            <i class="fas fa-map-signs"></i>
+            <span>الخارطة</span>
+        </a>
+        <a href="https://wa.me/201207799717" class="nav-link" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span>تواصل</span>
+        </a>
     </nav>
 
     <div class="container">
@@ -72,17 +119,29 @@
         </header>
 
         <div class="problem-section">
-            <h3><i class="fas fa-sync-alt fa-spin"></i> هل نتحرك للأمام.. أم نجري في دائرة؟</h3>
-            <p>يا ريس إسلام، في سباق اليومي الذي لا ينتهي.. نركض بين المهام. لكن السؤال: <strong>"هل نتحرك للأمام فعلاً؟"</strong></p>
-            <div class="highlight-quote">"التطور قادم، الخطر الحقيقي هو أن نظل واقفين بينما يتغير العالم."</div>
+            <h3><i class="fas fa-sync-alt fa-spin" style="font-size: 1.4rem;"></i> هل نتحرك للأمام.. أم نجري في دائرة؟</h3>
+            
+            <p> يا معلم إسلام / يا معلم أبو وصفي / ي معلمين..، في سباق اليومي الذي لا ينتهي.. نركض بين المهام، التقارير، والإيميلات. نزداد سرعة، لكن نسأل أنفسنا: <strong>"هل نتحرك للأمام فعلاً؟"</strong></p>
+            
+            <p>الانشغال الدائم لا يعني التقدم، والجهد المستمر بلا "سيستم" يتحول لاستنزاف وليس إنجاز. النجاح الحقيقي ليس في الجري أسرع، بل في <strong>الخروج من الدائرة</strong>.</p>
+            
+            <div class="highlight-quote">
+                "التطور قادم قادم لا محالة، حتى في عالم الأسماك.. كل شيء يتحول ليكون آلياً بالكامل. الخوف من التغيير شعور طبيعي، لكن الخطر الحقيقي هو أن نظل واقفين بينما يتغير العالم من حولنا."
+            </div>
         </div>
 
         <div class="opportunity-section">
-            <h2 class="roadmap-title" style="color: var(--gold);">لماذا هذه الشراكة "فرصة عمر"؟</h2>
+            <h2 class="special-gold-title">لماذا هذه الشراكة "فرصة عمر"؟</h2>
+            
             <div class="opportunity-box">
-                <p>السوق مابقاش سمك وطعم بس.. السوق بقى "داتا" وسرعة.</p>
+                <p class="intro">السوق مابقاش سمك وطعم بس.. السوق بقى "داتا" وسرعة.</p>
+                
                 <div class="highlight-box-gold">
-                    نحن في <span style="color: var(--primary);">Weza Technologies</span> لسنا هنا لنبيع تكنولوجيا، بل لنحول اسم "ملوك الفسيخ" لإمبراطورية.
+                    نحن في <span class="highlight-name">Weza Technologies</span> لسنا هنا لنبيع تكنولوجيا، بل لنخرجك من هذه الدائرة.
+                    <br><br>
+                    نحن هنا لنكتشف <span class="gold-text" style="font-size: 1.3rem;">"الكنز"</span> الذي تملكه (اسم ملوك الفسيخ) ونحوله لعائد مادي ضخم ومستمر.
+                    <br><br>
+                    تعاقدك معانا النهاردة بيوفر عليك سنين من التجربة، وبيديك "فريق كامل" جاهز يحول محلك لأقوى براند في مصر بضغطة زر. دي مش صفقة، دي <strong>نقلة تاريخية</strong>.
                 </div>
             </div>
         </div>
@@ -92,21 +151,47 @@
         <div class="phase-card">
             <div class="phase-number">01</div>
             <div class="phase-header">
-                <div class="phase-title"><h4>السيطرة على البحث والسمعة</h4><span class="tech-tag">Search Alpha</span></div>
-                <i class="fas fa-search-location" style="font-size: 2rem; color: var(--primary);"></i>
+                <div class="phase-title">
+                    <h4>السيطرة على البحث والسمعة</h4>
+                    <span>مشروع: Search Alpha</span>
+                    <br>
+                    <span class="tech-tag">Google Identity</span>
+                    <span class="tech-tag">Reputation Management</span>
+                </div>
+                <i class="fas fa-search-location" style="font-size: 2.2rem; color: var(--primary);"></i>
             </div>
-            <p>"قبل ما نفتح الحنفية، لازم نصلح المواسير. هدفنا إن أي حد يكتب 'أفضل فسيخ' تطلعله أنت الباشا."</p>
+            <p class="phase-intro">
+                "قبل ما نفتح الحنفية، لازم نصلح المواسير. هدفنا إن أي حد يكتب 'أفضل فسيخ' تطلعله أنت الباشا."
+            </p>
+            <ul class="benefits">
+                <li><i class="fas fa-check-circle"></i> بناء هوية رقمية كاملة على جوجل (صور، منيو، لوكيشن) لضمان ثقة العميل الغريب قبل القريب.</li>
+                <li><i class="fas fa-check-circle"></i> تحويل المشاكل والتعليقات القديمة إلى فرص لرفع التقييم لـ 5 نجوم.</li>
+                <li><i class="fas fa-check-circle"></i> السيطرة على الكلمات المفتاحية لتتصدر نتائج البحث بلا منازع.</li>
+            </ul>
         </div>
 
         <div class="phase-card">
             <div class="phase-number">02</div>
             <div class="phase-header">
-                <div class="phase-title"><h4>مكنة الرد الآلي والمبيعات</h4><span class="tech-tag">Neuro-Logic</span></div>
-                <i class="fas fa-robot" style="font-size: 2rem; color: var(--primary);"></i>
+                <div class="phase-title">
+                    <h4>مكنة الرد الآلي والمبيعات</h4>
+                    <span>مشروع: Neuro-Logic</span>
+                    <br>
+                    <span class="tech-tag">AI Chatbot</span>
+                    <span class="tech-tag">Auto-Sales</span>
+                </div>
+                <i class="fas fa-robot" style="font-size: 2.2rem; color: var(--primary);"></i>
             </div>
-            <p>هنا تتوقف عن "الجري في الدائرة". السيستم يتولى الردود الروتينية لتركز أنت على التطوير.</p>
+            <p class="phase-desc-normal">
+                هنا تتوقف عن "الجري في الدائرة". السيستم يتولى الردود الروتينية لتركز أنت على التطوير.
+            </p>
+            <ul class="benefits">
+                <li><i class="fas fa-check-circle"></i> رد فوري 24 ساعة بلهجة بورسعيدية: إجابات دقيقة عن الأسعار والعنوان، وإغلاق الأوردر آلياً.</li>
+                <li><i class="fas fa-check-circle"></i> فلترة الجادين: تحويل المحادثات العابرة إلى مبيعات مؤكدة دون تدخل بشري.</li>
+                <li><i class="fas fa-check-circle"></i> استعادة العملاء: إعادة استهداف من سأل ولم يشتري بعروض مخصصة.</li>
+            </ul>
             
-            <div style="margin-top: 25px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 15px;">
+            <div style="margin-top: 20px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 15px;">
                 <a href="Project_001_Core_Intents_AR.html" style="
                     display: inline-block;
                     text-decoration: none;
@@ -127,21 +212,38 @@
         <div class="phase-card">
             <div class="phase-number">03</div>
             <div class="phase-header">
-                <div class="phase-title"><h4>المتجر والسيستم المتكامل</h4><span class="tech-tag">Web-Core</span></div>
-                <i class="fas fa-shopping-bag" style="font-size: 2rem; color: var(--primary);"></i>
+                <div class="phase-title">
+                    <h4>المتجر والسيستم المتكامل</h4>
+                    <span>مشروع: Web-Core</span>
+                    <br>
+                    <span class="tech-tag">E-Commerce</span>
+                    <span class="tech-tag">Inventory Sync</span>
+                </div>
+                <i class="fas fa-shopping-bag" style="font-size: 2.2rem; color: var(--primary);"></i>
             </div>
-            <p>فرعك الرقمي الذي لا يغلق أبوابه. نظام متكامل يربط المخزون بالمبيعات لحظياً.</p>
+            <p class="phase-desc-normal">
+                فرعك الرقمي الذي لا يغلق أبوابه. نظام متكامل يربط المخزون بالمبيعات لحظياً.
+            </p>
+            <ul class="benefits">
+                <li><i class="fas fa-check-circle"></i> طلبات بضغطة زر: تجربة شراء سهلة وسريعة للعميل، وأوردر مطبوع جاهز للمطبخ.</li>
+                <li><i class="fas fa-check-circle"></i> داتا العملاء (الكنز الحقيقي): معرفة تفضيلات كل عميل لتقديم العرض المناسب في الوقت المناسب.</li>
+            </ul>
         </div>
 
         <div class="vision-box">
-            <h3>وماذا بعد؟ (رؤية 2027)</h3>
-            <p>في 2027، نطلق <strong>تطبيق الموبايل</strong> ونفتح الشحن الدولي. الأساس الذي نبنيه اليوم هو ما سيجعلنا في القمة غداً.</p>
+            <h3 style="color: #fff; margin-bottom: 15px;">وماذا بعد؟ (رؤية 2027)</h3>
+            <p>في 2027، وبعد السيطرة المحلية، نطلق <strong>تطبيق الموبايل</strong> ونفتح الشحن الدولي والمحلي الموسع.</p>
+            <p style="color: var(--primary); font-weight: 800; margin-top: 15px; font-size: 1.2rem;">الأساس الذي نبنيه اليوم.. هو ما سيجعلنا في القمة غداً.</p>
         </div>
 
         <div class="footer-cta">
-            <p>"النجاح قرار بالخروج من الدائرة.. ونحن جاهزين للبدء فوراً."</p>
+            <p class="quote">"النجاح قرار بالخروج من الدائرة.. ونحن جاهزين للبدء فوراً."</p>
+            <p style="color: var(--text-sub); font-size: 1rem; margin-top: 10px; font-weight: 700;">Weza Technologies | Partner of Success</p>
+            
             <button class="print-btn" onclick="window.print()">توكلنا على الله (حفظ الخطة)</button>
         </div>
+
     </div>
+
 </body>
 </html>
