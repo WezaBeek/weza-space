@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,32 +8,24 @@
     <link rel="stylesheet" crossorigin href="./assets/index-CHcqaDfp.css">
     <script type="module" crossorigin src="./assets/index-CECu8CJt.js"></script>
     <script type="module" crossorigin src="./assets/index-rlWlhX1Z.js"></script>
-    
     <style>
-        /* إخفاء الزر القديم بقوة CSS */
-        a[href*="PP"], a[href*="Strategy"], .hero-buttons a:not(.new-added-btn) { 
-            display: none !important; 
-        }
-        
-        /* تحسين استجابة الشريط السفلي للموبايل */
-        .secondary-nav-injected {
-            z-index: 99999 !important;
-            padding-bottom: 20px;
-        }
+        /* إخفاء إجباري للزر القديم */
+        a[href*="PP"], a[href*="Strategy"], .hero-buttons a:not(.new-added-btn) { display: none !important; }
+        .brand-logo { cursor: pointer; transition: 0.3s; }
+        .brand-logo:hover { text-shadow: 0 0 20px rgba(0,210,255,0.8); }
+        /* رفع الشريط الجديد فوق كل شيء */
+        .secondary-nav-injected { z-index: 999999 !important; position: relative; }
     </style>
 </head>
-
 <body>
     <div class="bg-orchestra"></div>
-
     <nav class="nav-container">
-        <div class="brand-logo" onclick="window.location.href='/Team_AR.html'" title="تعرف علينا">WezaTECHNOLOGIES</div>
+        <div class="brand-logo" onclick="window.location.href='Team_AR.html'" title="من نحن؟">WezaTECHNOLOGIES</div>
         <div id="nav-actions" class="lang-switch-box">
             <button id="btn-ar" onclick="window.setLanguage('ar')" class="lang-btn">AR</button>
             <button id="btn-en" onclick="window.setLanguage('en')" class="lang-btn">EN</button>
         </div>
     </nav>
-
     <div id="app"></div>
 
     <script>
@@ -43,37 +34,22 @@
                 const heroSection = document.querySelector('.hero-buttons') || document.querySelector('#app');
                 if (heroSection) {
                     clearInterval(finder);
-
-                    // 1. حذف الزر القديم المزعج برمجياً
-                    const oldButtons = document.querySelectorAll('.hero-buttons a');
-                    oldButtons.forEach(btn => {
-                        if (!btn.classList.contains('new-added-btn')) {
-                            btn.remove(); // حذف تام
-                        }
+                    // حذف الزر القديم نهائياً
+                    const oldBtns = document.querySelectorAll('.hero-buttons a');
+                    oldBtns.forEach(btn => {
+                        if (!btn.classList.contains('new-added-btn')) btn.remove();
                     });
 
-                    // 2. إنشاء الشريط الجديد
+                    // إضافة الشريط الجديد
                     const newNav = document.createElement('div');
                     newNav.className = "secondary-nav-injected";
-                    newNav.style.cssText = `
-                        margin-top: 30px; display: flex; flex-wrap: wrap; gap: 15px; 
-                        justify-content: center; width: 100%; z-index: 99999; animation: fadeIn 1s ease-in-out;
-                    `;
-
+                    newNav.style.cssText = `margin-top: 30px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; width: 100%; z-index: 999999; animation: fadeIn 1s ease-in-out;`;
                     newNav.innerHTML = `
-                        <a href="/Menu_Final_2026.html" class="new-added-btn" style="color: #fff; text-decoration: none; font-size: 1rem; border: 1px solid rgba(0, 210, 255, 0.6); background: rgba(0, 210, 255, 0.15); padding: 12px 35px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo'; font-weight: 700; backdrop-filter: blur(5px);">
-                           📄 قائمة الأسعار
-                        </a>
-                        <a href="/Plan_2026.html" class="new-added-btn" style="color: #FFD700; text-decoration: none; font-size: 1rem; border: 1px solid rgba(255, 215, 0, 0.6); background: rgba(255, 215, 0, 0.1); padding: 12px 35px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo'; font-weight: 700; backdrop-filter: blur(5px);">
-                           🚀 رؤية 2026
-                        </a>
+                        <a href="Menu_Final_2026.html" class="new-added-btn" style="color: #fff; text-decoration: none; font-size: 1rem; border: 1px solid rgba(0, 210, 255, 0.6); background: rgba(0, 210, 255, 0.15); padding: 12px 35px; border-radius: 50px; font-family: 'Cairo'; font-weight: 700; backdrop-filter: blur(5px);">📄 قائمة الأسعار</a>
+                        <a href="Plan_2026.html" class="new-added-btn" style="color: #FFD700; text-decoration: none; font-size: 1rem; border: 1px solid rgba(255, 215, 0, 0.6); background: rgba(255, 215, 0, 0.1); padding: 12px 35px; border-radius: 50px; font-family: 'Cairo'; font-weight: 700; backdrop-filter: blur(5px);">🚀 رؤية 2026</a>
                     `;
-
-                    if(document.querySelector('.hero-buttons')) {
-                        document.querySelector('.hero-buttons').after(newNav);
-                    } else {
-                         document.body.appendChild(newNav);
-                    }
+                    if(document.querySelector('.hero-buttons')) { document.querySelector('.hero-buttons').after(newNav); } 
+                    else { document.body.appendChild(newNav); }
                 }
             }, 50);
         });
