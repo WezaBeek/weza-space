@@ -24,7 +24,6 @@
     <nav class="nav-container">
         <div class="brand-logo">WezaTECHNOLOGIES</div>
         <div id="nav-actions" class="lang-switch-box">
-            
             <button id="btn-team"
                 onclick="window.setLanguage(document.documentElement.lang === 'ar' ? 'team-ar' : 'team-en')"
                 class="lang-btn" style="width: auto; padding: 0 15px;">Meet the Team</button>
@@ -37,25 +36,21 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // ننتظر قليلاً حتى يتم تحميل عناصر التطبيق
             const finder = setInterval(() => {
-                // نبحث عن الحاوية التي فيها الأزرار الرئيسية
                 const heroSection = document.querySelector('.hero-buttons') || document.querySelector('#app');
                 
                 if (heroSection) {
-                    // إيقاف البحث بمجرد العثور على المكان
                     clearInterval(finder);
 
-                    // إنشاء حاوية الأزرار الجديدة
                     const newNav = document.createElement('div');
                     newNav.className = "secondary-nav-injected";
                     
-                    // تنسيق الحاوية لتظهر بشكل مرتب في المنتصف
+                    // تنسيق الحاوية
                     newNav.style.cssText = `
                         margin-top: 25px; 
                         display: flex; 
                         flex-wrap: wrap; 
-                        gap: 12px; 
+                        gap: 15px; 
                         justify-content: center; 
                         width: 100%; 
                         z-index: 99;
@@ -63,28 +58,19 @@
                         animation: fadeIn 1s ease-in-out;
                     `;
 
-                    // محتوى الأزرار (بالعربي والإنجليزي حسب الحاجة)
+                    // المحتوى: زرين فقط (المنيو والخطة) بتصميم شفاف وأنيق
                     newNav.innerHTML = `
-                        <a href="/Menu_Final_2026.html" style="color: #ddd; text-decoration: none; font-size: 0.9rem; border: 1px solid rgba(0, 210, 255, 0.3); background: rgba(0, 210, 255, 0.05); padding: 8px 18px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif;">
+                        <a href="/Menu_Final_2026.html" style="color: #ddd; text-decoration: none; font-size: 1rem; border: 1px solid rgba(0, 210, 255, 0.4); background: rgba(0, 210, 255, 0.1); padding: 10px 25px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif; font-weight: bold; backdrop-filter: blur(5px);">
                            📄 قائمة الأسعار
                         </a>
-                        <a href="/Plan_2026.html" style="color: #FFD700; text-decoration: none; font-size: 0.9rem; border: 1px solid rgba(255, 215, 0, 0.3); background: rgba(255, 215, 0, 0.05); padding: 8px 18px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif;">
-                           🚀 الخطة الاستراتيجية
-                        </a>
-                        <a href="/PP_2026.html" style="color: #ddd; text-decoration: none; font-size: 0.9rem; border: 1px solid rgba(157, 80, 187, 0.3); background: rgba(157, 80, 187, 0.05); padding: 8px 18px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif;">
-                           🗺️ خارطة الطريق
-                        </a>
-                        <a href="/Project_001_Core_Intents_AR.html" style="color: #ddd; text-decoration: none; font-size: 0.9rem; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.05); padding: 8px 18px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif;">
-                           💡 مشروع 001
+                        <a href="/Plan_2026.html" style="color: #FFD700; text-decoration: none; font-size: 1rem; border: 1px solid rgba(255, 215, 0, 0.4); background: rgba(255, 215, 0, 0.1); padding: 10px 25px; border-radius: 50px; transition: 0.3s; font-family: 'Cairo', sans-serif; font-weight: bold; backdrop-filter: blur(5px);">
+                           🚀 رؤية 2026 (الخطة)
                         </a>
                     `;
 
-                    // وضع الأزرار في المكان المناسب
                     if(document.querySelector('.hero-buttons')) {
-                        // لو لقينا الأزرار القديمة، نحط الجديدة تحتها
                         document.querySelector('.hero-buttons').after(newNav);
                     } else {
-                        // لو ملقيناش، نحطها ثابتة تحت في الصفحة
                          newNav.style.position = "fixed";
                          newNav.style.bottom = "40px";
                          newNav.style.left = "50%";
@@ -92,9 +78,8 @@
                          document.body.appendChild(newNav);
                     }
                 }
-            }, 100); // يفحص كل 100 جزء من الثانية
+            }, 100);
         });
     </script>
 </body>
-
 </html>
