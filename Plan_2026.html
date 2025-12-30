@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,35 +8,200 @@
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --bg-dark: #050a10; --primary: #00e5ff; --gold: #ffc107; --glass-bg: rgba(20, 30, 40, 0.7); --border-light: rgba(255, 255, 255, 0.1); --text-main: #ffffff; --text-sub: #cdd6da; --glass-nav: rgba(0, 0, 0, 0.7); }
-        body { font-family: 'Almarai', sans-serif; background-color: var(--bg-dark); background-image: radial-gradient(circle at top right, rgba(0, 229, 255, 0.1), transparent 45%), radial-gradient(circle at bottom left, rgba(255, 193, 7, 0.08), transparent 45%); color: var(--text-main); line-height: 1.6; overflow-x: hidden; padding-bottom: 120px; }
-        .container { max-width: 950px; margin: 0 auto; padding: 20px; }
+        :root {
+            --bg-dark: #050a10;
+            --primary: #00e5ff;
+            --gold: #ffc107;
+            --glass-bg: rgba(20, 30, 40, 0.7);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-sub: #cdd6da;
+            --glass-nav: rgba(0, 0, 0, 0.7);
+        }
+
+        body {
+            font-family: 'Almarai', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at top right, rgba(0, 229, 255, 0.1), transparent 45%), radial-gradient(circle at bottom left, rgba(255, 193, 7, 0.08), transparent 45%);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 120px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
         /* الشريط الشفاف */
-        .floating-nav { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: var(--glass-nav); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 50px; padding: 10px 25px; display: flex; justify-content: space-between; align-items: center; z-index: 99999; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); }
-        .nav-link { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 4px; color: #999; transition: 0.3s; font-size: 0.8rem; }
-        .nav-link i { font-size: 1.4rem; } .nav-link span { font-weight: 700; font-size: 0.7rem; }
-        .nav-link.active { color: var(--gold); } .nav-link:hover { transform: translateY(-3px); color: var(--primary); }
+        .floating-nav {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background: var(--glass-nav);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 10px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99999;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #999;
+            transition: 0.3s;
+            font-size: 0.8rem;
+        }
+
+        .nav-link i {
+            font-size: 1.4rem;
+        }
+
+        .nav-link span {
+            font-weight: 700;
+            font-size: 0.7rem;
+        }
+
+        .nav-link.active {
+            color: var(--gold);
+        }
+
+        .nav-link:hover {
+            transform: translateY(-3px);
+            color: var(--primary);
+        }
+
         /* التنسيقات */
-        .brand-badge { display: inline-block; background: rgba(0, 229, 255, 0.1); color: var(--primary); padding: 6px 20px; border-radius: 30px; font-weight: 800; border: 2px solid rgba(0, 229, 255, 0.3); margin: 30px auto 15px; display: table; }
-        h1 { font-size: 2.8rem; font-weight: 900; text-align: center; background: linear-gradient(to right, #fff, #e0e0e0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .subtitle { text-align: center; font-size: 1.2rem; color: var(--text-sub); margin-bottom: 40px; }
-        .problem-section { background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(0,0,0,0)); border: 1px solid var(--border-light); border-right: 4px solid #ff3366; padding: 25px; border-radius: 16px; margin: 30px 0; }
-        .highlight-quote { background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 12px; border-right: 4px solid var(--primary); font-style: italic; margin-top: 20px; }
-        .opportunity-box { background: linear-gradient(135deg, rgba(255, 193, 7, 0.08), rgba(0, 229, 255, 0.02)); border: 2px solid rgba(255, 193, 7, 0.3); padding: 25px; border-radius: 20px; text-align: center; margin-bottom: 40px; }
-        .highlight-box-gold { background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 15px; border: 2px dashed var(--gold); margin-top: 20px; }
-        .phase-card { background: var(--glass-bg); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 25px; margin-bottom: 20px; position: relative; }
-        .phase-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .phase-title h4 { font-size: 1.5rem; color: #fff; margin: 0; }
-        .tech-tag { background: rgba(0, 229, 255, 0.1); padding: 3px 10px; border-radius: 5px; font-size: 0.8rem; color: var(--primary); }
-        .print-btn { display: block; margin: 40px auto; padding: 15px 50px; background: linear-gradient(90deg, var(--primary), #0077ff); color: #fff; border-radius: 50px; border: none; cursor: pointer; font-weight: 900; text-decoration: none; text-align: center; }
+        .brand-badge {
+            display: inline-block;
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--primary);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-weight: 800;
+            border: 2px solid rgba(0, 229, 255, 0.3);
+            margin: 30px auto 15px;
+            display: table;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-align: center;
+            background: linear-gradient(to right, #fff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            margin-bottom: 40px;
+        }
+
+        .problem-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0));
+            border: 1px solid var(--border-light);
+            border-right: 4px solid #ff3366;
+            padding: 25px;
+            border-radius: 16px;
+            margin: 30px 0;
+        }
+
+        .highlight-quote {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 12px;
+            border-right: 4px solid var(--primary);
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        .opportunity-box {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.08), rgba(0, 229, 255, 0.02));
+            border: 2px solid rgba(255, 193, 7, 0.3);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .highlight-box-gold {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px dashed var(--gold);
+            margin-top: 20px;
+        }
+
+        .phase-card {
+            background: var(--glass-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .phase-title h4 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin: 0;
+        }
+
+        .tech-tag {
+            background: rgba(0, 229, 255, 0.1);
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+
+        .print-btn {
+            display: block;
+            margin: 40px auto;
+            padding: 15px 50px;
+            background: linear-gradient(90deg, var(--primary), #0077ff);
+            color: #fff;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 900;
+            text-decoration: none;
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
     <nav class="floating-nav">
         <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>الرئيسية</span></a>
         <a href="Menu_Final_2026.html" class="nav-link"><i class="fas fa-utensils"></i><span>المنيو</span></a>
         <a href="PP_2026.html" class="nav-link"><i class="fas fa-map-signs"></i><span>الخارطة</span></a>
-        <a href="https://wa.me/201207799717" class="nav-link" target="_blank"><i class="fab fa-whatsapp"></i><span>تواصل</span></a>
+        <a href="https://wa.me/201207799717" class="nav-link" target="_blank"><i
+                class="fab fa-whatsapp"></i><span>تواصل</span></a>
     </nav>
 
     <div class="container">
@@ -45,19 +211,28 @@
 
         <div class="problem-section">
             <h3 style="color:#ff3366; margin-bottom:15px;">🔄 هل نتحرك للأمام.. أم نجري في دائرة؟</h3>
-            <p style="color:#eee; margin-bottom:10px;">يا معلم إسلام / يا معلم أبو وصفي / يا معلمين.. في سباق اليومي الذي لا ينتهي.. نركض بين المهام، التقارير، والإيميلات. نزداد سرعة، لكن نسأل أنفسنا: <strong>"هل نتحرك للأمام فعلاً؟"</strong></p>
-            <p style="color:#eee;">الانشغال الدائم لا يعني التقدم، والجهد المستمر بلا "سيستم" يتحول لاستنزاف وليس إنجاز. النجاح الحقيقي ليس في الجري أسرع، بل في <strong>الخروج من الدائرة</strong>.</p>
-            <div class="highlight-quote">"التطور قادم قادم لا محالة.. حتى في عالم الأسماك.. كل شيء يتحول ليكون آلياً بالكامل. الخوف من التغيير شعور طبيعي، لكن الخطر الحقيقي هو أن نظل واقفين بينما يتغير العالم من حولنا."</div>
+            <p style="color:#eee; margin-bottom:10px;">يا معلم إسلام / يا معلم أبو وصفي / يا معلمين.. في سباق اليومي
+                الذي لا ينتهي.. نركض بين المهام، التقارير، والإيميلات. نزداد سرعة، لكن نسأل أنفسنا: <strong>"هل نتحرك
+                    للأمام فعلاً؟"</strong></p>
+            <p style="color:#eee;">الانشغال الدائم لا يعني التقدم، والجهد المستمر بلا "سيستم" يتحول لاستنزاف وليس إنجاز.
+                النجاح الحقيقي ليس في الجري أسرع، بل في <strong>الخروج من الدائرة</strong>.</p>
+            <div class="highlight-quote">"التطور قادم قادم لا محالة.. حتى في عالم الأسماك.. كل شيء يتحول ليكون آلياً
+                بالكامل. الخوف من التغيير شعور طبيعي، لكن الخطر الحقيقي هو أن نظل واقفين بينما يتغير العالم من حولنا."
+            </div>
         </div>
 
         <div class="opportunity-section">
             <h2 style="text-align:center; color:var(--gold); margin-bottom:20px;">لماذا هذه الشراكة "فرصة عمر"؟</h2>
             <div class="opportunity-box">
-                <p style="font-size:1.1rem; color:#fff; font-weight:bold;">السوق مابقاش سمك وطعم بس.. السوق بقى "داتا" وسرعة.</p>
+                <p style="font-size:1.1rem; color:#fff; font-weight:bold;">السوق مابقاش سمك وطعم بس.. السوق بقى "داتا"
+                    وسرعة.</p>
                 <div class="highlight-box-gold">
-                    نحن في <span style="color:var(--primary)">Weza Technologies</span> لسنا هنا لنبيع تكنولوجيا، بل لنخرجك من هذه الدائرة.<br><br>
-                    نحن هنا لنكتشف <span style="color:var(--gold)">"الكنز"</span> الذي تملكه (اسم ملوك الفسيخ) ونحوله لعائد مادي ضخم ومستمر.<br><br>
-                    تعاقدك معانا النهاردة بيوفر عليك سنين من التجربة، وبيديك "فريق كامل" جاهز يحول محلك لأقوى براند في مصر بضغطة زر. دي مش صفقة، دي <strong>نقلة تاريخية</strong>.
+                    نحن في <span style="color:var(--primary)">Weza Technologies</span> لسنا هنا لنبيع تكنولوجيا، بل
+                    لنخرجك من هذه الدائرة.<br><br>
+                    نحن هنا لنكتشف <span style="color:var(--gold)">"الكنز"</span> الذي تملكه (اسم ملوك الفسيخ) ونحوله
+                    لعائد مادي ضخم ومستمر.<br><br>
+                    تعاقدك معانا النهاردة بيوفر عليك سنين من التجربة، وبيديك "فريق كامل" جاهز يحول محلك لأقوى براند في
+                    مصر بضغطة زر. دي مش صفقة، دي <strong>نقلة تاريخية</strong>.
                 </div>
             </div>
         </div>
@@ -66,10 +241,13 @@
 
         <div class="phase-card">
             <div class="phase-header">
-                <div class="phase-title"><h4>01. السيطرة على البحث والسمعة</h4><span class="tech-tag">Search Alpha</span></div>
+                <div class="phase-title">
+                    <h4>01. السيطرة على البحث والسمعة</h4><span class="tech-tag">Search Alpha</span>
+                </div>
                 <i class="fas fa-search-location" style="font-size:2rem; color:var(--primary)"></i>
             </div>
-            <p style="color:#ccc;">"قبل ما نفتح الحنفية، لازم نصلح المواسير. هدفنا إن أي حد يكتب 'أفضل فسيخ' تطلعله أنت الباشا."</p>
+            <p style="color:#ccc;">"قبل ما نفتح الحنفية، لازم نصلح المواسير. هدفنا إن أي حد يكتب 'أفضل فسيخ' تطلعله أنت
+                الباشا."</p>
             <ul style="list-style:none; padding:0; margin-top:15px; color:#ddd;">
                 <li style="margin-bottom:8px;">✅ بناء هوية رقمية كاملة على جوجل (صور، منيو، لوكيشن).</li>
                 <li style="margin-bottom:8px;">✅ تحويل المشاكل والتعليقات القديمة إلى فرص لرفع التقييم.</li>
@@ -79,17 +257,21 @@
 
         <div class="phase-card">
             <div class="phase-header">
-                <div class="phase-title"><h4>02. مكنة الرد الآلي والمبيعات</h4><span class="tech-tag">Neuro-Logic</span></div>
+                <div class="phase-title">
+                    <h4>02. مكنة الرد الآلي والمبيعات</h4><span class="tech-tag">Neuro-Logic</span>
+                </div>
                 <i class="fas fa-robot" style="font-size:2rem; color:var(--primary)"></i>
             </div>
-            <p style="color:#ccc;">هنا تتوقف عن "الجري في الدائرة". السيستم يتولى الردود الروتينية لتركز أنت على التطوير.</p>
+            <p style="color:#ccc;">هنا تتوقف عن "الجري في الدائرة". السيستم يتولى الردود الروتينية لتركز أنت على
+                التطوير.</p>
             <ul style="list-style:none; padding:0; margin-top:15px; color:#ddd;">
                 <li style="margin-bottom:8px;">✅ رد فوري 24 ساعة بلهجة بورسعيدية: إجابات دقيقة وإغلاق الأوردر.</li>
                 <li style="margin-bottom:8px;">✅ فلترة الجادين: تحويل المحادثات العابرة إلى مبيعات مؤكدة.</li>
                 <li style="margin-bottom:8px;">✅ استعادة العملاء: إعادة استهداف من سأل ولم يشتري.</li>
             </ul>
             <div style="margin-top:20px; border-top:1px dashed rgba(255,255,255,0.1); padding-top:15px;">
-                <a href="Project_001_Core_Intents_AR.html" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:var(--primary); border:1px solid var(--primary); padding:8px 20px; border-radius:12px; font-weight:bold; background:rgba(0,210,255,0.05); transition:0.3s;">
+                <a href="Project_001_Core_Intents_AR.html"
+                    style="display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:var(--primary); border:1px solid var(--primary); padding:8px 20px; border-radius:12px; font-weight:bold; background:rgba(0,210,255,0.05); transition:0.3s;">
                     <i class="fas fa-microchip"></i> تفاصيل مشروع 001
                 </a>
             </div>
@@ -97,7 +279,9 @@
 
         <div class="phase-card">
             <div class="phase-header">
-                <div class="phase-title"><h4>03. المتجر والسيستم المتكامل</h4><span class="tech-tag">Web-Core</span></div>
+                <div class="phase-title">
+                    <h4>03. المتجر والسيستم المتكامل</h4><span class="tech-tag">Web-Core</span>
+                </div>
                 <i class="fas fa-shopping-bag" style="font-size:2rem; color:var(--primary)"></i>
             </div>
             <p style="color:#ccc;">فرعك الرقمي الذي لا يغلق أبوابه. نظام متكامل يربط المخزون بالمبيعات لحظياً.</p>
@@ -107,15 +291,19 @@
             </ul>
         </div>
 
-        <div style="text-align:center; margin-top:50px; padding:30px; background:rgba(0,229,255,0.05); border-radius:20px; border:1px dashed rgba(255,255,255,0.2);">
+        <div
+            style="text-align:center; margin-top:50px; padding:30px; background:rgba(0,229,255,0.05); border-radius:20px; border:1px dashed rgba(255,255,255,0.2);">
             <h3 style="color:#fff;">وماذا بعد؟ (رؤية 2027)</h3>
-            <p style="color:#ccc;">في 2027، وبعد السيطرة المحلية، نطلق <strong>تطبيق الموبايل</strong> ونفتح الشحن الدولي. الأساس الذي نبنيه اليوم.. هو ما سيجعلنا في القمة غداً.</p>
+            <p style="color:#ccc;">في 2027، وبعد السيطرة المحلية، نطلق <strong>تطبيق الموبايل</strong> ونفتح الشحن
+                الدولي. الأساس الذي نبنيه اليوم.. هو ما سيجعلنا في القمة غداً.</p>
         </div>
 
         <div class="footer-cta">
-             <h2 style="text-align:center; color:#fff; margin-bottom:30px;">"النجاح قرار بالخروج من الدائرة.. ونحن جاهزين للبدء فوراً."</h2>
+            <h2 style="text-align:center; color:#fff; margin-bottom:30px;">"النجاح قرار بالخروج من الدائرة.. ونحن جاهزين
+                للبدء فوراً."</h2>
             <a href="Offerx_2026.html" class="print-btn">💎 عرض تكلفة المنظومة</a>
         </div>
     </div>
 </body>
+
 </html>
