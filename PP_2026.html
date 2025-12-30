@@ -19,7 +19,7 @@
             --glass-border: rgba(255, 255, 255, 0.1);
             --text-main: #f5f5f7;
             --text-muted: #86868b;
-            --glass-nav: rgba(20, 20, 20, 0.85); /* لون الشريط السفلي */
+            --glass-nav: rgba(20, 20, 20, 0.85); /* تعديل المتغير للشفافية */
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,10 +31,10 @@
             line-height: 1.7;
             overflow-x: hidden;
             min-height: 100vh;
-            padding-bottom: 100px; /* مسافة للشريط السفلي */
+            padding-bottom: 100px; /* مسافة سفلية للشريط */
         }
 
-        /* --- 1. الشريط السفلي العائم (الجديد والموحد) --- */
+        /* --- 1. الشريط السفلي العائم (شفاف وزجاجي) --- */
         .floating-nav {
             position: fixed;
             bottom: 25px;
@@ -42,17 +42,18 @@
             transform: translateX(-50%);
             width: 90%;
             max-width: 400px;
-            background: var(--glass-nav);
+            /* التعديل هنا: شفافية + ضبابية */
+            background: rgba(10, 10, 20, 0.7);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 50px;
             padding: 10px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 99999;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
         .nav-link {
@@ -61,7 +62,7 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
-            color: #888;
+            color: #999;
             transition: 0.3s;
             font-size: 0.8rem;
         }
@@ -75,47 +76,20 @@
 
 
         /* --- بقية التنسيقات الأصلية --- */
-        .bg-orchestra {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #0a0e23 0%, #000212 100%);
-        }
-
-        .glow-orb {
-            position: absolute; width: 600px; height: 600px; border-radius: 50%;
-            filter: blur(120px); opacity: 0.15; animation: float 20s infinite alternate;
-        }
-
+        .bg-orchestra { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 50% 50%, #0a0e23 0%, #000212 100%); }
+        .glow-orb { position: absolute; width: 600px; height: 600px; border-radius: 50%; filter: blur(120px); opacity: 0.15; animation: float 20s infinite alternate; }
         .orb-1 { background: var(--primary); top: -200px; left: -100px; }
         .orb-2 { background: var(--accent-purple); bottom: -200px; right: -100px; animation-delay: -5s; }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(100px, 50px) scale(1.1); }
-        }
+        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(100px, 50px) scale(1.1); } }
 
         .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 10; }
 
         header { text-align: center; margin-bottom: 60px; }
-        .brand-logo {
-            font-size: 1.5rem; font-weight: 900; letter-spacing: 1px;
-            background: linear-gradient(90deg, #fff, var(--primary));
-            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: clamp(1.8rem, 5vw, 3.5rem); font-weight: 950; line-height: 1.2; margin-bottom: 20px;
-            background: linear-gradient(to bottom, #fff 40%, rgba(255, 255, 255, 0.7) 100%);
-            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-        }
-
+        .brand-logo { font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; background: linear-gradient(90deg, #fff, var(--primary)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+        h1 { font-size: clamp(1.8rem, 5vw, 3.5rem); font-weight: 950; line-height: 1.2; margin-bottom: 20px; background: linear-gradient(to bottom, #fff 40%, rgba(255, 255, 255, 0.7) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
         .subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
 
-        .glass-card {
-            background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 24px;
-            padding: 35px; margin-bottom: 40px; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
-        }
+        .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 24px; padding: 35px; margin-bottom: 40px; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1); }
         .glass-card:hover { border-color: var(--primary); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
 
         .intro-msg h3 { color: var(--primary); font-weight: 900; font-size: 1.6rem; margin-bottom: 15px; }
@@ -135,18 +109,10 @@
         .section-header h2 { font-size: 2rem; font-weight: 900; }
 
         .timeline { position: relative; }
-        .timeline::before {
-            content: ''; position: absolute; right: 15px; top: 0; width: 2px; height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--accent-purple), transparent);
-        }
-
+        .timeline::before { content: ''; position: absolute; right: 15px; top: 0; width: 2px; height: 100%; background: linear-gradient(to bottom, var(--primary), var(--accent-purple), transparent); }
         .phase-step { position: relative; padding-right: 50px; margin-bottom: 40px; }
-        .phase-step::after {
-            content: ''; position: absolute; right: 9px; top: 30px; width: 14px; height: 14px;
-            background: var(--primary); border: 3px solid var(--bg-dark); border-radius: 50%;
-            box-shadow: 0 0 15px var(--primary); z-index: 2;
-        }
-
+        .phase-step::after { content: ''; position: absolute; right: 9px; top: 30px; width: 14px; height: 14px; background: var(--primary); border: 3px solid var(--bg-dark); border-radius: 50%; box-shadow: 0 0 15px var(--primary); z-index: 2; }
+        
         .phase-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: 0.3s; }
         .phase-card h3 { font-size: 1.4rem; color: #fff; margin-bottom: 5px; display: flex; align-items: center; justify-content: space-between; }
         .phase-card h3 span { font-size: 0.9rem; color: var(--text-muted); font-weight: 400; }
@@ -155,32 +121,14 @@
         .phase-card li { margin-bottom: 8px; font-size: 0.95rem; color: #ced6e0; display: flex; gap: 10px; }
         .phase-card li::before { content: '▹'; color: var(--primary); font-weight: bold; }
 
-        .future-vision {
-            background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(157, 80, 187, 0.1));
-            border: 1px solid var(--primary-glow); padding: 40px; border-radius: 30px; text-align: center; margin: 60px 0;
-        }
+        .future-vision { background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(157, 80, 187, 0.1)); border: 1px solid var(--primary-glow); padding: 40px; border-radius: 30px; text-align: center; margin: 60px 0; }
         .future-vision h3 { color: var(--primary); font-size: 1.8rem; margin-bottom: 15px; }
 
-        .btn-action {
-            display: block; width: fit-content; margin: 40px auto 0; padding: 18px 45px;
-            background: linear-gradient(90deg, #9d50bb, #00d2ff); color: #fff; text-decoration: none;
-            font-weight: 900; border-radius: 16px; box-shadow: 0 10px 20px rgba(157, 80, 187, 0.3);
-            transition: 0.3s; border: none; cursor: pointer;
-        }
+        .btn-action { display: block; width: fit-content; margin: 40px auto 0; padding: 18px 45px; background: linear-gradient(90deg, #9d50bb, #00d2ff); color: #fff; text-decoration: none; font-weight: 900; border-radius: 16px; box-shadow: 0 10px 20px rgba(157, 80, 187, 0.3); transition: 0.3s; border: none; cursor: pointer; }
         .btn-action:hover { transform: scale(1.05); filter: brightness(1.1); }
 
-        @media (max-width: 768px) {
-            .phase-step { padding-right: 30px; }
-            .phase-step::after { right: -6px; }
-            .section-header h2 { font-size: 1.5rem; }
-        }
-        
-        @media print {
-            .bg-orchestra, .floating-nav, .btn-action { display: none; }
-            body { background: #fff; color: #000; }
-            .glass-card, .phase-card { border: 1px solid #000; background: none; color: #000; box-shadow: none; }
-            h1, h2, h3, h4 { color: #000 !important; -webkit-text-fill-color: initial !important; }
-        }
+        @media (max-width: 768px) { .phase-step { padding-right: 30px; } .phase-step::after { right: -6px; } .section-header h2 { font-size: 1.5rem; } }
+        @media print { .bg-orchestra, .floating-nav, .btn-action { display: none; } body { background: #fff; color: #000; } .glass-card, .phase-card { border: 1px solid #000; background: none; color: #000; box-shadow: none; } h1, h2, h3, h4 { color: #000 !important; -webkit-text-fill-color: initial !important; } }
     </style>
 </head>
 
