@@ -4,204 +4,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مشروع 001 - الأهداف الأساسية والمهام المركزية</title>
+    <title>مشروع 001 - الأهداف الأساسية</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-dark: #000212;
-            --primary: #00d2ff;
-            --accent-purple: #9d50bb;
-            --accent-gold: #ffcc33;
-            --glass-bg: rgba(10, 14, 35, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-dark: #000212; --primary: #00d2ff; --accent-purple: #9d50bb;
+            --glass-nav: rgba(0, 0, 0, 0.7);
             --text-main: #f5f5f7;
-            --text-muted: #86868b;
-            --glass-nav: rgba(20, 20, 20, 0.85);
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body {
-            font-family: 'Cairo', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 40px 20px 100px 20px; /* مسافة سفلية للشريط */
+            font-family: 'Cairo', sans-serif; background-color: var(--bg-dark); color: var(--text-main);
+            line-height: 1.6; padding: 40px 20px 120px 20px; /* مسافة سفلية كبيرة عشان الشريط */
             min-height: 100vh;
         }
-
-        .bg-glow {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            background: radial-gradient(circle at 50% -20%, #1a1b3b 0%, #000212 100%);
-        }
-
         .container { max-width: 800px; margin: 0 auto; position: relative; }
 
-        /* --- 1. الشريط السفلي العائم (الشفاف الموحد) --- */
+        /* الشريط السفلي المتجاوب */
         .floating-nav {
-            position: fixed;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 400px;
-            /* تصميم الزجاج الشفاف */
-            background: rgba(10, 10, 20, 0.7);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 50px;
-            padding: 10px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 99999;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            width: 95%; max-width: 400px; /* عرض مناسب للموبايل */
+            background: var(--glass-nav); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 50px;
+            padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;
+            z-index: 99999; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
-
-        .nav-link {
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            color: #999;
-            transition: 0.3s;
-            font-size: 0.8rem;
-        }
-
-        .nav-link i { font-size: 1.4rem; margin-bottom: 2px; }
-        .nav-link span { font-weight: 700; font-size: 0.7rem; }
-        
+        .nav-link { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 4px; color: #999; transition: 0.3s; font-size: 0.75rem; }
+        .nav-link i { font-size: 1.3rem; margin-bottom: 2px; }
         .nav-link.active { color: var(--primary); }
         .nav-link:hover { transform: translateY(-3px); color: #fff; }
 
-
-        /* --- بقية التنسيقات الأصلية --- */
+        /* باقي التنسيقات (كما هي) */
         .header { text-align: center; margin-bottom: 50px; }
-        .badge {
-            display: inline-block; padding: 5px 15px; background: rgba(0, 210, 255, 0.1); border: 1px solid var(--primary);
-            border-radius: 20px; color: var(--primary); font-weight: 800; font-size: 0.8rem; margin-bottom: 15px; text-transform: uppercase;
-        }
-
-        h1 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 900; color: #fff; margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
-        }
-
-        .intent-card {
-            background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 24px; padding: 30px;
-            margin-bottom: 30px; backdrop-filter: blur(10px); transition: 0.3s;
-        }
-        .intent-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-
-        .intent-number { font-size: 0.9rem; color: var(--primary); font-weight: 800; margin-bottom: 5px; display: block; }
-
-        h2 {
-            font-size: 1.6rem; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 12px;
-        }
+        .badge { display: inline-block; padding: 5px 15px; background: rgba(0, 210, 255, 0.1); border: 1px solid var(--primary); border-radius: 20px; color: var(--primary); font-weight: 800; font-size: 0.8rem; margin-bottom: 15px; }
+        h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 900; margin-bottom: 10px; }
+        .intent-card { background: rgba(10, 14, 35, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 30px; margin-bottom: 30px; }
+        .intent-number { font-size: 0.9rem; color: var(--primary); font-weight: 800; display: block; margin-bottom: 5px; }
+        h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 12px; }
         h2::before { content: ''; width: 4px; height: 24px; background: var(--primary); border-radius: 4px; }
-
-        .purpose {
-            background: rgba(255, 255, 255, 0.03); border-right: 3px solid var(--accent-purple); padding: 15px;
-            border-radius: 8px; margin-bottom: 20px; font-style: italic; color: #ced6e0;
-        }
-
+        .purpose { background: rgba(255, 255, 255, 0.03); border-right: 3px solid var(--accent-purple); padding: 15px; border-radius: 8px; margin-bottom: 20px; color: #ced6e0; }
         ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-        li {
-            padding: 10px 15px; background: rgba(255, 255, 255, 0.02); border-radius: 12px; font-size: 0.95rem;
-            display: flex; align-items: center; gap: 8px; transition: 0.2s;
-        }
-        li:hover { background: rgba(0, 210, 255, 0.05); color: var(--primary); }
+        li { padding: 10px 15px; background: rgba(255, 255, 255, 0.02); border-radius: 12px; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
         li::before { content: '✔️'; font-size: 0.8rem; }
-
-        .footer { text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.85rem; }
-
-        @media (max-width: 600px) {
-            ul { grid-template-columns: 1fr; }
-        }
+        .footer { text-align: center; margin-top: 50px; color: #86868b; font-size: 0.85rem; }
     </style>
 </head>
 
 <body>
-    <div class="bg-glow"></div>
-
     <nav class="floating-nav">
-        <a href="index.html" class="nav-link">
-            <i class="fas fa-home"></i>
-            <span>الرئيسية</span>
-        </a>
-        <a href="Plan_2026.html" class="nav-link">
-            <i class="fas fa-rocket"></i>
-            <span>الخطة</span>
-        </a>
-        <a href="PP_2026.html" class="nav-link">
-            <i class="fas fa-map-signs"></i>
-            <span>الخارطة</span>
-        </a>
-        <a href="#" class="nav-link active">
-            <i class="fas fa-microchip"></i>
-            <span>001</span>
+        <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>الرئيسية</span></a>
+        <a href="Plan_2026.html" class="nav-link"><i class="fas fa-rocket"></i><span>الخطة</span></a>
+        <a href="PP_2026.html" class="nav-link"><i class="fas fa-map-signs"></i><span>الخارطة</span></a>
+        
+        <a href="Menu_Final_2026.html" class="nav-link">
+            <i class="fas fa-utensils"></i>
+            <span>المنيو</span>
         </a>
     </nav>
 
     <div class="container">
-        
         <div class="header">
             <span class="badge">المواصفات الفنية للنظام</span>
             <h1>مشروع 001 – الأهداف الأساسية</h1>
-            <p style="color: var(--text-muted);">التأسيس (١-٣) لمنظومة الأتمتة والطلب الذكي</p>
+            <p style="color: #86868b;">التأسيس (١-٣) لمنظومة الأتمتة والطلب الذكي</p>
         </div>
 
         <div class="intent-card">
             <span class="intent-number">الهدف رقم ١</span>
             <h2>طلب الأسماك (Buy Fish)</h2>
-            <div class="purpose">
-                <strong>الغرض:</strong> تمكين العميل من طلب الأصناف مباشرة عبر محادثة واتساب منظمة وذكية.
-            </div>
+            <div class="purpose"><strong>الغرض:</strong> تمكين العميل من طلب الأصناف مباشرة عبر محادثة واتساب منظمة.</div>
             <ul>
-                <li>الترحيب والتعرف على رغبة العميل</li>
-                <li>تصنيفات المنتجات (بوري، جمبري، إلخ)</li>
-                <li>اختيار الأصناف المحددة</li>
-                <li>تحديد الأوزان المطلوبة</li>
-                <li>ملاحظات التجهيز (تنظيف، شوي، إلخ)</li>
-                <li>ملخص الطلب النهائي</li>
+                <li>الترحيب والتعرف على الرغبة</li>
+                <li>تصنيفات المنتجات</li>
+                <li>اختيار الأصناف</li>
+                <li>تحديد الأوزان</li>
+                <li>ملاحظات التجهيز</li>
+                <li>ملخص الطلب</li>
             </ul>
         </div>
 
         <div class="intent-card">
             <span class="intent-number">الهدف رقم ٢</span>
             <h2>الاستفسار عن الأسعار (Ask Prices)</h2>
-            <div class="purpose">
-                <strong>الغرض:</strong> توفير شفافية تامة في الأسعار ودمجها تلقائياً داخل تجربة الشراء.
-            </div>
+            <div class="purpose"><strong>الغرض:</strong> توفير شفافية تامة في الأسعار ودمجها تلقائياً.</div>
             <ul>
-                <li>إظهار السعر أثناء اختيار الصنف</li>
-                <li>ربط السعر بالوزن المطلوب لحظياً</li>
-                <li>تحديث الأسعار من قاعدة البيانات</li>
+                <li>إظهار السعر أثناء الاختيار</li>
+                <li>ربط السعر بالوزن</li>
+                <li>تحديث من قاعدة البيانات</li>
             </ul>
         </div>
 
         <div class="intent-card">
             <span class="intent-number">الهدف رقم ٣</span>
-            <h2>الاستفسار عن التوصيل (Ask About Delivery)</h2>
-            <div class="purpose">
-                <strong>الغرض:</strong> توضيح إمكانيات التوصيل، التكلفة، والمواعيد قبل تثبيت الطلب.
-            </div>
+            <h2>الاستفسار عن التوصيل</h2>
+            <div class="purpose"><strong>الغرض:</strong> توضيح إمكانيات التوصيل والتكلفة قبل الطلب.</div>
             <ul>
-                <li>تحديد موقع التسليم أو العنوان</li>
-                <li>التحقق من توفر التوصيل للمنطقة</li>
-                <li>تأكيد رسوم الشحن وموعد الوصول المتوقع</li>
-                <li>تحديث إجمالي الطلب شاملاً التوصيل</li>
+                <li>تحديد الموقع</li>
+                <li>التحقق من التغطية</li>
+                <li>تأكيد رسوم الشحن</li>
+                <li>تحديث الإجمالي</li>
             </ul>
         </div>
 
-        <div class="footer">
-            Weza Technologies — إطار عمل التوثيق الداخلي v1.0
-        </div>
+        <div class="footer">Weza Technologies — إطار عمل التوثيق الداخلي v1.0</div>
     </div>
 </body>
-
 </html>
