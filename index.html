@@ -11,10 +11,10 @@
     <script type="module" crossorigin src="./assets/index-rlWlhX1Z.js"></script>
     
     <style>
-        /* إخفاء الزر القديم المزعج */
-        a[href*="PP"], a[href*="Strategy"], .hero-buttons a:not(.new-added-btn) { display: none !important; }
+        /* إخفاء إجباري في CSS كخط دفاع أول */
+        a[href*="PP"], a[href*="Strategy"] { display: none !important; }
         
-        /* تحسين شكل الماوس والتفاعل مع اللوجو */
+        /* تنسيق اللوجو */
         .brand-logo { 
             cursor: pointer !important;
             transition: 0.3s;
@@ -25,7 +25,7 @@
             transform: scale(1.02);
         }
 
-        /* رفع الشريط الجديد فوق كل شيء */
+        /* تنسيق الشريط الجديد */
         .secondary-nav-injected { z-index: 999999 !important; position: relative; }
     </style>
 </head>
@@ -44,7 +44,7 @@
     <div id="app"></div>
 
     <script>
-        // دالة ذكية لتحديد صفحة الفريق بناءً على اللغة الحالية
+        // 1. دالة اللوجو الذكي
         function handleLogoClick() {
             const currentLang = document.documentElement.lang;
             if (currentLang === 'en') {
@@ -55,34 +55,51 @@
         }
 
         document.addEventListener("DOMContentLoaded", function() {
+            // مؤقت للتأكد من تحميل الموقع الأصلي قبل التعديل
             const finder = setInterval(() => {
                 const heroSection = document.querySelector('.hero-buttons') || document.querySelector('#app');
+                
                 if (heroSection) {
-                    clearInterval(finder);
                     
-                    // حذف الأزرار القديمة
-                    const oldBtns = document.querySelectorAll('.hero-buttons a');
-                    oldBtns.forEach(btn => {
-                        if (!btn.classList.contains('new-added-btn')) btn.remove();
+                    // --- حملة التنظيف (الجزء المهم) ---
+                    // هذا الكود يبحث عن أي زر قديم ويخفيه بالقوة
+                    const allLinks = document.querySelectorAll('a');
+                    allLinks.forEach(link => {
+                        // لو الزرار مش هو الجديد (اللي احنا ضفناه)
+                        if (!link.classList.contains('new-added-btn')) {
+                            // لو الزرار بيودي للخطة القديمة أو مكتوب فيه كلمة "الخطة" أو "Strategy"
+                            if (link.href.includes('Plan') || link.href.includes('PP') || link.href.includes('Strategy') || link.innerText.includes('الخطة') || link.innerText.includes('Strategy')) {
+                                link.style.display = 'none'; // اخفيه فوراً
+                                link.remove(); // امسحه من الوجود
+                            }
+                        }
                     });
 
-                    // إضافة الأزرار الجديدة
-                    const newNav = document.createElement('div');
-                    newNav.className = "secondary-nav-injected";
-                    newNav.style.cssText = `margin-top: 30px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; width: 100%; z-index: 999999; animation: fadeIn 1s ease-in-out;`;
-                    
-                    newNav.innerHTML = `
-                        <a href="Menu_Final_2026.html" class="new-added-btn" style="color: #fff; text-decoration: none; font-size: 1rem; border: 1px solid rgba(0, 210, 255, 0.6); background: rgba(0, 210, 255, 0.15); padding: 12px 35px; border-radius: 50px; font-family: 'Cairo'; font-weight: 700; backdrop-filter: blur(5px);">📄 قائمة الأسعار</a>
-                        <a href="Plan_2026.html" class="new-added-btn" style="color: #FFD700; text-decoration: none; font-size: 1rem; border: 1px solid rgba(255, 215, 0, 0.6); background: rgba(255, 215, 0, 0.1); padding: 12px 35px; border-radius: 50px; font-family: 'Cairo'; font-weight: 700; backdrop-filter: blur(5px);">🚀 رؤية 2026</a>
-                    `;
-                    
-                    if(document.querySelector('.hero-buttons')) { 
-                        document.querySelector('.hero-buttons').after(newNav); 
-                    } else { 
-                        document.body.appendChild(newNav); 
+                    // --- إضافة الأزرار الجديدة ---
+                    // نتأكد إننا لم نضف الشريط من قبل لتجنب التكرار
+                    if (!document.querySelector('.secondary-nav-injected')) {
+                        const newNav = document.createElement('div');
+                        newNav.className = "secondary-nav-injected";
+                        newNav.style.cssText = `margin-top: 30px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; width: 100%; z-index: 999999; animation: fadeIn 1s ease-in-out;`;
+                        
+                        newNav.innerHTML = `
+                            <a href="Menu_Final_2026.html" class="new-added-btn" style="color: #fff; text-decoration: none; font-size: 1rem; border: 1px solid rgba(0, 210, 255, 0.6); background: rgba(0, 210, 255, 0.15); padding: 12px 35px; border-radius: 50px; font-family: 'Cairo'; font-weight: 700; backdrop-filter: blur(5px);">📄 قائمة الأسعار</a>
+                            <a href="Plan_2026.html" class="new-added-btn" style="color: #FFD700; text-decoration: none; font-size: 1rem; border: 1px solid rgba(255, 215, 0, 0.6); background: rgba(255, 215, 0, 0.1); padding: 12px 35px; border-radius: 50px; font-family: 'Cairo'; font-weight: 700; backdrop-filter: blur(5px);">🚀 رؤية 2026</a>
+                        `;
+                        
+                        if(document.querySelector('.hero-buttons')) { 
+                            document.querySelector('.hero-buttons').after(newNav); 
+                        } else { 
+                            // لو ملقاش المكان المعتاد، يحطه في أول الـ App
+                            const app = document.getElementById('app');
+                            if(app) app.appendChild(newNav);
+                        }
                     }
+                    
+                    // نوقف البحث بعد ما نفذنا المهمة، لكن ممكن نسيبه شغال ثانية كمان احتياطي
+                    // clearInterval(finder); 
                 }
-            }, 50);
+            }, 100); // يتكرر كل 100 ملي ثانية للتأكد من حذف أي زرار يظهر متأخر
         });
     </script>
 </body>
