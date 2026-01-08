@@ -1,46 +1,65 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weza Technologies | Automation Core</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" crossorigin href="./assets/index-CHcqaDfp.css">
-    
+
     <script type="module" crossorigin src="./assets/index-CECu8CJt.js"></script>
     <script type="module" crossorigin src="./assets/index-rlWlhX1Z.js"></script>
-    
+
     <style>
         /* إخفاء إجباري في CSS كخط دفاع أول */
-        a[href*="PP"], a[href*="Strategy"] { display: none !important; }
-        
+        a[href*="PP"],
+        a[href*="Strategy"] {
+            display: none !important;
+        }
+
         /* تنسيق اللوجو */
-        .brand-logo { 
+        .brand-logo {
             cursor: pointer !important;
             transition: 0.3s;
             user-select: none;
         }
-        .brand-logo:hover { 
-            text-shadow: 0 0 20px rgba(0,210,255,0.8); 
+
+        .brand-logo:hover {
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.8);
             transform: scale(1.02);
         }
 
         /* تنسيق الشريط الجديد */
-        .secondary-nav-injected { z-index: 999999 !important; position: relative; }
+        .secondary-nav-injected {
+            z-index: 999999 !important;
+            position: relative;
+        }
+
+        /* تعديل مكان اللوجو ومبدل اللغة (اللوجو يسار - اللغة يمين) */
+        .nav-container {
+            display: flex !important;
+            flex-direction: row-reverse !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            width: 100%;
+            padding: 20px;
+        }
     </style>
 </head>
+
 <body>
     <div class="bg-orchestra"></div>
-    
+
     <nav class="nav-container">
         <div class="brand-logo" onclick="handleLogoClick()" title="About Team / من نحن">WezaTECHNOLOGIES</div>
-        
+
         <div id="nav-actions" class="lang-switch-box">
             <button id="btn-ar" onclick="window.setLanguage('ar')" class="lang-btn">AR</button>
             <button id="btn-en" onclick="window.setLanguage('en')" class="lang-btn">EN</button>
         </div>
     </nav>
-    
+
     <div id="app"></div>
 
     <script>
@@ -54,13 +73,13 @@
             }
         }
 
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             // مؤقت للتأكد من تحميل الموقع الأصلي قبل التعديل
             const finder = setInterval(() => {
                 const heroSection = document.querySelector('.hero-buttons') || document.querySelector('#app');
-                
+
                 if (heroSection) {
-                    
+
                     // --- حملة التنظيف (الجزء المهم) ---
                     // هذا الكود يبحث عن أي زر قديم ويخفيه بالقوة
                     const allLinks = document.querySelectorAll('a');
@@ -81,21 +100,21 @@
                         const newNav = document.createElement('div');
                         newNav.className = "secondary-nav-injected";
                         newNav.style.cssText = `margin-top: 30px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; width: 100%; z-index: 999999; animation: fadeIn 1s ease-in-out;`;
-                        
+
                         newNav.innerHTML = `
                             <a href="Menu_Final_2026.html" class="new-added-btn" style="color: #fff; text-decoration: none; font-size: 1rem; border: 1px solid rgba(0, 210, 255, 0.6); background: rgba(0, 210, 255, 0.15); padding: 12px 35px; border-radius: 50px; font-family: 'Cairo'; font-weight: 700; backdrop-filter: blur(5px);">📄 قائمة الأسعار</a>
-                            <a href="Plan_2026.html" class="new-added-btn" style="color: #FFD700; text-decoration: none; font-size: 1rem; border: 1px solid rgba(255, 215, 0, 0.6); background: rgba(255, 215, 0, 0.1); padding: 12px 35px; border-radius: 50px; font-family: 'Cairo'; font-weight: 700; backdrop-filter: blur(5px);">🚀 رؤية 2026</a>
+                            <a href="javascript:void(0)" class="new-added-btn" style="color: rgba(255, 215, 0, 0.5); text-decoration: none; font-size: 1rem; border: 1px solid rgba(255, 215, 0, 0.2); background: rgba(255, 215, 0, 0.05); padding: 12px 35px; border-radius: 50px; font-family: 'Cairo'; font-weight: 700; backdrop-filter: blur(5px); cursor: not-allowed;">🚀 رؤية 2026</a>
                         `;
-                        
-                        if(document.querySelector('.hero-buttons')) { 
-                            document.querySelector('.hero-buttons').after(newNav); 
-                        } else { 
+
+                        if (document.querySelector('.hero-buttons')) {
+                            document.querySelector('.hero-buttons').after(newNav);
+                        } else {
                             // لو ملقاش المكان المعتاد، يحطه في أول الـ App
                             const app = document.getElementById('app');
-                            if(app) app.appendChild(newNav);
+                            if (app) app.appendChild(newNav);
                         }
                     }
-                    
+
                     // نوقف البحث بعد ما نفذنا المهمة، لكن ممكن نسيبه شغال ثانية كمان احتياطي
                     // clearInterval(finder); 
                 }
@@ -103,4 +122,5 @@
         });
     </script>
 </body>
+
 </html>
