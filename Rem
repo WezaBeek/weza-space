@@ -1,265 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عرض الهوية البصرية - مشروع 03 | Weza Tech</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #1a2639; /* كحلي عميق */
-            --accent: #c49a6c; /* ذهبي مطفي */
-            --light: #f4f6f8;
-            --text: #333;
-            --success: #27ae60;
-        }
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--light);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            line-height: 1.7;
-        }
-        /* الهيدر */
-        header {
-            background: var(--primary);
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 5px solid var(--accent);
-        }
-        header h1 { margin: 0; font-size: 2.5rem; font-weight: 800; }
-        header p { color: var(--accent); font-size: 1.1rem; margin-top: 10px; }
-        
-        /* الحاويات */
-        .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 30px;
-            position: relative;
-        }
-        .section-title::after {
-            content: ''; display: block; width: 60px; height: 3px; background: var(--accent); margin: 10px auto;
-        }
-
-        /* كروت الأسماء */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            padding: 25px;
-            border-top: 4px solid transparent;
-            transition: transform 0.3s ease;
-        }
-        .card:hover { transform: translateY(-5px); border-top-color: var(--accent); }
-        .card h3 { color: var(--primary); margin-top: 0; font-size: 1.5rem; }
-        .card .badge { 
-            background: var(--accent); color: #fff; padding: 3px 10px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-bottom: 10px;
-        }
-        .desc { font-size: 0.95rem; color: #555; margin-bottom: 15px; }
-        .audience { font-size: 0.85rem; color: #777; border-top: 1px dashed #eee; padding-top: 10px; }
-        
-        /* قسم ترشيحات وزا */
-        .special-section {
-            background: linear-gradient(135deg, #1a2639 0%, #2c3e50 100%);
-            color: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            margin: 40px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .special-section::before {
-            content: 'Weza Choice'; position: absolute; top: -10px; left: -10px; background: var(--accent); padding: 10px 20px; color: var(--primary); font-weight: bold; border-radius: 10px;
-        }
-        .special-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); margin-bottom: 15px; }
-        .special-card h3 { color: var(--accent); }
-        .special-card .desc { color: #ddd; }
-        .special-card .audience { color: #aaa; border-top-color: rgba(255,255,255,0.1); }
-
-        /* الآيات القرآنية */
-        .quran-box {
-            background: #fff;
-            border-right: 5px solid var(--success);
-            padding: 20px;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            position: relative;
-        }
-        .quran-box::before { content: '﴾'; float: right; margin-left: 10px; color: var(--success); }
-        .quran-box::after { content: '﴿'; float: left; margin-right: 10px; color: var(--success); }
-
-        /* أزرار النسخ */
-        .copy-btn {
-            background: #eee; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-family: 'Tajawal'; font-size: 0.9rem; float: left; margin-top: -40px;
-        }
-        .copy-btn:hover { background: var(--accent); color: #fff; }
-
-        /* اللوجو والبرومبت */
-        .code-block {
-            background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; direction: ltr; text-align: left; font-family: monospace; overflow-x: auto;
-        }
-
-        /* الفوتر */
-        footer { text-align: center; margin-top: 50px; padding: 20px; color: #777; font-size: 0.9rem; }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>Weza Technologies™</h1>
-    <p>Project 03: Al-Rem Re-Branding Strategy</p>
-</header>
-
-<div class="container">
-
-    <div style="background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 40px; border-right: 5px solid var(--accent);">
-        <p><strong>عزيزي الشريك،</strong> بناءً على تحليلنا للسوق وللمنتج "دريس الشمواه"، نضع بين يديكم 5 مسارات للاسم والهوية، بالإضافة لترشيحاتنا الخاصة. الهدف ليس تغيير هويتكم، بل إظهار جوهرها الحقيقي للعالم.</p>
-    </div>
-
-    <div class="special-section">
-        <h2 style="text-align: center; margin-bottom: 30px; color: #fff;">🏆 ترشيحات Weza Tech (الخيار الاستراتيجي)</h2>
-        <div class="grid">
-            <div class="card special-card">
-                <h3>1. Al-Rem Atelier (مشغل الريم)</h3>
-                <p class="desc"><strong>المعنى:</strong> كلمة Atelier فرنسية تعني "المشغل الفني" الذي تُصنع فيه القطع يدوياً. هذا يرفع القيمة فوراً.</p>
-                <p class="audience"><strong>الجمهور:</strong> الطبقة الراقية التي تقدر الـ Hand-made ولا تقارن السعر بالمصانع.</p>
-                <p class="desc" style="color:#fff;"><strong>الميزة:</strong> يحافظ على اسم "الريم" الأصلي مع إضافة لمسة عالمية.</p>
-            </div>
-            <div class="card special-card">
-                <h3>2. سِتــــر | SITR</h3>
-                <p class="desc"><strong>المعنى:</strong> اسم عربي أصيل، يلامس الفطرة. "الستر" هو غاية كل فتاة محتشمة.</p>
-                <p class="audience"><strong>الجمهور:</strong> الفتيات والنساء اللواتي يبحثن عن "العفة" بشكل شيك وعصري.</p>
-                <p class="desc" style="color:#fff;"><strong>الميزة:</strong> اسم من كلمة واحدة (Branding قوي) وسهل الحفظ جداً.</p>
-            </div>
-            <div class="card special-card">
-                <h3>3. R . E . M (ريم)</h3>
-                <p class="desc"><strong>المعنى:</strong> كتابة الاسم بحروف مقطعة ومتباعدة. أسلوب متبع في البراندات العالمية (مثل D.K.N.Y).</p>
-                <p class="audience"><strong>الجمهور:</strong> الجيل الجديد (Gen Z) والشباب الجامعي.</p>
-                <p class="desc" style="color:#fff;"><strong>الميزة:</strong> عصري، غامض، وجذاب بصرياً في اللوجو.</p>
-            </div>
-        </div>
-    </div>
-
-    <h2 class="section-title">💡 المجموعات الخمسة المقترحة</h2>
-
-    <h3>1. مجموعة "الأصالة العربية" (الجذور)</h3>
-    <div class="grid">
-        <div class="card">
-            <span class="badge">نخبة</span>
-            <h3>المَـــهَـــا | Al-Maha</h3>
-            <button class="copy-btn" onclick="copyText('المها')">نسخ</button>
-            <p class="desc">المها هي عيون الظباء الواسعة. اسم يوحي بالجمال الحاد والواضح.</p>
-            <div class="audience">يستهدف: محبي التراث والفخامة الكلاسيكية.</div>
-        </div>
-        <div class="card">
-            <span class="badge">مميز</span>
-            <h3>الجَـــازي | Al-Jazi</h3>
-            <button class="copy-btn" onclick="copyText('الجازي')">نسخ</button>
-            <p class="desc">الغزال الذي يجزي (يكافئ) بجماله. يوحي بأن القطعة "تكفي وتوفي".</p>
-            <div class="audience">يستهدف: من تبحث عن قطعة واحدة مميزة.</div>
-        </div>
-        <div class="card">
-            <span class="badge">عربي</span>
-            <h3>أصايــــل | Asayel</h3>
-            <button class="copy-btn" onclick="copyText('أصايل')">نسخ</button>
-            <p class="desc">جمع أصيلة. يعكس جودة الخامة (أصلية) وجودة الصنعة.</p>
-            <div class="audience">يستهدف: الأمهات والسيدات الوقورات.</div>
-        </div>
-    </div>
-
-    <hr style="margin: 40px 0; border: 0; border-top: 1px solid #ddd;">
-
-    <h3>2. مجموعة "اللمسة الروحانية" (يخاطب القلب)</h3>
-    <div class="grid">
-        <div class="card">
-            <h3>وتيــــن | Wateen</h3>
-            <button class="copy-btn" onclick="copyText('وتين')">نسخ</button>
-            <p class="desc">عرق القلب. الملابس تصنع "بحب" لتلامس القلب.</p>
-            <div class="audience">يستهدف: الشخصيات العاطفية والرومانسية الهادئة.</div>
-        </div>
-        <div class="card">
-            <h3>مَـــوَدّة | Mawadda</h3>
-            <button class="copy-btn" onclick="copyText('مودة')">نسخ</button>
-            <p class="desc">يوحي باللين والراحة في اللبس والتعامل.</p>
-            <div class="audience">يستهدف: المتزوجات حديثاً والباحثات عن الهدوء.</div>
-        </div>
-        <div class="card">
-            <h3>بَيَـــان | Bayan</h3>
-            <button class="copy-btn" onclick="copyText('بيان')">نسخ</button>
-            <p class="desc">الوضوح والجمال. "هذا بيان للناس". تصميمات واضحة وصريحة.</p>
-            <div class="audience">يستهدف: الشخصيات القيادية والمثقفة.</div>
-        </div>
-    </div>
-
-    <hr style="margin: 40px 0; border: 0; border-top: 1px solid #ddd;">
-
-    <h3>3. مجموعة "المفهوم الحديث" (Modern Concept)</h3>
-    <div class="grid">
-        <div class="card">
-            <h3>توليـــن | Tuleen</h3>
-            <p class="desc">الهالة المضيئة حول القمر. اسم رقيق جداً وعصري.</p>
-        </div>
-        <div class="card">
-            <h3>HAYA Line (خط حياء)</h3>
-            <p class="desc">دمج كلمة عربية بأسلوب غربي. "الحياء" كخط موضة عالمي.</p>
-        </div>
-        <div class="card">
-            <h3>NOON (ن)</h3>
-            <p class="desc">نون النسوة. رمز بسيط جداً وقوي جداً كعلامة تجارية.</p>
-        </div>
-    </div>
-
-    <h2 class="section-title">✨ آيات تلامس القلب (للمحتوى والوصف)</h2>
-    <p style="text-align:center; margin-bottom:20px;">تستخدم في "البايو"، المنشورات، وكروت الشكر داخل الطلب.</p>
-    
-    <div class="quran-box">
-        <strong>للأمل والسعي:</strong> "وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى"
-        <button class="copy-btn" onclick="copyText('وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى')">نسخ</button>
-    </div>
-    <div class="quran-box">
-        <strong>للرزق والتوكل:</strong> "وَفِي السَّمَاءِ رِزْقُكُمْ وَمَا تُوعَدُونَ"
-        <button class="copy-btn" onclick="copyText('وَفِي السَّمَاءِ رِزْقُكُمْ وَمَا تُوعَدُونَ')">نسخ</button>
-    </div>
-    <div class="quran-box">
-        <strong>لإتقان العمل:</strong> "وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ"
-        <button class="copy-btn" onclick="copyText('وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ')">نسخ</button>
-    </div>
-    <div class="quran-box">
-        <strong>للجمال والخلق:</strong> "الَّذِي أَحْسَنَ كُلَّ شَيْءٍ خَلَقَهُ"
-        <button class="copy-btn" onclick="copyText('الَّذِي أَحْسَنَ كُلَّ شَيْءٍ خَلَقَهُ')">نسخ</button>
-    </div>
-    <div class="quran-box">
-        <strong>للتفاؤل:</strong> "لَا تَدْرِي لَعَلَّ اللَّهَ يُحْدِثُ بَعْدَ ذَلِكَ أَمْرًا"
-        <button class="copy-btn" onclick="copyText('لَا تَدْرِي لَعَلَّ اللَّهَ يُحْدِثُ بَعْدَ ذَلِكَ أَمْرًا')">نسخ</button>
-    </div>
-    <div class="quran-box">
-        <strong>للبركة:</strong> "ذَٰلِكَ فَضْلُ اللَّهِ يُؤْتِيهِ مَن يَشَاءُ ۚ وَاللَّهُ ذُو الْفَضْلِ الْعَظِيمِ"
-        <button class="copy-btn" onclick="copyText('ذَٰلِكَ فَضْلُ اللَّهِ يُؤْتِيهِ مَن يَشَاءُ ۚ وَاللَّهُ ذُو الْفَضْلِ الْعَظِيمِ')">نسخ</button>
-    </div>
-
-    <h2 class="section-title">🎨 تطوير اللوجو (الاستثمار البصري)</h2>
-    <div style="background: #fff; padding: 25px; border-radius: 10px;">
-        <p>اللوجو الحالي (الغزال) جميل، لكن يمكن جعله "أيقونياً" يساوي 500$+ باستخدام التوجيهات الخاصة بشركة وزا تكنولوجيز, لتوليد أفكار جديدة:</p>
-        
-  
-
-</div>
-
-<footer>
-    <p>تم إعداد هذا التقرير بواسطة ™Weza Technologies | جميع الحقوق محفوظة 2026</p>
-</footer>
-
-<script>
-    function copyText(text) {
-        navigator.clipboard.writeText(text);
-        alert('تم نسخ: ' + text);
-    }
-</script>
-
-</body>
-</html>
