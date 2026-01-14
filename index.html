@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weza Technologies | The Future Core 2030</title>
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+
+    <style>
+        :root {
+            --bg-deep: #03050c;
+            --bg-panel: rgba(10, 15, 30, 0.7);
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --gold: #ffd700;
+            --text-main: #ffffff;
+            --text-muted: #8a9bbd;
+            --border-glow: rgba(0, 242, 255, 0.5);
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Background Animation --- */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image:
+                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -2;
+            transform: perspective(1000px) rotateX(60deg) translateY(-200px) scale(2);
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes gridMove {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 0 500px;
+            }
+        }
+
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.3;
+            animation: float 15s infinite alternate;
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            top: -20%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: var(--secondary);
+        }
+
+        .orb-2 {
+            bottom: -20%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: var(--primary);
+            animation-delay: -5s;
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            background: rgba(3, 5, 12, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand .tag {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            background: rgba(0, 242, 255, 0.1);
+            padding: 4px 10px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 4px;
+            -webkit-text-fill-color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 600;
+            position: relative;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 50px;
+            position: relative;
+        }
+
+        /* --- 2030 Holographic Card (Fixed Watermark) --- */
+        .hero-fixed-holo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+            z-index: -1;
+            opacity: 0.4;
+            /* Transparency as requested */
+            pointer-events: none;
+            /* Floating Animation */
+            animation: floatCardFixed 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(0, 242, 255, 0.3));
+        }
+
+        @keyframes floatCardFixed {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) translateY(0);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) translateY(-20px);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff, #999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin-bottom: 50px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-glow {
+            padding: 18px 50px;
+            background: rgba(0, 242, 255, 0.05);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+            z-index: 10;
+        }
+
+        .btn-glow:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 50px var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* --- Stats Strip --- */
+        .stats-strip {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            padding: 40px 5%;
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            flex-wrap: wrap;
+            backdrop-filter: blur(5px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Orbitron';
+            font-size: 2.5rem;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 5px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- Sections General --- */
+        .section {
+            padding: 120px 5%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-sub {
+            color: var(--primary);
+            font-family: 'Rajdhani';
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 1.1rem;
+        }
+
+        /* --- Philosophy --- */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .philosophy-card {
+            background: linear-gradient(135deg, rgba(20, 25, 40, 0.9), rgba(10, 15, 25, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+        .comparison-table th {
+            text-align: right;
+            padding: 20px;
+            color: var(--text-muted);
+            font-family: 'Rajdhani';
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .comparison-table td {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .comparison-table tr:hover td {
+            background: rgba(0, 242, 255, 0.05);
+            border-color: var(--primary);
+            transform: scale(1.02);
+        }
+
+        .comparison-table td:first-child {
+            border-radius: 0 15px 15px 0;
+            border-left: none;
+        }
+
+        .comparison-table td:last-child {
+            border-radius: 15px 0 0 15px;
+            border-right: none;
+        }
+
+        /* --- Projects Grid --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: var(--bg-panel);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 60px rgba(112, 0, 255, 0.2);
+        }
+
+        .project-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .project-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, var(--bg-deep), transparent);
+        }
+
+        .project-content {
+            padding: 40px 30px;
+        }
+
+        .project-tag {
+            color: var(--gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 5px 10px;
+            border: 1px solid var(--gold);
+            border-radius: 50px;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .project-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .btn-link {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-link:hover {
+            color: var(--primary);
+            gap: 15px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #000;
+            padding: 100px 5% 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 5;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .footer-logo {
+            font-family: 'Orbitron';
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .qr-box {
+            background: #fff;
+            padding: 10px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+
+        @media(max-width:900px) {
+
+            .philosophy-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats-strip {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Backgrounds -->
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="brand">
+            WezaTechnologies
+            <div class="tag">FUTURE CORE</div>
+        </div>
+        <nav class="nav-links">
+            <a href="#vision" class="nav-link">الرؤية</a>
+            <a href="#projects" class="nav-link">المشاريع</a>
+            <a href="#philosophy" class="nav-link">الفلسفة</a>
+            <a href="#contact" class="nav-link">تواصل</a>
+        </nav>
+        <a href="Team_AR.html" class="btn-glow" style="padding: 10px 25px; font-size: 0.9rem;">الفريق</a>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <!-- New Holographic Image as Fixed Background Element within Hero Context -->
+        <div class="hero-fixed-holo">
+            <img src="Wez@o_V1.png" alt="Weza Identity 2030" style="width: 100%;">
+        </div>
+
+        <h1 class="animate__animated animate__fadeInUp">منظـومـة السيطـرة الرقميـة</h1>
+        <p class="animate__animated animate__fadeInUp animate__delay-1s">
+            نحن لا نصمم مواقع، نحن نبني بنية تحتية رقمية لأعمالك.
+            <br>
+            <span style="color:var(--primary)">Digital Empires Built on Code.</span>
+        </p>
+        <div class="animate__animated animate__fadeInUp animate__delay-2s"
+            style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 10;">
+            <a href="#projects" class="btn-glow">استعراض المشاريع</a>
+            <a href="Plan_2026.html" class="btn-glow"
+                style="background: transparent; color:#fff; border-color:rgba(255,255,255,0.3);">الخطة التنفيذية</a>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats-strip">
+        <div class="stat-item">
+            <span class="stat-num">50K+</span>
+            <span class="stat-label">Lines of Code</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">2030</span>
+            <span class="stat-label">Vision Ready</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Automation</span>
+        </div>
+    </div>
+
+    <!-- Philosophy -->
+    <section class="section" id="philosophy">
+        <div class="section-header">
+            <div class="section-sub">THE MINDSET</div>
+            <h2 class="section-title">هل نتحرك للأمام؟</h2>
+        </div>
+
+        <div class="philosophy-grid">
+            <div class="philosophy-card">
+                <h3 style="color:var(--primary); font-size:2rem; margin-bottom:20px;">الخروج من الدائرة</h3>
+                <p style="font-size:1.2rem; margin-bottom:20px; color:#ddd; line-height: 1.8;">
+                    في سباق اليومي الذي لا ينتهي.. نركض بين المهام والتقارير. نزداد سرعة، لكن نسأل أنفسنا: "هل نتحرك
+                    للأمام فعلاً؟"
+                    <br><br>
+                    الانشغال الدائم لا يعني التقدم. النجاح الحقيقي ليس في الجري أسرع، بل في بناء
+                    <strong>"سيستم"</strong> يخرجك من الدائرة.
+                </p>
+            </div>
+
+            <div>
+                <table class="comparison-table">
+                    <tbody>
+                        <tr>
+                            <td>الوضع التقليدي (الظفارة) ❌</td>
+                            <td style="color:var(--primary); font-weight:bold;">منظومة Weza (المستقبل) ✅</td>
+                        </tr>
+                        <tr>
+                            <td>موقع ثابت وميت لا يتفاعل</td>
+                            <td>منصة حية تتحدث مع العملاء (AI)</td>
+                        </tr>
+                        <tr>
+                            <td>منيو PDF ممل وصعب التعديل</td>
+                            <td>كتالوج تفاعلي مربوط بالمخزون لحظياً</td>
+                        </tr>
+                        <tr>
+                            <td>خسارة العملاء بسبب التأخر</td>
+                            <td>روبوت مبيعات يرد ويبيع في ثانية</td>
+                        </tr>
+                        <tr>
+                            <td>قرارات عشوائية "بالحب"</td>
+                            <td>قرارات مبنية على داتا وتحليل دقيق</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+        <div class="section-header">
+            <div class="section-sub">PORTFOLIO & STRATEGY</div>
+            <h2 class="section-title">شاهد المستقبل وهو يعمل</h2>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1: NewFolder -->
+            <div class="project-card">
+                <div class="project-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');">
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">ECOMMERCE CORE</span>
+                    <h3 class="project-title">NewFolder Tech Store</h3>
+                    <p class="project-desc">
+                        تجربة تسوق إلكترونية متكاملة. نظام سلة مشتريات ذكي، ربط مباشر مع واتساب، وواجهة مستخدم زجاجية
+                        (Glassmorphism) تتحدى المعايير العالمية.
+                    </p>
+                    <a href="NewFolder/NewFolder_index.html" target="_blank" class="btn-link">فتح المعاينة الحية <i
+                            class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <!-- Project 2: REM -->
+            <div class="project-card">
+                <div class="project-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');">
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">REBRANDING STRATEGY</span>
+                    <h3 class="project-title">Rem Re-Branding</h3>
+                    <p class="project-desc">
+                        استراتيجية إعادة هيكلة الهوية البصرية والرقمية. تحويل العلامة التجارية من السوق المحلي إلى
+                        العالمية بخطوات مدروسة.
+                    </p>
+                    <a href="Rem/index.html" target="_blank" class="btn-link">استعراض الاستراتيجية <i
+                            class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <!-- Project 3: Kings System -->
+            <div class="project-card">
+                <div class="project-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');">
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">AUTOMATION SYSTEM</span>
+                    <h3 class="project-title">Project 001: Kings Core</h3>
+                    <p class="project-desc">
+                        نظام الأتمتة الكامل لطلب الأسماك والمنتجات. يغطي "اشتري سمك"، "اسأل عن السعر"، و"التوصيل" بشكل
+                        آلي بالكامل.
+                    </p>
+                    <a href="Project_001_Core_Intents_AR.html" target="_blank" class="btn-link">تفاصيل الكود <i
+                            class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Modules -->
+    <section class="section" style="background: rgba(255,255,255,0.01);">
+        <div class="section-header">
+            <div class="section-sub">OUR ECOSYSTEM</div>
+            <h2 class="section-title">محركات النمو الذكية</h2>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; gap:30px; justify-content:center;">
+            <div
+                style="flex:1; min-width:300px; padding:40px; border:1px solid var(--border-glow); border-radius:20px; background:rgba(0,0,0,0.6); backdrop-filter:blur(10px);">
+                <i class="fas fa-brain" style="font-size:3rem; color:var(--secondary); margin-bottom:20px;"></i>
+                <h3 style="color:#fff; margin-bottom:10px;">Neuro-Logic AI</h3>
+                <p style="color:#aaa;">أنظمة رد آلي تفكر، تحلل، وتبيع. ليست مجرد نصوص محفوظة، بل عقل يدير عمليات البيع
+                    ٢٤/٧.</p>
+            </div>
+            <div
+                style="flex:1; min-width:300px; padding:40px; border:1px solid var(--border-glow); border-radius:20px; background:rgba(0,0,0,0.6); backdrop-filter:blur(10px);">
+                <i class="fas fa-search-location" style="font-size:3rem; color:var(--primary); margin-bottom:20px;"></i>
+                <h3 style="color:#fff; margin-bottom:10px;">Search Alpha</h3>
+                <p style="color:#aaa;">السيطرة الكاملة على نتائج البحث. عندما يبحث العميل، لا يجد إلا أنت. هيمنة رقمية
