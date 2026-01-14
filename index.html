@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+
     <style>
         :root {
             --bg-deep: #03050c;
@@ -508,14 +514,6 @@
             display: block;
         }
 
-        .qr-box {
-            background: #fff;
-            padding: 10px;
-            border-radius: 15px;
-            display: inline-block;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-        }
-
         @media(max-width:900px) {
 
             .philosophy-grid,
@@ -557,7 +555,7 @@
             <a href="#philosophy" class="nav-link">الفلسفة</a>
             <a href="#contact" class="nav-link">تواصل</a>
         </nav>
-        <a href="Team_AR.html" class="btn-glow" style="padding: 10px 25px; font-size: 0.9rem;">الفريق</a>
+        <a href="Team/" class="btn-glow" style="padding: 10px 25px; font-size: 0.9rem;">الفريق</a>
     </header>
 
     <!-- Hero -->
@@ -576,7 +574,7 @@
         <div class="animate__animated animate__fadeInUp animate__delay-2s"
             style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 10;">
             <a href="#projects" class="btn-glow">استعراض المشاريع</a>
-            <a href="Plan_2026.html" class="btn-glow"
+            <a href="Plan/" class="btn-glow"
                 style="background: transparent; color:#fff; border-color:rgba(255,255,255,0.3);">الخطة التنفيذية</a>
         </div>
     </section>
@@ -665,7 +663,7 @@
                         تجربة تسوق إلكترونية متكاملة. نظام سلة مشتريات ذكي، ربط مباشر مع واتساب، وواجهة مستخدم زجاجية
                         (Glassmorphism) تتحدى المعايير العالمية.
                     </p>
-                    <a href="NewFolder/NewFolder_index.html" target="_blank" class="btn-link">فتح المعاينة الحية <i
+                    <a href="NewFolder/" target="_blank" class="btn-link">فتح المعاينة الحية <i
                             class="fas fa-arrow-left"></i></a>
                 </div>
             </div>
@@ -682,7 +680,7 @@
                         استراتيجية إعادة هيكلة الهوية البصرية والرقمية. تحويل العلامة التجارية من السوق المحلي إلى
                         العالمية بخطوات مدروسة.
                     </p>
-                    <a href="Rem/index.html" target="_blank" class="btn-link">استعراض الاستراتيجية <i
+                    <a href="Rem/" target="_blank" class="btn-link">استعراض الاستراتيجية <i
                             class="fas fa-arrow-left"></i></a>
                 </div>
             </div>
@@ -699,8 +697,7 @@
                         نظام الأتمتة الكامل لطلب الأسماك والمنتجات. يغطي "اشتري سمك"، "اسأل عن السعر"، و"التوصيل" بشكل
                         آلي بالكامل.
                     </p>
-                    <a href="Project_001_Core_Intents_AR.html" target="_blank" class="btn-link">تفاصيل الكود <i
-                            class="fas fa-arrow-left"></i></a>
+                    <a href="Kings/" target="_blank" class="btn-link">تفاصيل الكود <i class="fas fa-arrow-left"></i></a>
                 </div>
             </div>
         </div>
@@ -739,81 +736,64 @@
     </section>
 
     <!-- Contact & Footer -->
-    <!-- Contact & Footer -->
     <footer id="contact">
-        <div class="footer-center" style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <div class="footer-center"
+            style="text-align: center; max-width: 900px; margin: 0 auto; padding-bottom: 50px; position:relative;">
 
-            <!-- Branding -->
-            <span class="footer-logo animate__animated animate__pulse animate__infinite animate__slow"
-                style="display:inline-block; margin-bottom: 20px;">
-                Weza<span style="color:var(--primary)">Technologies</span>
-            </span>
+            <!-- Glow behind the image -->
+            <div
+                style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:600px; height:600px; background:radial-gradient(circle, rgba(0,242,255,0.08), transparent 70%); pointer-events:none; z-index:0;">
+            </div>
 
-            <p style="color:#aaa; margin-bottom:40px; font-size: 1.1rem; line-height: 1.8;">
+            <!-- The Big Image (Wez@o_V2.png) - Center Piece -->
+            <div style="position: relative; z-index: 1; margin-bottom: 30px;">
+                <img src="Wez@o_V2.png" alt="Weza Signature"
+                    style="max-width: 100%; width: 500px; filter: drop-shadow(0 0 20px rgba(0,242,255,0.1));">
+            </div>
+
+            <p
+                style="color:#aaa; max-width: 600px; margin: 0 auto 50px; font-size: 1.1rem; line-height: 1.8; position: relative; z-index: 1;">
                 نحن المهندسون الذين يبنون الجسور بين "الحاضر" و "المستقبل". لا ننتظر الثورة التقنية، نحن نصنعها.
             </p>
 
-            <!-- Contact Box (Modified) -->
+            <!-- Links & Icons Row -->
             <div
-                style="background: linear-gradient(145deg, rgba(20,30,40,0.8), rgba(0,0,0,0.9)); padding: 40px; border-radius: 40px; border: 1px solid rgba(0, 242, 255, 0.2); display: inline-block; width: 100%; max-width: 700px; box-shadow: 0 0 50px rgba(0,0,0,0.5); position: relative; overflow: hidden; min-height: 250px; display: flex; align-items: center; justify-content: center;">
+                style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; flex-wrap: wrap; gap: 20px;">
 
-                <!-- Glow Effect -->
-                <div
-                    style="position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle, rgba(0,242,255,0.05), transparent 70%); pointer-events:none;">
+                <!-- Copyright -->
+                <div style="color: #666; font-size: 0.9rem;">
+                    &copy; 2026 Weza Technologies. All Rights Reserved.
                 </div>
 
-                <!-- The Featured Card (Wez@o_V2) -->
-                <img src="Wez@o_V2.png" alt="Weza Contact Card"
-                    style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 0 30px rgba(0,0,0,0.5);">
-
-                <!-- Social Icons (Cornered) -->
-                <div style="position: absolute; bottom: 20px; right: 20px; display: flex; gap: 15px;">
-                    <!-- WhatsApp -->
-                    <a href="https://wa.me/201207799717" target="_blank" style="text-decoration:none;">
-                        <div style="width: 50px; height: 50px; background: rgba(37, 211, 102, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #25D366; transition: 0.3s;"
-                            onmouseover="this.style.background='#25D366'; this.style.transform='scale(1.1)';"
-                            onmouseout="this.style.background='rgba(37, 211, 102, 0.2)'; this.style.transform='scale(1)';">
-                            <i class="fab fa-whatsapp" style="font-size: 1.8rem; color: #fff;"></i>
-                        </div>
-                    </a>
-                    <!-- Facebook -->
-                    <a href="https://www.facebook.com/WezaTechnologies/" target="_blank" style="text-decoration:none;">
-                        <div style="width: 50px; height: 50px; background: rgba(24, 119, 242, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #1877F2; transition: 0.3s;"
-                            onmouseover="this.style.background='#1877F2'; this.style.transform='scale(1.1)';"
-                            onmouseout="this.style.background='rgba(24, 119, 242, 0.2)'; this.style.transform='scale(1)';">
-                            <i class="fab fa-facebook-f" style="font-size: 1.5rem; color: #fff;"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Links -->
-            <div style="margin-top: 50px;">
-                <ul
-                    style="list-style:none; display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; padding: 0;">
-                    <li><a href="Plan_2026.html"
-                            style="color:#777; text-decoration:none; transition:0.3s; font-size: 1.1rem;"
+                <!-- Links -->
+                <ul style="list-style:none; display: flex; gap: 20px; padding: 0; margin: 0;">
+                    <li><a href="Plan/" style="color:#777; text-decoration:none; transition:0.3s;"
                             onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#777'">خطة 2026</a></li>
-                    <li style="color: #333; font-size: 1.1rem;">|</li>
-                    <li><a href="Menu_Final_2026.html"
-                            style="color:#777; text-decoration:none; transition:0.3s; font-size: 1.1rem;"
+                    <li style="color: #333;">|</li>
+                    <li><a href="Menu/" style="color:#777; text-decoration:none; transition:0.3s;"
                             onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#777'">المنيو الذكي</a>
                     </li>
-                    <li style="color: #333; font-size: 1.1rem;">|</li>
-                    <li><a href="Team_AR.html"
-                            style="color:#777; text-decoration:none; transition:0.3s; font-size: 1.1rem;"
+                    <li style="color: #333;">|</li>
+                    <li><a href="Team/" style="color:#777; text-decoration:none; transition:0.3s;"
                             onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#777'">فريق العمل</a>
                     </li>
                 </ul>
+
+                <!-- Social Icons (Corner) -->
+                <div style="display: flex; gap: 15px;">
+                    <a href="https://wa.me/201207799717" target="_blank" style="text-decoration:none;">
+                        <i class="fab fa-whatsapp" style="font-size: 1.5rem; color: #25D366; transition: 0.3s;"
+                            onmouseover="this.style.transform='scale(1.2)'"
+                            onmouseout="this.style.transform='scale(1)'"></i>
+                    </a>
+                    <a href="https://www.facebook.com/WezaTechnologies/" target="_blank" style="text-decoration:none;">
+                        <i class="fab fa-facebook-f" style="font-size: 1.5rem; color: #1877F2; transition: 0.3s;"
+                            onmouseover="this.style.transform='scale(1.2)'"
+                            onmouseout="this.style.transform='scale(1)'"></i>
+                    </a>
+                </div>
+
             </div>
-
-        </div>
-
-        <div
-            style="text-align:center; margin-top:60px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.05); color:#444; font-size:0.8rem; display: flex; flex-direction: column; align-items: center; gap: 20px;">
-            <p>&copy; 2026 Weza Technologies. All Rights Reserved. Engineered by The Weza Core.</p>
-            <img src="Wez@o_V2.png" alt="Weza Signature"
-                style="width: 150px; opacity: 0.8; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));">
         </div>
     </footer>
 
