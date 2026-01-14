@@ -583,10 +583,50 @@
         }
 
         // --- Gallery Logic ---
+        // تم تحديث النظام ليعمل بالروابط المباشرة (External URLs) كما طلبت
+        // فقط ضع روابط الصور الخاصة بكل نسخة داخل الأقواس المربعة []
+
         const versions = {
-            v1: { title: "Version 1.0 - The Legacy (الفخامة الأصيلة)", count: 9, folder: "Rem_V1_WezaTECHNOLOGIES", prefix: "V1_" },
-            v2: { title: "Version 2.0 - The Modern (العصرية الانسيابية)", count: 6, folder: "Rem_V2_WezaTECHNOLOGIES", prefix: "V2_" },
-            v3: { title: "Version 3.0 - The Future (الهوية الرقمية)", count: 4, folder: "Rem_V3_WezaTECHNOLOGIES", prefix: "V3_" }
+            v1: {
+                title: "Version 1.0 - The Legacy (الفخامة الأصيلة)",
+                type: "urls",
+                urls: [
+                    // ضع روابط النسخة الأولى هنا (9 صور)
+                    "https://i.postimg.cc/vTzt7xbb/V1-1.png",
+                    "https://i.postimg.cc/0jf0GKPk/V1-2.png",
+                    "https://i.postimg.cc/x8R3GNn3/V1-3.png",
+                    "https://i.postimg.cc/ZYFHz2pW/V1-4.png",
+                    "https://i.postimg.cc/9FLBr9xH/V1-5.png",
+                    "https://i.postimg.cc/ZYFHz2pq/V1-6.png",
+                    "https://i.postimg.cc/yY1P1jyr/V1-7.png",
+                    "https://i.postimg.cc/Nfdx5XdN/V1-8.png",
+                    "https://i.postimg.cc/Hs6tVMSd/V1-9.png"
+                ]
+            },
+            v2: {
+                title: "Version 2.0 - The Modern (العصرية الانسيابية)",
+                type: "urls",
+                urls: [
+                    // ضع روابط النسخة الثانية هنا (6 صور)
+                    "https://i.postimg.cc/DZNCJXf8/V2-1.png",
+                    "https://i.postimg.cc/T1Wtr3ht/V2-2.png",
+                    "https://i.postimg.cc/zBQdbgDK/V2-3.png",
+                    "https://i.postimg.cc/j2JMzSCC/V2-4.png",
+                    "https://i.postimg.cc/w380FYsV/V2-5.png",
+                    "https://i.postimg.cc/L5Zxz8hC/V2-6.png"
+                ]
+            },
+            v3: {
+                title: "Version 3.0 - The Future (الهوية الرقمية)",
+                type: "urls",
+                urls: [
+                    // ضع روابط النسخة الثالثة هنا (4 صور)
+                    "https://i.postimg.cc/QNPPVRVW/V3-1.png",
+                    "https://i.postimg.cc/zDMM393y/V3-2.png",
+                    "https://i.postimg.cc/jq99CGCW/V3-3.png",
+                    "https://i.postimg.cc/bYMMdKds/V3-4.png"
+                ]
+            }
         };
 
         function openVersion(vKey) {
@@ -599,11 +639,8 @@
             grid.innerHTML = '';
             title.innerText = data.title;
 
-            // Generate Images
-            for (let i = 1; i <= data.count; i++) {
-                const imgName = `${data.prefix}${i}.png`;
-                const imgPath = `${data.folder}/${imgName}`;
-
+            // Helper to create card
+            const createCard = (imgSrc, index) => {
                 const card = document.createElement('div');
                 card.style.cssText = `
                     background: rgba(255,255,255,0.05);
@@ -614,16 +651,34 @@
                     border: 1px solid rgba(255,255,255,0.05);
                     position: relative;
                 `;
+                // Add validation for empty placeholders
+                const isPlaceholder = imgSrc.includes("رابط_الصورة");
+                if (isPlaceholder) {
+                    card.style.border = "1px dashed red";
+                    card.innerHTML = `<div style="height:200px; display:flex; align-items:center; justify-content:center; color:red;">رابط مفقود ${index + 1}</div>`;
+                    grid.appendChild(card);
+                    return;
+                }
+
                 card.onmouseover = function () { this.style.borderColor = 'var(--primary)'; };
                 card.onmouseout = function () { this.style.borderColor = 'rgba(255,255,255,0.05)'; };
-                card.onclick = function () { openModal(imgPath, imgName); };
+                card.onclick = function () { openModal(imgSrc, `Design_View_${index + 1}.png`); };
 
                 card.innerHTML = `
                     <div style="height: 200px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2);">
-                        <img src="${imgPath}" style="max-width:100%; max-height:100%; object-fit:contain;">
+                        <img src="${imgSrc}" style="max-width:100%; max-height:100%; object-fit:contain;" loading="lazy" onerror="this.src='https://via.placeholder.com/300?text=Image+Error'">
                     </div>
                 `;
                 grid.appendChild(card);
+            };
+
+            // Process URLs
+            if (data.urls && data.urls.length > 0) {
+                data.urls.forEach((url, index) => {
+                    createCard(url, index);
+                });
+            } else {
+                grid.innerHTML = '<p style="color:white; text-align:center; width:100%;">لا توجد صور مضافة بعد.</p>';
             }
 
             // Show
