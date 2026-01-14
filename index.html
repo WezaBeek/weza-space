@@ -533,6 +533,32 @@
                 gap: 30px;
             }
         }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            .brand {
+                font-size: 1.2rem;
+                /* تصغير الخط للموبايل */
+                gap: 8px;
+            }
+
+            .brand .tag {
+                font-size: 0.7rem;
+                padding: 2px 6px;
+                display: none;
+                /* إخفاء التاج مؤقتا في الشاشات الصغيرة جدا */
+            }
+
+            /* إظهار التاج فقط لو الشاشة تسمح قليلا */
+            @media (min-width: 380px) {
+                .brand .tag {
+                    display: block;
+                }
+            }
+        }
     </style>
 </head>
 
@@ -540,13 +566,13 @@
 
     <!-- Backgrounds -->
     <div class="bg-grid"></div>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+    <div class="orb orb-1" style="filter: blur(120px);"></div>
+    <div class="orb orb-2" style="filter: blur(120px);"></div>
 
     <!-- Header -->
     <header>
         <div class="brand">
-            WezaTechnologies
+            <img src="brand_header.webp" alt="Weza Technologies" style="height: 35px; width: auto;">
             <div class="tag">FUTURE CORE</div>
         </div>
         <nav class="nav-links">
@@ -562,7 +588,7 @@
     <section class="hero">
         <!-- New Holographic Image as Fixed Background Element within Hero Context -->
         <div class="hero-fixed-holo">
-            <img src="Wez@o_V1.png" alt="Weza Identity 2030" style="width: 100%;">
+            <img src="Wez@o_V1.webp" alt="Weza Identity 2030" style="width: 100%;">
         </div>
 
         <h1 class="animate__animated animate__fadeInUp">منظـومـة السيطـرة الرقميـة</h1>
@@ -740,14 +766,14 @@
         <div class="footer-center"
             style="text-align: center; max-width: 900px; margin: 0 auto; padding-bottom: 50px; position:relative;">
 
-            <!-- Glow behind the image -->
+            <!-- Glow behind the image: Reduced blur for performance -->
             <div
                 style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:600px; height:600px; background:radial-gradient(circle, rgba(0,242,255,0.08), transparent 70%); pointer-events:none; z-index:0;">
             </div>
 
             <!-- The Big Image (Wez@o_V2.png) - Center Piece -->
             <div style="position: relative; z-index: 1; margin-bottom: 30px;">
-                <img src="Wez@o_V2.png" alt="Weza Signature"
+                <img src="Wez@o_V2.webp" alt="Weza Signature"
                     style="max-width: 100%; width: 500px; filter: drop-shadow(0 0 20px rgba(0,242,255,0.1));">
             </div>
 
