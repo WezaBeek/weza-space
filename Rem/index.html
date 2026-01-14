@@ -1,265 +1,666 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عرض الهوية البصرية - مشروع 03 | Weza Tech</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <title>Rem Re-Branding | Weza Technologies</title>
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Rajdhani:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
     <style>
         :root {
-            --primary: #1a2639; /* كحلي عميق */
-            --accent: #c49a6c; /* ذهبي مطفي */
-            --light: #f4f6f8;
-            --text: #333;
-            --success: #27ae60;
-        }
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--light);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            line-height: 1.7;
-        }
-        /* الهيدر */
-        header {
-            background: var(--primary);
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 5px solid var(--accent);
-        }
-        header h1 { margin: 0; font-size: 2.5rem; font-weight: 800; }
-        header p { color: var(--accent); font-size: 1.1rem; margin-top: 10px; }
-        
-        /* الحاويات */
-        .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 30px;
-            position: relative;
-        }
-        .section-title::after {
-            content: ''; display: block; width: 60px; height: 3px; background: var(--accent); margin: 10px auto;
+            --bg-deep: #050a12;
+            --bg-card: rgba(20, 30, 45, 0.6);
+            --primary: #00f2ff;
+            --gold: #d4af37;
+            --text-main: #e0e6ed;
+            --text-muted: #94a3b8;
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+            --success: #2ecc71;
         }
 
-        /* كروت الأسماء */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            background-image: radial-gradient(circle at 10% 10%, rgba(0, 242, 255, 0.05), transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(212, 175, 55, 0.05), transparent 40%);
+            min-height: 100vh;
+        }
+
+        /* --- Header --- */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-tag {
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 2px;
+            border: 1px solid var(--primary);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            background: linear-gradient(to right, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* --- Container --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Intro Box --- */
+        .intro-box {
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.1), transparent);
+            border-right: 4px solid var(--gold);
             padding: 25px;
-            border-top: 4px solid transparent;
-            transition: transform 0.3s ease;
-        }
-        .card:hover { transform: translateY(-5px); border-top-color: var(--accent); }
-        .card h3 { color: var(--primary); margin-top: 0; font-size: 1.5rem; }
-        .card .badge { 
-            background: var(--accent); color: #fff; padding: 3px 10px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-bottom: 10px;
-        }
-        .desc { font-size: 0.95rem; color: #555; margin-bottom: 15px; }
-        .audience { font-size: 0.85rem; color: #777; border-top: 1px dashed #eee; padding-top: 10px; }
-        
-        /* قسم ترشيحات وزا */
-        .special-section {
-            background: linear-gradient(135deg, #1a2639 0%, #2c3e50 100%);
+            border-radius: 10px;
+            margin-bottom: 60px;
             color: #fff;
+            font-size: 1.1rem;
+        }
+
+        /* --- Section Titles --- */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        /* --- Cards Grid --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: 0.3s;
+            position: relative;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px rgba(0, 242, 255, 0.1);
+        }
+
+        .card.premium {
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(0, 0, 0, 0));
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .card.premium:hover {
+            border-color: var(--gold);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
+        }
+
+        .card h3 {
+            color: #fff;
+            margin-top: 0;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card.premium h3 {
+            color: var(--gold);
+        }
+
+        .eng-name {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        .desc {
+            color: var(--text-muted);
+            margin: 15px 0;
+            font-size: 1rem;
+        }
+
+        .audience {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .audience i {
+            color: var(--primary);
+            margin-left: 5px;
+        }
+
+        /* --- Badges --- */
+        .badge {
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--primary);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 10px;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+        }
+
+        /* --- Quran Box --- */
+        .quran-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .quran-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .quran-card strong {
+            display: block;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .verse {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            color: #fff;
+            display: block;
+            margin-bottom: 15px;
+            line-height: 1.8;
+            padding-right: 15px;
+            border-right: 3px solid var(--success);
+        }
+
+        .copy-btn {
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cairo';
+            transition: 0.3s;
+            float: left;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        /* --- Folder Style --- */
+        .folder-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
             padding: 40px;
-            border-radius: 15px;
-            margin: 40px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.4s;
             position: relative;
             overflow: hidden;
         }
-        .special-section::before {
-            content: 'Weza Choice'; position: absolute; top: -10px; left: -10px; background: var(--accent); padding: 10px 20px; color: var(--primary); font-weight: bold; border-radius: 10px;
-        }
-        .special-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); margin-bottom: 15px; }
-        .special-card h3 { color: var(--accent); }
-        .special-card .desc { color: #ddd; }
-        .special-card .audience { color: #aaa; border-top-color: rgba(255,255,255,0.1); }
 
-        /* الآيات القرآنية */
-        .quran-box {
-            background: #fff;
-            border-right: 5px solid var(--success);
-            padding: 20px;
-            margin-bottom: 15px;
+        .folder-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .folder-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+        }
+
+        .folder-card:hover::before {
+            opacity: 1;
+        }
+
+        .folder-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            transition: 0.4s;
+            display: inline-block;
+        }
+
+        .folder-card:hover .folder-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+        }
+
+        /* --- Modal --- */
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal-img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.2);
+        }
+
+        .modal-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
             font-size: 1.1rem;
-            position: relative;
-        }
-        .quran-box::before { content: '﴾'; float: right; margin-left: 10px; color: var(--success); }
-        .quran-box::after { content: '﴿'; float: left; margin-right: 10px; color: var(--success); }
-
-        /* أزرار النسخ */
-        .copy-btn {
-            background: #eee; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-family: 'Tajawal'; font-size: 0.9rem; float: left; margin-top: -40px;
-        }
-        .copy-btn:hover { background: var(--accent); color: #fff; }
-
-        /* اللوجو والبرومبت */
-        .code-block {
-            background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; direction: ltr; text-align: left; font-family: monospace; overflow-x: auto;
+            background: var(--primary);
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* الفوتر */
-        footer { text-align: center; margin-top: 50px; padding: 20px; color: #777; font-size: 0.9rem; }
+        .modal-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>Weza Technologies™</h1>
-    <p>Project 03: Al-Rem Re-Branding Strategy</p>
-</header>
+    <header>
+        <span class="logo-tag">Weza Technologies</span>
+        <h1>استراتيجية الهوية البصرية</h1>
+        <p class="subtitle">Project 03: Al-Rem Re-Branding | Vision 2026</p>
+    </header>
 
-<div class="container">
+    <div class="container">
+        <!-- Intro -->
+        <div class="intro-box">
+            <p><strong>عزيزي الشريك،</strong> بناءً على تحليلنا للسوق وللمنتج "دريس الشمواه"، نضع بين يديكم 5 مسارات
+                للاسم والهوية، بالإضافة لترشيحاتنا الخاصة. الهدف ليس تغيير هويتكم، بل إظهار جوهرها الحقيقي للعالم.</p>
+        </div>
 
-    <div style="background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 40px; border-right: 5px solid var(--accent);">
-        <p><strong>عزيزي الشريك،</strong> بناءً على تحليلنا للسوق وللمنتج "دريس الشمواه"، نضع بين يديكم 5 مسارات للاسم والهوية، بالإضافة لترشيحاتنا الخاصة. الهدف ليس تغيير هويتكم، بل إظهار جوهرها الحقيقي للعالم.</p>
-    </div>
-
-    <div class="special-section">
-        <h2 style="text-align: center; margin-bottom: 30px; color: #fff;">🏆 ترشيحات Weza Tech (الخيار الاستراتيجي)</h2>
+        <!-- Weza Choice -->
+        <h2 class="section-title"><i class="fas fa-crown"></i> ترشيحات Weza Tech (الخيار الاستراتيجي)</h2>
         <div class="grid">
-            <div class="card special-card">
-                <h3>1. Al-Rem Atelier (مشغل الريم)</h3>
-                <p class="desc"><strong>المعنى:</strong> كلمة Atelier فرنسية تعني "المشغل الفني" الذي تُصنع فيه القطع يدوياً. هذا يرفع القيمة فوراً.</p>
-                <p class="audience"><strong>الجمهور:</strong> الطبقة الراقية التي تقدر الـ Hand-made ولا تقارن السعر بالمصانع.</p>
-                <p class="desc" style="color:#fff;"><strong>الميزة:</strong> يحافظ على اسم "الريم" الأصلي مع إضافة لمسة عالمية.</p>
+            <div class="card premium">
+                <h3>Al-Rem Atelier <span class="eng-name">مشغل الريم</span></h3>
+                <p class="desc"><strong>المعنى:</strong> كلمة Atelier فرنسية تعني "المشغل الفني" الذي تُصنع فيه القطع
+                    يدوياً. هذا يرفع القيمة فوراً.</p>
+                <div class="audience"><i class="fas fa-bullseye"></i> <strong>الجمهور:</strong> الطبقة الراقية التي تقدر
+                    الـ Hand-made ولا تقارن السعر بالمصانع.</div>
+                <p class="desc" style="color:#d4af37; margin-top:10px;"><strong>الميزة:</strong> يحافظ على اسم "الريم"
+                    الأصلي مع إضافة لمسة عالمية.</p>
             </div>
-            <div class="card special-card">
-                <h3>2. سِتــــر | SITR</h3>
-                <p class="desc"><strong>المعنى:</strong> اسم عربي أصيل، يلامس الفطرة. "الستر" هو غاية كل فتاة محتشمة.</p>
-                <p class="audience"><strong>الجمهور:</strong> الفتيات والنساء اللواتي يبحثن عن "العفة" بشكل شيك وعصري.</p>
-                <p class="desc" style="color:#fff;"><strong>الميزة:</strong> اسم من كلمة واحدة (Branding قوي) وسهل الحفظ جداً.</p>
+
+            <div class="card premium">
+                <h3>SITR <span class="eng-name">سِتـــر</span></h3>
+                <p class="desc"><strong>المعنى:</strong> اسم عربي أصيل، يلامس الفطرة. "الستر" هو غاية كل فتاة محتشمة.
+                </p>
+                <div class="audience"><i class="fas fa-bullseye"></i> <strong>الجمهور:</strong> الفتيات والنساء اللواتي
+                    يبحثن عن "العفة" بشكل شيك وعصري.</div>
+                <p class="desc" style="color:#d4af37; margin-top:10px;"><strong>الميزة:</strong> اسم من كلمة واحدة
+                    (Branding قوي) وسهل الحفظ جداً.</p>
             </div>
-            <div class="card special-card">
-                <h3>3. R . E . M (ريم)</h3>
-                <p class="desc"><strong>المعنى:</strong> كتابة الاسم بحروف مقطعة ومتباعدة. أسلوب متبع في البراندات العالمية (مثل D.K.N.Y).</p>
-                <p class="audience"><strong>الجمهور:</strong> الجيل الجديد (Gen Z) والشباب الجامعي.</p>
-                <p class="desc" style="color:#fff;"><strong>الميزة:</strong> عصري، غامض، وجذاب بصرياً في اللوجو.</p>
+
+            <div class="card premium">
+                <h3>R . E . M <span class="eng-name">ريم</span></h3>
+                <p class="desc"><strong>المعنى:</strong> كتابة الاسم بحروف مقطعة ومتباعدة. أسلوب متبع في البراندات
+                    العالمية (مثل D.K.N.Y).</p>
+                <div class="audience"><i class="fas fa-bullseye"></i> <strong>الجمهور:</strong> الجيل الجديد (Gen Z)
+                    والشباب الجامعي.</div>
+                <p class="desc" style="color:#d4af37; margin-top:10px;"><strong>الميزة:</strong> عصري، غامض، وجذاب
+                    بصرياً في اللوجو.</p>
+            </div>
+        </div>
+
+        <!-- Section 1 -->
+        <h2 class="section-title"><i class="fas fa-gem"></i> مجموعة "الأصالة العربية" (الجذور)</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="badge">نخبة</span>
+                <h3>Al-Maha <span class="eng-name">المَـهَـا</span></h3>
+                <p class="desc">المها هي عيون الظباء الواسعة. اسم يوحي بالجمال الحاد والواضح.</p>
+                <div class="audience">يستهدف: محبي التراث والفخامة الكلاسيكية.</div>
+            </div>
+            <div class="card">
+                <span class="badge">مميز</span>
+                <h3>Al-Jazi <span class="eng-name">الجَـازي</span></h3>
+                <p class="desc">الغزال الذي يجزي (يكافئ) بجماله. يوحي بأن القطعة "تكفي وتوفي".</p>
+                <div class="audience">يستهدف: من تبحث عن قطعة واحدة مميزة.</div>
+            </div>
+            <div class="card">
+                <span class="badge">عربي</span>
+                <h3>Asayel <span class="eng-name">أصايـل</span></h3>
+                <p class="desc">جمع أصيلة. يعكس جودة الخامة (أصلية) وجودة الصنعة.</p>
+                <div class="audience">يستهدف: الأمهات والسيدات الوقورات.</div>
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <h2 class="section-title"><i class="fas fa-heart"></i> مجموعة "اللمسة الروحانية" (يخاطب القلب)</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Wateen <span class="eng-name">وتيـن</span></h3>
+                <p class="desc">عرق القلب. الملابس تصنع "بحب" لتلامس القلب.</p>
+                <div class="audience">يستهدف: الشخصيات العاطفية والرومانسية الهادئة.</div>
+            </div>
+            <div class="card">
+                <h3>Mawadda <span class="eng-name">مَـوَدّة</span></h3>
+                <p class="desc">يوحي باللين والراحة في اللبس والتعامل.</p>
+                <div class="audience">يستهدف: المتزوجات حديثاً والباحثات عن الهدوء.</div>
+            </div>
+            <div class="card">
+                <h3>Bayan <span class="eng-name">بَيَـــان</span></h3>
+                <p class="desc">الوضوح والجمال. "هذا بيان للناس". تصميمات واضحة وصريحة.</p>
+                <div class="audience">يستهدف: الشخصيات القيادية والمثقفة.</div>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <h2 class="section-title"><i class="fas fa-rocket"></i> مجموعة "المفهوم الحديث" (Modern Concept)</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Tuleen <span class="eng-name">توليـــن</span></h3>
+                <p class="desc">الهالة المضيئة حول القمر. اسم رقيق جداً وعصري.</p>
+            </div>
+            <div class="card">
+                <h3>HAYA Line <span class="eng-name">خط حياء</span></h3>
+                <p class="desc">دمج كلمة عربية بأسلوب غربي. "الحياء" كخط موضة عالمي.</p>
+            </div>
+            <div class="card">
+                <h3>NOON <span class="eng-name">( ن )</span></h3>
+                <p class="desc">نون النسوة. رمز بسيط جداً وقوي جداً كعلامة تجارية.</p>
+            </div>
+        </div>
+
+        <!-- Verses -->
+        <h2 class="section-title"><i class="fas fa-quran"></i> بصمة المحتوى (رسائل القلب)</h2>
+        <div class="quran-container">
+            <div class="quran-card">
+                <strong>للأمل والسعي:</strong>
+                <span class="verse">"وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى"</span>
+                <button class="copy-btn" onclick="copyText('وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى')">نسخ</button>
+            </div>
+            <div class="quran-card">
+                <strong>للرزق والتوكل:</strong>
+                <span class="verse">"وَفِي السَّمَاءِ رِزْقُكُمْ وَمَا تُوعَدُونَ"</span>
+                <button class="copy-btn" onclick="copyText('وَفِي السَّمَاءِ رِزْقُكُمْ وَمَا تُوعَدُونَ')">نسخ</button>
+            </div>
+            <div class="quran-card">
+                <strong>لإتقان العمل:</strong>
+                <span class="verse">"وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ"</span>
+                <button class="copy-btn"
+                    onclick="copyText('وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ')">نسخ</button>
+            </div>
+            <div class="quran-card">
+                <strong>للجمال والخلق:</strong>
+                <span class="verse">"الَّذِي أَحْسَنَ كُلَّ شَيْءٍ خَلَقَهُ"</span>
+                <button class="copy-btn" onclick="copyText('الَّذِي أَحْسَنَ كُلَّ شَيْءٍ خَلَقَهُ')">نسخ</button>
+            </div>
+            <div class="quran-card">
+                <strong>للتفاؤل:</strong>
+                <span class="verse">"لَا تَدْرِي لَعَلَّ اللَّهَ يُحْدِثُ بَعْدَ ذَلِكَ أَمْرًا"</span>
+                <button class="copy-btn"
+                    onclick="copyText('لَا تَدْرِي لَعَلَّ اللَّهَ يُحْدِثُ بَعْدَ ذَلِكَ أَمْرًا')">نسخ</button>
+            </div>
+            <div class="quran-card">
+                <strong>للبركة:</strong>
+                <span class="verse">"ذَٰلِكَ فَضْلُ اللَّهِ يُؤْتِيهِ مَن يَشَاءُ"</span>
+                <button class="copy-btn"
+                    onclick="copyText('ذَٰلِكَ فَضْلُ اللَّهِ يُؤْتِيهِ مَن يَشَاءُ ۚ وَاللَّهُ ذُو الْفَضْلِ الْعَظِيمِ')">نسخ</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Version Gallery System -->
+    <div class="container" style="margin-top: 0; padding-top: 50px;" id="versions">
+        <h2 class="section-title"><i class="fas fa-layer-group"></i> منظومة الهوية البصرية (Asset Library)</h2>
+
+        <!-- Value Message -->
+        <div class="intro-box"
+            style="background: linear-gradient(90deg, rgba(112, 0, 255, 0.1), rgba(0,0,0,0)); border-right-color: var(--secondary);">
+            <strong>القيمة السوقية (Market Value)،</strong><br>
+            هذه النسخ (Versions) تم تصميمها خصيصاً لتناسب مراحل نمو "الريم".
+            نحن نعرضها هنا لتروا القيمة الحقيقية لما تملكون. هذه ليست مجرد شعارات، بل أصول رقمية (Digital Assets) ذات
+            قيمة تسويقية عالية، جاهزة للاستخدام في الحملات، التغليف، وهوية السوشيال ميديا.
+        </div>
+
+        <!-- Version Folders (Premium Design) -->
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));" id="foldersGrid">
+            <!-- V1 -->
+            <div class="folder-card" onclick="openVersion('v1')">
+                <i class="fas fa-crown folder-icon" style="color: var(--gold);"></i>
+                <h3 style="color:#fff;">Version 1.0</h3>
+                <p class="desc">The Legacy (الفخامة الأصيلة)</p>
+                <div class="badge">9 Assets</div>
+            </div>
+            <!-- V2 -->
+            <div class="folder-card" onclick="openVersion('v2')">
+                <i class="fas fa-bezier-curve folder-icon" style="color: var(--primary);"></i>
+                <h3 style="color:#fff;">Version 2.0</h3>
+                <p class="desc">The Modern (العصرية الانسيابية)</p>
+                <div class="badge">6 Assets</div>
+            </div>
+            <!-- V3 -->
+            <div class="folder-card" onclick="openVersion('v3')">
+                <i class="fas fa-fingerprint folder-icon" style="color: #fff;"></i>
+                <h3 style="color:#fff;">Version 3.0</h3>
+                <p class="desc">The Future (الهوية الرقمية)</p>
+                <div class="badge">4 Assets</div>
+            </div>
+        </div>
+
+        <!-- Gallery Area (Hidden by default) -->
+        <div id="galleryArea" style="display: none; margin-top: 40px;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid var(--glass-border); padding-bottom: 20px;">
+                <h3 id="galleryTitle" style="color:#fff; font-size: 1.8rem; margin:0;"></h3>
+                <button onclick="closeGallery()" class="copy-btn"
+                    style="float:none; display:flex; align-items:center; gap:5px; background:rgba(255,0,0,0.2); border-color:red; color:#fff;">
+                    <i class="fas fa-times"></i> إغلاق المجلد
+                </button>
+            </div>
+            <div class="grid" id="galleryGrid"
+                style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
+                <!-- Images injected here -->
             </div>
         </div>
     </div>
 
-    <h2 class="section-title">💡 المجموعات الخمسة المقترحة</h2>
+    <footer>
+        <p>&copy; 2026 Weza Technologies. All Rights Reserved.</p>
+    </footer>
 
-    <h3>1. مجموعة "الأصالة العربية" (الجذور)</h3>
-    <div class="grid">
-        <div class="card">
-            <span class="badge">نخبة</span>
-            <h3>المَـــهَـــا | Al-Maha</h3>
-            <button class="copy-btn" onclick="copyText('المها')">نسخ</button>
-            <p class="desc">المها هي عيون الظباء الواسعة. اسم يوحي بالجمال الحاد والواضح.</p>
-            <div class="audience">يستهدف: محبي التراث والفخامة الكلاسيكية.</div>
-        </div>
-        <div class="card">
-            <span class="badge">مميز</span>
-            <h3>الجَـــازي | Al-Jazi</h3>
-            <button class="copy-btn" onclick="copyText('الجازي')">نسخ</button>
-            <p class="desc">الغزال الذي يجزي (يكافئ) بجماله. يوحي بأن القطعة "تكفي وتوفي".</p>
-            <div class="audience">يستهدف: من تبحث عن قطعة واحدة مميزة.</div>
-        </div>
-        <div class="card">
-            <span class="badge">عربي</span>
-            <h3>أصايــــل | Asayel</h3>
-            <button class="copy-btn" onclick="copyText('أصايل')">نسخ</button>
-            <p class="desc">جمع أصيلة. يعكس جودة الخامة (أصلية) وجودة الصنعة.</p>
-            <div class="audience">يستهدف: الأمهات والسيدات الوقورات.</div>
-        </div>
+    <!-- Fullscreen Image Modal -->
+    <div class="image-modal" id="imgModal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img src="" class="modal-img" id="modalImage">
+        <a href="#" class="modal-btn" id="modalDownload" download>
+            <i class="fas fa-download"></i> تحميل الصورة الأصلي (High Quality)
+        </a>
     </div>
 
-    <hr style="margin: 40px 0; border: 0; border-top: 1px solid #ddd;">
+    <script>
+        function copyText(text) {
+            navigator.clipboard.writeText(text);
+            alert('تم نسخ النص بنجاح');
+        }
 
-    <h3>2. مجموعة "اللمسة الروحانية" (يخاطب القلب)</h3>
-    <div class="grid">
-        <div class="card">
-            <h3>وتيــــن | Wateen</h3>
-            <button class="copy-btn" onclick="copyText('وتين')">نسخ</button>
-            <p class="desc">عرق القلب. الملابس تصنع "بحب" لتلامس القلب.</p>
-            <div class="audience">يستهدف: الشخصيات العاطفية والرومانسية الهادئة.</div>
-        </div>
-        <div class="card">
-            <h3>مَـــوَدّة | Mawadda</h3>
-            <button class="copy-btn" onclick="copyText('مودة')">نسخ</button>
-            <p class="desc">يوحي باللين والراحة في اللبس والتعامل.</p>
-            <div class="audience">يستهدف: المتزوجات حديثاً والباحثات عن الهدوء.</div>
-        </div>
-        <div class="card">
-            <h3>بَيَـــان | Bayan</h3>
-            <button class="copy-btn" onclick="copyText('بيان')">نسخ</button>
-            <p class="desc">الوضوح والجمال. "هذا بيان للناس". تصميمات واضحة وصريحة.</p>
-            <div class="audience">يستهدف: الشخصيات القيادية والمثقفة.</div>
-        </div>
-    </div>
+        // --- Gallery Logic ---
+        const versions = {
+            v1: { title: "Version 1.0 - The Legacy (الفخامة الأصيلة)", count: 9, folder: "Rem_V1_WezaTECHNOLOGIES™", prefix: "V1_" },
+            v2: { title: "Version 2.0 - The Modern (العصرية الانسيابية)", count: 6, folder: "Rem_V2_WezaTECHNOLOGIES™", prefix: "V2_" },
+            v3: { title: "Version 3.0 - The Future (الهوية الرقمية)", count: 4, folder: "Rem_V3_WezaTECHNOLOGIES™", prefix: "V3_" }
+        };
 
-    <hr style="margin: 40px 0; border: 0; border-top: 1px solid #ddd;">
+        function openVersion(vKey) {
+            const data = versions[vKey];
+            const grid = document.getElementById('galleryGrid');
+            const area = document.getElementById('galleryArea');
+            const title = document.getElementById('galleryTitle');
 
-    <h3>3. مجموعة "المفهوم الحديث" (Modern Concept)</h3>
-    <div class="grid">
-        <div class="card">
-            <h3>توليـــن | Tuleen</h3>
-            <p class="desc">الهالة المضيئة حول القمر. اسم رقيق جداً وعصري.</p>
-        </div>
-        <div class="card">
-            <h3>HAYA Line (خط حياء)</h3>
-            <p class="desc">دمج كلمة عربية بأسلوب غربي. "الحياء" كخط موضة عالمي.</p>
-        </div>
-        <div class="card">
-            <h3>NOON (ن)</h3>
-            <p class="desc">نون النسوة. رمز بسيط جداً وقوي جداً كعلامة تجارية.</p>
-        </div>
-    </div>
+            // Reset
+            grid.innerHTML = '';
+            title.innerText = data.title;
 
-    <h2 class="section-title">✨ آيات تلامس القلب (للمحتوى والوصف)</h2>
-    <p style="text-align:center; margin-bottom:20px;">تستخدم في "البايو"، المنشورات، وكروت الشكر داخل الطلب.</p>
-    
-    <div class="quran-box">
-        <strong>للأمل والسعي:</strong> "وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى"
-        <button class="copy-btn" onclick="copyText('وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى')">نسخ</button>
-    </div>
-    <div class="quran-box">
-        <strong>للرزق والتوكل:</strong> "وَفِي السَّمَاءِ رِزْقُكُمْ وَمَا تُوعَدُونَ"
-        <button class="copy-btn" onclick="copyText('وَفِي السَّمَاءِ رِزْقُكُمْ وَمَا تُوعَدُونَ')">نسخ</button>
-    </div>
-    <div class="quran-box">
-        <strong>لإتقان العمل:</strong> "وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ"
-        <button class="copy-btn" onclick="copyText('وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ')">نسخ</button>
-    </div>
-    <div class="quran-box">
-        <strong>للجمال والخلق:</strong> "الَّذِي أَحْسَنَ كُلَّ شَيْءٍ خَلَقَهُ"
-        <button class="copy-btn" onclick="copyText('الَّذِي أَحْسَنَ كُلَّ شَيْءٍ خَلَقَهُ')">نسخ</button>
-    </div>
-    <div class="quran-box">
-        <strong>للتفاؤل:</strong> "لَا تَدْرِي لَعَلَّ اللَّهَ يُحْدِثُ بَعْدَ ذَلِكَ أَمْرًا"
-        <button class="copy-btn" onclick="copyText('لَا تَدْرِي لَعَلَّ اللَّهَ يُحْدِثُ بَعْدَ ذَلِكَ أَمْرًا')">نسخ</button>
-    </div>
-    <div class="quran-box">
-        <strong>للبركة:</strong> "ذَٰلِكَ فَضْلُ اللَّهِ يُؤْتِيهِ مَن يَشَاءُ ۚ وَاللَّهُ ذُو الْفَضْلِ الْعَظِيمِ"
-        <button class="copy-btn" onclick="copyText('ذَٰلِكَ فَضْلُ اللَّهِ يُؤْتِيهِ مَن يَشَاءُ ۚ وَاللَّهُ ذُو الْفَضْلِ الْعَظِيمِ')">نسخ</button>
-    </div>
+            // Generate Images
+            for (let i = 1; i <= data.count; i++) {
+                const imgName = `${data.prefix}${i}.png`;
+                const imgPath = `${data.folder}/${imgName}`;
 
-    <h2 class="section-title">🎨 تطوير اللوجو (الاستثمار البصري)</h2>
-    <div style="background: #fff; padding: 25px; border-radius: 10px;">
-        <p>اللوجو الحالي (الغزال) جميل، لكن يمكن جعله "أيقونياً" يساوي 500$+ باستخدام التوجيهات الخاصة بشركة وزا تكنولوجيز, لتوليد أفكار جديدة:</p>
-        
-  
+                const card = document.createElement('div');
+                card.style.cssText = `
+                    background: rgba(255,255,255,0.05);
+                    border-radius: 10px;
+                    overflow: hidden;
+                    cursor: pointer;
+                    transition: 0.3s;
+                    border: 1px solid rgba(255,255,255,0.05);
+                    position: relative;
+                `;
+                card.onmouseover = function () { this.style.borderColor = 'var(--primary)'; };
+                card.onmouseout = function () { this.style.borderColor = 'rgba(255,255,255,0.05)'; };
+                card.onclick = function () { openModal(imgPath, imgName); };
 
-</div>
+                card.innerHTML = `
+                    <div style="height: 200px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2);">
+                        <img src="${imgPath}" style="max-width:100%; max-height:100%; object-fit:contain;">
+                    </div>
+                `;
+                grid.appendChild(card);
+            }
 
-<footer>
-    <p>تم إعداد هذا التقرير بواسطة ™Weza Technologies | جميع الحقوق محفوظة 2026</p>
-</footer>
+            // Show
+            area.style.display = 'block';
 
-<script>
-    function copyText(text) {
-        navigator.clipboard.writeText(text);
-        alert('تم نسخ: ' + text);
-    }
-</script>
+            // Scroll to gallery
+            area.scrollIntoView({ behavior: 'smooth' });
+        }
 
+        function closeGallery() {
+            document.getElementById('galleryArea').style.display = 'none';
+            document.getElementById('versions').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- Modal Logic ---
+        const modal = document.getElementById('imgModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalBtn = document.getElementById('modalDownload');
+
+        function openModal(src, filename) {
+            modal.style.display = 'flex';
+            modalImg.src = src;
+            modalBtn.href = src;
+            modalBtn.download = filename;
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Close on outside click
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
+
 </html>
