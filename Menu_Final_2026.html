@@ -1,531 +1,625 @@
-ة<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منيو ملوك الفسيخ - النسخة الأنيقة 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ملوك الفسيخ - النسخة النهائية 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --bg-dark: #000212;
-            --accent-cyan: #00d2ff;
-            --accent-cyan-deep: #00a8cc;
-            --accent-gold: #ffcc33;
-            --text-main: #f5f5f7;
-            --text-muted: #86868b;
-            --glass-nav: rgba(20, 20, 20, 0.85);
+            --bg-color: #050505;
+            --card-bg: #121212;
+            --gold: #FFD700;
+            --cyan: #00d2ff;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --glass: rgba(30, 30, 30, 0.95);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; outline: none; -webkit-tap-highlight-color: transparent; }
+
+        /* سكرول بار أنيق */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
         body {
-            background-color: #000;
-            color: var(--text-main);
+            background-color: var(--bg-color);
+            color: var(--text-white);
             font-family: 'Cairo', sans-serif;
-            padding: 40px 10px 120px 10px;
-            /* مسافة سفلية للشريط */
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 40px;
+            min-height: 100vh;
+            padding-bottom: 120px;
         }
 
-        /* --- 1. الشريط السفلي العائم (شفاف وزجاجي) --- */
-        .floating-nav {
-            position: fixed;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 400px;
-            /* التعديل هنا: شفافية + ضبابية */
-            background: rgba(10, 10, 20, 0.7);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 50px;
-            padding: 10px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 99999;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .nav-link {
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            color: #999;
-            transition: 0.3s;
-            font-size: 0.8rem;
-        }
-
-        .nav-link i {
-            font-size: 1.4rem;
-            margin-bottom: 2px;
-        }
-
-        .nav-link span {
-            font-weight: 700;
-            font-size: 0.7rem;
-        }
-
-        .nav-link.active {
-            color: var(--accent-cyan);
-        }
-
-        .nav-link.gold {
-            color: var(--accent-gold);
-        }
-
-        .nav-link:hover {
-            transform: translateY(-3px);
-            color: var(--accent-cyan);
-        }
-
-
-        /* --- بقية التنسيقات (لم يتم تغييرها) --- */
-        .menu-page {
+        /* --- تصميم الورقة (المنيو) --- */
+        .menu-container {
             width: 100%;
-            max-width: 650px;
-            background: var(--bg-dark);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            border-radius: 40px;
-            padding: 40px 30px;
+            max-width: 550px;
+            background: var(--card-bg);
+            margin-top: 20px;
+            border-radius: 25px;
+            padding: 25px 20px;
             position: relative;
-            box-shadow: 0 0 80px rgba(0, 210, 255, 0.1);
-            min-height: 850px;
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 20px;
-            page-break-after: always;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
         }
 
         .watermark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: clamp(250px, 85vw, 500px);
-            opacity: 0.45;
-            pointer-events: none;
-            z-index: 1;
-            filter: brightness(0.9) contrast(1.3);
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 70%; opacity: 0.04;
+            pointer-events: none; z-index: 0; filter: grayscale(100%);
         }
 
-        .content-wrap {
-            position: relative;
-            z-index: 10;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+        .content { position: relative; z-index: 2; }
+
+        /* --- الهيدر والعناوين --- */
+        .header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
+        .header h1 { color: var(--gold); font-size: 1.6rem; font-weight: 800; margin-bottom: 5px; }
+        .header .sub-text { color: var(--cyan); font-size: 1rem; font-weight: 600; }
+        .update-date { font-size: 0.7rem; color: var(--text-gray); margin-top: 8px; font-family: sans-serif; dir: ltr; }
+
+        .charity-banner {
+            background: rgba(0, 210, 255, 0.08);
+            border: 1px dashed var(--cyan);
+            border-radius: 12px; padding: 12px; text-align: center; margin-bottom: 25px;
         }
+        .charity-banner p { font-size: 0.85rem; line-height: 1.5; }
 
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
+        .section-title { display: flex; align-items: center; gap: 10px; margin: 35px 0 15px 0; }
+        .section-title h2 { color: var(--gold); font-size: 1.15rem; font-weight: 800; border-bottom: 2px solid var(--gold); padding-bottom: 3px; }
+        .section-sub { font-size: 0.75rem; color: var(--text-gray); margin-right: auto; }
+
+        /* --- قائمة الأصناف --- */
+        .item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.2s; cursor: pointer; }
+        .item:active { transform: scale(0.98); background: rgba(255,255,255,0.02); }
+        .item-name { font-size: 0.95rem; font-weight: 700; color: #e0e0e0; flex: 1; line-height: 1.4; padding-left: 10px; }
+        .item-price { font-size: 1rem; font-weight: 800; color: var(--cyan); white-space: nowrap; background: rgba(0, 210, 255, 0.1); padding: 4px 8px; border-radius: 6px; }
+        .old-price { font-size: 0.8rem; color: #666; text-decoration: line-through; margin-left: 5px; }
+
+        /* --- الفوتر --- */
+        .footer { text-align: center; margin-top: 40px; color: var(--text-gray); font-size: 0.8rem; }
+        .footer p { margin-bottom: 8px; }
+        .slogan { color: var(--gold); font-weight: 800; font-size: 1rem; margin: 20px 0; }
+        .brand { opacity: 0.5; margin-top: 20px; font-size: 0.7rem; }
+
+        /* --- السلة العائمة (Glass Pill) --- */
+        #cartBar {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(150%);
+            width: 90%; max-width: 450px;
+            background: var(--glass);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50px; padding: 12px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 9999; box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+        #cartBar.active { transform: translateX(-50%) translateY(0); }
 
-        .header h1 {
-            color: var(--accent-gold);
-            font-size: 1.7rem;
-            font-weight: 950;
-            margin-bottom: 5px;
-            text-shadow: 0 0 20px rgba(255, 204, 51, 0.4);
+        .cart-info div:first-child { font-size: 0.7rem; color: #aaa; }
+        .cart-total { font-size: 1.2rem; font-weight: 800; color: var(--gold); }
+        .btn-view-cart { background: var(--gold); color: #000; border: none; padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 0.9rem; cursor: pointer; box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); }
+
+        /* --- النوافذ المنبثقة (Modals) --- */
+        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; backdrop-filter: blur(5px); align-items: center; justify-content: center; padding: 15px; }
+        .modal { background: #1a1a1a; width: 100%; max-width: 400px; padding: 25px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.1); color: #fff; animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); max-height: 90vh; overflow-y: auto; }
+        @keyframes popUp { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+
+        .modal h3 { color: var(--gold); text-align: center; margin-bottom: 20px; font-size: 1.2rem; }
+        .form-group { margin-bottom: 15px; }
+        .form-label { display: block; margin-bottom: 8px; color: var(--cyan); font-size: 0.85rem; }
+        .form-input, .form-select { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #333; background: #0f0f0f; color: #fff; font-size: 1rem; }
+        .form-input:focus { border-color: var(--gold); }
+        
+        /* تنسيق خانة الملاحظات والأمثلة */
+        .notes-examples { font-size: 0.75rem; color: #888; margin-bottom: 8px; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 8px; line-height: 1.6; }
+        .notes-examples span { color: var(--gold); }
+        textarea.form-input { resize: none; font-family: inherit; line-height: 1.5; }
+
+        .row { display: flex; gap: 10px; }
+        
+        .btn-confirm { width: 100%; background: var(--gold); color: #000; border: none; padding: 14px; border-radius: 15px; font-weight: 800; font-size: 1rem; margin-top: 10px; cursor: pointer; }
+        .btn-cancel { width: 100%; background: transparent; border: none; color: #888; margin-top: 15px; cursor: pointer; font-size: 0.9rem; }
+
+        /* خيارات التوصيل */
+        .del-options { display: flex; gap: 10px; margin-bottom: 15px; }
+        .del-opt { flex: 1; padding: 10px; border: 1px solid #333; border-radius: 10px; text-align: center; cursor: pointer; font-size: 0.9rem; transition: 0.2s; }
+        .del-opt.active { border-color: var(--cyan); background: rgba(0, 210, 255, 0.1); color: var(--cyan); font-weight: bold; }
+
+        /* قائمة السلة (تصميم جديد ونظيف) */
+        .cart-list { max-height: 250px; overflow-y: auto; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        
+        .cart-item-row { 
+            background: #222; padding: 12px; border-radius: 10px; margin-bottom: 8px; 
+            display: flex; justify-content: space-between; align-items: flex-start; /* محاذاة للأعلى عشان السطرين */
+            border-right: 3px solid var(--gold); 
         }
-
-        .header .sub-text {
-            color: var(--accent-cyan);
-            font-weight: 800;
-            font-size: 1.1rem;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: baseline;
-            gap: 15px;
-            margin: 20px 0 10px;
-        }
-
-        .section-title h2 {
-            color: var(--accent-gold);
-            font-size: 1.15rem;
-            font-weight: 950;
-        }
-
-        .title-text {
-            border-bottom: 2.5px solid var(--accent-gold);
-            padding-bottom: 2px;
-            display: inline-block;
-        }
-
-        .price-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-
-        .item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2px 0;
-        }
-
-        .item-name {
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: #fff;
-            text-align: right;
-            flex: 1;
-        }
-
-        .item-price {
-            font-weight: 950;
-            color: var(--accent-cyan);
-            font-size: 1.15rem;
-            letter-spacing: 0.5px;
-            text-align: left;
-            margin-right: 20px;
-        }
-
-        .footer {
-            margin-top: auto;
-            text-align: center;
-            padding-top: 30px;
-            padding-bottom: 10px;
-        }
-
-        .slogan-box p {
-            color: var(--accent-gold);
-            font-weight: 950;
-            font-size: 1.25rem;
-            text-shadow: 0 0 15px rgba(255, 204, 51, 0.3);
-        }
-
-        .wt-brand {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            opacity: 0.4;
-        }
-
-        .wt-brand .owner {
-            font-size: 0.75rem;
-            color: var(--accent-cyan-deep);
-            font-weight: 700;
-            line-height: 1.1;
-        }
-
-        .wt-brand .phone {
-            font-size: 0.7rem;
-            color: var(--accent-cyan-deep);
-            font-weight: 600;
-            margin-top: -2px;
-            line-height: 1.1;
-        }
-
-        @media print {
-            body {
-                padding: 0;
-                background: #000;
-            }
-
-            .menu-page {
-                margin: 0;
-                border: none;
-            }
-
-            .floating-nav {
-                display: none;
-            }
-        }
+        
+        /* تنسيق تفاصيل الصنف في السلة */
+        .cart-details-main { font-weight: 700; font-size: 0.95rem; color: #fff; margin-bottom: 4px; }
+        .cart-details-sub { font-size: 0.75rem; color: #aaa; display: flex; flex-direction: column; gap: 2px; }
+        .cart-details-sub span { display: block; }
+        
+        .del-btn { color: #ff4444; background: none; border: none; padding: 5px; cursor: pointer; font-size: 1.2rem; align-self: center; }
     </style>
 </head>
-
 <body>
 
-    <nav class="floating-nav">
-        <a href="javascript:void(0)" onclick="return false;" class="nav-link"
-            style="opacity: 0.6; cursor: not-allowed;">
-            <i class="fas fa-home"></i>
-            <span>الرئيسية</span>
-        </a>
-
-        <a href="javascript:void(0)" onclick="return false;" class="nav-link gold"
-            style="opacity: 0.6; cursor: not-allowed;">
-            <i class="fas fa-rocket"></i>
-            <span>خطة التطوير</span>
-        </a>
-
-        <a href="javascript:void(0)" onclick="return false;" class="nav-link"
-            style="opacity: 0.6; cursor: not-allowed;">
-            <i class="fab fa-whatsapp"></i>
-            <span>تواصل معنا</span>
-        </a>
-    </nav>
-
-    <div class="menu-page">
-        <img src="Logo.jpg" class="watermark" alt="Logo Watermark">
-        <div class="content-wrap">
+    <div class="menu-container">
+        <img src="Logo.jpg" class="watermark" alt="Logo">
+        <div class="content">
+            
             <div class="header">
                 <h1>✨ كله يصلي علي النبي ✨</h1>
-                <p class="sub-text" style="color: #fff; margin-top: 5px;">وادعلنا دعوة حلوة</p>
-                <p class="update-date"
-                    style="font-size: 0.75rem; color: var(--text-muted); margin-top: 5px; direction: ltr;">تاريخ
-                    التحديث: الخميس، 1 يناير 2026</p>
+                <p class="sub-text">وادعلنا دعوة حلوة</p>
+                <p class="update-date">تاريخ التحديث: الخميس، 1 يناير 2026</p>
             </div>
 
-            <div
-                style="border: 1px dashed var(--accent-cyan-deep); padding: 15px; border-radius: 15px; background: rgba(0, 168, 204, 0.1); text-align: center; margin-bottom: 30px; margin-top: -10px;">
-                <p style="color: var(--accent-cyan); font-weight: 700; font-size: 0.95rem; margin-bottom: 5px;">لكل
-                    مواطن مش مقتدر كيلو سمك ببلاش ❤️</p>
-                <p style="color: var(--text-muted); font-size: 0.8rem;">(فوارغ - شبار - بوري - شوخرم)</p>
+            <div class="charity-banner">
+                <p style="color:var(--cyan); font-weight:bold;">لكل مواطن مش مقتدر كيلو سمك ببلاش ❤️</p>
+                <p style="color:#aaa; font-size:0.75rem;">(فوارغ - شبار - بوري - شوخرم)</p>
             </div>
 
             <div class="section-title">
-                <h2>🔥 <span class="title-text">عروض ملوك الفسيخ والرنجة</span> <span
-                        style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">(أصل التمليح)</span></h2>
+                <h2>🔥 عروض ملوك الفسيخ</h2>
+                <span class="section-sub">(أصل التمليح)</span>
             </div>
-            <div class="price-list">
-                <div class="item" style="margin-bottom: 8px;">
-                    <span class="item-name" style="color: var(--accent-gold); font-size: 1.2rem;">🔥 3 فسيخ + 2 رنجة
-                        (عرض سوبر)</span>
-                    <span class="item-price" style="color: var(--accent-gold); font-size: 1.3rem;">200</span>
+            <div class="item" onclick="openItem('3 فسيخ + 2 رنجة (عرض سوبر)', 200)">
+                <div class="item-name" style="color:var(--gold)">3 فسيخ + 2 رنجة (عرض سوبر)</div>
+                <div class="item-price" style="background:rgba(255, 215, 0, 0.1); color:var(--gold)">200</div>
+            </div>
+            <div class="item" onclick="openItem('سردين مملح (طبق)', 50)">
+                <div class="item-name" style="color:var(--gold)">سردين مملح (طبق)</div>
+                <div class="item-price" style="background:rgba(255, 215, 0, 0.1); color:var(--gold)">50</div>
+            </div>
+
+            <div class="section-title"><h2>🐟 الشبار البورسعيدي</h2></div>
+            <div class="item" onclick="openItem('شبار أخضر ممتاز (بندق)', 100)">
+                <div class="item-name">شبار أخضر ممتاز (بندق)</div>
+                <div class="item-price">100</div>
+            </div>
+            <div class="item" onclick="openItem('شبار أبيض (سوبر)', 70)">
+                <div class="item-name">شبار أبيض (سوبر)</div>
+                <div class="item-price">70</div>
+            </div>
+            <div class="item" onclick="openItem('شبار عين سالم', 50)">
+                <div class="item-name">شبار عين سالم</div>
+                <div class="item-price">50</div>
+            </div>
+
+            <div class="section-title">
+                <h2>🐟 البوري والمبطرخ</h2>
+                <span class="section-sub">(للّي بيفهم)</span>
+            </div>
+            <div class="item" onclick="openItem('بوري مبطرخ صافي كوامل', 180)">
+                <div class="item-name">بوري مبطرخ صافي كوامل</div>
+                <div class="item-price">180</div>
+            </div>
+            <div class="item" onclick="openItem('بوري مبطرخ (على منشي)', 110)">
+                <div class="item-name">بوري مبطرخ (على منشي)</div>
+                <div class="item-price">110</div>
+            </div>
+            <div class="item" onclick="openItem('فوارغ كبيرة', 75)">
+                <div class="item-name">فوارغ كبيرة</div>
+                <div class="item-price">75</div>
+            </div>
+            <div class="item" onclick="openItem('بوري عفر سمين', 180)">
+                <div class="item-name">بوري عفر سمين</div>
+                <div class="item-price">180</div>
+            </div>
+            <div class="item" onclick="openItem('قطع عفر سمين (مبطرخ)', 60)">
+                <div class="item-name">قطع عفر سمين (مبطرخ)</div>
+                <div class="item-price">60</div>
+            </div>
+            <div class="item" onclick="openItem('سهيلي أغلبها مبطرخ', 200)">
+                <div class="item-name">سهيلي أغلبها مبطرخ</div>
+                <div class="item-price">200</div>
+            </div>
+
+            <div class="section-title">
+                <h2>🦐 الفسفور والجمبري</h2>
+                <span class="section-sub">(سيبيا ولا سبيط؟)</span>
+            </div>
+            <div class="item">
+                <div class="item-name">جمبري جامبو فاخر / سوبر</div>
+                <div class="item-price" style="color:#4ade80; background:rgba(74, 222, 128, 0.1);">في المحل</div>
+            </div>
+            <div class="item" onclick="openItem('جمبري أحمر خشابي', 350)">
+                <div class="item-name">جمبري أحمر خشابي</div>
+                <div class="item-price">350</div>
+            </div>
+            <div class="item" onclick="openItem('جمبري فرزا (سليق)', 200)">
+                <div class="item-name">جمبري فرزا (سليق)</div>
+                <div class="item-price">200</div>
+            </div>
+            <div class="item" onclick="openItem('سيبيا وسبيط (تنظيف)', 280)">
+                <div class="item-name">سيبيا وسبيط (تنظيف / بدون)</div>
+                <div class="item-price">280</div>
+            </div>
+            <div class="item" onclick="openItem('كاليماري (كاريماري)', 230)">
+                <div class="item-name">كاليماري (كاريماري)</div>
+                <div class="item-price">230</div>
+            </div>
+            <div class="item" onclick="openItem('كابوريا نُتي مبطرخة', 100)">
+                <div class="item-name">كابوريا نُتي مبطرخة</div>
+                <div class="item-price">100</div>
+            </div>
+            <div class="item" onclick="openItem('كابوريا دكور (حشو)', 80)">
+                <div class="item-name">كابوريا دكور (حشو)</div>
+                <div class="item-price">80</div>
+            </div>
+            <div class="item" onclick="openItem('بكلاويز بلدي حي', 70)">
+                <div class="item-name">بكلاويز بلدي حي</div>
+                <div class="item-price">70</div>
+            </div>
+            <div class="item" onclick="openItem('شيكال مبطرخة', 100)">
+                <div class="item-name">شيكال مبطرخة (بالوحدة)</div>
+                <div class="item-price">100</div>
+            </div>
+            <div class="item" onclick="openItem('شيكال لحم', 10)">
+                <div class="item-name">شيكال لحم ع مبطرخ</div>
+                <div class="item-price">10</div>
+            </div>
+
+            <div class="section-title"><h2>💎 كنوز البحر</h2></div>
+            <div class="item" onclick="openItem('لوت حي صنار', 180)">
+                <div class="item-name">لوت حي صنار</div>
+                <div class="item-price">180</div>
+            </div>
+            <div class="item" onclick="openItem('دنيس (سوبر)', 250)">
+                <div class="item-name">دنيس (سوبر)</div>
+                <div class="item-price">250</div>
+            </div>
+            <div class="item" onclick="openItem('بربوني (سوبر)', 120)">
+                <div class="item-name">بربوني (سوبر)</div>
+                <div class="item-price">120</div>
+            </div>
+            <div class="item" onclick="openItem('بربوني حي أحمر فراولة', 250)">
+                <div class="item-name">بربوني حي أحمر فراولة</div>
+                <div class="item-price">250</div>
+            </div>
+            <div class="item" onclick="openItem('غطيان موسى', 240)">
+                <div class="item-name">غطيان موسى</div>
+                <div class="item-price">240</div>
+            </div>
+            <div class="item" onclick="openItem('قروص', 150)">
+                <div class="item-name">قروص</div>
+                <div class="item-price">150</div>
+            </div>
+            <div class="item" onclick="openItem('سردين بلدي', 120)">
+                <div class="item-name">سردين بلدي</div>
+                <div class="item-price">120</div>
+            </div>
+            <div class="item" onclick="openItem('مكرونة سوبر', 120)">
+                <div class="item-name">مكرونة سوبر</div>
+                <div class="item-price">120</div>
+            </div>
+            <div class="item" onclick="openItem('مرجان حر', 120)">
+                <div class="item-name">مرجان حر (دواء العيان)</div>
+                <div class="item-price">120</div>
+            </div>
+
+            <div class="section-title"><h2>🏠 فرشة الغلابة</h2></div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                <div class="item" onclick="openItem('بربوني', 65)">
+                    <div class="item-name">بربوني</div><div class="item-price">65</div>
                 </div>
-                <div class="item">
-                    <span class="item-name" style="color: var(--accent-gold); font-size: 1.2rem;">🔥 سردين مملح
-                        (طبق)</span>
-                    <span class="item-price" style="color: var(--accent-gold); font-size: 1.3rem;">50</span>
+                <div class="item" onclick="openItem('مكرونة', 65)">
+                    <div class="item-name">مكرونة</div><div class="item-price">65</div>
+                </div>
+                <div class="item" onclick="openItem('مرجان', 65)">
+                    <div class="item-name">مرجان</div><div class="item-price">65</div>
+                </div>
+                <div class="item" onclick="openItem('سردين', 65)">
+                    <div class="item-name">سردين</div><div class="item-price">65</div>
+                </div>
+                <div class="item" onclick="openItem('تونة', 0)">
+                    <div class="item-name" style="color: var(--text-gray); opacity: 0.6;">تونة</div><div class="item-price" style="color: var(--text-gray); font-size: 0.9rem;">غير متاح</div>
                 </div>
             </div>
 
-            <div class="section-title" style="margin-top: 35px;">
-                <h2>🐟 <span class="title-text">الشبار البورسعيدي</span></h2>
+            <div class="section-title"><h2>🍽️ أطباق مميزة</h2></div>
+            <div class="item" onclick="openItem('طبق بطارخ صافي', 160)">
+                <div class="item-name">طبق بطارخ صافي (12 بطروخ)</div>
+                <div class="item-price">160 <span class="old-price">200</span></div>
             </div>
-            <div class="price-list">
-                <div class="item"><span class="item-name">شبار أخضر ممتاز (بندق)</span><span
-                        class="item-price">100/65</span></div>
-                <div class="item"><span class="item-name">شبار أبيض (سوبر)</span><span class="item-price">60 / 70</span>
-                </div>
-                <div class="item"><span class="item-name">شبار عين سالم</span><span class="item-price">50</span></div>
-
-            </div>
-
-            <div class="section-title" style="margin-top: 35px;">
-                <h2>🐟 <span class="title-text">البوري والمبطرخ</span> <span
-                        style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">(للّي بيفهم)</span></h2>
-            </div>
-            <div class="price-list">
-                <div class="item"><span class="item-name">بوري مبطرخ صافي كوامل</span><span
-                        class="item-price">180/160/140</span></div>
-                <div class="item"><span class="item-name">بوري مبطرخ (على منشي)</span><span class="item-price">80 / 100
-                        /
-                        110</span></div>
-                <div class="item"><span class="item-name">فوارغ كبيرة</span><span class="item-price">75</span>
-                </div>
-                <div class="item"><span class="item-name">بوري عفر سمين</span><span
-                        class="item-price">180/170/150</span></div>
-                <div class="item"><span class="item-name">قطع عفر سمين (مبطرخ)</span><span class="item-price">60
-                        </span></div>
-                <div class="item"><span class="item-name">سهيلي أغلبها مبطرخ</span><span class="item-price">200</span>
-                </div>
-                <div class="item">
-                    <span class="item-name" style="color: var(--text-muted); opacity: 0.6;">سهيرلي مبطرخ
-                        (بالوحدة)</span>
-                    <span class="item-price" style="color: var(--text-muted); font-size: 0.9rem;">غير متاح</span>
-                </div>
+            <div class="item" onclick="openItem('طبق جمبري لحم صافي', 160)">
+                <div class="item-name">طبق جمبري لحم صافي</div>
+                <div class="item-price">160 <span class="old-price">200</span></div>
             </div>
 
             <div class="footer">
-                <div class="wt-brand">
-                    <span class="owner">Weza Technologies™</span>
-                    <span class="phone">01207799717</span>
+                <div class="slogan">" معاك فلوس هتاكل .. معكش برضه هتاكل 🖤 "</div>
+                <p>📍 بورسعيد: أمام بوابة نادي الرباط مباشرة</p>
+                <p>📍 بورفؤاد: أمام مسجد الشعراوي مباشرة</p>
+                <div class="brand">
+                    <div>™Weza Technologies</div>
+                    <div>01207799717</div>
                 </div>
+                <p class="update-date">تاريخ التحديث: الأربعاء، 7 يناير 2026</p>
             </div>
         </div>
     </div>
 
-    <div class="menu-page">
-        <img src="Logo.jpg" class="watermark">
-        <div class="content-wrap">
-            <div class="header">
-                <h1>🦐 الفسفور والجمبري 🦐</h1>
-                <div class="sub-text">سيبيا ولا سبيط؟ الاثنين عندنا</div>
+    <div id="cartBar">
+        <div class="cart-info">
+            <span>إجمالي السلة (<span id="cartCount">0</span>)</span>
+            <div class="cart-total"><span id="pillTotal">0</span> ج.م</div>
+        </div>
+        <button class="btn-view-cart" onclick="openCheckout()">عرض الطلب 🛒</button>
+    </div>
+
+    <div id="overlay">
+        <div class="modal" id="modalAdd" style="display:none;">
+            <h3 id="mTitle" style="color:var(--gold); text-align:center; margin-bottom:20px;"></h3>
+            
+            <div class="form-group">
+                <label class="form-label">الكمية</label>
+                <div style="display:flex; gap:10px;">
+                    <input type="number" id="mQty" class="form-input" value="1" min="0.5" step="0.5">
+                    <select id="mUnit" class="form-select" style="width:120px;"><option>كيلو</option><option>قطعة</option><option>طبق</option></select>
+                </div>
             </div>
 
-            <div class="price-list">
-    <div class="item">
-        <span class="item-name">جمبري جامبو فاخر</span>
-        <span class="item-price" style="color: #4ade80; font-size: 0.8rem; letter-spacing: 0.5px;">في المحل</span>
-    </div>
-
-    <div class="item">
-        <span class="item-name">جمبري (سوبر)</span>
-        <span class="item-price" style="color: #4ade80; font-size: 0.8rem; letter-spacing: 0.5px;">في المحل</span>
-    </div>
-
-    <div class="item">
-        <span class="item-name">جمبري أحمر خشابي</span>
-        <span class="item-price">350</span>
-    </div>
-
-    <div class="item">
-        <span class="item-name">جمبري فرزا (سليق)</span>
-        <span class="item-price">200/150</span>
-    </div>
-
-    <div class="item">
-        <span class="item-name" style="color: var(--text-muted); opacity: 0.6;">جمبري تقشير</span>
-        <span class="item-price" style="color: var(--text-muted); font-size: 0.9rem;">غير متاح</span>
-    </div>
-
-    <div class="item">
-        <span class="item-name">سيبيا وسبيط (تنظيف / بدون)</span>
-        <span class="item-price">280 / 330</span>
-    </div>
-
-    <div class="item">
-        <span class="item-name">كاليماري (كاريماري)</span>
-        <span class="item-price">230</span>
-    </div>
-
-    <div class="item">
-        <span class="item-name">كابوريا نُتي مبطرخة</span>
-        <span class="item-price">100</span>
-    </div>
-
-    <div class="item">
-        <span class="item-name">كابوريا دكور (حشو)</span>
-        <span class="item-price">80/65</span>
-    </div>
-
-    <div class="item">
-        <span class="item-name">بكلاويز بلدي حي</span>
-        <span class="item-price">70</span>
-    </div>
-
-    <div class="item">
-        <span class="item-name">شيكال مبطرخة (بالوحدة)</span>
-        <span class="item-price">100</span>
-    </div>
-
-    <div class="item">
-        <span class="item-name">شيكال لحم ع مبطرخ</span>
-        <span class="item-price">10</span>
-    </div>
-</div>
-
-            <div class="section-title" style="margin-top: 35px;">
-                <h2>💎 <span class="title-text">كنوز البحر</span> <span
-                        style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">(طازة من الشبكة)</span>
-                </h2>
-            </div>
-            <div class="price-list">
-                <div class="item">
-                    <span class="item-name">لوت حي صنار</span>
-                    <span class="item-price">180</span>
-                </div>
-                <div class="item">
-                    <span class="item-name">أبو كرش</span>
-                    <span class="item-price">80</span>
-                </div>
-                <div class="item">
-                    <span class="item-name">دنيس (سوبر)</span>
-                    <span class="item-price">250</span>
-                </div>
-                <div class="item"><span class="item-name">بربوني (سوبر)</span><span class="item-price">120</span>
-                </div>
-                <div class="item"><span class="item-name">بربوني (ظباطتي)</span><span class="item-price">50</span>
-                </div>
-                <div class="item"><span class="item-name">بربوني حي أحمر فراولة</span><span
-                        class="item-price">250</span></div>
-                <div class="item"><span class="item-name">غطيان موسى</span><span class="item-price">240</span>
-                </div>
-                <div class="item"><span class="item-name">قروص</span><span class="item-price">150</span></div>
-                <div class="item"><span class="item-name">سردين بلدي</span><span class="item-price">120</span></div>
-                <div class="item"><span class="item-name">مكرونة سوبر</span><span class="item-price">120</span></div>
-                <div class="item">
-                    <span class="item-name" style="color: var(--text-muted); opacity: 0.6;">دراك</span>
-                    <span class="item-price" style="color: var(--text-muted); font-size: 0.9rem;">غير متاح</span>
-                </div>
-                <div class="item"><span class="item-name">مرجان حر (دواء العيان)</span><span
-                        class="item-price">120</span></div>
+            <div class="form-group">
+                <label class="form-label">طريقة التجهيز (إضافة للكيلو)</label>
+                <select id="mPrep" class="form-select">
+                    <option value="0">بدون تجهيز</option>
+                    <option value="15">تنظيف (+15ج)</option>
+                    <option value="15">شوي ردة (+15ج)</option>
+                    <option value="15">قلي (+15ج)</option>
+                    <option value="20">شوي سنجاري (+20ج)</option>
+                    <option value="20">شوي زيت وليمون (+20ج)</option>
+                </select>
             </div>
 
-            <div class="section-title" style="margin-top: 35px;">
-                <h2>🏠 <span class="title-text">فرشة الغلابة</span> <span
-                        style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">(الكل هياكل)</span>
-                </h2>
-            </div>
-            <div class="price-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <div class="item"><span class="item-name"
-                        style="color: var(--text-muted); opacity: 0.6;">رقاد</span><span class="item-price"
-                        style="color: var(--text-muted); font-size: 0.9rem;">غير متاح</span></div>
-                <div class="item"><span class="item-name"
-                        style="color: var(--text-muted); opacity: 0.6;">شخرم</span><span class="item-price"
-                        style="color: var(--text-muted); font-size: 0.9rem;">غير متاح</span></div>
-                <div class="item"><span class="item-name">بربوني</span><span class="item-price">65</span></div>
-                <div class="item"><span class="item-name">مكرونة</span><span class="item-price">65</span></div>
-                <div class="item"><span class="item-name">مرجان</span><span class="item-price">65</span></div>
-                <div class="item"><span class="item-name">سردين</span><span class="item-price">65</span></div>
-                <div class="item"><span class="item-name"
-                        style="color: var(--text-muted); opacity: 0.6;">تونة</span><span class="item-price"
-                        style="color: var(--text-muted); font-size: 0.9rem;">غير متاح</span></div>
+            <button class="btn-confirm" onclick="addToCart()">إضافة للسلة +</button>
+            <button class="btn-cancel" onclick="closeModal()">إلغاء</button>
+        </div>
+
+        <div class="modal" id="modalCheckout" style="display:none;">
+            <h3>مراجعة الطلب 📝</h3>
+            
+            <div class="cart-list" id="cartList"></div>
+            
+            <div class="form-group">
+                <label class="form-label">طريقة الاستلام</label>
+                <div class="del-options">
+                    <div class="del-opt active" id="optDel" onclick="setMode('delivery')">🚚 دليفري</div>
+                    <div class="del-opt" id="optPick" onclick="setMode('pickup')">🏪 استلام (0ج)</div>
+                </div>
+                
+                <div id="areaSelectBox" style="margin-top:10px; display:none;">
+                    <label class="form-label" style="font-size:0.8rem; color:#aaa;">اختر المنطقة لحساب التوصيل:</label>
+                    <select id="delArea" class="form-select" onchange="updateTotals()">
+                        <option value="25">بورفؤاد (+25ج)</option>
+                        <option value="50">بورسعيد (+50ج)</option>
+                        <option value="50">مدينة بورفؤاد (الفيروز/الحرفيين) (+50ج)</option>
+                        <option value="50">حي الإمارات / الجنوب (+50ج)</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="section-title" style="margin-top: 35px;">
-                <h2>🍽️ <span class="title-text">أطباق مميزة</span></h2>
+            <div class="form-group">
+                <label class="form-label">تفاصيل وملاحظات الطلب (هام)</label>
+                <div class="notes-examples">
+                    <span>💡 أمثلة للتوضيح:</span><br>
+                    • الفسيخ دلع وملح خفيف.<br>
+                    • الشبار وسط والبوري 3 في الكيلو.<br>
+                    • رن الجرس عند الوصول، التوصيل الساعة 5.
+                </div>
+                <textarea id="cNotes" class="form-input" rows="4" placeholder="اكتب هنا أي تفاصيل أو طلبات خاصة..."></textarea>
             </div>
-            <div class="price-list">
-                <div class="item">
-                    <div style="text-align:right;">
-                        <span class="item-name">طبق بطارخ صافي</span>
-                        <div style="font-size:0.8rem; color: #888;">(12 بطروخ كيلو)</div>
+
+            <div class="form-group">
+                <label class="form-label">بياناتك (محفوظة تلقائياً)</label>
+                <input type="text" id="cName" class="form-input" placeholder="الاسم بالكامل" style="margin-bottom:10px;">
+                <input type="tel" id="cPhone" class="form-input" placeholder="رقم الموبايل (واتساب)">
+            </div>
+
+            <div class="form-group" id="addrBox">
+                <label class="form-label">العنوان بالتفصيل</label>
+                <div class="row" style="margin-bottom:10px;">
+                    <input type="text" id="cArea" class="form-input" placeholder="المنطقة" style="flex:1;">
+                    <input type="text" id="cStreet" class="form-input" placeholder="اسم الشارع" style="flex:1;">
+                </div>
+                <div class="row">
+                    <input type="text" id="cBuild" class="form-input" placeholder="عمارة" style="flex:1;">
+                    <input type="text" id="cFloor" class="form-input" placeholder="دور/شقة" style="flex:1;">
+                </div>
+            </div>
+
+            <div style="border-top:1px solid #333; padding-top:15px; margin-top:10px;">
+                <div style="display:flex; justify-content:space-between; color:#aaa; margin-bottom:5px;"><span>المجموع:</span><span><span id="subTotal">0</span> ج</span></div>
+                <div style="display:flex; justify-content:space-between; color:#aaa; margin-bottom:5px;"><span>التوصيل:</span><span><span id="delCost">25</span> ج</span></div>
+                <div style="display:flex; justify-content:space-between; font-size:1.3rem; font-weight:bold; color:var(--gold);">
+                    <span>الإجمالي:</span><span><span id="finalTotal">0</span> ج</span>
+                </div>
+            </div>
+
+            <button class="btn-confirm" onclick="sendOrder()">تأكيد وإرسال ✅</button>
+            <button class="btn-cancel" onclick="closeModal()">رجوع</button>
+        </div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwFxNBzzhLUSl4zjwRUTavB6diFkL4M5sGvUpgK91RStxH5mU086eimzDHdavBId5yyiw/exec';
+        let cart = [];
+        let tempItem = {};
+        let deliveryMode = 'delivery'; 
+
+        window.onload = function() {
+            if(localStorage.getItem('weza_name')) document.getElementById('cName').value = localStorage.getItem('weza_name');
+            if(localStorage.getItem('weza_phone')) document.getElementById('cPhone').value = localStorage.getItem('weza_phone');
+            if(localStorage.getItem('weza_area')) document.getElementById('cArea').value = localStorage.getItem('weza_area');
+            if(localStorage.getItem('weza_street')) document.getElementById('cStreet').value = localStorage.getItem('weza_street');
+            if(localStorage.getItem('weza_build')) document.getElementById('cBuild').value = localStorage.getItem('weza_build');
+            if(localStorage.getItem('weza_floor')) document.getElementById('cFloor').value = localStorage.getItem('weza_floor');
+        }
+
+        function openItem(name, price) {
+            if (price === 0) return; // Prevent unavailable items
+            tempItem = { name, price };
+            document.getElementById('mTitle').innerText = name;
+            document.getElementById('mQty').value = 1; 
+            document.getElementById('mPrep').value = "0"; 
+            document.getElementById('overlay').style.display = 'flex';
+            document.getElementById('modalAdd').style.display = 'block';
+            document.getElementById('modalCheckout').style.display = 'none';
+        }
+
+        function addToCart() {
+            let qty = parseFloat(document.getElementById('mQty').value);
+            let unit = document.getElementById('mUnit').value;
+            let prepSelect = document.getElementById('mPrep');
+            let prepPrice = parseInt(prepSelect.value);
+            let prepNameFull = prepSelect.options[prepSelect.selectedIndex].text;
+            let prepName = prepNameFull.split(' (')[0];
+            if(prepPrice === 0) prepName = "بدون تجهيز";
+
+            // المعادلة: (السعر + التجهيز) * الكمية
+            let total = (tempItem.price + prepPrice) * qty;
+
+            cart.push({ ...tempItem, qty, unit, prepName, prepPrice, total });
+            closeModal();
+            updateUI();
+            if(navigator.vibrate) navigator.vibrate(50);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            if (cart.length === 0) {
+                closeModal();
+                updateUI();
+            } else {
+                openCheckout();
+                updateUI();
+            }
+        }
+
+        function updateUI() {
+            let sum = cart.reduce((a, b) => a + b.total, 0);
+            document.getElementById('pillTotal').innerText = Math.round(sum);
+            document.getElementById('cartCount').innerText = cart.length;
+            
+            if (cart.length > 0) {
+                document.getElementById('cartBar').classList.add('active');
+            } else {
+                document.getElementById('cartBar').classList.remove('active');
+            }
+        }
+
+        function openCheckout() {
+            if(cart.length === 0) return;
+            let list = document.getElementById('cartList');
+            list.innerHTML = '';
+            
+            cart.forEach((item, index) => {
+                let prepDisplay = item.prepPrice > 0 ? `+ ${item.prepName} (${item.prepPrice * item.qty}ج)` : item.prepName;
+                list.innerHTML += `
+                <div class="cart-item-row">
+                    <div style="flex:1">
+                        <div class="cart-details-main">${item.qty} ${item.unit} ${item.name}</div>
+                        <div class="cart-details-sub">
+                            <span>${prepDisplay}</span>
+                            <span class="cart-price">الإجمالي: ${Math.round(item.total)} ج.م</span>
+                        </div>
                     </div>
-                    <span class="item-price"><span class="old-price"
-                            style="margin-left:5px; font-size:0.8rem; color:#888; text-decoration:line-through;">200</span>160</span>
-                </div>
-                <div class="item">
-                    <span class="item-name">طبق جمبري لحم صافي</span>
-                    <span class="item-price"><span class="old-price"
-                            style="margin-left:5px; font-size:0.8rem; color:#888; text-decoration:line-through;">200</span>160</span>
-                </div>
-            </div>
+                    <button class="del-btn" onclick="removeFromCart(${index})"><i class="fas fa-trash"></i></button>
+                </div>`;
+            });
+            
+            setMode(deliveryMode);
+            document.getElementById('overlay').style.display = 'flex';
+            document.getElementById('modalAdd').style.display = 'none';
+            document.getElementById('modalCheckout').style.display = 'block';
+        }
 
-            <div class="footer">
-                <p style="font-size: 0.85rem; color: #fff; margin-bottom: 15px;">📍 الأسعار متاحة في جميع الفروع
-                    (بورسعيد & بورفؤاد)</p>
+        function setMode(mode) {
+            deliveryMode = mode;
+            document.getElementById('optDel').classList.toggle('active', mode === 'delivery');
+            document.getElementById('optPick').classList.toggle('active', mode === 'pickup');
+            
+            // إظهار/إخفاء تفاصيل العنوان واختيار المنطقة
+            document.getElementById('addrBox').style.display = mode === 'delivery' ? 'block' : 'none';
+            document.getElementById('areaSelectBox').style.display = mode === 'delivery' ? 'block' : 'none';
+            
+            updateTotals();
+        }
 
-                <div class="slogan-box" style="margin-bottom: 20px;">
-                    <p style="font-size: 1.1rem;">" معاك فلوس هتاكل معكش برضه هتاكل 🖤 "</p>
-                </div>
+        function updateTotals() {
+            let sub = cart.reduce((a, b) => a + b.total, 0);
+            let del = 0;
+            
+            if (deliveryMode === 'delivery') {
+                if (sub >= 2500) {
+                    del = 0; // Free for orders >= 2500
+                } else {
+                    del = parseInt(document.getElementById('delArea').value); // Get price from dropdown
+                }
+            }
 
-                <div class="wt-brand" style="margin-top: 20px;">
-                    <span class="owner">™Weza Technologies</span>
-                    <span class="phone">01207799717</span>
-                </div>
+            document.getElementById('subTotal').innerText = Math.round(sub);
+            document.getElementById('delCost').innerText = (del === 0 && deliveryMode === 'delivery') ? 'مجاناً' : del;
+            document.getElementById('finalTotal').innerText = Math.round(sub + del);
+        }
 
-                <p class="update-date"
-                    style="font-size: 0.7rem; color: var(--text-muted); margin-top: 10px; direction: ltr;">تاريخ
-                    التحديث: الخميس، 1 يناير 2026</p>
-            </div>
-        </div>
-    </div>
+        function closeModal() {
+            document.getElementById('overlay').style.display = 'none';
+        }
 
+        function sendOrder() {
+            let name = document.getElementById('cName').value;
+            let phone = document.getElementById('cPhone').value;
+            let area = document.getElementById('cArea').value;
+            let street = document.getElementById('cStreet').value;
+            let build = document.getElementById('cBuild').value;
+            let floor = document.getElementById('cFloor').value;
+            let notes = document.getElementById('cNotes').value;
+            let delAreaName = document.getElementById('delArea').options[document.getElementById('delArea').selectedIndex].text;
+
+            if(!name || !phone || (deliveryMode === 'delivery' && !street)) {
+                alert("من فضلك اكتب بياناتك وعنوانك عشان المندوب يوصلك");
+                return;
+            }
+
+            localStorage.setItem('weza_name', name);
+            localStorage.setItem('weza_phone', phone);
+            localStorage.setItem('weza_area', area);
+            localStorage.setItem('weza_street', street);
+            localStorage.setItem('weza_build', build);
+            localStorage.setItem('weza_floor', floor);
+
+            let fullAddress = deliveryMode === 'delivery' 
+                ? `${delAreaName} - ${area} - ${street} - عمارة ${build} - دور ${floor}` 
+                : "حجز (تيك أواي - استلام من المحل)";
+
+            let orderText = "";
+            cart.forEach(i => {
+                let prepInfo = i.prepPrice > 0 ? `(${i.prepName})` : "";
+                orderText += `▪️ ${i.qty} ${i.unit} ${i.name} ${prepInfo}\n`;
+            });
+            let total = document.getElementById('finalTotal').innerText;
+
+            let finalOrderDetails = orderText;
+            if(notes) {
+                finalOrderDetails += `\n📝 ملاحظات: ${notes}`;
+            }
+
+            fetch(SCRIPT_URL, {
+                method: 'POST', mode: 'no-cors',
+                body: JSON.stringify({ name, phone, address: fullAddress, order: finalOrderDetails, total })
+            });
+
+            let waMsg = `*طلب جديد يا ملوك* 👑\n\n👤 العميل: ${name}\n📱 ت: ${phone}\n📍 العنوان: ${fullAddress}\n\n🧾 *الطلب:*\n${orderText}\n📝 *ملاحظات:* ${notes || 'لا يوجد'}\n\n💰 *الإجمالي النهائي:* ${total} جنيه`;
+            window.location.href = `https://wa.me/201207799717?text=${encodeURIComponent(waMsg)}`;
+        }
+    </script>
 </body>
-
 </html>
