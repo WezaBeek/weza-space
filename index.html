@@ -678,7 +678,8 @@
 
         <div class="projects-grid">
             <!-- Project 1: NewFolder -->
-            <div class="project-card">
+            <a href="NewFolder/" target="_blank" class="project-card"
+                style="text-decoration:none; display:block; color:inherit;">
                 <div class="project-img"
                     style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');">
                 </div>
@@ -689,13 +690,13 @@
                         تجربة تسوق إلكترونية متكاملة. نظام سلة مشتريات ذكي، ربط مباشر مع واتساب، وواجهة مستخدم زجاجية
                         (Glassmorphism) تتحدى المعايير العالمية.
                     </p>
-                    <a href="NewFolder/" target="_blank" class="btn-link">فتح المعاينة الحية <i
-                            class="fas fa-arrow-left"></i></a>
+                    <div class="btn-link">فتح المعاينة الحية <i class="fas fa-arrow-left"></i></div>
                 </div>
-            </div>
+            </a>
 
             <!-- Project 2: REM -->
-            <div class="project-card">
+            <a href="Rem/" target="_blank" class="project-card"
+                style="text-decoration:none; display:block; color:inherit;">
                 <div class="project-img"
                     style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');">
                 </div>
@@ -706,13 +707,13 @@
                         استراتيجية إعادة هيكلة الهوية البصرية والرقمية. تحويل العلامة التجارية من السوق المحلي إلى
                         العالمية بخطوات مدروسة.
                     </p>
-                    <a href="Rem/" target="_blank" class="btn-link">استعراض الاستراتيجية <i
-                            class="fas fa-arrow-left"></i></a>
+                    <div class="btn-link">استعراض الاستراتيجية <i class="fas fa-arrow-left"></i></div>
                 </div>
-            </div>
+            </a>
 
             <!-- Project 3: Kings System -->
-            <div class="project-card">
+            <a href="Kings/" target="_blank" class="project-card"
+                style="text-decoration:none; display:block; color:inherit;">
                 <div class="project-img"
                     style="background-image: url('https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');">
                 </div>
@@ -723,9 +724,9 @@
                         نظام الأتمتة الكامل لطلب الأسماك والمنتجات. يغطي "اشتري سمك"، "اسأل عن السعر"، و"التوصيل" بشكل
                         آلي بالكامل.
                     </p>
-                    <a href="Kings/" target="_blank" class="btn-link">تفاصيل الكود <i class="fas fa-arrow-left"></i></a>
+                    <div class="btn-link">تفاصيل الكود <i class="fas fa-arrow-left"></i></div>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -786,12 +787,21 @@
             <div
                 style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; flex-wrap: wrap; gap: 20px;">
 
-                <!-- Copyright -->
-                <div style="color: #666; font-size: 0.9rem;">
-                    &copy; 2026 Weza Technologies. All Rights Reserved.
+                <!-- Social Icons (Start/Right in RTL) -->
+                <div style="display: flex; gap: 15px;">
+                    <a href="https://www.facebook.com/WezaTechnologies/" target="_blank" style="text-decoration:none;">
+                        <i class="fab fa-facebook-f" style="font-size: 1.5rem; color: #1877F2; transition: 0.3s;"
+                            onmouseover="this.style.transform='scale(1.2)'"
+                            onmouseout="this.style.transform='scale(1)'"></i>
+                    </a>
+                    <a href="https://wa.me/201207799717" target="_blank" style="text-decoration:none;">
+                        <i class="fab fa-whatsapp" style="font-size: 1.5rem; color: #25D366; transition: 0.3s;"
+                            onmouseover="this.style.transform='scale(1.2)'"
+                            onmouseout="this.style.transform='scale(1)'"></i>
+                    </a>
                 </div>
 
-                <!-- Links -->
+                <!-- Links (Center) -->
                 <ul style="list-style:none; display: flex; gap: 20px; padding: 0; margin: 0;">
                     <li><a href="Plan/" style="color:#777; text-decoration:none; transition:0.3s;"
                             onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#777'">خطة 2026</a></li>
@@ -805,18 +815,9 @@
                     </li>
                 </ul>
 
-                <!-- Social Icons (Corner) -->
-                <div style="display: flex; gap: 15px;">
-                    <a href="https://wa.me/201207799717" target="_blank" style="text-decoration:none;">
-                        <i class="fab fa-whatsapp" style="font-size: 1.5rem; color: #25D366; transition: 0.3s;"
-                            onmouseover="this.style.transform='scale(1.2)'"
-                            onmouseout="this.style.transform='scale(1)'"></i>
-                    </a>
-                    <a href="https://www.facebook.com/WezaTechnologies/" target="_blank" style="text-decoration:none;">
-                        <i class="fab fa-facebook-f" style="font-size: 1.5rem; color: #1877F2; transition: 0.3s;"
-                            onmouseover="this.style.transform='scale(1.2)'"
-                            onmouseout="this.style.transform='scale(1)'"></i>
-                    </a>
+                <!-- Copyright (End/Left in RTL) -->
+                <div style="color: #666; font-size: 0.9rem;">
+                    &copy; 2026 Weza Technologies. All Rights Reserved.
                 </div>
 
             </div>
