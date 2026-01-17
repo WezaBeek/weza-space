@@ -55,6 +55,7 @@
             gap: 50px;
             z-index: 99999;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            white-space: nowrap;
         }
 
         .nav-link {
@@ -192,6 +193,55 @@
             font-weight: 900;
             text-decoration: none;
             text-align: center;
+        }
+
+
+
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .phase-card {
+                padding: 20px 15px;
+            }
+
+            .phase-header {
+                flex-direction: column-reverse;
+                /* Icons on top or keep side by side? Let's keep side by side but stack if needed. Actually header is minimal. Let's keep row but smaller gap. */
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .phase-header i {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                font-size: 1.5rem !important;
+            }
+
+            .phase-title {
+                padding-right: 0;
+                /* RTL */
+                width: 100%;
+            }
+
+            .floating-nav {
+                width: 90%;
+                min-width: unset;
+                padding: 10px 20px;
+                gap: 30px;
+                bottom: 20px;
+            }
+
+            .brand-badge {
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
