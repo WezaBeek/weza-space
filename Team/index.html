@@ -4,38 +4,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خارطة الطريق الملكية - Weza x Kings</title>
-    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <title>من نحن - Weza Technologies Team</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #050a10;
-            --primary: #00e5ff;
-            --gold: #ffc107;
-            --glass-bg: rgba(20, 30, 40, 0.7);
-            --border-light: rgba(255, 255, 255, 0.1);
-            --text-main: #ffffff;
-            --text-sub: #cdd6da;
-            --glass-nav: rgba(0, 0, 0, 0.7);
+            --bg-deep: #02040a;
+            --primary: #00f2ff;
+            --gold: #ffd700;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(0, 242, 255, 0.2);
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
         }
 
         body {
-            font-family: 'Almarai', sans-serif;
-            background-color: var(--bg-dark);
-            background-image: radial-gradient(circle at top right, rgba(0, 229, 255, 0.1), transparent 45%), radial-gradient(circle at bottom left, rgba(255, 193, 7, 0.08), transparent 45%);
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-deep);
             color: var(--text-main);
-            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
             overflow-x: hidden;
+            background-image:
+                linear-gradient(45deg, rgba(0, 0, 0, 0.8), rgba(0, 20, 30, 0.9)),
+                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&q=80');
+            background-size: cover;
+            background-attachment: fixed;
             padding-bottom: 120px;
         }
 
         .container {
-            max-width: 950px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 900px;
+            width: 100%;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* الشريط الشفاف - Compact */
+        /* Logo Branding */
+        .brand-logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+        }
+
+        .logo-weza {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+        }
+
+        .logo-tech {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            margin-left: 10px;
+        }
+
+        /* Professional Glass Card */
+        .glass-card {
+            background: rgba(10, 15, 25, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 60px 50px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: linear-gradient(to bottom, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+            font-family: 'Orbitron';
+            letter-spacing: 2px;
+        }
+
+        p {
+            line-height: 2;
+            font-size: 1.3rem;
+            color: #d1d1d1;
+            margin-bottom: 30px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-tagline {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-top: 50px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+
+        /* Floating Nav - Match Plan Style */
         .floating-nav {
             position: fixed;
             bottom: 25px;
@@ -43,7 +146,7 @@
             transform: translateX(-50%);
             width: auto;
             min-width: 250px;
-            background: var(--glass-nav);
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -56,6 +159,7 @@
             z-index: 99999;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             white-space: nowrap;
+            /* Prevent wrapping */
         }
 
         .nav-link {
@@ -87,150 +191,34 @@
             color: var(--primary);
         }
 
-        /* التنسيقات */
-        .brand-badge {
-            display: inline-block;
-            background: rgba(0, 229, 255, 0.1);
-            color: var(--primary);
-            padding: 6px 20px;
-            border-radius: 30px;
-            font-weight: 800;
-            border: 2px solid rgba(0, 229, 255, 0.3);
-            margin: 30px auto 15px;
-            display: table;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 900;
-            text-align: center;
-            background: linear-gradient(to right, #fff, #e0e0e0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--text-sub);
-            margin-bottom: 40px;
-        }
-
-        .problem-section {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0));
-            border: 1px solid var(--border-light);
-            border-right: 4px solid #ff3366;
-            padding: 25px;
-            border-radius: 16px;
-            margin: 30px 0;
-        }
-
-        .highlight-quote {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 12px;
-            border-right: 4px solid var(--primary);
-            font-style: italic;
-            margin-top: 20px;
-        }
-
-        .opportunity-box {
-            background: linear-gradient(135deg, rgba(255, 193, 7, 0.08), rgba(0, 229, 255, 0.02));
-            border: 2px solid rgba(255, 193, 7, 0.3);
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .highlight-box-gold {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 15px;
-            border: 2px dashed var(--gold);
-            margin-top: 20px;
-        }
-
-        .phase-card {
-            background: var(--glass-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .phase-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .phase-title h4 {
-            font-size: 1.5rem;
-            color: #fff;
-            margin: 0;
-        }
-
-        .tech-tag {
-            background: rgba(0, 229, 255, 0.1);
-            padding: 3px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            color: var(--primary);
-        }
-
-        .print-btn {
-            display: block;
-            margin: 40px auto;
-            padding: 15px 50px;
-            background: linear-gradient(90deg, var(--primary), #0077ff);
-            color: #fff;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            font-weight: 900;
-            text-decoration: none;
-            text-align: center;
-        }
-
-
-
-        /* Mobile Responsiveness */
         @media (max-width: 600px) {
             h1 {
                 font-size: 2rem;
+                margin-bottom: 15px;
             }
 
-            .container {
-                padding: 15px;
+            .glass-card {
+                padding: 30px 15px;
+                border-radius: 20px;
             }
 
-            .phase-card {
-                padding: 20px 15px;
+            p {
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 20px;
             }
 
-            .phase-header {
-                flex-direction: column-reverse;
-                /* Icons on top or keep side by side? Let's keep side by side but stack if needed. Actually header is minimal. Let's keep row but smaller gap. */
-                align-items: flex-start;
-                gap: 10px;
+            .brand-logo {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
             }
 
-            .phase-header i {
-                position: absolute;
-                top: 20px;
-                left: 20px;
-                font-size: 1.5rem !important;
+            .subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 20px;
             }
 
-            .phase-title {
-                padding-right: 0;
-                /* RTL */
-                width: 100%;
-            }
-
+            /* Adjust nav for small screens */
             .floating-nav {
                 width: 90%;
                 min-width: unset;
@@ -238,124 +226,39 @@
                 gap: 30px;
                 bottom: 20px;
             }
-
-            .brand-badge {
-                margin-top: 10px;
-            }
         }
     </style>
 </head>
 
 <body>
+
+    <div class="container">
+        <!-- Logo Links to Landing -->
+        <div class="brand-logo" style="cursor: default;">
+            <span class="logo-tech">TECHNOLOGIES</span><span class="logo-weza">Weza</span>
+        </div>
+
+        <div class="glass-card">
+            <h1>من نحن؟</h1>
+            <div class="subtitle">WEZA CORE TEAM</div>
+            <p>
+                لسنا مجرد أفراد، نحن <strong style="color:var(--primary);">Digital Core Team</strong> متخصص في تحويل
+                الأعمال
+                التجارية التقليدية إلى إمبراطوريات رقمية.
+            </p>
+            <p>
+                نجمع بين خبرة "السوق" وذكاء "التكنولوجيا" لنخلق أنظمة تعمل من أجلك، وليس العكس. شغفنا هو رؤية شريكنا
+                يتصدر القمة بفضل الحلول التي نبنيها سوياً.
+            </p>
+            <div class="footer-tagline">ENGINEERED FOR GROWTH</div>
+        </div>
+    </div>
+
+    <!-- Floating Navigation -->
     <nav class="floating-nav">
         <a href="../" class="nav-link"><i class="fas fa-home"></i><span>الرئيسية</span></a>
         <a href="https://wa.me/201207799717" class="nav-link"><i class="fab fa-whatsapp"></i><span>تواصل</span></a>
     </nav>
-
-    <div class="container">
-        <div class="brand-badge">Weza Technologies</div>
-        <h1>منظومة السيطرة الرقمية</h1>
-        <p class="subtitle">استراتيجية التحول الكامل لـ "ملوك الفسيخ والرنجة" | رؤية 2026</p>
-
-        <div class="problem-section">
-            <h3 style="color:#ff3366; margin-bottom:15px;">🔄 هل نتحرك للأمام.. أم نجري في دائرة؟</h3>
-            <p style="color:#eee; margin-bottom:10px;">.. في سباق اليومي
-                الذي لا ينتهي.. نركض بين المهام، التقارير، والإيميلات. نزداد سرعة، لكن نسأل أنفسنا: <strong>"هل نتحرك
-                    للأمام فعلاً؟"</strong></p>
-            <p style="color:#eee;">الانشغال الدائم لا يعني التقدم، والجهد المستمر بلا "سيستم" يتحول لاستنزاف وليس إنجاز.
-                النجاح الحقيقي ليس في الجري أسرع، بل في <strong>الخروج من الدائرة</strong>.</p>
-            <div class="highlight-quote">"التطور قادم قادم لا محالة.. حتى في عالم الأسماك.. كل شيء يتحول ليكون آلياً
-                بالكامل. الخوف من التغيير شعور طبيعي، لكن الخطر الحقيقي هو أن نظل واقفين بينما يتغير العالم من حولنا."
-            </div>
-        </div>
-
-        <div class="opportunity-section">
-            <h2 style="text-align:center; color:var(--gold); margin-bottom:20px;">لماذا هذه الشراكة "فرصة عمر"؟</h2>
-            <div class="opportunity-box">
-                <p style="font-size:1.1rem; color:#fff; font-weight:bold;">السوق مابقاش سمك وطعم بس.. السوق بقى "داتا"
-                    وسرعة.</p>
-                <div class="highlight-box-gold">
-                    نحن في <span style="color:var(--primary)">Weza Technologies</span> لسنا هنا لنبيع تكنولوجيا، بل
-                    لنخرجك من هذه الدائرة.<br><br>
-                    نحن هنا لنكتشف <span style="color:var(--gold)">"الكنز"</span> الذي تملكه (اسم ملوك الفسيخ) ونحوله
-                    لعائد مادي ضخم ومستمر.<br><br>
-                    تعاقدك معانا النهاردة بيوفر عليك سنين من التجربة، وبيديك "فريق كامل" جاهز يحول محلك لأقوى براند في
-                    مصر بضغطة زر. دي مش صفقة، دي <strong>نقلة تاريخية</strong>.
-                </div>
-            </div>
-        </div>
-
-        <h2 style="text-align:center; color:#fff; margin-bottom:30px;">خارطة الطريق التنفيذية</h2>
-
-        <div class="phase-card">
-            <div class="phase-header">
-                <div class="phase-title">
-                    <h4>01. السيطرة على البحث والسمعة</h4><span class="tech-tag">Search Alpha</span>
-                </div>
-                <i class="fas fa-search-location" style="font-size:2rem; color:var(--primary)"></i>
-            </div>
-            <p style="color:#ccc;">"قبل ما نفتح الحنفية، لازم نصلح المواسير. هدفنا إن أي حد يكتب 'أفضل فسيخ' تطلعله أنت
-                الباشا."</p>
-            <ul style="list-style:none; padding:0; margin-top:15px; color:#ddd;">
-                <li style="margin-bottom:8px;">✅ بناء هوية رقمية كاملة على جوجل (صور، منيو، لوكيشن).</li>
-                <li style="margin-bottom:8px;">✅ تحويل المشاكل والتعليقات القديمة إلى فرص لرفع التقييم.</li>
-                <li style="margin-bottom:8px;">✅ السيطرة على الكلمات المفتاحية لتتصدر نتائج البحث.</li>
-            </ul>
-        </div>
-
-        <div class="phase-card">
-            <div class="phase-header">
-                <div class="phase-title">
-                    <h4>02. مكنة الرد الآلي والمبيعات</h4><span class="tech-tag">Neuro-Logic</span>
-                </div>
-                <i class="fas fa-robot" style="font-size:2rem; color:var(--primary)"></i>
-            </div>
-            <p style="color:#ccc;">هنا تتوقف عن "الجري في الدائرة". السيستم يتولى الردود الروتينية لتركز أنت على
-                التطوير.</p>
-            <ul style="list-style:none; padding:0; margin-top:15px; color:#ddd;">
-                <li style="margin-bottom:8px;">✅ رد فوري 24 ساعة بلهجة بورسعيدية: إجابات دقيقة وإغلاق الأوردر.</li>
-                <li style="margin-bottom:8px;">✅ فلترة الجادين: تحويل المحادثات العابرة إلى مبيعات مؤكدة.</li>
-                <li style="margin-bottom:8px;">✅ استعادة العملاء: إعادة استهداف من سأل ولم يشتري.</li>
-            </ul>
-            <div style="margin-top:20px; border-top:1px dashed rgba(255,255,255,0.1); padding-top:15px;">
-                <a href="javascript:void(0)" onclick="return false;"
-                    style="display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:var(--primary); border:1px solid var(--primary); padding:8px 20px; border-radius:12px; font-weight:bold; background:rgba(0,210,255,0.05); transition:0.3s; opacity: 0.6; cursor: not-allowed;">
-                    <i class="fas fa-microchip"></i> تفاصيل مشروع 001
-                </a>
-            </div>
-        </div>
-
-        <div class="phase-card">
-            <div class="phase-header">
-                <div class="phase-title">
-                    <h4>03. المتجر والسيستم المتكامل</h4><span class="tech-tag">Web-Core</span>
-                </div>
-                <i class="fas fa-shopping-bag" style="font-size:2rem; color:var(--primary)"></i>
-            </div>
-            <p style="color:#ccc;">فرعك الرقمي الذي لا يغلق أبوابه. نظام متكامل يربط المخزون بالمبيعات لحظياً.</p>
-            <ul style="list-style:none; padding:0; margin-top:15px; color:#ddd;">
-                <li style="margin-bottom:8px;">✅ طلبات بضغطة زر: تجربة شراء سهلة وسريعة للعميل.</li>
-                <li style="margin-bottom:8px;">✅ داتا العملاء (الكنز الحقيقي): معرفة تفضيلات كل عميل.</li>
-            </ul>
-        </div>
-
-        <div
-            style="text-align:center; margin-top:50px; padding:30px; background:rgba(0,229,255,0.05); border-radius:20px; border:1px dashed rgba(255,255,255,0.2);">
-            <h3 style="color:#fff;">وماذا بعد؟ (رؤية 2027)</h3>
-            <p style="color:#ccc;">في 2027، وبعد السيطرة المحلية، نطلق <strong>تطبيق الموبايل</strong> ونفتح الشحن
-                الدولي. الأساس الذي نبنيه اليوم.. هو ما سيجعلنا في القمة غداً.</p>
-        </div>
-
-        <div style="text-align: center; margin-bottom: 80px;">
-            <p style="font-size: 1.2rem; font-weight: 700; color: var(--accent-gold);">" أنت عليك الصنعة.. واحنا علينا
-                نخلي العالم يشوفها " :heart:</p>
-            <a href="javascript:void(0)" onclick="return false;" class="btn-action"
-                style="display: inline-block; text-decoration: none; opacity: 0.6; cursor: not-allowed;">
-                عرض تكلفة المنظومة (غير متاح حالياً)
-            </a>
-        </div>
-    </div>
 </body>
-
 
 </html>
