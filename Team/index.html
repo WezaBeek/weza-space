@@ -37,6 +37,7 @@
                 url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&q=80');
             background-size: cover;
             background-attachment: fixed;
+            padding-bottom: 120px;
         }
 
         .container {
@@ -137,24 +138,26 @@
             opacity: 0.8;
         }
 
-        /* Floating Nav - Updated Style */
+        /* Floating Nav - Match Plan Style */
         .floating-nav {
             position: fixed;
-            bottom: 30px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
-            max-width: 450px;
-            background: rgba(2, 4, 10, 0.9);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(15px);
-            border-radius: 60px;
-            padding: 15px 30px;
+            width: auto;
+            min-width: 250px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 10px 40px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            gap: 50px;
             z-index: 99999;
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
         .nav-link {
@@ -162,24 +165,28 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
-            color: var(--text-muted);
+            gap: 4px;
+            color: #999;
             transition: 0.3s;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .nav-link i {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .nav-link span {
+            font-weight: 700;
+            font-size: 0.7rem;
         }
 
         .nav-link.active {
-            color: var(--primary);
-            text-shadow: 0 0 10px var(--primary);
+            color: var(--gold);
         }
 
-        /* Disabled Link Style - Kept as requested */
-        .nav-link[style*="not-allowed"] {
-            opacity: 0.5;
+        .nav-link:hover {
+            transform: translateY(-3px);
+            color: var(--primary);
         }
 
         @media (max-width: 600px) {
@@ -224,22 +231,8 @@
 
     <!-- Floating Navigation -->
     <nav class="floating-nav">
-        <a href="javascript:void(0)" onclick="return false;" class="nav-link"
-            style="opacity: 0.6; cursor: not-allowed;">
-            <i class="fab fa-whatsapp"></i><span>تواصل معنا</span>
-        </a>
-        <a href="javascript:void(0)" onclick="return false;" class="nav-link"
-            style="opacity: 0.6; cursor: not-allowed;">
-            <i class="fas fa-utensils"></i><span>المنيو</span>
-        </a>
-        <a href="javascript:void(0)" onclick="return false;" class="nav-link active"
-            style="opacity: 0.6; cursor: not-allowed;">
-            <i class="fas fa-users"></i><span>الفريق</span>
-        </a>
-        <a href="javascript:void(0)" onclick="return false;" class="nav-link"
-            style="opacity: 0.6; cursor: not-allowed;">
-            <i class="fas fa-home"></i><span>الرئيسية</span>
-        </a>
+        <a href="../" class="nav-link"><i class="fas fa-home"></i><span>الرئيسية</span></a>
+        <a href="https://wa.me/201207799717" class="nav-link"><i class="fab fa-whatsapp"></i><span>تواصل</span></a>
     </nav>
 </body>
 
