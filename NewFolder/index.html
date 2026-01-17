@@ -249,6 +249,7 @@
             margin-bottom: 15px;
             background: linear-gradient(180deg, #fff 0%, #cbd5e1 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.1;
             text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -619,6 +620,37 @@
             transition: 0.3s;
         }
 
+        /* Fix Select Options Visibility */
+        #checkout-modal select option {
+            background-color: #0f172a;
+            color: #fff;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(0, 210, 255, 0.9);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 3000;
+            opacity: 0;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
         #checkout-modal input:focus,
         #checkout-modal select:focus,
         #checkout-modal textarea:focus {
@@ -627,6 +659,7 @@
         }
 
         /* --- Responsive --- */
+        /* --- Responsive Tweaks --- */
         @media (max-width: 768px) {
             header {
                 padding: 0.8rem 5%;
@@ -636,7 +669,9 @@
                 display: none;
             }
 
-            /* Show only NewFolder logo image if needed or icon */
+            .nav-item span {
+                display: none;
+            }
 
             .search-container {
                 display: none;
@@ -644,14 +679,31 @@
 
             .hero h1 {
                 font-size: 3rem;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                padding: 0 10px;
             }
 
             .products {
                 padding: 60px 5%;
             }
 
-            .nav-item span {
-                display: none;
+            .grid-container {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                /* Smaller cards on mobile */
+                gap: 20px;
+            }
+
+            .product-image {
+                height: 200px;
+            }
+
+            #checkout-modal {
+                width: 95%;
+                padding: 25px;
             }
         }
     </style>
@@ -699,8 +751,6 @@
         <div class="hero-overlay"></div>
 
         <div class="hero-content animate__animated animate__fadeInUp">
-            <img src="N.png" alt="N Logo"
-                style="width: 80px; height: 80px; border-radius: 20px; margin-bottom: 20px; box-shadow: 0 0 30px rgba(0,210,255,0.3);">
             <h1>نيوفولدر للتكنولوجيا</h1>
             <p>منظومة تقنية متكاملة. ٢٥ عاماً من الخبرة في بناء مستقبلك الرقمي.</p>
             <div style="display: flex; gap: 20px; justify-content: center;">
@@ -791,11 +841,16 @@
     </div>
 
 
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>تمت الإضافة للسلة بنجاح</span>
+    </div>
+
     <script>
         // --- Configuration & State ---
         const CONFIG = {
-            whatsappNumber: "01207799717",
-            sheetApi: "https://script.google.com/macros/s/AKfycbyV60OAGMCrgnzsS7jLJcQRzO-444hF5RdywWTWcbRIdkPpnUm16wwaPPV4KDaphNzadQ/exec"
+            whatsappNumber: "201207799717", // Updated Number
+            sheetApi: "https://script.google.com/macros/s/AKfycbyV60OAGMCrgnzsS7jLJcQRzO-444hF5RdywWTWcbRIdkPpnUm16wwaPPV4KDaphNzadQ/exec" // Updated API
         };
 
         const state = {
@@ -908,8 +963,16 @@
             localStorage.setItem('nf_cart', JSON.stringify(state.cart));
             updateCartUI();
 
-            // Open cart to show user
-            toggleCart(true);
+            // Show Toast instead of opening cart
+            showToast();
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 1500);
         }
 
         function removeFromCart(index) {
@@ -965,9 +1028,24 @@
         function toggleCheckoutModal(show) {
             if (show && state.cart.length === 0) return alert("السلة فارغة!");
 
-            document.getElementById('checkout-modal').style.display = show ? 'block' : 'none';
-            document.getElementById('checkout-overlay').style.display = show ? 'block' : 'none';
-            if (show) toggleCart(false);
+            const modal = document.getElementById('checkout-modal');
+            const overlay = document.getElementById('checkout-overlay');
+
+            if (show) {
+                // Populate from localStorage
+                const savedData = JSON.parse(localStorage.getItem('nf_user_data') || '{}');
+                if (savedData.name) document.getElementById('cust-name').value = savedData.name;
+                if (savedData.phone) document.getElementById('cust-phone').value = savedData.phone;
+                if (savedData.city) document.getElementById('cust-city').value = savedData.city;
+                if (savedData.address) document.getElementById('cust-address').value = savedData.address;
+
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
+                toggleCart(false);
+            } else {
+                modal.style.display = 'none';
+                overlay.style.display = 'none';
+            }
         }
 
         async function sendToWhatsApp() {
@@ -980,12 +1058,16 @@
 
             if (!name || !phone || !address) return alert("برجاء استكمال البيانات المطلوبة");
 
+            // Save to LocalStorage
+            localStorage.setItem('nf_user_data', JSON.stringify({ name, phone, city, address }));
+
             const finalBtn = document.getElementById('final-confirm-btn');
             finalBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> جاري المعالجة...';
             finalBtn.disabled = true;
 
             const total = state.cart.reduce((sum, item) => sum + (Number(item.price) || 0), 0);
-            // WhatsApp Format
+
+            // Build Message
             let msg = `*طلب جديد من NewFolder Tech Store*%0a`;
             msg += `---------------------------%0a`;
             msg += `*العميل:* ${name}%0a`;
@@ -1001,26 +1083,30 @@
             msg += `---------------------------%0a`;
             msg += `*الإجمالي النهائي:* ${total.toLocaleString()} ج.م%0a`;
 
-            // Open WhatsApp
-            window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${msg}`, '_blank');
-
-            // Optional: Send to Sheet (Fire and Forget)
+            // Prepare Sheet Data
             const formData = new FormData();
             formData.append('customerName', name);
             formData.append('phone', phone);
             formData.append('total', total);
-            // Append other fields if API expects them
+            // formData.append('orderId', 'ORD-' + Date.now()); // Optional
+            formData.append('items', JSON.stringify(state.cart.map(i => i.name)));
 
-            fetch(CONFIG.sheetApi, { method: 'POST', body: formData }).catch(e => console.log(e));
+            // 1. Send to Sheet (Fire and Forget)
+            fetch(CONFIG.sheetApi, { method: 'POST', body: formData }).catch(e => console.log("Sheet Error", e));
 
-            // Reset
-            localStorage.removeItem('nf_cart');
-            state.cart = [];
-            updateCartUI();
-            toggleCheckoutModal(false);
-            alert("تم تحويل الطلب إلى واتساب!");
-            finalBtn.innerHTML = 'تأكيد الطلب';
-            finalBtn.disabled = false;
+            // 2. Open WhatsApp Redirect
+            setTimeout(() => {
+                window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${msg}`, '_blank');
+
+                // Cleanup
+                localStorage.removeItem('nf_cart');
+                state.cart = [];
+                updateCartUI();
+                toggleCheckoutModal(false);
+                alert("تم تحويل الطلب إلى واتساب!");
+                finalBtn.innerHTML = 'تأكيد الطلب';
+                finalBtn.disabled = false;
+            }, 1000); // Small delay to ensure fetch starts
         }
 
         // Auto Init
