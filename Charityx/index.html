@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الجامع الصحيح للأذكار | Weza Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-paper: #F9F7F2;      /* لون الورق الكريمي المريح للعين */
+            --text-ink: #2D3436;      /* لون الحبر الرمادي الغامق (أفضل من الأسود) */
+            --accent-green: #27AE60;  /* أخضر إسلامي هادئ للعناوين */
+            --accent-gold: #D35400;   /* لون برتقالي داكن للأحاديث */
+            --border-soft: #E0E0E0;
+            --shadow-soft: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Reset & Base Styles */
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+        
+        body {
+            background-color: var(--bg-paper);
+            color: var(--text-ink);
+            font-family: 'Amiri', serif; /* خط النسخ المريح للقراءة */
+            margin: 0;
+            padding: 20px;
+            line-height: 2;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid #F0EBE0;
+        }
+
+        /* Typography - مكبرة لكبار السن */
+        h1 {
+            font-family: 'Tajawal', sans-serif;
+            color: var(--accent-green);
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        .sub-header {
+            text-align: center;
+            color: #7f8c8d;
+            font-family: 'Tajawal', sans-serif;
+            margin-bottom: 50px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--border-soft);
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            font-family: 'Tajawal', sans-serif;
+            color: #2C3E50;
+            border-right: 5px solid var(--accent-green);
+            padding-right: 15px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            font-size: 2rem;
+            background: #fdfdfd;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        /* Dual Card System (In/Out Concept) */
+        .dual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: #fff;
+            border: 2px solid #F2F2F2;
+            border-radius: 12px;
+            padding: 25px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-2px);
+        }
+
+        .card-label {
+            background: var(--accent-green);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .label-out {
+            background: #C0392B; /* لون مختلف للخروج/النزول لسهولة التمييز */
+        }
+
+        .dhikr-text {
+            font-size: 1.6rem; /* خط كبير جداً */
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .quran-verse {
+            color: var(--accent-green);
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            text-align: center;
+            display: block;
+            margin: 15px 0;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed var(--accent-green);
+        }
+
+        .narrator {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            font-family: 'Tajawal', sans-serif;
+            margin-top: 10px;
+            border-top: 1px solid #eee;
+            padding-top: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .source {
+            font-weight: bold;
+            color: #27AE60;
+        }
+
+        /* Print Button */
+        .print-btn {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 30px auto;
+            padding: 15px;
+            background: var(--text-ink);
+            color: #fff;
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .print-btn:hover { background: #000; }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .dual-grid { grid-template-columns: 1fr; }
+            .container { padding: 15px; }
+            h1 { font-size: 2rem; }
+            .dhikr-text { font-size: 1.4rem; }
+        }
+
+        /* PRINT STYLES - للطباعة */
+        @media print {
+            body { background: #fff; padding: 0; }
+            .container { 
+                box-shadow: none; 
+                border: none; 
+                width: 100%; 
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            .print-btn { display: none; }
+            .card { 
+                border: 1px solid #000; 
+                page-break-inside: avoid; /* منع قص الذكر في نصفين */
+            }
+            .card-label { 
+                background: #eee !important; 
+                color: #000 !important; 
+                border: 1px solid #000;
+            }
+            h1, h2, .dhikr-text, .quran-verse { color: #000 !important; }
+            .dual-grid { gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>الجامع الصحيح للأذكار</h1>
+            <div class="sub-header">نسخة مصممة للقراءة المريحة والطباعة - برعاية Weza Technologies</div>
+        </header>
+
+        <h2>1. المنزل (الدخول والخروج)</h2>
+        <div class="dual-grid">
+            <div class="card">
+                <span class="card-label label-out">الخروج من المنزل</span>
+                <span class="dhikr-text">«بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ».</span>
+                <div class="narrator">
+                    <span>الراوي: أنس بن مالك</span>
+                    <span class="source">صحيح أبي داود (5095)</span>
+                </div>
+            </div>
+            <div class="card">
+                <span class="card-label">الدخول إلى المنزل</span>
+                <span class="dhikr-text">«إِذَا دَخَلَ الرَّجُلُ بَيْتَهُ، فَذَكَرَ اللَّهَ عِنْدَ دُخُولِهِ وَعِنْدَ طَعَامِهِ، قَالَ الشَّيْطَانُ: لَا مَبِيتَ لَكُمْ وَلَا عَشَاءَ».</span>
+                <div class="narrator">
+                    <span>الراوي: جابر بن عبد الله</span>
+                    <span class="source">صحيح مسلم (2018)</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>2. المصعد والتنقل (الصعود والنزول)</h2>
+        <div class="card" style="margin-bottom: 25px;">
+            <span class="card-label">دعاء الركوب (عند دخول المصعد / السيارة)</span>
+            <span class="quran-verse">﴿سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ * وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ﴾</span>
+            <span class="dhikr-text">«الْحَمْدُ لِلَّهِ (3)، اللَّهُ أَكْبَرُ (3)، سُبْحَانَكَ إِنِّي ظَلَمْتُ نَفْسِي فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ».</span>
+            <div class="narrator">
+                <span>الراوي: علي بن أبي طالب</span>
+                <span class="source">صحيح الترمذي (3446)</span>
+            </div>
+        </div>
+
+        <div class="dual-grid">
+            <div class="card">
+                <span class="card-label">أثناء الصعود (لأعلى)</span>
+                <span class="dhikr-text">«اللهُ أَكْبَرُ»</span>
+                <div class="narrator">
+                    <span>كان النبي ﷺ وأصحابه إذا صعدوا كبروا</span>
+                    <span class="source">صحيح البخاري (2993)</span>
+                </div>
+            </div>
+            <div class="card">
+                <span class="card-label label-out">أثناء النزول (لأسفل)</span>
+                <span class="dhikr-text">«سُبْحَانَ اللهِ»</span>
+                <div class="narrator">
+                    <span>كانوا إذا نزلوا سبحوا</span>
+                    <span class="source">صحيح البخاري (2993)</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>3. المسجد والصلاة</h2>
+        <div class="card" style="margin-bottom: 25px;">
+            <span class="card-label">الذهاب إلى المسجد</span>
+            <span class="dhikr-text">«اللَّهُمَّ اجْعَلْ فِي قَلْبِي نُورًا، وَفِي بَصَرِي نُورًا، وَفِي سَمْعِي نُورًا، وَعَنْ يَمِينِي نُورًا، وَعَنْ يَسَارِي نُورًا، وَفَوْقِي نُورًا، وَتَحْتِي نُورًا، وَأَمَامِي نُورًا، وَخَلْفِي نُورًا، وَاجْعَلْ لِي نُورًا».</span>
+            <div class="narrator">
+                <span>الراوي: ابن عباس</span>
+                <span class="source">صحيح مسلم (763)</span>
+            </div>
+        </div>
+
+        <div class="dual-grid">
+            <div class="card">
+                <span class="card-label">دخول المسجد (قدم اليمين)</span>
+                <span class="dhikr-text">«بِسْمِ اللَّهِ.. اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ».</span>
+                <div class="narrator">
+                    <span>المصدر: مسلم (713)</span>
+                    <span class="source">صحيح</span>
+                </div>
+            </div>
+            <div class="card">
+                <span class="card-label label-out">الخروج من المسجد (قدم اليسار)</span>
+                <span class="dhikr-text">«بِسْمِ اللَّهِ.. اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ».</span>
+                <div class="narrator">
+                    <span>المصدر: مسلم (713)</span>
+                    <span class="source">صحيح</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>4. قضاء الحاجة</h2>
+        <div class="dual-grid">
+            <div class="card">
+                <span class="card-label">الدخول (قدم اليسار)</span>
+                <span class="dhikr-text">«اللَّهُمَّ إنِّي أَعُوذُ بكَ مِنَ الخُبُثِ والخَبَائِثِ».</span>
+                <div class="narrator">
+                    <span>الراوي: أنس بن مالك</span>
+                    <span class="source">البخاري (142)</span>
+                </div>
+            </div>
+            <div class="card">
+                <span class="card-label label-out">الخروج (قدم اليمين)</span>
+                <span class="dhikr-text">«غُفْرَانَكَ».</span>
+                <div class="narrator">
+                    <span>الراوي: عائشة رضي الله عنها</span>
+                    <span class="source">أبو داود (30)</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>5. الطعام والشراب</h2>
+        <div class="dual-grid">
+            <div class="card">
+                <span class="card-label">عند البدء</span>
+                <span class="dhikr-text">«بِسْمِ اللَّهِ».. فإذا نسي فليقل: «بِسْمِ اللَّهِ أَوَّلَهُ وَآخِرَهُ».</span>
+                <div class="narrator">
+                    <span>الراوي: عائشة رضي الله عنها</span>
+                    <span class="source">الترمذي (1858)</span>
+                </div>
+            </div>
+            <div class="card">
+                <span class="card-label label-out">عند الفراغ</span>
+                <span class="dhikr-text">«الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ».</span>
+                <div class="narrator">
+                    <span>الراوي: معاذ بن أنس</span>
+                    <span class="source">أبو داود (4023)</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>6. اللباس</h2>
+        <div class="card">
+            <span class="card-label">لبس الثوب الجديد</span>
+            <span class="dhikr-text">«اللَّهُمَّ لَكَ الْحَمْدُ أَنْتَ كَسَوْتَنِيهِ، أَسْأَلُكَ مِنْ خَيْرِهِ وَخَيْرِ مَا صُنِعَ لَهُ، وَأَعُوذُ بِكَ مِنْ شَرِّهِ وَشَرِّ مَا صُنِعَ لَهُ».</span>
+            <div class="narrator">
+                <span>الراوي: أبو سعيد الخدري</span>
+                <span class="source">أبو داود (4020)</span>
+            </div>
+        </div>
+
+        <button class="print-btn" onclick="window.print()">🖨️ طباعة النسخة الورقية</button>
+
+    </div>
+
+</body>
+</html>

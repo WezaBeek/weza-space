@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حصن المسلم اليومي | Weza Technologies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* نظام ألوان "الورق المريح" - Eye-Comfort Light Mode */
+            --bg-body: #F9F7F2;      /* لون كريمي فاتح جداً مثل ورق الكتب */
+            --bg-card: #FFFFFF;      /* أبيض نقي للبطاقات */
+            --text-main: #2D3436;    /* رمادي غامق جداً بدلاً من الأسود لراحة العين */
+            --text-quran: #00695C;   /* أخضر تركواز وقور للآيات */
+            --accent-gold: #B78A26;  /* ذهبي للعناوين والزخارف */
+            --border-soft: #E0E0E0;
+            --shadow: 0 4px 15px rgba(0,0,0,0.05);
+            
+            /* الخطوط */
+            --font-quran: 'Amiri', serif;
+            --font-ui: 'Tajawal', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            line-height: 1.8;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- Header --- */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 30px;
+            border-bottom: 3px double var(--accent-gold);
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            color: var(--accent-gold);
+            font-size: 2.5rem;
+            font-family: var(--font-quran);
+            font-weight: 700;
+        }
+
+        header p {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* --- الأزرار --- */
+        .action-bar {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .btn-print {
+            background-color: var(--text-quran);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-family: var(--font-ui);
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+        }
+
+        .btn-print:hover {
+            transform: scale(1.05);
+            background-color: var(--accent-gold);
+        }
+
+        /* --- الأقسام والبطاقات --- */
+        .section-block {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: var(--font-quran);
+            font-size: 2rem;
+            color: var(--text-quran);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--accent-gold);
+            opacity: 0.5;
+        }
+
+        /* تصميم "الزوج" (Entry/Exit) */
+        .pair-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .card-label {
+            display: inline-block;
+            background-color: var(--bg-body);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border: 1px solid var(--border-soft);
+        }
+
+        /* نصوص الأذكار */
+        .text-quran {
+            font-family: var(--font-quran);
+            color: var(--text-quran);
+            font-size: 1.6rem;
+            line-height: 2.4;
+            text-align: center;
+            display: block;
+            margin: 15px 0;
+            background-color: rgba(0, 105, 92, 0.05); /* خلفية خضراء خفيفة جداً للقرآن */
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .text-hadith {
+            font-family: var(--font-quran);
+            font-size: 1.4rem;
+            font-weight: bold;
+            line-height: 2.2;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .source {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            border-top: 1px dashed var(--border-soft);
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .instruction {
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* قائمة مرقمة */
+        .step-list {
+            list-style: none;
+            padding: 0;
+        }
+        .step-list li {
+            margin-bottom: 15px;
+            padding-right: 20px;
+            position: relative;
+        }
+        .step-list li::before {
+            content: '•';
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            position: absolute;
+            right: 0;
+            top: -5px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #95a5a6;
+        }
+
+        /* --- التجاوب (Mobile) --- */
+        @media (max-width: 768px) {
+            .pair-container {
+                grid-template-columns: 1fr;
+            }
+            .text-quran { font-size: 1.3rem; }
+            .text-hadith { font-size: 1.2rem; }
+            header h1 { font-size: 1.8rem; }
+        }
+
+        /* --- إعدادات الطباعة (Print Engine) --- */
+        @media print {
+            body { 
+                background: white; 
+                color: black; 
+                font-size: 12pt; 
+            }
+            .container { 
+                width: 100%; 
+                max-width: 100%; 
+                padding: 0; 
+                margin: 0; 
+            }
+            .btn-print, footer .brand { display: none; }
+            .card { 
+                box-shadow: none; 
+                border: 1px solid #000; 
+                break-inside: avoid; /* منع قص البطاقة بين الصفحات */
+                margin-bottom: 10px;
+            }
+            .text-quran { 
+                background: none; 
+                border: 1px solid #ddd; 
+                color: black; 
+            }
+            .section-title { color: black; border-bottom: 2px solid black; }
+            .section-title::after { display: none; }
+            header { margin-bottom: 20px; border-bottom: 1px solid black; }
+            /* جعل النصوص غامقة للطباعة */
+            .text-hadith, .text-quran { color: #000 !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>حصن المسلم اليومي</h1>
+        <p>مجموعة الأذكار الصحيحة من الكتاب والسنة - نسخة شاملة وموثقة</p>
+    </header>
+
+    <div class="action-bar">
+        <button class="btn-print" onclick="window.print()">🖨️ طباعة النسخة (Print PDF)</button>
+    </div>
+
+    <section class="section-block">
+        <div class="section-title">1. في رحاب المنزل</div>
+        
+        <div class="pair-container">
+            <div class="card">
+                <span class="card-label">🚪 الخروج من المنزل</span>
+                <p class="text-hadith">«بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ».</p>
+                <div class="source">سنن أبي داود (5095) - صحيح. (يقول الملك: كُفيت ووُقيت وهُديت).</div>
+            </div>
+
+            <div class="card">
+                <span class="card-label">🏠 الدخول إلى المنزل</span>
+                <p class="text-hadith">«إِذَا دَخَلَ الرَّجُلُ بَيْتَهُ، فَذَكَرَ اللَّهَ عِنْدَ دُخُولِهِ وَعِنْدَ طَعَامِهِ، قَالَ الشَّيْطَانُ: لَا مَبِيتَ لَكُمْ وَلَا عَشَاءَ».</p>
+                <div class="source">صحيح مسلم (2018).</div>
+            </div>
+        </div>
+
+        <div class="pair-container">
+            <div class="card">
+                <span class="card-label">دخول الخلاء (الحمام)</span>
+                <span class="instruction">قدّم رجلك اليسرى وقل:</span>
+                <p class="text-hadith">«اللَّهُمَّ إنِّي أَعُوذُ بكَ مِنَ الخُبُثِ والخَبَائِثِ».</p>
+                <div class="source">صحيح البخاري (142).</div>
+            </div>
+
+            <div class="card">
+                <span class="card-label">الخروج من الخلاء</span>
+                <span class="instruction">قدّم رجلك اليمنى وقل:</span>
+                <p class="text-hadith">«غُفْرَانَكَ».</p>
+                <div class="source">سنن أبي داود (30) - صحيح.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-block">
+        <div class="section-title">2. التنقل، المصعد، والركوب</div>
+        
+        <div class="card full-width">
+            <span class="card-label">🚗 دعاء الركوب (السيارة / المصعد / الدابة)</span>
+            <span class="text-quran">﴿سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ * وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ﴾</span>
+            <p class="text-hadith">«الْحَمْدُ لِلَّهِ (3)، اللَّهُ أَكْبَرُ (3)، سُبْحَانَكَ إِنِّي ظَلَمْتُ نَفْسِي فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ».</p>
+            <div class="source">سنن أبي داود (2602) - صحيح.</div>
+        </div>
+
+        <div class="pair-container">
+            <div class="card">
+                <span class="card-label">🔼 أثناء الصعود (مصعد/درج)</span>
+                <span class="instruction">سُنة النبي ﷺ في صعود المرتفعات:</span>
+                <p class="text-hadith">«اللَّهُ أَكْبَرُ».</p>
+                <div class="source">صحيح البخاري (2993).</div>
+            </div>
+
+            <div class="card">
+                <span class="card-label">🔽 أثناء النزول (مصعد/درج)</span>
+                <span class="instruction">سُنة النبي ﷺ في نزول المنحدرات:</span>
+                <p class="text-hadith">«سُبْحَانَ اللَّهِ».</p>
+                <div class="source">صحيح البخاري (2993).</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-block">
+        <div class="section-title">3. المسجد والصلاة</div>
+        
+        <div class="card full-width">
+            <span class="card-label">الذهاب إلى المسجد</span>
+            <p class="text-hadith">«اللَّهُمَّ اجْعَلْ فِي قَلْبِي نُورًا، وَفِي بَصَرِي نُورًا، وَفِي سَمْعِي نُورًا، وَعَنْ يَمِينِي نُورًا، وَعَنْ يَسَارِي نُورًا، وَفَوْقِي نُورًا، وَتَحْتِي نُورًا، وَأَمَامِي نُورًا، وَخَلْفِي نُورًا، وَاجْعَلْ لِي نُورًا».</p>
+            <div class="source">صحيح مسلم (763).</div>
+        </div>
+
+        <div class="pair-container">
+            <div class="card">
+                <span class="card-label">🕌 دخول المسجد</span>
+                <span class="instruction">قدم اليمنى وقل:</span>
+                <p class="text-hadith">«أَعُوذُ بِاللَّهِ الْعَظِيمِ، وَبِوَجْهِهِ الْكَرِيمِ، وَسُلْطَانِهِ الْقَدِيمِ، مِنَ الشَّيْطَانِ الرَّجِيمِ.. اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ».</p>
+                <div class="source">أبو داود (466) ومسلم (713).</div>
+            </div>
+            <div class="card">
+                <span class="card-label">🕌 الخروج من المسجد</span>
+                <span class="instruction">قدم اليسرى وقل:</span>
+                <p class="text-hadith">«اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ، اللَّهُمَّ اعْصِمْنِي مِنَ الشَّيْطَانِ الرَّجِيمِ».</p>
+                <div class="source">مسلم وابن ماجه.</div>
+            </div>
+        </div>
+
+        <div class="card full-width">
+            <span class="card-label">📿 أذكار ما بعد السلام (بالترتيب الصحيح)</span>
+            <ul class="step-list text-hadith" style="font-size: 1.3rem; font-weight: normal;">
+                <li>«أَسْتَغْفِرُ اللَّهَ» (3 مرات).</li>
+                <li>«اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ».</li>
+                <li>«لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، اللَّهُمَّ لَا مَانِعَ لِمَا أَعْطَيْتَ، وَلَا مُعْطِيَ لِمَا مَنَعْتَ، وَلَا يَنْفَعُ ذَا الْجَدِّ مِنْكَ الْجَدُّ».</li>
+                <li><strong>التسبيح:</strong> سبحان الله (33)، الحمد لله (33)، الله أكبر (33).</li>
+                <li><strong>تمام المائة:</strong> «لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ».</li>
+                <li>قراءة آية الكرسي + المعوذتين والإخلاص.</li>
+            </ul>
+            <div class="source">صحيح البخاري ومسلم.</div>
+        </div>
+    </section>
+
+    <section class="section-block">
+        <div class="section-title">4. الطعام، النوم، والشفاء</div>
+        
+        <div class="pair-container">
+            <div class="card">
+                <span class="card-label">🥣 قبل الطعام</span>
+                <p class="text-hadith">«سَمِّ اللَّهَ، وَكُلْ بِيَمِينِكَ، وَكُلْ مِمَّا يَلِيكَ».</p>
+                <div class="source">صحيح البخاري.</div>
+            </div>
+            <div class="card">
+                <span class="card-label">بعد الطعام</span>
+                <p class="text-hadith">«الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ».</p>
+                <div class="source">سنن أبي داود - حسن.</div>
+            </div>
+        </div>
+
+        <div class="card full-width">
+            <span class="card-label">💊 عند الألم والمرض</span>
+            <span class="instruction">ضع يدك على مكان الألم وقل:</span>
+            <p class="text-hadith">«بِسْمِ اللَّهِ» (3 مرات).<br>«أَعُوذُ بِاللَّهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ» (7 مرات).</p>
+            <div class="source">صحيح مسلم (2202).</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>إعداد وتطوير: Weza Technologies</p>
+        <p class="brand">صدقة جارية لوجه الله تعالى</p>
+    </footer>
+</div>
+
+</body>
+</html>
