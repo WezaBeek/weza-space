@@ -13,6 +13,7 @@
             color: #fff;
             padding: 40px;
             line-height: 1.8;
+            margin: 0;
         }
 
         .container {
@@ -89,6 +90,8 @@
             /* Force URL to display LTR */
             border-bottom: 2px solid transparent;
             transition: all 0.3s ease;
+            word-break: break-all;
+            /* Break long links on mobile */
         }
 
         .main-link:hover {
@@ -97,8 +100,7 @@
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
-        /* --- التصحيح هنا (Fix Here) --- */
-        /* قمنا بتوحيد اسم الكلاس ليكون weza-footer ليطابق الموجود في الأسفل */
+        /* Footer Styling */
         .weza-footer {
             text-align: center;
             margin-top: 60px;
@@ -110,14 +112,10 @@
             gap: 15px;
         }
 
-        /* تحجيم الصورة لتكون مناسبة وليست عملاقة */
         .weza-footer img {
             width: 100%;
-            /* تأخذ العرض المتاح */
             max-width: 300px;
-            /* لكن لا تتجاوز 300 بكسل أبداً */
             height: auto;
-            /* الحفاظ على الأبعاد */
             opacity: 0.9;
             transition: transform 0.3s;
         }
@@ -135,6 +133,52 @@
         .copyright-text a {
             color: #D4AF37;
             text-decoration: none;
+        }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                /* Smaller title */
+                margin-bottom: 20px;
+            }
+
+            .script-box {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+                border-left-width: 3px;
+            }
+
+            .speech {
+                font-size: 1rem;
+                /* Readable text size */
+                line-height: 1.6;
+            }
+
+            .main-link {
+                font-size: 1.1rem;
+                /* Smaller link */
+            }
+
+            .link-container {
+                padding: 15px;
+            }
+
+            .weza-footer {
+                margin-top: 40px;
+            }
+
+            .weza-footer img {
+                max-width: 250px;
+            }
         }
     </style>
 </head>
@@ -195,18 +239,15 @@
 
     </div>
 
-    <!-- تم تنسيق الفوتر بشكل صحيح الآن -->
+    <!-- Footer -->
     <div class="weza-footer">
         <a href="https://weza.space/" target="_blank">
-            <!-- الصورة الآن محكومة بال CSS ولن تظهر عملاقة -->
             <img src="../Al-Rem%20Project/Wez@o_V2.webp" alt="Weza Technologies" onerror="this.src='Wez@o_V2.webp'">
         </a>
         <div class="copyright-text">
             جميع الحقوق محفوظة لـ <a href="https://weza.space/" target="_blank">™WezaTECHNOLOGIES</a>
         </div>
     </div>
-
-    <!-- تم إزالة السكربت الخاص باللايت بوكس لأنه غير مستخدم في هذه الصفحة وكان يسبب أخطاء -->
 
 </body>
 
