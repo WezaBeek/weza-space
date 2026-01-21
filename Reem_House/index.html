@@ -460,23 +460,48 @@
 
         @media (max-width: 768px) {
             .header-bg-image {
-                width: 95%;
+                width: 100%;
                 margin-top: 20px;
+                filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2));
             }
 
             .brand-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                line-height: 1.2;
+                margin-bottom: 15px;
+            }
+
+            .brand-desc {
+                font-size: 1rem;
+                padding: 0 10px;
             }
 
             .value-prop {
                 text-align: center;
                 border-right: none;
                 border-top: 2px solid var(--accent-gold);
+                padding: 20px 15px;
+                font-size: 0.95rem;
+                line-height: 1.8;
+                margin: 20px 0;
+                background: rgba(255, 255, 255, 0.05);
+            }
+
+            /* Stack Title and Badge */
+            .collection-info h2 {
+                flex-direction: column;
+                gap: 10px;
+                font-size: 1.8rem;
+            }
+
+            .version-badge {
+                font-size: 0.7rem;
+                padding: 4px 12px;
             }
 
             /* Mobile Spacing Optimizations */
             .collection-section {
-                margin-bottom: 40px;
+                margin-bottom: 50px;
             }
 
             .section-separator {
@@ -484,23 +509,39 @@
                 margin-bottom: 20px;
             }
 
+            /* Force 1 column with proper spacing */
             .gallery-grid {
                 grid-template-columns: 1fr;
-                gap: 15px;
+                gap: 25px;
             }
 
-            /* Force 1 column on mobile */
+            .asset-card {
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+
             .collection-header {
                 margin-bottom: 30px;
+                padding: 0 10px;
             }
 
             .container {
-                padding-bottom: 30px;
+                padding: 0 15px 40px;
             }
 
             /* Mobile footer optimization */
+            .weza-footer {
+                padding: 40px 15px;
+            }
+
             .weza-footer img {
-                max-width: 260px;
+                max-width: 80%;
+                /* Responsive width relative to screen */
+                width: 250px;
+            }
+
+            .company-signature-box {
+                transform: scale(0.9);
+                margin-bottom: 15px;
             }
         }
     </style>
