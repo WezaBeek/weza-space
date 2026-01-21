@@ -138,17 +138,39 @@
             margin-bottom: 5px;
         }
 
-        .footer-logo {
+        /* Footer Styling - Matches Identity File */
+        .weza-footer {
             text-align: center;
             margin-top: 60px;
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
 
-        .footer-logo img {
-            max-width: 250px;
+        .weza-footer img {
+            width: 100%;
+            max-width: 300px;
             height: auto;
             opacity: 0.9;
+            transition: transform 0.3s;
+        }
+
+        .weza-footer img:hover {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        .copyright-text {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .copyright-text a {
+            color: #D4AF37;
+            text-decoration: none;
         }
 
         /* Utility for selecting text easily */
@@ -355,13 +377,14 @@
             </div>
         </div>
 
-        <!-- Footer Card -->
-        <div class="footer-logo">
+        <!-- Footer -->
+        <div class="weza-footer">
             <a href="https://weza.space/" target="_blank">
-                <img src="../Al-Rem%20Project/Wez@o_V2.webp" alt="Weza Technologies Card"
-                    onerror="this.src='Wez@o_V2.webp'">
+                <img src="../Al-Rem%20Project/Wez@o_V2.webp" alt="Weza Technologies" onerror="this.src='Wez@o_V2.webp'">
             </a>
-            <p style="font-size:0.8rem; color:#666; margin-top:10px;">Powered by Weza TECHNOLOGIES</p>
+            <div class="copyright-text">
+                جميع الحقوق محفوظة لـ <a href="https://weza.space/" target="_blank">™WezaTECHNOLOGIES</a>
+            </div>
         </div>
 
     </div>
