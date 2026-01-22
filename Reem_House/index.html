@@ -15,10 +15,11 @@
             --bg-panel: #0a0a0a;
             --accent-gold: #D4AF37;
             --accent-gold-light: #F4E29E;
+            --accent-silver: #E0E0E0;
+            --accent-blue: #64b5f6;
             --text-main: #FFFFFF;
             --text-muted: #888888;
             --border-subtle: rgba(255, 255, 255, 0.08);
-            --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #aa8a29 100%);
         }
 
         * {
@@ -34,26 +35,22 @@
             overflow-x: hidden;
         }
 
-        /* Ambient Background */
         .ambient-glow {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background:
-                radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.03) 0%, transparent 40%),
+            background: radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.03) 0%, transparent 40%),
                 radial-gradient(circle at 90% 90%, rgba(212, 175, 55, 0.02) 0%, transparent 40%);
             z-index: -1;
             pointer-events: none;
         }
 
-        /* Header */
         header {
             text-align: center;
             padding: 50px 20px 20px;
             position: relative;
-            overflow: hidden;
         }
 
         .header-bg-image {
@@ -77,7 +74,6 @@
             font-weight: 600;
         }
 
-        /* New Styled Signature */
         .company-signature-box {
             display: inline-flex;
             align-items: center;
@@ -106,7 +102,6 @@
             right: -20px;
         }
 
-        /* Make the link behave like the text, removing default anchor styles */
         .company-signature-link {
             text-decoration: none;
             display: inline-block;
@@ -119,7 +114,6 @@
 
         .company-name {
             font-family: 'Outfit', sans-serif;
-            /* More tech/modern font */
             color: var(--accent-gold);
             font-size: 1.1rem;
             letter-spacing: 2px;
@@ -150,10 +144,82 @@
             line-height: 1.6;
         }
 
-        @keyframes fadeIn {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 50px;
+        }
+
+        /* BUTTONS */
+        .category-btn {
+            background: var(--bg-panel);
+            color: var(--text-main);
+            border: 1px solid var(--border-subtle);
+            padding: 20px;
+            width: 100%;
+            text-align: right;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Cairo', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-btn:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-2px);
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.1), transparent);
+        }
+
+        .category-btn.active {
+            border-color: var(--accent-gold);
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.2), transparent);
+        }
+
+        .cat-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cat-badge {
+            font-size: 0.8rem;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--accent-gold);
+            padding: 5px 12px;
+            border-radius: 50px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            transition: transform 0.3s;
+        }
+
+        .category-btn.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        /* CONTENT SECTION (Hidden by default) */
+        .category-content {
+            display: none;
+            /* Collapsed by default */
+            padding: 20px 0;
+            animation: slideDown 0.4s ease-out;
+        }
+
+        @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(-10px);
             }
 
             to {
@@ -162,76 +228,19 @@
             }
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 50px;
-        }
-
-        /* Collection Section */
-        .collection-section {
-            margin-bottom: 60px;
-            /* Reduced from 120px */
-        }
-
-        .section-separator {
-            width: 1px;
-            height: 50px;
-            /* Reduced from 100px */
-            background: linear-gradient(to bottom, transparent, var(--accent-gold), transparent);
-            margin: 0 auto 30px;
-            /* Reduced from 50px */
-            opacity: 0.3;
-        }
-
-        .collection-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            /* Reduced gap */
-            margin-bottom: 40px;
-            /* Reduced from 60px */
-            text-align: center;
-        }
-
-        .collection-info h2 {
-            font-size: 2.5rem;
-            color: var(--accent-gold-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 5px;
-        }
-
         .collection-desc {
             font-size: 1.1rem;
             color: #ccc;
-            max-width: 700px;
-        }
-
-        /* New Description Elements */
-        .value-prop {
-            background: rgba(255, 255, 255, 0.03);
-            border-right: 3px solid var(--accent-gold);
-            padding: 20px;
-            margin: 10px auto;
-            max-width: 800px;
-            text-align: right;
-            font-size: 1rem;
-            line-height: 1.7;
-            border-radius: 8px;
-            color: #ddd;
+            margin-bottom: 20px;
+            padding: 0 10px;
         }
 
         .usage-tags {
             display: flex;
-            justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
-            margin-top: 5px;
+            margin-bottom: 30px;
+            padding: 0 10px;
         }
 
         .tag {
@@ -241,30 +250,26 @@
             border-radius: 6px;
             font-size: 0.85rem;
             border: 1px solid rgba(212, 175, 55, 0.2);
-            transition: all 0.3s;
         }
 
-        .tag:hover {
-            background: rgba(212, 175, 55, 0.2);
-            transform: translateY(-2px);
+        /* Hide scrollbar for iframes specifically */
+        .category-content iframe {
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
         }
 
-        .version-badge {
-            font-size: 0.8rem;
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--accent-gold);
-            padding: 5px 15px;
-            border-radius: 50px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            text-transform: uppercase;
+        .category-content iframe::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari, Opera */
         }
 
-        /* Gallery Grid */
+        /* GALLERY */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
-            /* Reduced gap */
         }
 
         .asset-card {
@@ -274,7 +279,6 @@
             overflow: hidden;
             transition: all 0.4s ease;
             cursor: pointer;
-            position: relative;
         }
 
         .asset-card:hover {
@@ -288,16 +292,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #050505;
-            background-image:
-                linear-gradient(45deg, #0f0f0f 25%, transparent 25%),
-                linear-gradient(-45deg, #0f0f0f 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, #0f0f0f 75%),
-                linear-gradient(-45deg, transparent 75%, #0f0f0f 75%);
+            background-image: linear-gradient(45deg, #0f0f0f 25%, transparent 25%), linear-gradient(-45deg, #0f0f0f 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #0f0f0f 75%), linear-gradient(-45deg, transparent 75%, #0f0f0f 75%);
             background-size: 20px 20px;
-            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            background-color: #050505;
             padding: 20px;
-            position: relative;
         }
 
         .img-container img {
@@ -317,7 +315,7 @@
             background: rgba(20, 20, 20, 0.9);
             border-top: 1px solid var(--border-subtle);
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
         }
 
@@ -325,7 +323,8 @@
             font-size: 0.8rem;
             color: #aaa;
             font-family: monospace;
-            letter-spacing: 0.5px;
+            text-align: center;
+            width: 100%;
         }
 
         .view-hint {
@@ -337,7 +336,7 @@
             gap: 5px;
         }
 
-        /* Lightbox Overlay */
+        /* Lightbox */
         .lightbox {
             position: fixed;
             top: 0;
@@ -368,7 +367,6 @@
             border-radius: 8px;
         }
 
-        /* Lightbox Controls */
         .lightbox-controls {
             position: absolute;
             top: 0;
@@ -387,13 +385,11 @@
             padding: 10px 25px;
             border-radius: 50px;
             cursor: pointer;
-            font-size: 1rem;
-            font-family: 'Cairo', sans-serif;
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
             transition: all 0.3s;
-            text-decoration: none;
         }
 
         .lb-btn:hover {
@@ -402,15 +398,9 @@
             border-color: var(--accent-gold);
         }
 
-        .lb-btn-back {
-            flex-direction: row-reverse;
-            /* Icon on left */
-        }
-
         /* Footer */
         .weza-footer {
             margin-top: 80px;
-            /* Reduced from 150px */
             padding: 60px 20px;
             text-align: center;
             border-top: 1px solid var(--border-subtle);
@@ -421,18 +411,13 @@
             gap: 15px;
         }
 
-        /* Updated Footer Image Styling */
         .weza-footer img {
             height: auto;
             max-width: 300px;
-            /* Significantly increased from 70px height to large width */
             width: 100%;
-            /* Responsive fallback */
             opacity: 0.95;
             transition: all 0.3s;
-            margin-bottom: 20px;
             filter: drop-shadow(0 0 10px rgba(27, 185, 216, 0.1));
-            /* Slight glow for the tech card */
         }
 
         .weza-footer img:hover {
@@ -450,508 +435,681 @@
             color: var(--accent-gold);
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .copyright-text a:hover {
-            text-decoration: underline;
-            text-shadow: 0 0 10px var(--accent-gold);
         }
 
         @media (max-width: 768px) {
-            .header-bg-image {
-                width: 100%;
-                margin-top: 20px;
-                filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2));
-            }
-
             .brand-title {
                 font-size: 2.2rem;
-                line-height: 1.2;
-                margin-bottom: 15px;
             }
 
-            .brand-desc {
-                font-size: 1rem;
-                padding: 0 10px;
+            .header-bg-image {
+                width: 100%;
             }
 
-            .value-prop {
-                text-align: center;
-                border-right: none;
-                border-top: 2px solid var(--accent-gold);
-                padding: 20px 15px;
-                font-size: 0.95rem;
-                line-height: 1.8;
-                margin: 20px 0;
-                background: rgba(255, 255, 255, 0.05);
+            .category-btn {
+                padding: 15px;
             }
 
-            /* Stack Title and Badge */
-            .collection-info h2 {
-                flex-direction: column;
-                gap: 10px;
-                font-size: 1.8rem;
+            .cat-title {
+                font-size: 1.2rem;
             }
 
-            .version-badge {
-                font-size: 0.7rem;
-                padding: 4px 12px;
-            }
-
-            /* Mobile Spacing Optimizations */
-            .collection-section {
-                margin-bottom: 50px;
-            }
-
-            .section-separator {
-                height: 30px;
-                margin-bottom: 20px;
-            }
-
-            /* Force 1 column with proper spacing */
             .gallery-grid {
                 grid-template-columns: 1fr;
-                gap: 25px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
 
-            .asset-card {
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
+        }
 
-            .collection-header {
-                margin-bottom: 30px;
-                padding: 0 10px;
-            }
+        .lightbox-download-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2002;
+        }
 
-            .container {
-                padding: 0 15px 40px;
-            }
+        .download-btn-style {
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--accent-gold);
+            color: #fff;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+        }
 
-            /* Mobile footer optimization */
-            .weza-footer {
-                padding: 40px 15px;
-            }
-
-            .weza-footer img {
-                max-width: 80%;
-                /* Responsive width relative to screen */
-                width: 250px;
-            }
-
-            .company-signature-box {
-                transform: scale(0.9);
-                margin-bottom: 15px;
-            }
+        .download-btn-style:hover {
+            background: var(--accent-gold);
+            color: #000;
         }
     </style>
 </head>
 
 <body>
-
     <div class="ambient-glow"></div>
-
-    <!-- Lightbox Element -->
     <div id="lightbox" class="lightbox">
         <div class="lightbox-controls">
-            <!-- Close / Back Button (Top Left) -->
-            <button class="lb-btn lb-btn-back" onclick="closeLightbox()">
-                <span class="material-icons-round">arrow_back</span> رجوع
+            <button class="lb-btn lb-btn-back" onclick="closeLightbox()"
+                style="background:none; border:none; color:white; font-size:24px;">
+                <span class="material-icons-round">close</span>
             </button>
-
-            <!-- Download Button (Top Right) -->
-            <a id="lb-download-btn" href="#" download class="lb-btn">
-                تحميل <span class="material-icons-round">download</span>
-            </a>
         </div>
         <img id="lb-image" src="" alt="Full Preview">
+        <div class="lightbox-download-container">
+            <a id="lb-download-btn" href="#" download class="lb-btn download-btn-style">
+                تحميل الصورة <span class="material-icons-round">download</span>
+            </a>
+        </div>
     </div>
 
-    <!-- Header -->
     <header>
         <span class="brand-subtitle">Visual Identity System</span>
-
-        <!-- Enhanced Company Signature with Link -->
         <div class="company-signature-box">
             <a href="https://weza.space/" target="_blank" class="company-signature-link">
                 <span class="company-name">Wez<span class="at-symbol">@</span>TECHNOLOGIES</span>
             </a>
         </div>
-
         <h1 class="brand-title" style="font-family: 'Playfair Display', serif;">Reem House</h1>
         <p class="brand-desc">مكتبة الأصول الكاملة (V13) - الحلول البصرية المتكاملة.</p>
+        <img src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_WezaTECHNOLOGIES%E2%84%A2%20.webp" class="header-bg-image"
+            alt="Reem House Identity">
 
-        <!-- Moved Image Here (Below Text) with Correct Encoding -->
-        <img src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_WezaTECHNOLOGIES%E2%84%A2%20.webp"
-            class="header-bg-image" alt="Reem House Identity">
+        <!-- Special Editions -->
+        <!-- Special Editions removed from header -->
     </header>
 
     <div class="container">
 
-        <!-- V1 -->
-        <div class="collection-section">
-            <div class="section-separator"></div>
-            <div class="collection-header">
-                <div class="collection-info">
-                    <h2><span class="version-badge">V1</span> Classic Gold</h2>
-                    <p class="collection-desc">الأصالة والعراقة في التصميمات الذهبية.</p>
+        <!-- V1 Section -->
+        <div>
+            <div class="category-btn" onclick="toggleSection('v1')">
+                <div class="cat-title">
+                    <span class="version-badge">V1</span> Classic Gold
                 </div>
-                <div class="value-prop">
-                    النسخة الأساسية للعلامة التجارية، مصممة خصيصاً للاستخدام في <strong>المطبوعات الرسمية</strong>
-                    وواجهات الفروع. تتميز باللون الذهبي الفاخر الذي يعكس إرث "بيت الريم" وأصالته. تعتبر الخيار الأول
-                    وأهم أصل في الهوية البصرية.
-                </div>
+                <span id="icon-v1" class="material-icons-round toggle-icon">expand_more</span>
+            </div>
+            <div id="content-v1" class="category-content">
+                <p class="collection-desc">تمثل هذه النسخة جوهر الهوية البصرية، حيث تمزج بين الأصالة والفخامة من خلال
+                    استخدام التدرجات الذهبية الكلاسيكية. هي الخيار الأمثل للمطبوعات الرسمية والمراسلات الهامة التي تتطلب
+                    طابعاً من الهيبة والوقار.</p>
                 <div class="usage-tags">
                     <span class="tag">#مطبوعات_رسمية</span>
                     <span class="tag">#واجهات</span>
                     <span class="tag">#فواتير</span>
                 </div>
+                <div class="gallery-grid">
+                    <div class="asset-card"
+                        onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V1_WezaTECHNOLOGIES/1.webp')">
+                        <div class="img-container"><img
+                                src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V1_WezaTECHNOLOGIES/1.webp"></div>
+                        <div class="card-footer"><span class="file-name">V1.01_Classic_By.Wez@TECHNOLOGIES</span>
+                        </div>
+                    </div>
+                    <div class="asset-card"
+                        onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V1_WezaTECHNOLOGIES/2.webp')">
+                        <div class="img-container"><img
+                                src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V1_WezaTECHNOLOGIES/2.webp"></div>
+                        <div class="card-footer"><span class="file-name">V1.02_Classic_By.Wez@TECHNOLOGIES</span></div>
+                    </div>
+                    <div class="asset-card"
+                        onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V1_WezaTECHNOLOGIES/3.webp')">
+                        <div class="img-container"><img
+                                src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V1_WezaTECHNOLOGIES/3.webp"></div>
+                        <div class="card-footer"><span class="file-name">V1.03_Classic_By.Wez@TECHNOLOGIES</span></div>
+                    </div>
+                </div>
             </div>
-            <div class="gallery-grid">
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V1_WezaTECHNOLOGIES/1.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V1_WezaTECHNOLOGIES/1.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V1.01_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض <span class="material-icons-round"
-                                style="font-size:1rem;">visibility</span></span></div>
+
+            <!-- V2 Section -->
+            <div>
+                <div class="category-btn" onclick="toggleSection('v2')">
+                    <div class="cat-title"><span class="version-badge">V2</span> Modern Minimal</div>
+                    <span id="icon-v2" class="material-icons-round toggle-icon">expand_more</span>
                 </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V1_WezaTECHNOLOGIES/2.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V1_WezaTECHNOLOGIES/2.webp">
+                <div id="content-v2" class="category-content">
+                    <p class="collection-desc">تجسد هذه النسخة مبادئ التصميم الحديث الذي يعتمد على البساطة (Minimalism).
+                        مثالية للاستخدام الرقمي ومنصات التواصل الاجتماعي، حيث تضمن الوضوح وسرعة الفهم للمتلقي مع الحفاظ
+                        على هوية العلامة التجارية.</p>
+                    <div class="usage-tags"><span class="tag">#سوشيال_ميديا</span><span class="tag">#واتساب</span></div>
+                    <div class="gallery-grid">
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V2_WezaTECHNOLOGIES/1.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V2_WezaTECHNOLOGIES/1.webp"></div>
+                            <div class="card-footer"><span class="file-name">V2.01_Modern_By.Wez@TECHNOLOGIES</span>
+                            </div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V2_WezaTECHNOLOGIES/2.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V2_WezaTECHNOLOGIES/2.webp"></div>
+                            <div class="card-footer"><span class="file-name">V2.02_Modern_By.Wez@TECHNOLOGIES</span>
+                            </div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V2_WezaTECHNOLOGIES/3.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V2_WezaTECHNOLOGIES/3.webp"></div>
+                            <div class="card-footer"><span class="file-name">V2.03_Modern_By.Wez@TECHNOLOGIES</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-footer"><span class="file-name">V1.02_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض <span class="material-icons-round"
-                                style="font-size:1rem;">visibility</span></span></div>
                 </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V1_WezaTECHNOLOGIES/3.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V1_WezaTECHNOLOGIES/3.webp">
+            </div>
+
+            <!-- V3 Section -->
+            <div>
+                <div class="category-btn" onclick="toggleSection('v3')">
+                    <div class="cat-title"><span class="version-badge">V3</span> Luxury Seal</div>
+                    <span id="icon-v3" class="material-icons-round toggle-icon">expand_more</span>
+                </div>
+                <div id="content-v3" class="category-content">
+                    <p class="collection-desc">إصدار خاص يحمل طابع الأختام الفاخرة، صُمم خصيصاً ليُستخدم في تغليف
+                        الهدايا والمحررات الرسمية عالية المستوى. يعكس التزام العلامة التجارية بالجودة والدقة في أدق
+                        التفاصيل.</p>
+                    <div class="usage-tags"><span class="tag">#تغليف</span><span class="tag">#ختم</span></div>
+                    <div class="gallery-grid">
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V3_WezaTECHNOLOGIES/1.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V3_WezaTECHNOLOGIES/1.webp"></div>
+                            <div class="card-footer"><span class="file-name">V3.01_Seal_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V3_WezaTECHNOLOGIES/2.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V3_WezaTECHNOLOGIES/2.webp"></div>
+                            <div class="card-footer"><span class="file-name">V3.02_Seal_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V3_WezaTECHNOLOGIES/3.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V3_WezaTECHNOLOGIES/3.webp"></div>
+                            <div class="card-footer"><span class="file-name">V3.03_Seal_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
                     </div>
-                    <div class="card-footer"><span class="file-name">V1.03_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض <span class="material-icons-round"
-                                style="font-size:1rem;">visibility</span></span></div>
                 </div>
+            </div>
+
+            <!-- V4 Section -->
+            <div>
+                <div class="category-btn" onclick="toggleSection('v4')">
+                    <div class="cat-title"><span class="version-badge"
+                            style="color:#64ffda; border-color:#64ffda; background:rgba(100,255,218,0.1)">V4</span>
+                        Creative
+                        Art</div>
+                    <span id="icon-v4" class="material-icons-round toggle-icon">expand_more</span>
+                </div>
+                <div id="content-v4" class="category-content">
+                    <p class="collection-desc">انطلاقة فنية خارج الصندوق، حيث تتحرر الهوية من القيود التقليدية لتقدم
+                        تكوينات بصرية إبداعية ومبتكرة. تعبر هذه النسخة عن الجانب الفني والملهم للعلامة التجارية.</p>
+                    <div class="usage-tags"><span class="tag">#إبداع</span><span class="tag">#فن</span></div>
+                    <div class="gallery-grid">
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/1.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/1.webp"></div>
+                            <div class="card-footer"><span class="file-name">V4.01_Art_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/2.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/2.webp"></div>
+                            <div class="card-footer"><span class="file-name">V4.02_Art_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/3.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/3.webp"></div>
+                            <div class="card-footer"><span class="file-name">V4.03_Art_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/4.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/4.webp"></div>
+                            <div class="card-footer"><span class="file-name">V4.04_Art_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- V5 Section -->
+            <div>
+                <div class="category-btn" onclick="toggleSection('v5')">
+                    <div class="cat-title"><span class="version-badge"
+                            style="color:#64ffda; border-color:#64ffda; background:rgba(100,255,218,0.1)">V5</span>
+                        Future
+                        Concepts</div>
+                    <span id="icon-v5" class="material-icons-round toggle-icon">expand_more</span>
+                </div>
+                <div id="content-v5" class="category-content">
+                    <p class="collection-desc">نظرة نحو المستقبل وتجسيد للتطور التقني من خلال نماذج ثلاثية الأبعاد (3D).
+                        تقدم هذه النسخة تجربة بصرية غنية وعميقة تناسب العروض التقديمية والواجهات الرقمية المتقدمة.</p>
+                    <div class="usage-tags">
+                        <span class="tag">#تصميم_3D</span>
+                        <span class="tag">#المستقبل</span>
+                        <span class="tag">#مفاهيم_تقنية</span>
+                    </div>
+                    <div class="gallery-grid">
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/1.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/1.webp"></div>
+                            <div class="card-footer"><span class="file-name">V5.01_3D_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/2.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/2.webp"></div>
+                            <div class="card-footer"><span class="file-name">V5.02_3D_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/3.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/3.webp"></div>
+                            <div class="card-footer"><span class="file-name">V5.03_3D_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/4.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/4.webp"></div>
+                            <div class="card-footer"><span class="file-name">V5.04_3D_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/5.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/5.webp"></div>
+                            <div class="card-footer"><span class="file-name">V5.05_3D_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- V6 Section (Restored) -->
+            <div>
+                <div class="category-btn" onclick="toggleSection('v6')">
+                    <div class="cat-title"><span class="version-badge"
+                            style="color:#d500f9; border-color:#d500f9; background:rgba(213,0,249,0.1)">V6</span> The
+                        Masterpiece</div>
+                    <span id="icon-v6" class="material-icons-round toggle-icon">expand_more</span>
+                </div>
+                <div id="content-v6" class="category-content">
+                    <p class="collection-desc"> هذه هي "الجوهرة". خلاصة العمل، تجمع بين عراقة الماضي وحداثة المستقبل. هي
+                        الواجهة والرمز الدائم للفخر بـ "بيت الريم". النسخة الأكثر اكتمالاً وجمالاً.</p>
+                    <div class="usage-tags">
+                        <span class="tag">#التحفة_الفنية</span>
+                        <span class="tag">#الهوية_الكاملة</span>
+                        <span class="tag">#بيت_الريم</span>
+                    </div>
+                    <div class="gallery-grid">
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Master.Main_By.Wez@TECHNOLOGIES</span>
+                            </div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V1.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V1.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Master.V1_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V2.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V2.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Master.V2_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V3.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V3.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Master.V3_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V4.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V4.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Master.V4_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- V6 Section -->
+            <!-- Special Editions (Weza Recommended) -->
+            <h3
+                style="text-align:center; margin: 40px 0 20px; color:var(--text-muted); font-size:1rem; letter-spacing:2px; text-transform:uppercase;">
+                Recommended by <a href="https://weza.space/" target="_blank"
+                    class="weza-recommend-link">Wez@TECHNOLOGIES</a>
+            </h3>
+
+            <style>
+                .weza-recommend-link {
+                    color: inherit;
+                    text-decoration: none;
+                    transition: color 0.3s ease;
+                    font-weight: bold;
+                }
+
+                .weza-recommend-link:hover {
+                    color: var(--accent-gold);
+                    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+                }
+            </style>
+
+            <!-- Dark Edition Section -->
+            <div>
+                <div class="category-btn" onclick="toggleSection('dark')">
+                    <div class="cat-title">
+                        <span class="version-badge"
+                            style="background:rgba(255,255,255,0.1); color:#fff; border-color:#fff;">Dark Edition</span>
+                        <span style="font-size:1.1rem; color:#ccc;">النسخة الداكنة (فخامة الأسود مع لمسات الذهب)</span>
+                    </div>
+                    <span id="icon-dark" class="material-icons-round toggle-icon">expand_more</span>
+                </div>
+                <div id="content-dark" class="category-content">
+                    <p class="collection-desc"
+                        style="text-align:center; max-width:700px; margin:0 auto 20px; color:#ccc;">أناقة الأسود وتدرجات
+                        الفضي والذهبي.</p>
+                    <div class="usage-tags">
+                        <span class="tag"
+                            style="color:var(--accent-silver); border-color:rgba(255,255,255,0.2);">#Dark_Mode</span>
+                        <span class="tag"
+                            style="color:var(--accent-silver); border-color:rgba(255,255,255,0.2);">#Luxury</span>
+                        <span class="tag"
+                            style="color:var(--accent-silver); border-color:rgba(255,255,255,0.2);">#Weza_Tech</span>
+                    </div>
+                    <div class="gallery-grid">
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Dark_By.Wez@/1.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Dark_By.Wez@/1.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Dark.01_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Dark_By.Wez@/2.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Dark_By.Wez@/2.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Dark.02_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Dark_By.Wez@/3.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Dark_By.Wez@/3.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Dark.03_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Dark_By.Wez@/4.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Dark_By.Wez@/4.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Dark.04_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Dark_By.Wez@/5.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Dark_By.Wez@/5.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Dark.05_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Dark_By.Wez@/6.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Dark_By.Wez@/6.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Dark.06_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blue Edition Section -->
+            <div>
+                <div class="category-btn" onclick="toggleSection('blue')">
+                    <div class="cat-title">
+                        <span class="version-badge"
+                            style="background:rgba(100,181,246,0.15); color:#64b5f6; border-color:#64b5f6;">Blue
+                            Edition</span>
+                        <span style="font-size:1.1rem; color:#ccc;">النسخة الزرقاء (للثقة والاحترافية)</span>
+                    </div>
+                    <span id="icon-blue" class="material-icons-round toggle-icon">expand_more</span>
+                </div>
+                <div id="content-blue" class="category-content">
+                    <p class="collection-desc"
+                        style="text-align:center; max-width:700px; margin:0 auto 20px; color:#ccc;">لمسة زرقاء ملكية
+                        تميز البراند.</p>
+                    <div class="usage-tags">
+                        <span class="tag"
+                            style="color:var(--accent-blue); border-color:rgba(100,181,246,0.2);">#Blue_Edition</span>
+                        <span class="tag"
+                            style="color:var(--accent-blue); border-color:rgba(100,181,246,0.2);">#Trust</span>
+                        <span class="tag"
+                            style="color:var(--accent-blue); border-color:rgba(100,181,246,0.2);">#Weza_Tech</span>
+                    </div>
+                    <div class="gallery-grid">
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Blue_By.Wez@/1.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Blue_By.Wez@/1.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Blue.01_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Blue_By.Wez@/2.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Blue_By.Wez@/2.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Blue.02_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Blue_By.Wez@/3.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Blue_By.Wez@/3.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Blue.03_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Blue_By.Wez@/4.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Blue_By.Wez@/4.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Blue.04_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Blue_By.Wez@/5.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Blue_By.Wez@/5.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Blue.05_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Blue_By.Wez@/6.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Blue_By.Wez@/6.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Blue.06_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Blue_By.Wez@/7.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Blue_By.Wez@/7.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Blue.07_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media Covers Section -->
+            <div>
+                <div class="category-btn" onclick="toggleSection('covers')">
+                    <div class="cat-title">
+                        <span class="version-badge"
+                            style="background:rgba(255,255,255,0.1); color:#fff; border-color:#fff;">Social
+                            Covers</span>
+                        <span style="font-size:1.1rem; color:#ccc;">أغلفة السوشيال ميديا (تصميمات احترافية)</span>
+                    </div>
+                    <span id="icon-covers" class="material-icons-round toggle-icon">expand_more</span>
+                </div>
+                <div id="content-covers" class="category-content">
+                    <p class="collection-desc"
+                        style="text-align:center; max-width:700px; margin:0 auto 20px; color:#ccc;">مجموعة أغلفة فيسبوك
+                        وتويتر جاهزة للاستخدام.</p>
+                    <div class="usage-tags">
+                        <span class="tag"
+                            style="color:var(--accent-silver); border-color:rgba(255,255,255,0.2);">#Social_Media</span>
+                        <span class="tag"
+                            style="color:var(--accent-silver); border-color:rgba(255,255,255,0.2);">#Covers</span>
+                        <span class="tag"
+                            style="color:var(--accent-silver); border-color:rgba(255,255,255,0.2);">#Weza_Tech</span>
+                    </div>
+                    <div class="gallery-grid">
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/1.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/1.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Cover.01_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/2.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/2.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Cover.02_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/3.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/3.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Cover.03_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/4.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/4.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Cover.04_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/5.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/5.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Cover.05_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/6.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/6.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Cover.06_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/7.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/7.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Cover.07_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                        <div class="asset-card"
+                            onclick="openLightbox('./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/8.webp')">
+                            <div class="img-container"><img
+                                    src="./Rem_WezaTECHNOLOGIES%E2%84%A2/Reem_Covers_By.Wez@/8.webp">
+                            </div>
+                            <div class="card-footer"><span class="file-name">Cover.08_By.Wez@TECHNOLOGIES</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="weza-footer">
+            <a href="https://weza.space/" target="_blank">
+                <img src="./Wez@o_V2.webp" alt="Weza Technologies" onerror="this.src='Wez@o_V2.webp'">
+            </a>
+            <div class="copyright-text">
+                جميع الحقوق محفوظة لـ <a href="https://weza.space/" target="_blank">™WezaTECHNOLOGIES</a>
             </div>
         </div>
 
-        <!-- V2 -->
-        <div class="collection-section">
-            <div class="section-separator"></div>
-            <div class="collection-header">
-                <div class="collection-info">
-                    <h2><span class="version-badge">V2</span> Modern Minimal</h2>
-                    <p class="collection-desc">البساطة العصرية للاستخدام الرقمي.</p>
-                </div>
-                <div class="value-prop">
-                    نسخة مصممة خصيصاً <strong>للسوشيال ميديا</strong> والتطبيقات الرقمية. تم تبسيط الخطوط والتفاصيل
-                    لتكون واضحة جداً في الأحجام الصغيرة (مثل صور البروفايل والأيقونات).
-                </div>
-                <div class="usage-tags">
-                    <span class="tag">#سوشيال_ميديا</span>
-                    <span class="tag">#واتساب</span>
-                    <span class="tag">#تطبيقات</span>
-                </div>
-            </div>
-            <div class="gallery-grid">
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V2_WezaTECHNOLOGIES/1.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V2_WezaTECHNOLOGIES/1.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V2.01_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض <span class="material-icons-round"
-                                style="font-size:1rem;">visibility</span></span></div>
-                </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V2_WezaTECHNOLOGIES/2.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V2_WezaTECHNOLOGIES/2.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V2.02_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض <span class="material-icons-round"
-                                style="font-size:1rem;">visibility</span></span></div>
-                </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V2_WezaTECHNOLOGIES/3.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V2_WezaTECHNOLOGIES/3.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V2.03_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض <span class="material-icons-round"
-                                style="font-size:1rem;">visibility</span></span></div>
-                </div>
-            </div>
-        </div>
+        <script>
+            const lightbox = document.getElementById('lightbox');
+            const lbImage = document.getElementById('lb-image');
 
-        <!-- V3 -->
-        <div class="collection-section">
-            <div class="section-separator"></div>
-            <div class="collection-header">
-                <div class="collection-info">
-                    <h2><span class="version-badge">V3</span> Luxury Seal</h2>
-                    <p class="collection-desc">شارة الجودة والتميز.</p>
-                </div>
-                <div class="value-prop">
-                    يستخدم هذا الشعار كـ <strong>ختم للجودة</strong> (Quality Seal) على المنتجات الفاخرة، أكياس التغليف،
-                    والهدايا. يعطي انطباعاً فورياً بالفخامة والثقة للعميل.
-                </div>
-                <div class="usage-tags">
-                    <span class="tag">#ختم_جودة</span>
-                    <span class="tag">#تغليف</span>
-                    <span class="tag">#هدايا</span>
-                </div>
-            </div>
-            <div class="gallery-grid">
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V3_WezaTECHNOLOGIES/1.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V3_WezaTECHNOLOGIES/1.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V3.01_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض <span class="material-icons-round"
-                                style="font-size:1rem;">visibility</span></span></div>
-                </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V3_WezaTECHNOLOGIES/2.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V3_WezaTECHNOLOGIES/2.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V3.02_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض <span class="material-icons-round"
-                                style="font-size:1rem;">visibility</span></span></div>
-                </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V3_WezaTECHNOLOGIES/3.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V3_WezaTECHNOLOGIES/3.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V3.03_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض <span class="material-icons-round"
-                                style="font-size:1rem;">visibility</span></span></div>
-                </div>
-            </div>
-        </div>
 
-        <!-- V4 -->
-        <div class="collection-section">
-            <div class="section-separator"></div>
-            <div class="collection-header">
-                <div class="collection-info">
-                    <h2><span class="version-badge" style="background:rgba(100,255,218,0.1); color:#64ffda;">V4</span>
-                        Creative Art</h2>
-                    <p class="collection-desc">لمسات فنية إبداعية خارجة عن المألوف.</p>
-                </div>
-                <div class="value-prop">
-                    مجموعة من التصاميم الفنية التي تكسر القواعد التقليدية. مثالية للاستخدام في <strong>الحملات الإعلانية
-                        الموسمية</strong>، الخلفيات الفنية، والمناسبات التي تتطلب لمسة إبداعية خاصة.
-                </div>
-                <div class="usage-tags">
-                    <span class="tag">#إعلانات</span>
-                    <span class="tag">#إبداع</span>
-                    <span class="tag">#خلفيات</span>
-                </div>
-            </div>
-            <div class="gallery-grid">
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/1.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/1.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V4.01_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض</span></div>
-                </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/2.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/2.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V4.02_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض</span></div>
-                </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/3.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/3.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V4.03_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض</span></div>
-                </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/4.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V4_WezaTECHNOLOGIES/4.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V4.04_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض</span></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- V5 -->
-        <div class="collection-section">
-            <div class="section-separator"></div>
-            <div class="collection-header">
-                <div class="collection-info">
-                    <h2><span class="version-badge" style="background:rgba(100,255,218,0.1); color:#64ffda;">V5</span>
-                        Future Concepts</h2>
-                    <p class="collection-desc">نماذج مستقبلية وتجارب بصرية جريئة.</p>
-                </div>
-                <div class="value-prop">
-                    رؤية مستقبلية لما يمكن أن تكون عليه العلامة التجارية. تشمل تصاميم ثلاثية الأبعاد (3D) ومفاهيم بصرية
-                    جريئة تستخدم في <strong>الفيديوهات</strong> والعروض التقديمية الكبرى لإبهار الجمهور.
-                </div>
-                <div class="usage-tags">
-                    <span class="tag">#3D_Design</span>
-                    <span class="tag">#فيديو</span>
-                    <span class="tag">#مستقبل</span>
-                </div>
-            </div>
-            <div class="gallery-grid">
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/1.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/1.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V5.01_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض</span></div>
-                </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/2.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/2.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V5.02_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض</span></div>
-                </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/3.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/3.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V5.03_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض</span></div>
-                </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/4.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/4.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V5.04_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض</span></div>
-                </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/5.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V5_WezaTECHNOLOGIES/5.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V5.05_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض</span></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- V6 -->
-        <div class="collection-section">
-            <div class="section-separator"></div>
-            <div class="collection-header">
-                <div class="collection-info">
-                    <h2><span class="version-badge" style="background:var(--accent-gold); color:#000;">V6</span> The
-                        Masterpiece</h2>
-                    <p class="collection-desc">الأيكونه النهائية، حيث يلتقي الإبداع بالفخامة.</p>
-                </div>
-                <div class="value-prop">
-                    التحفة النهائية التي تجمع بين جميع عناصر القوة في الهوية البصرية. هذه النسخة هي <strong>فخر
-                        الصناعة</strong> والخلاصة التي تقدمها Weza Technologies لـ "بيت الريم".
-                </div>
-                <div class="usage-tags">
-                    <span class="tag">#The_Masterpiece</span>
-                    <span class="tag">#الختم_النهائي</span>
-                    <span class="tag">#فخامة_مطلقة</span>
-                </div>
-            </div>
-            <div class="gallery-grid">
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V1.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V1.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V6.Master.01_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض</span></div>
-                </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V2.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V2.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V6.Master.02_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض</span></div>
-                </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V3.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V3.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V6.Master.03_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض</span></div>
-                </div>
-                <div class="asset-card"
-                    onclick="openLightbox('./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V4.webp')">
-                    <div class="img-container"><img
-                            src="./Reem%20House%20Logo/Rem_WezaTECHNOLOGIES%E2%84%A2/Rem_V6_WezaTECHNOLOGIES/Rem_WezaTECHNOLOGIES_V4.webp">
-                    </div>
-                    <div class="card-footer"><span class="file-name">V6.Master.04_By.WezaTECHNOLOGIES</span><span
-                            class="view-hint">عرض</span></div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="weza-footer">
-        <a href="https://weza.space/" target="_blank">
-            <img src="./Al-Rem%20Project/Wez@o_V2.webp" alt="Weza Technologies" onerror="this.src='Wez@o_V2.webp'">
-        </a>
-        <div class="copyright-text">
-            جميع الحقوق محفوظة لـ <a href="https://weza.space/" target="_blank">™WezaTECHNOLOGIES</a>
-        </div>
-    </div>
-
-    <script>
-        const lightbox = document.getElementById('lightbox');
-        const lbImage = document.getElementById('lb-image');
-        const lbDownloadBtn = document.getElementById('lb-download-btn');
-
-        function openLightbox(src) {
-            lbImage.src = src;
-            lbDownloadBtn.href = src;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-            setTimeout(() => {
-                lbImage.src = '';
-            }, 300);
-        }
-
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                closeLightbox();
+            function openLightbox(src) {
+                lbImage.src = src;
+                const downloadBtn = document.getElementById('lb-download-btn');
+                if (downloadBtn) downloadBtn.href = src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
-        });
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                closeLightbox();
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                setTimeout(() => { lbImage.src = ''; }, 300);
             }
-        });
-    </script>
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+
+            // Toggle Function
+            function toggleSection(id) {
+                const content = document.getElementById('content-' + id);
+                const btn = document.querySelector(`.category-btn[onclick="toggleSection('${id}')"]`);
+
+                // Close all others (Optional - remove this block if you want multiple open)
+                document.querySelectorAll('.category-content').forEach(el => {
+                    if (el.id !== 'content-' + id) el.style.display = 'none';
+                });
+                document.querySelectorAll('.category-btn').forEach(el => {
+                    if (el !== btn) el.classList.remove('active');
+                });
+
+                // Toggle current
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                    btn.classList.remove('active');
+                } else {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            }
+        </script>
 </body>
 
 </html>
