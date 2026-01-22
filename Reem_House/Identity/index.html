@@ -13,7 +13,6 @@
             color: #fff;
             padding: 40px;
             line-height: 1.8;
-            margin: 0;
         }
 
         .container {
@@ -90,8 +89,6 @@
             /* Force URL to display LTR */
             border-bottom: 2px solid transparent;
             transition: all 0.3s ease;
-            word-break: break-all;
-            /* Break long links on mobile */
         }
 
         .main-link:hover {
@@ -100,7 +97,8 @@
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
-        /* Footer Styling */
+        /* --- التصحيح هنا (Fix Here) --- */
+        /* قمنا بتوحيد اسم الكلاس ليكون weza-footer ليطابق الموجود في الأسفل */
         .weza-footer {
             text-align: center;
             margin-top: 60px;
@@ -112,10 +110,14 @@
             gap: 15px;
         }
 
+        /* تحجيم الصورة لتكون مناسبة وليست عملاقة */
         .weza-footer img {
             width: 100%;
+            /* تأخذ العرض المتاح */
             max-width: 300px;
+            /* لكن لا تتجاوز 300 بكسل أبداً */
             height: auto;
+            /* الحفاظ على الأبعاد */
             opacity: 0.9;
             transition: transform 0.3s;
         }
@@ -133,52 +135,6 @@
         .copyright-text a {
             color: #D4AF37;
             text-decoration: none;
-        }
-
-        /* --- MOBILE OPTIMIZATION --- */
-        @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
-
-            .container {
-                padding: 20px 15px;
-            }
-
-            h1 {
-                font-size: 1.5rem;
-                /* Smaller title */
-                margin-bottom: 20px;
-            }
-
-            .script-box {
-                padding: 20px 15px;
-                margin-bottom: 20px;
-                border-left-width: 3px;
-            }
-
-            .speech {
-                font-size: 1rem;
-                /* Readable text size */
-                line-height: 1.6;
-            }
-
-            .main-link {
-                font-size: 1.1rem;
-                /* Smaller link */
-            }
-
-            .link-container {
-                padding: 15px;
-            }
-
-            .weza-footer {
-                margin-top: 40px;
-            }
-
-            .weza-footer img {
-                max-width: 250px;
-            }
         }
     </style>
 </head>
@@ -198,8 +154,9 @@
         </div>
 
         <div class="script-box">
-            <p class="note">شرح مستويات الهوية (V1 - V6)</p>
-            <p class="speech">"لقد قمنا بتقسيم الهوية إلى 6 مستويات احترافية لتغطية كافة احتياجاتكم:"</p>
+            <p class="note">شرح مستويات الهوية (V1 - V9) - الحاضر والمستقبل</p>
+            <p class="speech">"لقد قمنا بتوسيع الهوية لتشمل 9 مستويات احترافية تغطي كافة احتياجاتكم الحالية
+                والمستقبلية:"</p>
             <ul>
                 <li><strong>✦ V1 (الكلاسيك - Classic Gold):</strong> النسخة الرسمية الأساسية. مخصصة لـ <strong>الفواتير،
                         الأختام، واللوحات الرسمية</strong>. تعكس الوقار والهيبة وتاريخ المكان.</li>
@@ -209,17 +166,30 @@
 
                 <li><strong>✦ V3 (ختم الفخامة - Luxury Seal):</strong> هذا هو "الختم الذهبي". يُستخدم حصرياً على
                     <strong>أكياس الهدايا، التغليف الفاخر، والكروت الشخصية</strong>. يعطي انطباعاً فورياً للعميل بأن
-                    المنتج VIP.</li>
+                    المنتج VIP.
+                </li>
 
                 <li><strong>✦ V4 (الإبداع الفني - Creative Art):</strong> ولمسات فنية غير تقليدية، تُستخدم في
-                    <strong>خلفيات التصميمات والمناسبات الخاصة</strong>. مصممة لتخطف الأنظار وتكسر الروتين.</li>
+                    <strong>خلفيات التصميمات والمناسبات الخاصة</strong>. مصممة لتخطف الأنظار وتكسر الروتين.
+                </li>
 
                 <li><strong>✦ V5 (رؤية المستقبل - Future Concepts):</strong> هوية بيت الريم في المستقبل. تصميمات
                     <strong>ثلاثية الأبعاد (3D)</strong> مثالية لـ <strong>مقدمات الفيديو (Intros)</strong> والعروض
-                    التقديمية الكبرى.</li>
+                    التقديمية الكبرى.
+                </li>
 
                 <li><strong>✦ V6 (التحفة - The Masterpiece):</strong> هذه هي "الجوهرة". خلاصة العمل، تجمع بين عراقة
                     الماضي وحداثة المستقبل. هي الواجهة والرمز الدائم للفخر بـ "بيت الريم".</li>
+
+                <!-- New Editions Added -->
+                <li><strong>✦ Dark Edition (النسخة الداكنة):</strong> فخامة الأسود مع لمسات الذهب. مثالية للعروض
+                    الليلية، شاشات التلفزيون الذكية، والتطبيقات في الوضع الليلي (Dark Mode).</li>
+
+                <li><strong>✦ Blue Edition (النسخة الزرقاء):</strong> تعكس الثقة، الهدوء، والاحترافية. مناسبة جداً
+                    للمراسلات التجارية الدولية، والمنشورات الرسمية التي تتطلب طابعاً مؤسسياً موثوقاً.</li>
+
+                <li><strong>✦ Social Covers (أغلفة السوشيال ميديا):</strong> مجموعة جاهزة من الأغلفة (Covers) المصممة
+                    بمقاسات فيسبوك وتويتر، لتزيين صفحاتكم فوراً بهوية "بيت الريم" المتكاملة.</li>
             </ul>
         </div>
 
@@ -239,15 +209,18 @@
 
     </div>
 
-    <!-- Footer -->
+    <!-- تم تنسيق الفوتر بشكل صحيح الآن -->
     <div class="weza-footer">
         <a href="https://weza.space/" target="_blank">
+            <!-- الصورة الآن محكومة بال CSS ولن تظهر عملاقة -->
             <img src="../Al-Rem%20Project/Wez@o_V2.webp" alt="Weza Technologies" onerror="this.src='Wez@o_V2.webp'">
         </a>
         <div class="copyright-text">
             جميع الحقوق محفوظة لـ <a href="https://weza.space/" target="_blank">™WezaTECHNOLOGIES</a>
         </div>
     </div>
+
+    <!-- تم إزالة السكربت الخاص باللايت بوكس لأنه غير مستخدم في هذه الصفحة وكان يسبب أخطاء -->
 
 </body>
 
