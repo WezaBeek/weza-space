@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أصول الهوية | بيت الريم - Weza Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @media (min-width: 768px) {
+            .versions-card {
+                grid-column: 2;
+            }
+        }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #151515;
+            --gold: #d4af37;
+            --gold-dim: #997f29;
+            --text: #ffffff;
+            --text-muted: #a0a0a0;
+            --border: #333;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--gold);
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: var(--gold);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+            z-index: 1000;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: #000;
+            transform: translateY(2px);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(to bottom, #000, var(--bg-dark));
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .badge {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 5px 20px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-top: 15px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Preview Section */
+        .main-showcase {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gold);
+        }
+
+        .showcase-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+            border: 1px solid #333;
+        }
+
+        .btn-main {
+            background: var(--gold);
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-main:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Assets Grid */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--gold);
+            padding-left: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .asset-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 25px;
+            position: relative;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .asset-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-dim);
+        }
+
+        .asset-icon {
+            font-size: 3rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .asset-card:hover .asset-icon {
+            color: var(--gold);
+        }
+
+        .asset-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .asset-desc {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 100px;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            background: #000;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i> لوحة التحكم</a>
+
+    <header>
+        <span class="badge">Brand Identity Center V1.0</span>
+        <h1>أصول الهوية البصرية | بيت الريم</h1>
+        <div class="subtitle">المكتبة الرقمية لجميع شعارات وتصاميم "بيت الريم" – جاهزة للاستخدام.</div>
+    </header>
+
+    <div class="container">
+
+        <!-- Main Live Preview -->
+        <div class="main-showcase">
+            <h2 style="color:var(--text); margin-top:0;">🌐 الموقع الرسمي للهوية (Identity Website)</h2>
+            <p style="color:var(--text-muted); max-width:600px; margin: 10px auto 30px;">
+                صفحة ويب كاملة تعرض جميع تطبيقات الهوية (الشعار، الألوان، الخطوط، وتطبيقات السوشيال ميديا) التي تم
+                تنفيذها.
+            </p>
+            <!-- Thumbnail linking to the identity page -->
+            <a href="https://Weza.Space/Reem_House" target="_blank">
+                <img src="1.jpg" alt="Identity Preview" class="showcase-img"
+                    style="max-height: 400px; object-fit: cover;">
+            </a>
+            <br>
+            <a href="https://Weza.Space/Reem_House" target="_blank" class="btn-main">
+                <i class="fa-solid fa-eye"></i> استعراض ملف الهوية الكامل
+            </a>
+        </div>
+
+        <!-- Folders Grid -->
+        <div class="section-title">
+            <i class="fa-solid fa-folder-open" style="color:var(--gold)"></i>
+            مجلدات الأصول (Folders)
+        </div>
+
+        <div class="assets-grid">
+            <!-- Folder 1: Dark Mode Assets -->
+            <div class="asset-card">
+                <div>
+                    <i class="fa-solid fa-moon asset-icon"></i>
+                    <div class="asset-title">النمط الليلي (Dark Mode)</div>
+                    <div class="asset-desc">شعارات وخلفيات باللون الأسود والذهبي، مخصصة للمطبوعات الفاخرة وواجهات
+                        المواقع الليلية.</div>
+                </div>
+                <!-- Note: Linking to a local folder often requires Explorer interaction, but we can try linking to a directory listing if allowed by browser, or just a placeholder for the user -->
+                <a href="Rem_WezaTECHNOLOGIES™/Reem_Dark_By.Wez@/index.html" target="_blank" class="btn-outline">
+                    <i class="fa-solid fa-folder"></i> فتح المجلد
+                </a>
+            </div>
+
+            <!-- Folder 2: Blue Mode Assets -->
+            <div class="asset-card">
+                <div>
+                    <i class="fa-solid fa-droplet asset-icon"></i>
+                    <div class="asset-title">النمط الملكي (Royal Blue)</div>
+                    <div class="asset-desc">التصاميم الخاصة باللون الكحلي والذهبي، وتستخدم للبوستات الرسمية والورقيات.
+                    </div>
+                </div>
+                <a href="Rem_WezaTECHNOLOGIES™/Reem_Blue_By.Wez@/index.html" target="_blank" class="btn-outline">
+                    <i class="fa-solid fa-folder"></i> فتح المجلد
+                </a>
+            </div>
+
+            <!-- Folder 3: Social Covers -->
+            <div class="asset-card">
+                <div>
+                    <i class="fa-solid fa-image asset-icon"></i>
+                    <div class="asset-title">أغلفة فيسبوك (Covers)</div>
+                    <div class="asset-desc">مجموعة من الأغلفة الجاهزة لصفحات التواصل الاجتماعي بمقاسات تليق بجميع
+                        الأجهزة.</div>
+                </div>
+                <a href="Rem_WezaTECHNOLOGIES™/Reem_Covers_By.Wez@/index.html" target="_blank" class="btn-outline">
+                    <i class="fa-solid fa-folder"></i> فتح المجلد
+                </a>
+            </div>
+
+            <!-- Folder 4: Logo Variations -->
+            <div class="asset-card versions-card">
+                <div>
+                    <i class="fa-solid fa-fingerprint asset-icon"></i>
+                    <div class="asset-title">تطويرات الشعار (Versions)</div>
+                    <div class="asset-desc">الإصدارات المختلفة للشعار (V1 - V6) بجميع الصيغ (PNG, WebP).</div>
+                </div>
+                <a href="Rem_WezaTECHNOLOGIES™/index.html" target="_blank" class="btn-outline">
+                    <i class="fa-solid fa-folder"></i> فتح المجلد الرئيسي
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>
+            جميع الحقوق محفوظة |
+            <a href="https://Weza.Space" target="_blank">
+                ™Weza Technologies
+            </a>
+        </p>
+    </footer>
+
+</body>
+
+</html>
