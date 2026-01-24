@@ -1,505 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دليل المبيعات والردود الذكية | بيت الريم</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-dark: #0a0a0a;
-            --card-bg: #151515;
-            --gold: #d4af37;
-            --gold-dim: #997f29;
-            --text: #ffffff;
-            --text-muted: #a0a0a0;
-            --border: #333;
-            --accent-blue: #3b82f6;
-            --success: #10b981;
-        }
-
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text);
-            margin: 0;
-            padding: 40px 20px;
-            line-height: 1.8;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        /* Back Button */
-        .back-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid var(--gold);
-            padding: 10px 20px;
-            border-radius: 30px;
-            color: var(--gold);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            transition: 0.3s;
-            z-index: 1000;
-            font-weight: bold;
-        }
-
-        .back-btn:hover {
-            background: var(--gold);
-            color: #000;
-            transform: translateY(2px);
-        }
-
-        header {
-            text-align: center;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 30px;
-            margin-bottom: 50px;
-        }
-
-        h1 {
-            color: var(--gold);
-            margin: 0;
-            font-size: 2.5rem;
-            font-weight: 900;
-        }
-
-        .subtitle {
-            color: var(--text-muted);
-            margin-top: 10px;
-            font-size: 1.1rem;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin: 60px 0 30px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #fff;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed var(--border);
-        }
-
-        .section-title i {
-            color: var(--gold);
-        }
-
-        /* Strategy Cards */
-        .strategy-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 30px;
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .strategy-card:hover {
-            border-color: var(--gold-dim);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .strategy-card::before {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 0;
-            height: 100%;
-            width: 4px;
-            background: var(--gold);
-        }
-
-        .strategy-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: var(--gold);
-        }
-
-        .post-content {
-            background: #000;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px dashed #444;
-            position: relative;
-        }
-
-        .btn-copy {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--gold);
-            border: 1px solid var(--gold);
-            padding: 5px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-
-        .btn-copy:hover {
-            background: var(--gold);
-            color: #000;
-            transform: translateY(-2px);
-        }
-
-        /* QA Cards */
-        .qa-card {
-            background: var(--card-bg);
-            color: #ccc;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-        }
-
-        .question-box {
-            background: rgba(239, 68, 68, 0.1);
-            color: #f87171;
-            padding: 15px 20px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .answer-box {
-            padding: 25px;
-            background: var(--card-bg);
-            border-right: 4px solid var(--success);
-        }
-
-        .psychology-note {
-            font-size: 0.9rem;
-            color: #888;
-            margin-top: 15px;
-            padding-top: 10px;
-            border-top: 1px dashed #333;
-            font-style: italic;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 80px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-            padding-top: 30px;
-        }
-    </style>
-</head>
-
-<body>
-
-    <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i> لوحة التحكم</a>
-
-    <div class="container">
-
-        <header>
-            <h1>دليل المبيعات الذكي | Sales Playbook</h1>
-            <div class="subtitle">كيف تبيعين "الثقة" قبل المنتج & فن الرد على العملاء الصعبيين</div>
-        </header>
-
-        <div class="section-title">
-            <i class="fa-solid fa-cart-shopping"></i>
-            1. استراتيجيات البيع قبل الإنتاج (Pre-Selling)
-        </div>
-        <p style="color:var(--text-muted); margin-bottom:30px;">السر هنا هو استخدام مصطلحات مثل: "حجز مسبق"، "تفصيل
-            خاص"، "عدد محدود"، لكي يشعر العميل أن الانتظار ميزة وليس عيباً.</p>
-
-        <div class="strategy-card">
-            <div class="strategy-title">💎 1. استراتيجية "حجز رول القماش" (The Fabric Roll)</div>
-            <p style="margin-bottom:15px; font-size:0.9rem; color:#ccc;"><strong>الفكرة:</strong> صوري رول القماش (وهو
-                لسه عند التاجر أو قطعة عينة صغيرة) وقولي إن الكمية دي هتكفي عدد معين بس.</p>
-            <div class="post-content">
-                <p style="color:#eee;">
-                    "وقعت في غرام الدرجة دي من الشمواه! 😍<br>
-                    خامة تقيلة، ناعمة، وبتدفي جداً.. بس للأسف الرول اللي وصل ده (Limited Edition) وميكفيش غير لـ
-                    <strong>7 فساتين فقط</strong>.<br><br>
-                    قررت أفتح باب الحجز عليهم من دلوقتي قبل ما نبدأ قص.<br>
-                    اللي هتلحق تحجز مكانها، هتستلم قطعتها متفصلة (على مقاسها بالظبط) خلال أسبوع.<br>
-                    الحجز عن طريق العربون لضمان جدية الطلب.<br>
-                    مين هتكون من الـ 7 المحظوظات؟ ✋<br>
-                    #بيت_الريم #حجز_مسبق #شمواه_أصلي"
-                </p>
-                <button class="btn-copy" onclick="copyText(this)">نسخ البوست</button>
-            </div>
-        </div>
-
-        <div class="strategy-card">
-            <div class="strategy-title">🎨 2. استراتيجية "التصويت والشراكة" (The Vote)</div>
-            <p style="margin-bottom:15px; font-size:0.9rem; color:#ccc;"><strong>الفكرة:</strong> خلي العميل يختار
-                اللون/الموديل. لما يختار، بيلتزم نفسياً بالشراء.</p>
-            <div class="post-content">
-                <p style="color:#eee;">
-                    "محتارة جداً وعايزاكم تساعدوني! 🤔<br>
-                    ناوية أنفذ الموديل الجديد (اللي في الصورة) بس محتارة أنفذه باللون (الكحلي الملكي) ولا (الأسود
-                    الفحم)؟<br><br>
-                    أكتر لون هيجي عليه تصويت هو اللي هنعتمد منه أول تشغيلة.<br>
-                    واللي هتصوت وتعمل حجز مبكر (Pre-order) للون اللي اختارته النهاردة، ليها <strong>خصم خاص 10%</strong>
-                    لأنها شريكتنا في القرار.<br>
-                    رأيكم إيه؟ 👇<br>
-                    #شاركيني_القرار #بيت_الريم"
-                </p>
-                <button class="btn-copy" onclick="copyText(this)">نسخ البوست</button>
-            </div>
-        </div>
-
-        <div class="strategy-card">
-            <div class="strategy-title">📏 3. استراتيجية "التفصيل المخصوص" (Made to Measure)</div>
-            <p style="margin-bottom:15px; font-size:0.9rem; color:#ccc;"><strong>الفكرة:</strong> حولّي "عدم وجود مخزون"
-                إلى ميزة "مقاس مضبوط 100%".</p>
-            <div class="post-content">
-                <p style="color:#eee;">
-                    "ليه تشتري جاهز ويطلع واسع أو ضيق.. لما ممكن يتفصل ليكي مخصوص؟ ✨<br>
-                    في بيت الريم، إحنا مش مصنع بيطلع مقاسات عشوائية. إحنا بنفصل القطعة (بالطلب) عشان توصلك مظبوطة
-                    بالمليم.<br><br>
-                    بنجمع اوردرات الأسبوع ده لحد يوم الخميس.<br>
-                    اختاري موديلك، ابعتي مقاساتك (أو وزنك وطولك)، وهنبدأ نقص قماشك فوراً.<br>
-                    الدفع عند الحجز لضمان تفصيل قطعتك الخاصة.<br>
-                    #تفصيل_خاص #على_مقاسك #بيت_الريم"
-                </p>
-                <button class="btn-copy" onclick="copyText(this)">نسخ البوست</button>
-            </div>
-        </div>
-
-        <div class="strategy-card">
-            <div class="strategy-title">⏳ 4. استراتيجية "السعر الافتتاحي" (Early Bird)</div>
-            <p style="margin-bottom:15px; font-size:0.9rem; color:#ccc;"><strong>الفكرة:</strong> بيع بسعر أقل قليلاً
-                لأول مجموعة لضمان السيولة.</p>
-            <div class="post-content">
-                <p style="color:#eee;">
-                    "فرصة لأول 5 عملاء فقط! 🔥<br>
-                    بمناسبة إطلاق الكوليكشن الجديد، أول 5 هيحجزوا الدريس الشمواه هيكون سعره [سعر مخفض] بدلاً من [السعر
-                    الأصلي].<br><br>
-                    التسليم خلال 5-7 أيام عمل.<br>
-                    استغلي الفرصة واحصلي على جودة البراندات بسعر الافتتاح.<br>
-                    الحقي مكانك.. العداد بدأ يعد ⏳<br>
-                    #عرض_الافتتاح #بيت_الريم"
-                </p>
-                <button class="btn-copy" onclick="copyText(this)">نسخ البوست</button>
-            </div>
-        </div>
-
-        <div class="strategy-card">
-            <div class="strategy-title">🖍️ 5. استراتيجية "الاسكتش" (The Design Sketch)</div>
-            <p style="margin-bottom:15px; font-size:0.9rem; color:#ccc;"><strong>الفكرة:</strong> بيع "الفكرة" قبل
-                التنفيذ.</p>
-            <div class="post-content">
-                <p style="color:#eee;">
-                    "من على الورق.. إلى دولابك. ✏️👗<br>
-                    دي رسمة الموديل اللي شغالين عليه حالياً. دريس بقصة (A-Line) بتخفي عيوب الجسم، مع كم منفوخ وتطريز
-                    بسيط.<br>
-                    هنبدأ تنفيذ يوم السبت.<br>
-                    لو التصميم عجبك، احجزيه دلوقتي وهيوصلك أول قطعة تخرج من المشغل، ومعاها (هدية خاصة) لإنك آمنتي
-                    بفكرتنا وهي لسه حبر على ورق.<br>
-                    #تصميم #بيت_الريم #BehindTheScenes"
-                </p>
-                <button class="btn-copy" onclick="copyText(this)">نسخ البوست</button>
-            </div>
-        </div>
-
-
-        <div class="section-title">
-            <i class="fa-solid fa-comments-dollar"></i>
-            2. الكتالوج الأسود للردود (Handling Objections)
-        </div>
-        <p style="color:var(--text-muted); margin-bottom:30px;">كيف تحولين الاعتراض إلى بيع بأسلوب "بيت الريم" الراقي.
-        </p>
-
-        <div class="qa-card">
-            <div class="question-box">
-                <i class="fa-solid fa-circle-question"></i>
-                س 1: "ليه أدفع عربون أو مقدم؟ أنا بدفع عند الاستلام بس!"
-            </div>
-            <div class="answer-box">
-                <strong>الرد النموذجي:</strong><br>
-                "أهلاً بحضرتك يا فندم، من حقك تقلقي طبعاً. ❤️<br>
-                لكن في (بيت الريم) النظام مختلف شوية. إحنا مش بنبيع شغل جاهز مركون، إحنا بنفصل القطعة (مخصوص) عشانك،
-                بنقص القماش وبنشتري الخامات بناءً على طلبك إنتي بالذات.<br>
-                العربون هو مجرد (ضمان جدية) عشان نحجز القماش باسمك ونبدأ شغل فوراً. وتقدري تشوفي ريفيوهات عملاءنا عشان
-                تطمني."
-                <div class="psychology-note">💡 النفسية: تحويل السبب من "أنا محتاجة فلوس" إلى "ده مخصوص عشانك".</div>
-            </div>
-        </div>
-
-        <div class="qa-card">
-            <div class="question-box">
-                <i class="fa-solid fa-circle-question"></i>
-                س 2: "السعر غالي أوي.. أنا شوفته بره أرخص بكتير!"
-            </div>
-            <div class="answer-box">
-                <strong>الرد النموذجي:</strong><br>
-                "فاهمة وجهة نظرك جداً. فعلاً في أسعار أقل في السوق.<br>
-                بس خليني أوضحلك الفرق: القطعة الأرخص غالباً بتكون قماش (مخلوط) بيوبر بعد غسلتين، والتقفيل بيكون (أوفر)
-                وخيوط طالعة.<br>
-                عندنا، إحنا بنستخدم شمواه (مستورد) بيعيش سنين، والتقفيل (فرنسي) زي البراندات العالمية. حضرتك بتشتري قطعة
-                تعيش معاكي، مش موسم وتترمي. الفرق في الجودة بيغطي فرق السعر وزيادة."
-                <div class="psychology-note">💡 النفسية: مقارنة "السعر" بـ "القيمة والعمر الافتراضي".</div>
-            </div>
-        </div>
-
-        <div class="qa-card">
-            <div class="question-box">
-                <i class="fa-solid fa-circle-question"></i>
-                س 3: "طب لو المقاس مطلعش مظبوط؟ أو معجبنيش؟"
-            </div>
-            <div class="answer-box">
-                <strong>الرد النموذجي:</strong><br>
-                "متقلقيش من النقطة دي خالص.<br>
-                أولاً: إحنا بنطلب مقاساتك بالتفصيل (أو وزنك وطولك) قبل القص.<br>
-                ثانياً: ليكي عندنا (ضمان التظبيط). لو القطعة وصلت وفيها أي مشكلة في المقاس، بنعدلها ليكي مجاناً
-                فوراً.<br>
-                هدفنا إنك تلبسي حاجة تكوني مبسوطة بيها 100%."
-                <div class="psychology-note">💡 النفسية: إزالة المخاطرة (Risk Reversal).</div>
-            </div>
-        </div>
-
-        <div class="qa-card">
-            <div class="question-box">
-                <i class="fa-solid fa-circle-question"></i>
-                س 4: "ليه مدة التسليم طويلة كدة؟ (أسبوع مثلاً)"
-            </div>
-            <div class="answer-box">
-                <strong>الرد النموذجي:</strong><br>
-                "لأننا بنصنع، مش بس بنبيع. 🧵<br>
-                القطعة بتاخد وقتها في القص، الخياطة، والتشطيب اليدوي عشان تطلع بالجودة اللي تشرفك. العجلة بتطلع شغل
-                عيوب، وإحنا مبنقبلش نطلع قطعة أقل من الممتازة لحضرتك. أوعدك النتيجة تستاهل الانتظار."
-                <div class="psychology-note">💡 النفسية: ربط الوقت بالجودة (Good things take time).</div>
-            </div>
-        </div>
-
-        <div class="qa-card">
-            <div class="question-box">
-                <i class="fa-solid fa-circle-question"></i>
-                س 5: "ممكن تعمليلي تخفيض؟"
-            </div>
-            <div class="answer-box">
-                <strong>الرد النموذجي:</strong><br>
-                "يا ريت كنت أقدر والله يا جميلة. السعر ده محسوب بدقة جداً عشان نضمنلك أعلى خامة وأحسن تقفيل.<br>
-                لو قللنا السعر، هنضطر نقلل الجودة، وده شيء منقدرش نعمله مع عملاءنا.<br>
-                بس عشان خاطرك، هبعتلك (هدية بسيطة) مع الأوردر، وهيكون ليكي أولوية في عروضنا الجاية. ❤️"
-                <div class="psychology-note">💡 النفسية: رفض بأدب + تقديم بديل معنوي (هدية).</div>
-            </div>
-        </div>
-
-        <div class="qa-card">
-            <div class="question-box">
-                <i class="fa-solid fa-circle-question"></i>
-                س 6: "هل اللون نفس اللي في الصورة بالظبط؟"
-            </div>
-            <div class="answer-box">
-                <strong>الرد النموذجي:</strong><br>
-                "سؤال مهم. إحنا بنصور في ضوء النهار عشان اللون يطلع طبيعي 99%.<br>
-                ومع ذلك، ممكن يختلف درجة بسيطة جداً حسب إضاءة موبايلك. عشان تطمني، هبعتلك دلوقتي فيديو (بدون فلتر)
-                للخامة وهي بتتحرك في الضوء الطبيعي. شوفي كده 👇"
-                <div class="psychology-note">💡 النفسية: الشفافية + الدليل المرئي الفوري.</div>
-            </div>
-        </div>
-
-        <div class="qa-card">
-            <div class="question-box">
-                <i class="fa-solid fa-circle-question"></i>
-                س 7: "ممكن تغيريلي في الموديل؟ (تطولي الكم، تقفلي الفتحة..)"
-            </div>
-            <div class="answer-box">
-                <strong>الرد النموذجي:</strong><br>
-                "طبعاً يا فندم، دي ميزة التفصيل عندنا! ✨<br>
-                تقدري تطلبي التعديلات دي (مجاناً) طالما في حدود التصميم الأساسي. اكتبيلي كل ملاحظاتك دلوقتي عشان أبلغ
-                المشغل يراعيها وهو بيقص قطعتك."
-                <div class="psychology-note">💡 النفسية: التأكيد على ميزة "التفصيل المخصوص" (Customization).</div>
-            </div>
-        </div>
-
-        <div class="qa-card">
-            <div class="question-box">
-                <i class="fa-solid fa-circle-question"></i>
-                س 8: "أنا خايفة القماشة تكون بتكش أو بتوبر."
-            </div>
-            <div class="answer-box">
-                <strong>الرد النموذجي:</strong><br>
-                "حقك تماماً تخافي، السوق فيه خامات كتير مش كويسة.<br>
-                لكن الشمواه اللي بنستخدمه (مستورد ومعالج) ضد الوبرة والانكماش. وعشان تحافظي عليه أكتر، هبعتلك مع الأوردر
-                (ورقة تعليمات غسيل) عشان يفضل معاكي جديد العمر كله."
-                <div class="psychology-note">💡 النفسية: الضمان الفني + التعليمات.</div>
-            </div>
-        </div>
-
-        <div class="qa-card">
-            <div class="question-box">
-                <i class="fa-solid fa-circle-question"></i>
-                س 9: "ينفع ألغي الحجز وأسترد العربون؟"
-            </div>
-            <div class="answer-box">
-                <strong>الرد النموذجي:</strong><br>
-                "لو لسه مبدأناش قص، طبعاً ينفع.<br>
-                لكن لو تم قص القماش فعلاً بناءً على طلبك، للأسف مش هينفع نلغي لأن القماش باظ خلاص ومقدرش أستخدمه لحد
-                تاني.<br>
-                عشان كدة براجع مع حضرتك كل التفاصيل قبل ما نبدأ."
-                <div class="psychology-note">💡 النفسية: وضع حدود واضحة بأسلوب مهذب ومنطقي.</div>
-            </div>
-        </div>
-
-        <div class="qa-card">
-            <div class="question-box">
-                <i class="fa-solid fa-circle-question"></i>
-                س 10: "إنتي مكانك فين؟ عندك محل أجرب فيه؟"
-            </div>
-            <div class="answer-box">
-                <strong>الرد النموذجي:</strong><br>
-                "حالياً إحنا (أونلاين ستور) والورشة بتاعتنا للتصنيع فقط.<br>
-                وده بيخلينا نوفر تكلفة إيجار المحل والكهرباء، ونحط التوفير ده في (جودة القماش) ونقدملك سعر منافس
-                جداً.<br>
-                وعشان كدة بنهتم جداً بالمقاسات وبنقدملك ضمان الاستبدال لو فيه أي مشكلة."
-                <div class="psychology-note">💡 النفسية: تحويل "نقطة الضعف" (عدم وجود محل) إلى "ميزة" (سعر أفضل وجودة
-                    أعلى).</div>
-            </div>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>تم إعداد هذا الدليل بواسطة <a href="https://Weza.Space" target="_blank"
-                style="color:var(--gold); text-decoration:none; font-weight:bold;">™Weza Technologies</a> | استراتيجيات
-            البيع الحديثة 2026</p>
-    </footer>
-
-    <script>
-        function copyText(btn) {
-            // العثور على النص داخل أقرب حاوية (post-content)
-            const textContainer = btn.previousElementSibling;
-            const text = textContainer.innerText;
-
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = btn.innerText;
-                btn.innerText = "تم النسخ! ✓";
-                btn.style.background = "#d4af37";
-                btn.style.color = "#000";
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.style.background = "";
-                    btn.style.color = "";
-                }, 2000);
-            });
-        }
-    </script>
-
-</body>
-
-</html>
