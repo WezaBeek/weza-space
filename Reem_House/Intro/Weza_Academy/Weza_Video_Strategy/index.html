@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استراتيجية الفيديو الشاملة | بيت الريم - Weza Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #151515;
+            --gold: #d4af37;
+            --gold-dim: #997f29;
+            --blue: #3b82f6;
+            --text: #ffffff;
+            --text-muted: #a0a0a0;
+            --danger: #ef4444;
+            --success: #10b981;
+            --border: #333;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            /* Changed from absolute/right to fixed/left */
+            background: rgba(0, 0, 0, 0.8);
+            /* Button background */
+            border: 1px solid var(--gold);
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: var(--gold);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+            z-index: 1000;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: #000;
+            transform: translateY(2px);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(to bottom, #000, var(--bg-dark));
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-badge {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            color: #fff;
+            font-weight: 900;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-top: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Section Dividers */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 80px 0 40px;
+            border-bottom: 1px dashed var(--border);
+            padding-bottom: 20px;
+        }
+
+        .section-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            font-size: 2.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .section-title h2 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            margin: 5px 0 0;
+        }
+
+        /* Strategy Boxes */
+        .strategy-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .strategy-box:hover {
+            border-color: var(--gold-dim);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .strategy-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gold);
+        }
+
+        .strategy-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Script Tables */
+        .script-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #111;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .script-table th {
+            background: #000;
+            color: var(--gold);
+            padding: 15px;
+            text-align: right;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .script-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            color: #ccc;
+        }
+
+        .script-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .time-col {
+            font-weight: bold;
+            color: var(--blue);
+            width: 15%;
+        }
+
+        .visual-col {
+            color: #fff;
+            width: 50%;
+        }
+
+        .audio-col {
+            color: #aaa;
+            font-style: italic;
+        }
+
+        /* Prompts */
+        .prompt-container {
+            background: #000;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 25px;
+            position: relative;
+        }
+
+        .prompt-label {
+            position: absolute;
+            top: -12px;
+            right: auto;
+            left: 20px;
+            /* Label moved to left too for consistency, or keep right? User focused on Copy button. Let's keep label right for now unless asked, but check overlap. Copy button is now left. Label right is fine. */
+            top: -12px;
+            right: 20px;
+            background: var(--blue);
+            color: #fff;
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            white-space: nowrap;
+            /* Prevent wrapping */
+            width: fit-content;
+            /* Ensure it wraps content */
+        }
+
+        .code-block {
+            background: #0a0a0a;
+            color: #ccc;
+            /* Default color */
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+            white-space: pre-wrap;
+            border: 1px dashed var(--border);
+            font-size: 1.1rem;
+            margin-top: 15px;
+            position: relative;
+            /* Ensure containment */
+        }
+
+        .code-block.blue-theme {
+            color: #60a5fa;
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .code-block.green-theme {
+            color: #34d399;
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-copy-code {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            /* Moved to Left */
+            right: auto;
+            background: transparent;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        .btn-copy-code:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Blue Button Theme */
+        .btn-blue {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--blue);
+            border-color: var(--blue);
+        }
+
+        .btn-blue:hover {
+            background: var(--blue);
+            color: #fff;
+        }
+
+        /* Green Button Theme */
+        .btn-green {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border-color: var(--success);
+        }
+
+        .btn-green:hover {
+            background: var(--success);
+            color: #fff;
+        }
+
+        /* Tech Notes */
+        .tech-note {
+            background: rgba(239, 68, 68, 0.1);
+            border-right: 4px solid var(--danger);
+            padding: 20px;
+            margin-top: 20px;
+            color: #f87171;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 150px;
+            padding: 50px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            background: #000;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="../" class="back-btn"><i class="fa-solid fa-arrow-right"></i> لوحة التحكم</a>
+
+    <header>
+        <div class="brand-badge">Weza Cinema Architect | V1.0</div>
+        <h1>استراتيجية الفيديو الشاملة | بيت الريم</h1>
+        <div class="subtitle">من فيديوهات الموبايل إلى إعلانات تلفزيونية عالمية. الدليل الكامل للإنتاج والمونتاج والذكاء
+            الاصطناعي.</div>
+    </header>
+
+    <div class="container">
+
+        <div class="section-divider">
+            <div class="section-icon"><i class="fa-solid fa-recycle"></i></div>
+            <div class="section-title">
+                <h2>1. تحويل الماضي: إنقاذ الفيديوهات القديمة</h2>
+                <p>كيف نحول فيديوهات الموبايل المهزوزة إلى إعلانات احترافية باستخدام CapCut + AI.</p>
+            </div>
+        </div>
+
+        <div class="strategy-box">
+            <div class="strategy-title"><i class="fa-solid fa-wand-magic-sparkles"></i> الاستراتيجية: المونتاج التصحيحي
+                (The Corrective Edit)</div>
+            <p style="color:#ccc;">الفيديوهات القديمة غالباً ما تكون طويلة، مهزوزة، وإضاءتها سيئة. الحل ليس في إعادة
+                التصوير، بل في "إعادة التقطيع".</p>
+            <ol style="margin-top: 20px; padding-right: 20px; color:#ccc;">
+                <li><strong>التقطيع السريع (Jump Cuts):</strong> في CapCut، احذفي أي لحظة صمت أو حركة كاميرا مهزوزة.
+                    اجعلي الفيديو عبارة عن لقطات سريعة متتالية (كل لقطة 2-3 ثواني).</li>
+                <li><strong>التثبيت (Stabilization):</strong> استخدمي ميزة "Stabilize" في CapCut لتقليل اهتزاز اليد.
+                </li>
+                <li><strong>تصحيح الألوان (Color Grade):</strong> استخدمي فلتر جاهز (مثل "Film" أو "Retro") لتوحيد لون
+                    الفيديو وجعله يبدو سينمائياً، ثم زودي التباين (Contrast) قليلاً.</li>
+                <li><strong>الموسيقى والإيقاع:</strong> اختاري موسيقى "تريند" سريعة، وقصي اللقطات لتتماشى مع دقات
+                    الموسيقى (Sync to Beat).</li>
+                <li><strong>الغطاء الاحترافي (Overlay):</strong> ضعي اللوجو الشفاف في الزاوية، وأضيفي نصوصاً متحركة
+                    بسيطة تشرح المميزات (مثلاً: "شمواه مستورد"، "تقفيل هوت كوتور").</li>
+            </ol>
+            <div class="tech-note">💡 <strong>نصيحة ذهبية:</strong> لا تستخدمي الصوت الأصلي للفيديو القديم أبداً (إلا لو
+                كان ASMR نقي). استبدليه بموسيقى احترافية أو تعليق صوتي جديد.</div>
+        </div>
+
+        <div class="strategy-box" style="border-color: var(--blue);">
+            <div class="strategy-title" style="color: var(--blue);"><i class="fa-solid fa-robot"></i> 3 برومبتات لتحويل
+                الفيديو القديم (AI Video-to-Video)</div>
+            <p style="color:#ccc;">استخدمي هذه البرومبتات في أداة (Veo 3.1 Pro) مع رفع الفيديو القديم كمرجع (Video
+                Input).</p>
+
+            <div class="prompt-container">
+                <span class="prompt-label">1. التحسين السينمائي (Cinematic Polish)</span>
+                <p style="color:#888;">يحول الفيديو المنزلي إلى إعلان مصور بكاميرا سينما.</p>
+                <div class="code-block blue-theme">Based on the input video, enhance the visual quality to match a
+                    high-end
+                    cinematic commercial. Transform the lighting into professional soft studio lighting that highlights
+                    the fabric texture. Stabilize all camera movements to be smooth and intentional (like a gimbal
+                    shot). Apply a luxurious, warm color grading. Keep the original subject and action but make it look
+                    expensive. 4k resolution.</div>
+                <button class="btn-copy-code btn-blue" onclick="copyText(this)">نسخ البرومبت</button>
+            </div>
+
+            <div class="prompt-container">
+                <span class="prompt-label">2. التركيز على التفاصيل (Macro Focus)</span>
+                <p style="color:#888;">يحول الفيديو العام إلى فيديو يركز على خامة القماش.</p>
+                <div class="code-block blue-theme">Based on the input video, reinterpret the footage as a series of
+                    tight, macro
+                    close-up shots focusing intensely on the fabric texture, stitching details, and folds of the
+                    garment. The camera movement should be slow and gliding. Shallow depth of field (blurry background).
+                    The lighting should emphasize the tactile quality of the material.</div>
+                <button class="btn-copy-code btn-blue" onclick="copyText(this)">نسخ البرومبت</button>
+            </div>
+
+            <div class="prompt-container">
+                <span class="prompt-label">3. تغيير الخلفية (Background Swap)</span>
+                <p style="color:#888;">يعزل المنتج ويضعه في خلفية فاخرة (للخبراء).</p>
+                <div class="code-block blue-theme">Based on the input video, isolate the main garment/model. Replace the
+                    original
+                    background with a luxurious, minimalist architectural setting (e.g., a sunlit marble gallery or a
+                    high-end boutique interior). The lighting on the subject must match the new environment
+                    realistically. Keep the subject's movement naturally.</div>
+                <button class="btn-copy-code btn-blue" onclick="copyText(this)">نسخ البرومبت</button>
+            </div>
+        </div>
+
+
+        <div class="section-divider">
+            <div class="section-icon"><i class="fa-solid fa-clapperboard"></i></div>
+            <div class="section-title">
+                <h2>2. أفكار المستقبل: سيناريوهات فيديو مفصلة (Reels)</h2>
+                <p>3 خطط كاملة لفيديوهات قصيرة (15-30 ثانية) تخطف الانتباه.</p>
+            </div>
+        </div>
+
+        <div class="strategy-box">
+            <div class="strategy-title">🎬 السيناريو 1: "رحلة الخيط" (The Journey of a Thread) - [مدة: 15 ثانية]</div>
+            <p style="color:#ccc;"><strong>الفكرة:</strong> إظهار الـ "هاند ميد" بطريقة فنية سريعة.</p>
+            <table class="script-table">
+                <tr>
+                    <th>الوقت</th>
+                    <th>الصورة (Visual)</th>
+                    <th>الصوت (Audio)</th>
+                </tr>
+                <tr>
+                    <td class="time-col">0-3 ث</td>
+                    <td class="visual-col">لقطة قريبة جداً (Macro) لإبرة الماكينة وهي تنزل وتطلع بسرعة في قماش الشمواه.
+                    </td>
+                    <td class="audio-col">🔊 صوت الماكينة الإيقاعي السريع (بدون موسيقى).</td>
+                </tr>
+                <tr>
+                    <td class="time-col">3-6 ث</td>
+                    <td class="visual-col">يد تسحب الخيط وتقصه بمقص حاد (لقطة سريعة وحادة).</td>
+                    <td class="audio-col">🔊 صوت "قص" المقص الحاد (Snip sound).</td>
+                </tr>
+                <tr>
+                    <td class="time-col">6-10 ث</td>
+                    <td class="visual-col">لقطة واسعة للموديل النهائي معلقاً على شماعة، ويظهر اللوجو الذهبي عليه.</td>
+                    <td class="audio-col">🎵 تبدأ موسيقى فخمة وهادئة (تشيللو أو بيانو).</td>
+                </tr>
+                <tr>
+                    <td class="time-col">10-15 ث</td>
+                    <td class="visual-col">نص يظهر على الشاشة: "كل غرزة.. حكاية إتقان. بيت الريم."</td>
+                    <td class="audio-col">🎵 الموسيقى تتلاشى بهدوء.</td>
+                </tr>
+            </table>
+            <div class="prompt-container" style="margin-top: 20px; border: none; background: #222;">
+                <strong style="color:var(--gold);">📮 بوست النشر (Caption):</strong><br>
+                <span style="color:#ccc;">مش مجرد ماكينة وقماش.. دي سيمفونية إتقان بنعزفها عشانك. 🎶✨<br>
+                    شوفوا تفاصيل أحدث قطعة في الكوليكشن الشتوي.<br>
+                    #صنع_بحب #بيت_الريم #HandmadeDetails</span>
+            </div>
+        </div>
+
+        <div class="strategy-box">
+            <div class="strategy-title">🎬 السيناريو 2: "اختبار الفخامة" (The Luxury Test) - [مدة: 20 ثانية]</div>
+            <p style="color:#ccc;"><strong>الفكرة:</strong> إثبات جودة الخامة (الشمواه) بطريقة حسية.</p>
+            <table class="script-table">
+                <tr>
+                    <th>الوقت</th>
+                    <th>الصورة (Visual)</th>
+                    <th>الصوت (Audio)</th>
+                </tr>
+                <tr>
+                    <td class="time-col">0-5 ث</td>
+                    <td class="visual-col">يد تمرر ببطء على سطح الشمواه، فتتغير اتجاه الوبرة ويظهر لون مختلف (دليل
+                        الشمواه الأصلي).</td>
+                    <td class="audio-col">🔊 صوت احتكاك اليد الناعم بالقماش (ASMR).</td>
+                </tr>
+                <tr>
+                    <td class="time-col">5-10 ث</td>
+                    <td class="visual-col">لقطة قريبة لقطرات ماء تسقط على القماش وتتزحلق من عليه (لو الخامة وتر بروف) أو
+                        يتم مسحها بسهولة.</td>
+                    <td class="audio-col">🔊 صوت قطرات الماء.</td>
+                </tr>
+                <tr>
+                    <td class="time-col">10-15 ث</td>
+                    <td class="visual-col">لقطة للتقفيل الداخلي (الخياطة النظيفة) ومقارنتها بقطعة خارجية رديئة
+                        (اختياري).</td>
+                    <td class="audio-col">🎵 موسيقى "تشويقية" خفيفة.</td>
+                </tr>
+                <tr>
+                    <td class="time-col">15-20 ث</td>
+                    <td class="visual-col">الموديل النهائي ملبوس. نص على الشاشة: "شمواه مستورد.. يعيش العمر."</td>
+                    <td class="audio-col">🎵 موسيقى "انتصار" قوية.</td>
+                </tr>
+            </table>
+            <div class="prompt-container" style="margin-top: 20px; border: none; background: #222;">
+                <strong style="color:var(--gold);">📮 بوست النشر (Caption):</strong><br>
+                <span style="color:#ccc;">الشمواه الأصلي بيتعرف من لمسته.. ✋💎<br>
+                    عملنا لكم اختبار الجودة عشان تتأكدوا إنكم بتستثمروا في قطعة هتعيش معاكم سنين.<br>
+                    اطلبيه دلوقتي قبل نفاد الكمية.<br>
+                    #اختبار_الجودة #شمواه_أصلي #بيت_الريم</span>
+            </div>
+        </div>
+
+        <div class="strategy-box">
+            <div class="strategy-title">🎬 السيناريو 3: "إطلالة في دقيقة" (One Minute Styling) - [مدة: 30 ثانية]</div>
+            <p style="color:#ccc;"><strong>الفكرة:</strong> تعليمي (Educational)، كيف تنسقين الدريس بأكثر من طريقة.</p>
+            <table class="script-table">
+                <tr>
+                    <th>الوقت</th>
+                    <th>الصورة (Visual)</th>
+                    <th>الصوت (Audio)</th>
+                </tr>
+                <tr>
+                    <td class="time-col">0-5 ث</td>
+                    <td class="visual-col">الموديل لابسة الدريس الشمواه (الكحلي) بشكل كاجوال مع كوتشي وطرحة فاتحة. نص:
+                        "لوك الجامعة".</td>
+                    <td class="audio-col">🎵 موسيقى "تريندي" سريعة ومرحة.</td>
+                </tr>
+                <tr>
+                    <td class="time-col">5-15 ث</td>
+                    <td class="visual-col">(Transition سريع) الموديل بنفس الدريس بس غيرت الطرحة للون غامق، ولبست حزام
+                        جلد وشوز كعب. نص: "لوك الشغل/اجتماع".</td>
+                    <td class="audio-col">🎵 نفس الموسيقى مستمرة.</td>
+                </tr>
+                <tr>
+                    <td class="time-col">15-25 ث</td>
+                    <td class="visual-col">(Transition سريع) إضافة اكسسوارات ذهبية بارزة، وشنطة سواريه صغيرة. نص: "لوك
+                        مسائي/خروجة".</td>
+                    <td class="audio-col">🎵 نفس الموسيقى مستمرة.</td>
+                </tr>
+                <tr>
+                    <td class="time-col">25-30 ث</td>
+                    <td class="visual-col">الـ 3 لوكات جنب بعض في كولاج. نص: "دريس واحد.. 3 حكايات. اطلبيه الآن."</td>
+                    <td class="audio-col">🎵 الموسيقى تنتهي بضربة قوية.</td>
+                </tr>
+            </table>
+            <div class="prompt-container" style="margin-top: 20px; border: none; background: #222;">
+                <strong style="color:var(--gold);">📮 بوست النشر (Caption):</strong><br>
+                <span style="color:#ccc;">قطعة واحدة.. وألف ستايل! 🌟<br>
+                    شوفي إزاي تقدري تلبسي دريس الشمواه من "بيت الريم" في الجامعة، الشغل، وحتى خروجات بالليل.<br>
+                    قوليلنا في الكومنتات: إيه أكتر لوك عجبك؟ 1، 2، ولا 3؟ 👇<br>
+                    #تنسيقات_ملابس #ستايلينج #بيت_الريم</span>
+            </div>
+        </div>
+
+
+        <div class="section-divider">
+            <div class="section-icon"><i class="fa-solid fa-brain"></i></div>
+            <div class="section-title">
+                <h2>3. ترسانة الذكاء الاصطناعي (Veo 3.1 Pro)</h2>
+                <p>برومبتات متقدمة لتحويل الصور إلى فيديو، وشرح تقني لكسر حاجز الـ 8 ثواني.</p>
+            </div>
+        </div>
+
+        <div class="tech-note">
+            ⚙️ <strong>شرح تقني هام (كسر حاجز الـ 8 ثواني):</strong><br>
+            معظم أدوات AI Video (مثل Runway Gen-2 أو Veo) تولد 4-8 ثواني فقط. لعمل فيديو أطول:<br>
+            1. **التوليد المتتابع (Sequential Generation):** ولدي أول 8 ثواني. خذي آخر فريم (صورة) من الفيديو الناتج،
+            واستخدميه كـ (Input Image) للبرومبت التالي لتوليد 8 ثواني أخرى تكمل الحركة. كرري العملية.<br>
+            2. **المونتاج (The Easy Way):** ولدي عدة مقاطع قصيرة (كل مقطع بزاوية أو حركة مختلفة) وادمجيهم في CapCut مع
+            انتقالات ناعمة (Dissolve). هذه هي الطريقة الأضمن والأكثر احترافية.
+        </div>
+
+        <div class="strategy-box" style="border-color: var(--success);">
+            <div class="strategy-title" style="color: var(--success);"><i class="fa-solid fa-images"></i> 3 برومبتات
+                لتحويل الصور إلى فيديو (Image-to-Video)</div>
+            <p style="color:#ccc;">استخدمي هذه البرومبتات في Veo 3.1 Pro مع رفع صورة المنتج (يفضل على مانيكان أو موديل)
+                كـ (Image Input).</p>
+
+            <div class="prompt-container" style="background: #222; border: none;">
+                <span class="prompt-label" style="background: var(--success);">1. حركة الكاميرا المدارية (Slow
+                    Orbit)</span>
+                <p style="color:#888;">الكاميرا تلف ببطء حول المنتج لاستعراضه من كل الزوايا.</p>
+                <div class="code-block green-theme">A slow, smooth cinematic camera orbit movement around the subject
+                    (the garment
+                    on the mannequin/model) in the input image. The camera circles slowly from left to right,
+                    maintaining focus on the fabric details and silhouette. The lighting is consistent studio quality.
+                    4k resolution.</div>
+                <button class="btn-copy-code btn-green" onclick="copyText(this)">نسخ البرومبت</button>
+            </div>
+
+            <div class="prompt-container" style="background: #222; border: none;">
+                <span class="prompt-label" style="background: var(--success);">2. زوم التفاصيل الدرامي (Dramatic Detail
+                    Zoom)</span>
+                <p style="color:#888;">الكاميرا تقترب ببطء شديد من تفصيلة معينة (مثل الصدر أو الكم).</p>
+                <div class="code-block green-theme">A very slow, dramatic camera push-in (zoom) towards the center chest
+                    area of the
+                    garment in the input image. The focus starts sharp on the whole garment and slowly narrows down to
+                    the intricate details of the fabric texture and stitching. The movement is steady and controlled.
+                    High-end commercial style.</div>
+                <button class="btn-copy-code btn-green" onclick="copyText(this)">نسخ البرومبت</button>
+            </div>
+
+            <div class="prompt-container" style="background: #222; border: none;">
+                <span class="prompt-label" style="background: var(--success);">3. إحياء الموديل (Model Come to
+                    Life)</span>
+                <p style="color:#888;">لو الصورة لموديل ثابتة، هذا البرومبت يجعلها تتحرك حركة طبيعية بسيطة.</p>
+                <div class="code-block green-theme">Based on the input image of the model, animate the subject with
+                    subtle, natural
+                    movements. The model slowly turns her head towards the camera and gives a gentle, confident smile.
+                    Her arms shift slightly to showcase the sleeves of the garment. The fabric moves realistically with
+                    her body. The background remains stable. Photorealistic motion.</div>
+                <button class="btn-copy-code btn-green" onclick="copyText(this)">نسخ البرومبت</button>
+            </div>
+        </div>
+
+
+        <div class="section-divider">
+            <div class="section-icon"><i class="fa-solid fa-film"></i></div>
+            <div class="section-title">
+                <h2>4. المونتاج الاحترافي: إعلان الدقيقة الواحدة</h2>
+                <p>دليل خطوة بخطوة لدمج مقاطع الـ AI القصيرة في إعلان تلفزيوني متكامل باستخدام CapCut.</p>
+            </div>
+        </div>
+
+        <div class="strategy-box">
+            <div class="strategy-title">🎬 خطوات عمل إعلان "براند عالمي" (60 ثانية)</div>
+            <ol style="margin-top: 20px; padding-right: 20px; line-height: 2; color:#ccc;">
+                <li><strong>التجهيز (Preparation):</strong> ولدي 5-7 مقاطع فيديو قصيرة بالذكاء الاصطناعي (لقطة واسعة،
+                    لقطة زوم، لقطة حركة دائرية، لقطة تفاصيل). كل مقطع 5-8 ثواني.</li>
+                <li><strong>اختيار الموسيقى (The Soul):</strong> في CapCut، اختاري موسيقى "Cinematic" أو "Luxury" تكون
+                    هادئة في البداية وتتصاعد (Build-up). ضعيها في التايم لاين.</li>
+                <li><strong>رص اللقطات (Sequencing):</strong>
+                    <ul>
+                        <li>ابدئي بلقطة واسعة (تأسيس المشهد).</li>
+                        <li>ثم لقطات تفاصيل سريعة متتالية (على دقات الموسيقى).</li>
+                        <li>ثم لقطة حركة دائرية بطيئة في الجزء الهادئ من الموسيقى.</li>
+                        <li>اختمي بلقطة قوية يظهر فيها اللوجو.</li>
+                    </ul>
+                </li>
+                <li><strong>الانتقالات (Transitions):</strong> بين اللقطات الهادئة استخدمي "Dissolve" (تلاشي) ناعم. بين
+                    اللقطات السريعة استخدمي "Cut" حاد بدون تأثيرات. تجنبي الانتقالات المزعجة.</li>
+                <li><strong>النصوص (Typography):</strong> أضيفي نصوصاً بيضاء بسيطة بخط راقٍ (مثل Tajawal أو Montserrat).
+                    تظهر وتختفي بنعومة (Fade in/out). اكتبي كلمات مفتاحية فقط: "فخامة"، "إتقان"، "بيت الريم".</li>
+                <li><strong>اللمسة الأخيرة (Color & Overlay):</strong> ضعي فلتر "Cinema" خفيف على كل الفيديو لتوحيد
+                    اللون. أضيفي طبقة "Film Grain" خفيفة جداً ليعطي إحساس الفيلم السينمائي. ضعي اللوجو الشفاف في الزاوية
+                    العليا طوال الفيديو.</li>
+            </ol>
+        </div>
+
+
+        <div class="section-divider">
+            <div class="section-icon"><i class="fa-solid fa-palette"></i></div>
+            <div class="section-title">
+                <h2>5. برومبتات مطابقة الستايل (Style Match)</h2>
+                <p>لتحويل صور منتجاتك إلى نفس ستايل الصورة المرجعية رقم 1 (القماش الداكن الفاخر والإضاءة الدرامية).</p>
+            </div>
+        </div>
+
+        <div class="tech-note">
+            ⚠️ <strong>هام جداً:</strong> في هذه البرومبتات، استخدمي صورة منتجك كـ (Input Image)، واستخدمي الصورة رقم 1
+            (القماش الداكن) كـ (Style Reference) إذا كانت الأداة تدعم ذلك، أو اعتمدي على الوصف الدقيق في البرومبت.
+        </div>
+
+        <div class="strategy-box" style="border-color: var(--gold);">
+            <div class="prompt-container">
+                <span class="prompt-label">A. لو الصورة الأصلية "موديل"</span>
+                <p style="color:#888;">يحول صورة الموديل العادية إلى ستايل فوتوشوت فاخر وغامق.</p>
+                <div class="code-block">Based on the input image of the model wearing the garment, transform the entire
+                    scene into a luxurious, dark, moody fashion editorial style, inspired by the lighting and texture of
+                    reference image [1.jpg]. The background should be deep, dark, flowing velvet/silk fabric with rich
+                    folds. Dramatic, high-contrast studio lighting (chiaroscuro) should hit the model and garment,
+                    making the fabric texture pop and creating deep shadows. The overall color palette is dark and rich.
+                    8k resolution.</div>
+                <button class="btn-copy-code" onclick="copyText(this)">نسخ البرومبت</button>
+            </div>
+
+            <div class="prompt-container">
+                <span class="prompt-label">B. لو الصورة الأصلية "مانيكان"</span>
+                <p style="color:#888;">يضع المانيكان في بيئة فاخرة جداً بنفس الستايل.</p>
+                <div class="code-block">Based on the input image of the garment on the mannequin, place the mannequin in
+                    an opulent, dark luxury setting. The background is composed of heavy, draping dark fabrics (velvet,
+                    silk) with deep folds, similar to reference image [1.jpg]. Dramatic spotlights from the top and side
+                    highlight the texture of the garment on the mannequin, making it stand out against the dark,
+                    mysterious background. The wooden stand of the mannequin should look polished and expensive.
+                    High-end product photography.</div>
+                <button class="btn-copy-code" onclick="copyText(this)">نسخ البرومبت</button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="brand-badge" style="margin-bottom: 20px;">Weza Cinema Architect</div>
+        <p style="margin: 0;">
+            جميع الحقوق محفوظة |
+            <a href="https://Weza.Space" target="_blank" style="transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#d4af37'">
+                ™Weza Technologies
+            </a>
+        </p>
+    </footer>
+
+    <script>
+        function copyText(btn) {
+            const text = btn.previousElementSibling.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btn.innerText;
+                const originalBg = btn.style.background;
+                btn.innerText = "تم النسخ! ✓";
+                btn.style.background = "#10b981";
+                btn.style.color = "#fff";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = originalBg;
+                    btn.style.color = "";
+                }, 2000);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

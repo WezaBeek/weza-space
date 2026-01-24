@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>النمط الليلي (Dark Mode) | بيت الريم</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --card-bg: #151515;
+            --gold: #d4af37;
+            --text: #ffffff;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            margin: 0;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .file-name {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: #ccc;
+            border-top: 1px solid #222;
+        }
+
+        .action-btn {
+            display: block;
+            background: #222;
+            color: var(--gold);
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .action-btn:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        .action-btn.pill {
+            width: fit-content;
+            margin: 15px auto;
+            border-radius: 50px;
+            padding: 8px 30px;
+            border: 1px solid var(--gold);
+            background: transparent;
+            font-weight: 800;
+        }
+
+        .action-btn.pill:hover {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .lightbox img {
+            max-height: 80vh;
+            max-width: 90%;
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 2001;
+        }
+
+        .close-btn:hover {
+            color: var(--gold);
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="../../Weza_Brand_Assets/" class="back-btn">
+        <i class="fa-solid fa-arrow-right"></i> رجوع للأصول
+    </a>
+
+    <div class="header">
+        <h1>النمط الليلي (Dark Mode)</h1>
+        <p>معرض الأصول البصرية - Dark Theme</p>
+    </div>
+
+    <div class="gallery-grid">
+        <!-- Gallery Items -->
+        <div class="gallery-item">
+            <a href="#" onclick="openLightbox('1.webp'); return false;">
+                <img src="1.webp" alt="Asset 1">
+            </a>
+            <div class="file-name">Dark_Edition_V1_By.WezaTECHNOLOGIES</div>
+            <a href="1.webp" target="_blank" class="action-btn pill">تحميل / عرض</a>
+        </div>
+        <div class="gallery-item">
+            <a href="#" onclick="openLightbox('2.webp'); return false;">
+                <img src="2.webp" alt="Asset 2">
+            </a>
+            <div class="file-name">Dark_Edition_V2_By.WezaTECHNOLOGIES</div>
+            <a href="2.webp" target="_blank" class="action-btn pill">تحميل / عرض</a>
+        </div>
+        <div class="gallery-item">
+            <a href="#" onclick="openLightbox('3.webp'); return false;">
+                <img src="3.webp" alt="Asset 3">
+            </a>
+            <div class="file-name">Dark_Edition_V3_By.WezaTECHNOLOGIES</div>
+            <a href="3.webp" target="_blank" class="action-btn pill">تحميل / عرض</a>
+        </div>
+        <div class="gallery-item">
+            <a href="#" onclick="openLightbox('4.webp'); return false;">
+                <img src="4.webp" alt="Asset 4">
+            </a>
+            <div class="file-name">Dark_Edition_V4_By.WezaTECHNOLOGIES</div>
+            <a href="4.webp" target="_blank" class="action-btn pill">تحميل / عرض</a>
+        </div>
+        <div class="gallery-item">
+            <a href="#" onclick="openLightbox('5.webp'); return false;">
+                <img src="5.webp" alt="Asset 5">
+            </a>
+            <div class="file-name">Dark_Edition_V5_By.WezaTECHNOLOGIES</div>
+            <a href="5.webp" target="_blank" class="action-btn pill">تحميل / عرض</a>
+        </div>
+        <div class="gallery-item">
+            <a href="#" onclick="openLightbox('6.webp'); return false;">
+                <img src="6.webp" alt="Asset 6">
+            </a>
+            <div class="file-name">Dark_Edition_V6_By.WezaTECHNOLOGIES</div>
+            <a href="6.webp" target="_blank" class="action-btn pill">تحميل / عرض</a>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="">
+        <a id="lightbox-download" href="" download class="action-btn pill"
+            style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); background: black; border-color: var(--gold);"><i
+                class="fa-solid fa-download"></i> تحميل</a>
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-download').href = src;
+            document.getElementById('lightbox').classList.add('active');
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+        document.getElementById('lightbox').addEventListener('click', function (e) {
+            if (e.target === this) closeLightbox();
+        });
+    </script>
+</body>
+
+</html>

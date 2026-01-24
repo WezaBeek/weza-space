@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية بيت الريم | المنهج الفني الاحترافي (Masterclass)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --card-bg: #151515;
+            --gold: #d4af37;
+            --gold-dim: #b28f2d;
+            --text: #ffffff;
+            --text-muted: #a0a0a0;
+            --border: #333;
+            --success: #10b981;
+            --accent-blue: #3b82f6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        /* Header Design matching Dashboard */
+        .header {
+            background: linear-gradient(to bottom, #000, var(--bg-dark));
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--border);
+            position: relative;
+        }
+
+        .badge {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 5px 20px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--gold);
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: var(--gold);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+            z-index: 1000;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: #000;
+            transform: translateY(2px);
+        }
+
+        /* Stage Cards */
+        .stage-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .stage-card:hover {
+            border-color: var(--gold-dim);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .stage-header {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stage-header:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .stage-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .stage-number {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .stage-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .stage-content {
+            display: none;
+            padding: 30px;
+            background: #0f0f0f;
+            border-top: 1px solid var(--border);
+        }
+
+        .stage-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* Lesson Details */
+        .lesson-block {
+            margin-bottom: 40px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 30px;
+        }
+
+        .lesson-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .lesson-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .lesson-title i {
+            color: #fff;
+            background: var(--gold);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #000;
+        }
+
+        p {
+            color: #ccc;
+            margin-top: 5px;
+        }
+
+        /* Boxes */
+        .value-box {
+            background: rgba(212, 175, 55, 0.05);
+            border-right: 3px solid var(--gold);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: #e1d4ac;
+        }
+
+        .task-box {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px dashed var(--success);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            color: #6ee7b7;
+        }
+
+        .box-label {
+            font-weight: 800;
+            display: block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Video Button */
+        .video-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 1px solid #ef4444;
+            color: #ef4444;
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .video-btn:hover {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        /* Channels Grid */
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .channel-link {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #ccc;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .channel-link:hover {
+            border-color: var(--gold);
+            background: #000;
+            color: var(--gold);
+        }
+
+        .channel-icon {
+            color: #ff0000;
+            font-size: 1.5rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            border-top: 1px solid #333;
+            color: #555;
+        }
+
+        footer a {
+            color: var(--gold);
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="../" class="back-btn"><i class="fa-solid fa-arrow-right"></i> لوحة التحكم</a>
+        <span class="badge">Weza Academy V4.0</span>
+        <h1>دبلومة الاحتراف الفني (Masterclass)</h1>
+        <p>10 مراحل مكثفة لتطوير مهارات الخياطة لمستوى المصانع العالمية</p>
+    </header>
+
+    <div class="container">
+
+        <div class="stage-card">
+            <div class="stage-header" onclick="toggleStage(this)">
+                <div class="stage-info">
+                    <div class="stage-number">1</div>
+                    <div class="stage-title">المرحلة الأولى: فن التشطيب المخفي (Invisible Finishing)</div>
+                </div>
+                <i class="fa-solid fa-chevron-down" style="color:#666"></i>
+            </div>
+            <div class="stage-content">
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-scissors"></i> 1. الخياطة الفرنسية (French Seams)
+                    </div>
+                    <p>تقنية لدفن حواف القماش داخل خياطة مزدوجة، مما يلغي الحاجة للسرفلة (الأوفر) ويعطي مظهراً نظيفاً
+                        جداً، خاصة مع الشيفون والحرير.</p>
+
+                    <div class="value-box">
+                        <span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        ترفع سعر القطعة فوراً لأنها تدل على جودة "بوتيك" وليس "تجاري"، وتطيل عمر القطعة.
+                    </div>
+                    <div class="task-box">
+                        <span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        نفذي عينة صغيرة باستخدام قماش خفيف (شيفون أو كريب)، وقفليه بالخياطة الفرنسية وصوري النتيجة من
+                        الداخل.
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=How+to+sew+French+Seams+tutorial"
+                        target="_blank" class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: شرح الخياطة
+                        الفرنسية</a>
+                </div>
+
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-ribbon"></i> 2. تشطيب هونج كونج (Hong Kong Finish)
+                    </div>
+                    <p>تغليف حواف الخياطة الداخلية بشريط "بييه" ملون. تستخدم في الجواكت والملابس غير المبطنة (مثل
+                        الشمواه).</p>
+
+                    <div class="value-box">
+                        <span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        تجعل القطعة من الداخل "لوحة فنية"، وهي علامة مسجلة للماركات العالمية الباهظة.
+                    </div>
+                    <div class="task-box">
+                        <span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        استخدمي قطعة قماش جوخ أو شمواه، وقومي بتنظيف الحواف بشريط ستان بلون مختلف (Contrast).
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Hong+Kong+seam+finish+tutorial"
+                        target="_blank" class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: طريقة تشطيب هونج
+                        كونج</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-header" onclick="toggleStage(this)">
+                <div class="stage-info">
+                    <div class="stage-number">2</div>
+                    <div class="stage-title">المرحلة الثانية: دقة القص والباترون (Precision)</div>
+                </div>
+                <i class="fa-solid fa-chevron-down" style="color:#666"></i>
+            </div>
+            <div class="stage-content">
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-ruler-combined"></i> 1. ضبط اتجاه النسيج (Grainline)
+                    </div>
+                    <p>تعلم وضع الباترون بمحاذاة "برسل" القماش بدقة. الخطأ هنا يجعل الفستان "يلف" على الجسم بعد الغسيل.
+                    </p>
+                    <div class="value-box">
+                        <span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        قطعة ملابس مريحة جداً في اللبس ولا تتغير مع الزمن، مما يبني سمعة قوية للجودة.
+                    </div>
+                    <div class="task-box">
+                        <span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        ارسمي سهم اتجاه النسيج على كل قطع الباترون الخاصة بك وتأكدي من موازاتها للبرسل بالمازورة.
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=fabric+grainline+explained" target="_blank"
+                        class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: أهمية اتجاه النسيج</a>
+                </div>
+
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-layer-group"></i> 2. مطابقة النقوش (Pattern
+                        Matching)</div>
+                    <p>في الأقمشة الكاروهات أو المقلمة، يجب أن تتقابل الخطوط عند الجناب والجيوب بدقة 100%.</p>
+                    <div class="value-box">
+                        <span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        هذا هو الفرق الجوهري بين القطعة الرخيصة والقطعة الغالية. المصانع الكبرى تبحث عن هذه المهارة.
+                    </div>
+                    <div class="task-box">
+                        <span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        صلي قطعتين من قماش مقلم بحيث تستمر الخطوط وكأنها قطعة واحدة (Invisible Seam).
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=matching+stripes+sewing+tutorial"
+                        target="_blank" class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: احتراف مطابقة
+                        الخطوط</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-header" onclick="toggleStage(this)">
+                <div class="stage-info">
+                    <div class="stage-number">3</div>
+                    <div class="stage-title">المرحلة الثالثة: احتراف السحابات (Zippers)</div>
+                </div>
+                <i class="fa-solid fa-chevron-down" style="color:#666"></i>
+            </div>
+            <div class="stage-content">
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-file-zipper"></i> 1. السحاب المخفي (Invisible
+                        Zipper)</div>
+                    <p>تركيب السحاب بحيث لا يظهر منه أي جزء نهائياً، وكأن الفستان قطعة واحدة متصلة.</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        مظهر انسيابي واحترافي جداً للدريسات والعبايات المجسمة.</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        ركبي سحاباً مخفياً في عينة قماش، وتأكدي أنه لا يظهر عند الغلق.</div>
+                    <a href="https://www.youtube.com/results?search_query=install+invisible+zipper+sewing"
+                        target="_blank" class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: تركيب السحاب
+                        المخفي</a>
+                </div>
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-box-archive"></i> 2. سحاب البنطلون (Fly Front)</div>
+                    <p>طريقة تركيب سوسته البنطلون أو الجيبة الرسمية بالغطاء الأمامي (Fly).</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        ضروري لتفصيل البنطلونات الكلاسيكية والبدل الحريمي.</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        نفذي عينة لـ Fly Front Zipper كاملة.</div>
+                    <a href="https://www.youtube.com/results?search_query=sewing+fly+front+zipper" target="_blank"
+                        class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: سحاب البنطلون الاحترافي</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-header" onclick="toggleStage(this)">
+                <div class="stage-info">
+                    <div class="stage-number">4</div>
+                    <div class="stage-title">المرحلة الرابعة: الجيوب الفنية (Pockets)</div>
+                </div>
+                <i class="fa-solid fa-chevron-down" style="color:#666"></i>
+            </div>
+            <div class="stage-content">
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-inbox"></i> 1. الجيب الجانبي المخفي (In-seam Pocket)
+                    </div>
+                    <p>إضافة جيوب في خياطة الجنب للدريسات والعبايات بطريقة قوية لا تتمزق ولا تؤثر على شكل الفستان.</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        ميزة بيعية قوية، العميلات يعشقن الفساتين بجيوب.</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        أضيفي جيباً مخفياً لنموذج تنورة أو فستان.</div>
+                    <a href="https://www.youtube.com/results?search_query=sew+inseam+pockets+french+seams"
+                        target="_blank" class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: الجيب المخفي</a>
+                </div>
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-envelope"></i> 2. جيب الفلتو (Welt Pocket)</div>
+                    <p>الجيب الشق الرسمي المستخدم في الجواكت والبدل. يتطلب دقة عالية في القص والخياطة.</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        قمة الاحترافية. تدل على تمكن الخياطة من التقنيات المعقدة.</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        نفذي جيب فلتو واحد (Single Welt) في عينة قماش جوخ.</div>
+                    <a href="https://www.youtube.com/results?search_query=single+welt+pocket+tutorial" target="_blank"
+                        class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: شرح جيب الفلتو</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-header" onclick="toggleStage(this)">
+                <div class="stage-info">
+                    <div class="stage-number">5</div>
+                    <div class="stage-title">المرحلة الخامسة: الياقات والرقبة (Collars)</div>
+                </div>
+                <i class="fa-solid fa-chevron-down" style="color:#666"></i>
+            </div>
+            <div class="stage-content">
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-shirt"></i> 1. زوايا الياقة الحادة (Sharp Collar
+                        Points)</div>
+                    <p>سر الحصول على ياقة قميص مدببة وحادة وليست دائرية. استخدام الخيط لقلب الزاوية بدقة.</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        الياقة هي برواز الوجه. الياقة المضبوطة تعني قميصاً غالي الثمن.</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        خيطي ياقة قميص واستخدمي تكنيك الخيط لقلب الزوايا.</div>
+                    <a href="https://www.youtube.com/results?search_query=sewing+perfect+collar+points" target="_blank"
+                        class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: أسرار الياقة الحادة</a>
+                </div>
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-circle-notch"></i> 2. تنظيف الرقبة بالسجاف (Facing)
+                    </div>
+                    <p>تثبيت السجاف الداخلي للرقبة ومنعه من الخروج للخارج باستخدام الخياطة التجميلية (Understitching).
+                    </p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        مظهر نظيف جداً للرقبة بدون خياطات خارجية ظاهرة.</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        نفذي تنظيف رقبة دائرية باستخدام السجاف والفازلين.</div>
+                    <a href="https://www.youtube.com/results?search_query=understitching+neckline+facing"
+                        target="_blank" class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: تثبيت السجاف</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-header" onclick="toggleStage(this)">
+                <div class="stage-info">
+                    <div class="stage-number">6</div>
+                    <div class="stage-title">المرحلة السادسة: هندسة الأكمام (Sleeves)</div>
+                </div>
+                <i class="fa-solid fa-chevron-down" style="color:#666"></i>
+            </div>
+            <div class="stage-content">
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-user-check"></i> 1. تشريب الكم (Setting in Sleeves)
+                    </div>
+                    <p>كيفية تركيب الكم في الجيرو بدون كشكشة، ولكن مع "راحة" تسمح بحركة الذراع.</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        الراحة في الحركة هي ما تجعل العميلة ترتدي القطعة يومياً.</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        ركبي كم في كورساج وتأكدي من عدم وجود كسرات عند الكتف.</div>
+                    <a href="https://www.youtube.com/results?search_query=setting+in+sleeve+sewing+tutorial"
+                        target="_blank" class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: تركيب الكم
+                        الاحترافي</a>
+                </div>
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-grip-lines-vertical"></i> 2. مرد الكم (Sleeve
+                        Placket)</div>
+                    <p>عمل المرد (الفتحة) الموجودة في أكمام القمصان والبلوزات التي تنتهي بأسورة بأسهل طريقة.</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        لمسة فنية ترفع من مستوى البلوزات والشميزات.</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        نفذي مرد كم (Tower Placket) في قطعة قماش قطن.</div>
+                    <a href="https://www.youtube.com/results?search_query=sewing+sleeve+placket+tutorial"
+                        target="_blank" class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: عمل مرد الكم</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-header" onclick="toggleStage(this)">
+                <div class="stage-info">
+                    <div class="stage-number">7</div>
+                    <div class="stage-title">المرحلة السابعة: ذكاء البطانة (Lining)</div>
+                </div>
+                <i class="fa-solid fa-chevron-down" style="color:#666"></i>
+            </div>
+            <div class="stage-content">
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-layer-group"></i> 1. تبطين الجاكيت (Bagging Out)
+                    </div>
+                    <p>طريقة سحرية لقلب الجاكيت بالكامل من فتحة صغيرة، ليصبح نظيفاً تماماً من الداخل والخارج.</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        أساسية في شغل الشتاء (الشمواه والجوخ). تحول الجاكيت لقطعة عالمية.</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        نفذي نموذج مصغر لجاكيت مبطن وقومي بقلبه.</div>
+                    <a href="https://www.youtube.com/results?search_query=bagging+out+a+jacket+lining" target="_blank"
+                        class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: تبطين الجاكيت</a>
+                </div>
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-arrow-down"></i> 2. تثبيت البطانة (Hemming Lining)
+                    </div>
+                    <p>كيفية خياطة ذيل البطانة مع ذيل الجاكيت مع ترك مساحة للحركة (Jump Hem).</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        يمنع البطانة من شد الجاكيت من الأسفل ويحافظ على انسيابيته.</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        خيطي ذيل عينة مبطنة بتقنية Jump Hem.</div>
+                    <a href="https://www.youtube.com/results?search_query=how+to+hem+jacket+lining" target="_blank"
+                        class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: ثني ذيل البطانة</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-header" onclick="toggleStage(this)">
+                <div class="stage-info">
+                    <div class="stage-number">8</div>
+                    <div class="stage-title">المرحلة الثامنة: الأقمشة الصعبة (Tricky Fabrics)</div>
+                </div>
+                <i class="fa-solid fa-chevron-down" style="color:#666"></i>
+            </div>
+            <div class="stage-content">
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-wind"></i> 1. خياطة الشيفون والحرير</div>
+                    <p>كيف تمنعين القماش من الانزلاق؟ استخدام الورق، واختيار الإبر الرفيعة، وضبط شد الخيط.</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        التمكن من عمل سواريهات وعبايات صيفية راقية بأسعار مرتفعة.</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        خيطي درزة طويلة في قماش شيفون دون أن يتكشكش.</div>
+                    <a href="https://www.youtube.com/results?search_query=tips+sewing+chiffon+fabric" target="_blank"
+                        class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: حيل خياطة الشيفون</a>
+                </div>
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-feather"></i> 2. التعامل مع الشمواه والقطيفة</div>
+                    <p>فهم "اتجاه الوبرة" (Nap). القص الخاطئ يجعل القطعة بلونين مختلفين.</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        تجنب خسائر فادحة في القماش وضمان لون موحد للقطعة (أساسي لبيت الريم).</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        حددي اتجاه الوبرة في قطعة شمواه وقصيها بشكل صحيح.</div>
+                    <a href="https://www.youtube.com/results?search_query=sewing+velvet+tips" target="_blank"
+                        class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: خياطة القطيفة والشمواه</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-header" onclick="toggleStage(this)">
+                <div class="stage-info">
+                    <div class="stage-number">9</div>
+                    <div class="stage-title">المرحلة التاسعة: التشطيبات النهائية (Hems)</div>
+                </div>
+                <i class="fa-solid fa-chevron-down" style="color:#666"></i>
+            </div>
+            <div class="stage-content">
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-eye-slash"></i> 1. الغرزة المسحورة (Blind Hem)</div>
+                    <p>ثني الذيل بحيث لا تظهر الخياطة من الوجه الخارجي. أساسية في العبايات الكلاسيك والبنطلونات.</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        مظهر نظيف جداً وكلاسيكي، يدل على جودة عالية.</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        نفذي ثنية مسحورة (باليد أو الماكينة) على عينة.</div>
+                    <a href="https://www.youtube.com/results?search_query=blind+hem+tutorial" target="_blank"
+                        class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: الغرزة المسحورة</a>
+                </div>
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-spinner"></i> 2. ثنية البيبي (Rolled Hem)</div>
+                    <p>الثنية الرفيعة جداً والمبرومة المستخدمة في الطرح وفساتين الكلوش الواسعة.</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        ضرورية للطرح والفساتين الواسعة، تعطي خفة وحركة للقماش.</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        اعملي ثنية مبرومة لطرف طرحة شيفون.</div>
+                    <a href="https://www.youtube.com/results?search_query=rolled+hem+foot+tutorial" target="_blank"
+                        class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: ثنية البيبي</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-header" onclick="toggleStage(this)">
+                <div class="stage-info">
+                    <div class="stage-number">10</div>
+                    <div class="stage-title">المرحلة العاشرة: السرعة والإنتاجية (Speed)</div>
+                </div>
+                <i class="fa-solid fa-chevron-down" style="color:#666"></i>
+            </div>
+            <div class="stage-content">
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-forward"></i> 1. الخياطة المتسلسلة (Chain Piecing)
+                    </div>
+                    <p>تقنية المصانع لخياطة قطع متعددة وراء بعضها دون قطع الخيط، لتوفير الوقت والخيوط.</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        زيادة الإنتاجية. بدلاً من إنتاج قطعتين في اليوم، تنتجين 4.</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        خيطي 10 قصاقيص قماش متتالية دون قطع الخيط بينهم.</div>
+                    <a href="https://www.youtube.com/results?search_query=chain+piecing+sewing" target="_blank"
+                        class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: الخياطة المتسلسلة</a>
+                </div>
+                <div class="lesson-block">
+                    <div class="lesson-title"><i class="fa-solid fa-temperature-high"></i> 2. الكي المرحلي (Pressing)
+                    </div>
+                    <p>القاعدة الذهبية: "خيطي واكوي". الكي بعد كل درزة هو ما يجعل القطعة تبدو احترافية.</p>
+                    <div class="value-box"><span class="box-label" style="color:var(--gold)">💎 القيمة المضافة:</span>
+                        السر رقم 1 الذي يجعل القطعة تبدو وكأنها خرجت من مصنع "براند".</div>
+                    <div class="task-box"><span class="box-label" style="color:var(--success)">🛠️ الواجب العملي:</span>
+                        خيطي عينتين، واحدة بكي مرحلي وواحدة بدونه، وقارني النتيجة.</div>
+                    <a href="https://www.youtube.com/results?search_query=pressing+seams+open+tutorial" target="_blank"
+                        class="video-btn"><i class="fa-brands fa-youtube"></i> فيديو: أهمية الكي</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special Golden Section for Channels -->
+        <div class="stage-card" style="border: 1px solid var(--gold); margin-top: 40px;">
+            <div class="stage-header"
+                style="background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(0,0,0,1) 100%); padding: 30px; cursor: default;">
+                <div class="stage-info" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+                    <div style="color: var(--gold); font-weight: 900; letter-spacing: 1px; text-transform: uppercase;">
+                        🌟 الكنز (The Treasure)
+                    </div>
+                    <div class="stage-title" style="font-size: 1.8rem; color: #fff;">
+                        المصادر ورواد الصناعة (Top Industry Channels)
+                    </div>
+                    <p style="color: #ccc; margin: 0; font-size: 1rem;">
+                        قائمة القنوات المعتمدة التي أنصح بها لمتابعة أحدث التقنيات العالمية.
+                    </p>
+                </div>
+            </div>
+
+            <div class="stage-content" style="display: block; padding: 30px; background: #080808;">
+                <div class="channels-grid">
+
+                    <!-- Channel Item -->
+                    <a href="https://www.youtube.com/@elegancetailor" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Elegance Tailor (Elegance
+                        Couture)
+                    </a>
+
+                    <a href="https://www.youtube.com/@sewing22" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Sewing 22
+                    </a>
+
+                    <a href="https://www.youtube.com/@Sewing.Sewing" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Sewing.Sewing
+                    </a>
+
+                    <a href="https://www.youtube.com/@Belkaidahmed" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Belkaid Ahmed
+                    </a>
+
+                    <a href="https://www.youtube.com/@Lamassat-lkhiyata" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Lamassat Lkhiyata
+                    </a>
+
+                    <a href="https://www.youtube.com/@CraftsyYouTube" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Craftsy
+                    </a>
+
+                    <a href="https://www.youtube.com/@PNHomemade" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> PN Homemade
+                    </a>
+
+                    <a href="https://www.youtube.com/@GloryAllan" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Glory Allan
+                    </a>
+
+                    <a href="https://www.youtube.com/@tailornour/" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Tailor Nour
+                    </a>
+
+                    <a href="https://www.youtube.com/@withwendy" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> With Wendy
+                    </a>
+
+                    <a href="https://www.youtube.com/@daniartcollection" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Dani Art Collection
+                    </a>
+
+                    <a href="https://www.youtube.com/@NotchesSewing" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Notches Sewing
+                    </a>
+
+                    <a href="https://www.youtube.com/@Thelaststitch" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> The Last Stitch
+                    </a>
+
+                    <a href="https://www.youtube.com/@Thuysewing/videos" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Thuy Sewing
+                    </a>
+
+                    <a href="https://www.youtube.com/@SeamworkVideo/featured" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Seamwork
+                    </a>
+
+                    <a href="https://www.youtube.com/@CorneliusQuiring" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Cornelius Quiring
+                    </a>
+
+                    <a href="https://www.youtube.com/@ProfessorPincushion" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Professor Pincushion
+                    </a>
+
+                    <a href="https://www.youtube.com/@JessicaShaw" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Jessica Shaw
+                    </a>
+
+                    <a href="https://www.youtube.com/@SewingPartsOnline" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Sewing Parts Online
+                    </a>
+
+                    <a href="https://www.youtube.com/@MadetoSew" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Made to Sew
+                    </a>
+
+                    <a href="https://www.youtube.com/@ThoughtfulCreativity" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Thoughtful Creativity
+                    </a>
+
+                    <a href="https://www.youtube.com/@ghorifashiondesigner" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Ghori Fashion Designer
+                    </a>
+
+                    <a href="https://www.youtube.com/@amerbelkaid" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Amer Belkaid
+                    </a>
+
+                    <a href="https://youtube.com/channel/UCldlw0cvi8rklG6C7hw4ypw?si=JMImcolJ0onwpffz" target="_blank"
+                        class="channel-link">
+                        <i class="fa-brands fa-youtube channel-icon" style="color:red;"></i> Sewing Tips (قناة تعليمية)
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p style="margin: 0;">
+            جميع الحقوق محفوظة |
+            <a href="https://Weza.Space" target="_blank">
+                ™Weza Technologies
+            </a>
+        </p>
+    </footer>
+
+    <script>
+        function toggleStage(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.fa-chevron-down');
+
+            document.querySelectorAll('.stage-content').forEach(c => {
+                if (c !== content && c.classList.contains('active')) {
+                    c.classList.remove('active');
+                    c.previousElementSibling.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
+                }
+            });
+
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('active');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
