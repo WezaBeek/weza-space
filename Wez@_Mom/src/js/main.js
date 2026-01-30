@@ -1,71 +1,120 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Stars Background Logic ---
+    // --- Theme Toggle Logic (Pill Switch) ---
+    const checkbox = document.getElementById('checkbox');
+    const toggleIcon = document.getElementById('toggleIcon');
     const starsContainer = document.getElementById('stars-container');
-    const starCount = 50;
 
-    for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
+    function applyTheme(theme) {
+        document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
 
-        // Random position
-        const x = Math.random() * 100;
-        const y = Math.random() * 100;
+        // Update Checkbox and Icon inside thumb
+        if (checkbox) {
+            checkbox.checked = (theme === 'day');
+        }
 
-        // Random size
-        const size = Math.random() * 2 + 1;
+        if (toggleIcon) {
+            // Logic: Night mode shows SUN (to switch to day), Day mode shows MOON (to switch to night)
+            if (theme === 'night') {
+                toggleIcon.className = 'fas fa-sun toggle-icon';
+            } else {
+                toggleIcon.className = 'fas fa-moon toggle-icon';
+            }
+        }
 
-        star.style.left = `${x}%`;
-        star.style.top = `${y}%`;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-
-        // Random animation delay and duration for twinkling
-        const duration = Math.random() * 3 + 2;
-        const delay = Math.random() * 5;
-        star.style.animation = `twinkle ${duration}s ease-in-out ${delay}s infinite`;
-
-        starsContainer.appendChild(star);
+        if (theme === 'night') {
+            generateStars();
+        } else {
+            if (starsContainer) starsContainer.innerHTML = '';
+        }
     }
 
-    // --- Audio Player Logic ---
+    if (checkbox) {
+        checkbox.addEventListener('change', () => {
+            const nextTheme = checkbox.checked ? 'day' : 'night';
+            applyTheme(nextTheme);
+        });
+    }
+
+    // Initial Load
+    const savedTheme = localStorage.getItem('theme') || 'night';
+    applyTheme(savedTheme);
+
+    // --- Stars Background Logic ---
+    function generateStars() {
+        if (!starsContainer) return;
+        starsContainer.innerHTML = '';
+        const starCount = 60;
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 3 + 2;
+            star.style.left = `${x}%`;
+            star.style.top = `${y}%`;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            const duration = Math.random() * 3 + 2;
+            const delay = Math.random() * 5;
+            star.style.animation = `twinkle ${duration}s ease-in-out ${delay}s infinite`;
+            starsContainer.appendChild(star);
+        }
+    }
+
+    // --- Audio Player Logic & Robust Interaction-Based Autoplay ---
     const audio = document.getElementById('duaAudio');
     const audioBtn = document.getElementById('audioBtn');
     const playIcon = document.getElementById('playIcon');
     const playText = document.getElementById('playText');
-    const originalText = "استمع للدعاء";
-    const playingText = "إيقاف الدعاء";
+
+    let audioStarted = false;
 
     if (audio) {
         audio.volume = 0.8;
 
-        // Play once on open (Requires user gesture in some browsers, but we try)
-        // Many browsers block autoplay. If blocked, it will play on first click.
-        const playPromise = audio.play();
-
-        if (playPromise !== undefined) {
-            playPromise.then(() => {
+        const startAudio = () => {
+            if (audioStarted) return;
+            audio.play().then(() => {
+                audioStarted = true;
                 updateAudioUI(true);
-            }).catch(error => {
-                console.log("Autoplay blocked. Waiting for user interaction.");
+                // Remove listeners as soon as audio starts
+                ['click', 'touchstart', 'scroll', 'mousedown', 'keydown'].forEach(evt => {
+                    window.removeEventListener(evt, startAudio);
+                });
+            }).catch(e => {
+                // Silently wait for the next user event
             });
-        }
+        };
+
+        // Standard sequence: Try immediate, then fallback to ANY user action
+        ['click', 'touchstart', 'scroll', 'mousedown', 'keydown'].forEach(evt => {
+            window.addEventListener(evt, startAudio, { once: false });
+        });
+
+        // Small delay to try initial play after load
+        setTimeout(startAudio, 100);
 
         audio.addEventListener('ended', () => {
             updateAudioUI(false);
             audio.currentTime = 0;
+            audioStarted = false;
         });
     }
 
-    if (audioBtn && audio) {
-        audioBtn.addEventListener('click', toggleAudio);
+    if (audioBtn) {
+        audioBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleAudio();
+        });
     }
 
     function toggleAudio() {
+        if (!audio) return;
         if (audio.paused) {
             audio.play().then(() => {
                 updateAudioUI(true);
-            }).catch(error => {
-                console.error("Audio playback failed:", error);
+                audioStarted = true;
             });
         } else {
             audio.pause();
@@ -74,18 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateAudioUI(isPlaying) {
+        if (!playIcon || !playText) return;
         if (isPlaying) {
-            playIcon.classList.remove('fa-play');
-            playIcon.classList.add('fa-pause');
-            playText.innerText = playingText;
-            audioBtn.style.background = 'rgba(212, 175, 55, 0.25)';
-            audioBtn.style.borderColor = '#d4af37';
+            playIcon.className = 'fas fa-pause';
+            playText.innerText = "إيقاف الدعاء";
         } else {
-            playIcon.classList.remove('fa-pause');
-            playIcon.classList.add('fa-play');
-            playText.innerText = originalText;
-            audioBtn.style.background = '';
-            audioBtn.style.borderColor = '';
+            playIcon.className = 'fas fa-play';
+            playText.innerText = "استمع للدعاء";
         }
     }
 
@@ -93,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const counterBtn = document.getElementById('counterBtn');
     const counterDisplay = document.getElementById('counterDisplay');
 
-    let count = parseInt(localStorage.getItem('duaCount')) || 1241;
+    let count = parseInt(localStorage.getItem('duaCount')) || 1294;
     if (counterDisplay) counterDisplay.innerText = count.toLocaleString('en-US');
 
     if (counterBtn) {
@@ -103,14 +147,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (counterDisplay) counterDisplay.innerText = count.toLocaleString('en-US');
 
             // Interaction feedback
-            const originalContent = counterBtn.innerHTML;
-            counterBtn.innerHTML = 'جزاكم الله خيراً <i class="fas fa-check" style="margin-right: 8px;"></i>';
-            counterBtn.style.pointerEvents = 'none';
+            counterBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            counterBtn.style.color = 'white';
+            counterBtn.innerHTML = 'أمين، ولكم بالمثل، جزاكم الله خيرا . 🤍';
+            counterBtn.disabled = true;
 
             setTimeout(() => {
+                counterBtn.style.background = '';
+                counterBtn.style.color = '';
                 counterBtn.innerHTML = `قُل آمين <span id="counterDisplay" class="counter-badge">${count.toLocaleString('en-US')}</span>`;
-                counterBtn.style.pointerEvents = 'auto';
-            }, 1500);
+                counterBtn.disabled = false;
+            }, 3000);
         });
     }
 });
