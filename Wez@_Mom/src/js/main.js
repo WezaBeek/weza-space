@@ -1,31 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Theme Toggle Logic (Pill Switch) ---
+    // --- Theme Toggle Logic ---
     const checkbox = document.getElementById('checkbox');
     const toggleIcon = document.getElementById('toggleIcon');
     const starsContainer = document.getElementById('stars-container');
+    const cloudsContainer = document.getElementById('clouds-container');
 
     function applyTheme(theme) {
         document.body.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
 
-        // Update Checkbox and Icon inside thumb
-        if (checkbox) {
-            checkbox.checked = (theme === 'day');
-        }
+        if (checkbox) checkbox.checked = (theme === 'day');
 
         if (toggleIcon) {
-            // Logic: Night mode shows SUN (to switch to day), Day mode shows MOON (to switch to night)
-            if (theme === 'night') {
-                toggleIcon.className = 'fas fa-sun toggle-icon';
-            } else {
-                toggleIcon.className = 'fas fa-moon toggle-icon';
-            }
+            toggleIcon.className = theme === 'night' ? 'fas fa-sun toggle-icon' : 'fas fa-moon toggle-icon';
         }
 
-        if (theme === 'night') {
-            generateStars();
+        // Both modes get stars (Day Sparkles / Night Stars)
+        generateStars();
+
+        if (theme === 'day') {
+            generateClouds();
         } else {
-            if (starsContainer) starsContainer.innerHTML = '';
+            if (cloudsContainer) cloudsContainer.innerHTML = '';
         }
     }
 
@@ -40,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme') || 'night';
     applyTheme(savedTheme);
 
-    // --- Stars Background Logic ---
+    // --- Night Mode: Twinkling Stars ---
     function generateStars() {
         if (!starsContainer) return;
         starsContainer.innerHTML = '';
@@ -50,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             star.className = 'star';
             const x = Math.random() * 100;
             const y = Math.random() * 100;
-            const size = Math.random() * 3 + 2;
+            const size = Math.random() * 2 + 1;
             star.style.left = `${x}%`;
             star.style.top = `${y}%`;
             star.style.width = `${size}px`;
@@ -62,7 +58,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Audio Player Logic & Robust Interaction-Based Autoplay ---
+    // --- Day Mode: Floating Clouds (New Feature) ---
+    function generateClouds() {
+        if (!cloudsContainer) return;
+        cloudsContainer.innerHTML = '';
+        const cloudCount = 5;
+        for (let i = 0; i < cloudCount; i++) {
+            const cloud = document.createElement('div');
+            cloud.className = 'cloud';
+            const width = Math.random() * 300 + 200;
+            const height = width * 0.4;
+            const top = Math.random() * 60; // Keep clouds in top area
+            const delay = Math.random() * -30; // Random starting positions
+            const duration = Math.random() * 40 + 60; // Very slow movement
+
+            cloud.style.width = `${width}px`;
+            cloud.style.height = `${height}px`;
+            cloud.style.top = `${top}%`;
+            cloud.style.left = `-400px`;
+            cloud.style.setProperty('--duration', `${duration}s`);
+            cloud.style.animationDelay = `${delay}s`;
+
+            cloudsContainer.appendChild(cloud);
+        }
+    }
+
+    // --- Audio Player Logic ---
     const audio = document.getElementById('duaAudio');
     const audioBtn = document.getElementById('audioBtn');
     const playIcon = document.getElementById('playIcon');
@@ -72,28 +93,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (audio) {
         audio.volume = 0.8;
-
         const startAudio = () => {
             if (audioStarted) return;
             audio.play().then(() => {
                 audioStarted = true;
                 updateAudioUI(true);
-                // Remove listeners as soon as audio starts
                 ['click', 'touchstart', 'scroll', 'mousedown', 'keydown'].forEach(evt => {
                     window.removeEventListener(evt, startAudio);
                 });
-            }).catch(e => {
-                // Silently wait for the next user event
-            });
+            }).catch(() => { });
         };
 
-        // Standard sequence: Try immediate, then fallback to ANY user action
         ['click', 'touchstart', 'scroll', 'mousedown', 'keydown'].forEach(evt => {
             window.addEventListener(evt, startAudio, { once: false });
         });
-
-        // Small delay to try initial play after load
-        setTimeout(startAudio, 100);
 
         audio.addEventListener('ended', () => {
             updateAudioUI(false);
@@ -124,13 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateAudioUI(isPlaying) {
         if (!playIcon || !playText) return;
-        if (isPlaying) {
-            playIcon.className = 'fas fa-pause';
-            playText.innerText = "إيقاف الدعاء";
-        } else {
-            playIcon.className = 'fas fa-play';
-            playText.innerText = "استمع للدعاء";
-        }
+        playIcon.className = isPlaying ? 'fas fa-pause' : 'fas fa-play';
+        playText.innerText = isPlaying ? "إيقاف الدعاء" : "استمع للدعاء";
     }
 
     // --- Counter Logic ---
@@ -146,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('duaCount', count);
             if (counterDisplay) counterDisplay.innerText = count.toLocaleString('en-US');
 
-            // Interaction feedback
             counterBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
             counterBtn.style.color = 'white';
             counterBtn.innerHTML = 'أمين، ولكم بالمثل، جزاكم الله خيرا . 🤍';
