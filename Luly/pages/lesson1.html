@@ -86,13 +86,22 @@
 
 
 
+
+
+
 <style>
     .lesson-nav {
         display: flex;
-        justify-content: center;
-        gap: 12px;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
         margin: 40px auto 20px;
         padding: 0 10px;
+    }
+    .nav-row {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
     }
     .nav-btn {
         background: rgba(15, 42, 67, 0.4);
@@ -106,7 +115,7 @@
         font-weight: bold;
         transition: all 0.3s ease;
         text-align: center;
-        min-width: 100px;
+        min-width: 120px;
         display: inline-block;
     }
     .nav-btn:hover {
@@ -131,7 +140,7 @@
 
 </head>
 <body>
-<a href="../index.html" class="nav-back-btn">⬅ Dashboard</a>
+
 
 <div class="container">
     <header style="padding: 20px 0;">
@@ -221,13 +230,15 @@
 </script>
 
 <script src="../assets/js/feedback.js"></script>
-
+    <div class="lesson-nav">
+        <div class="nav-row">
+            
+            <a href="lesson2.html" class="nav-btn">الدرس التالي</a>
+        </div>
+        <a href="../index.html" class="nav-btn">قائمة الدروس</a>
+    </div>
     
-
-
-
-<div class="lesson-nav"><a href="lesson2.html" class="nav-btn">الدرس التالي</a></div>
-    <footer style="margin-top: 50px; text-align: center; padding: 20px; color: #475569; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); font-family: 'Cairo', sans-serif;" dir="rtl">
+<footer style="margin-top: 50px; text-align: center; padding: 20px; color: #475569; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); font-family: 'Cairo', sans-serif;" dir="rtl">
         جميع الحقوق محفوظة | <a href="https://weza.space" target="_blank" class="footer-link">WezaTECHNOLOGIES</a>
     </footer>
 
