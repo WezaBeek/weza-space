@@ -1,3 +1,7 @@
+
+// Smart Path Detection for Luly Structure
+const isSubPage = window.location.pathname.includes('/pages/');
+const audioBase = isSubPage ? '../assets/audio/' : 'assets/audio/';
 /**
  * Weza Technologies - Premium Feedback System v6.0 (Final Stable)
  * Local Audio Assets + Natural Cursor + UI Polish
@@ -26,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
  * Files: bravo ya luly.ogg, wrong answer.ogg
  */
 function playLocalAudio(type) {
-    const file = type === 'success' ? window.location.pathname.includes('/pages/') ? '../assets/audio/bravo_ya_luly.ogg' : 'assets/audio/bravo_ya_luly.ogg' : window.location.pathname.includes('/pages/') ? '../assets/audio/wrong_answer.ogg' : 'assets/audio/wrong_answer.ogg';
+    const file = type === 'success' ? audioBase + 'bravo ya luly.ogg' : audioBase + 'wrong answer.ogg';
     const audio = new Audio(file);
     audio.play().catch(e => console.error("Audio play failed:", e));
 }

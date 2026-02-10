@@ -78,6 +78,7 @@ a {
 }
 
 /* Navigation - Back to Dashboard */
+/* Navigation - Back to Dashboard */
 .nav-back-btn {
     display: inline-flex;
     align-items: center;
@@ -231,14 +232,17 @@ a {
 
 .card-badge {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    padding: 4px 10px;
-    border-radius: 20px;
+    top: 12px;
+    left: 15px;
+    /* Moved to left to avoid text collision in RTL */
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 50px;
     background: rgba(255, 255, 255, 0.1);
     color: var(--text-secondary);
+    letter-spacing: 1px;
+    z-index: 10;
 }
 
 .module-card.pro .card-badge {
@@ -250,7 +254,12 @@ a {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin-top: 20px;
+    margin-top: 15px;
+}
+
+.card-meta {
+    margin-top: 10px;
+    /* Added spacing for the badge area */
 }
 
 .section-title {
