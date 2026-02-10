@@ -13,11 +13,5 @@
             "type": "image/x-icon"
         }
     ],
-    "orientation": "any",
-    "linked_applications": [
-        {
-            "platform": "web",
-            "url": "https://weza.space"
-        }
-    ]
-}   
+    "orientation": "any"
+}

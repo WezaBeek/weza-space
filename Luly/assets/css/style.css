@@ -85,12 +85,12 @@ a {
     gap: 8px;
     background: rgba(15, 42, 67, 0.8);
     color: var(--text-secondary);
-    padding: 8px 16px;
+    padding: 4px 10px;
     border-radius: 50px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     font-family: var(--font-head);
-    font-size: 0.75rem;
+    font-size: 0.55rem;
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -178,7 +178,7 @@ a {
     /* Core grid usually stays 2 if user insisted, but for very small screens we could adjust. 
        User said 2 in each row specifically, I will keep 2 but minimize padding for mobile. */
     .module-card {
-        padding: 15px;
+        padding: 8px;
     }
 }
 
@@ -235,9 +235,9 @@ a {
     top: 12px;
     left: 15px;
     /* Moved to left to avoid text collision in RTL */
-    font-size: 0.65rem;
+    font-size: 0.55rem;
     font-weight: 800;
-    padding: 4px 12px;
+    padding: 2px 8px;
     border-radius: 50px;
     background: rgba(255, 255, 255, 0.1);
     color: var(--text-secondary);

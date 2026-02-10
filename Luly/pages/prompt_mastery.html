@@ -15,10 +15,50 @@
         .formula { background: var(--navy); padding: 20px; border-radius: 15px; font-family: 'Fira Code', monospace; color: var(--gold); direction: ltr; text-align: left; }
         .example-box { background: #1a2a3a; padding: 20px; border-radius: 15px; border: 1px dashed var(--teal); margin: 20px 0; }
         .en-text { font-family: 'Montserrat', sans-serif; color: var(--teal); font-weight: bold; }
-        .badge { background: var(--teal); color: white; padding: 5px 15px; border-radius: 50px; font-size: 12px; margin-left: 10px; }
+        .badge { background: var(--teal); color: white; padding: 5px 15px; border-radius: 50px; font-size: 9px; margin-left: 10px; }
         .action-btn { background: var(--gold); color: var(--dark); border: none; padding: 15px 30px; border-radius: 50px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1.1rem; }
     </style>
     <link rel="stylesheet" href="../assets/css/style.css">
+
+
+
+
+
+
+<style>
+    .lesson-nav {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin: 40px auto 20px;
+        padding: 0 10px;
+    }
+    .nav-btn {
+        background: rgba(15, 42, 67, 0.4);
+        border: 1px solid #1AA6A6;
+        color: white;
+        padding: 6px 18px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.85rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        text-align: center;
+        min-width: 100px;
+        display: inline-block;
+    }
+    .nav-btn:hover {
+        background: rgba(26, 166, 166, 0.2);
+        box-shadow: 0 0 15px rgba(26, 166, 166, 0.3);
+        transform: translateY(-2px);
+    }
+    .nav-btn.hidden {
+        visibility: hidden;
+        pointer-events: none;
+    }
+</style>
+
 </head>
 <body>
 <a href="../index.html" class="nav-back-btn">⬅ Dashboard</a>
@@ -77,5 +117,11 @@
 </div>
 
 <script src="../assets/js/feedback.js"></script>
+
+    <div class="lesson-nav"><a href="lesson10.html" class="nav-btn">الدرس السابق</a><a href="ai_giants.html" class="nav-btn">الدرس التالي</a></div>
+<footer style="margin-top: 50px; text-align: center; padding: 20px; color: #475569; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); font-family: 'Cairo', sans-serif;">
+        جميع الحقوق محفوظة | <span style="color: #00f2ff; font-weight: bold;">WezaTECHNOLOGIES</span>
+    </footer>
+
 </body>
 </html>

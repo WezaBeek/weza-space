@@ -12,7 +12,7 @@
             --glass: rgba(255, 255, 255, 0.05); --error-red: #EF4444;
         }
 
-        body { font-family: 'Cairo', sans-serif; background: var(--dark-bg); color: #E5E7EB; margin: 0; padding: 15px; }
+        body { font-family: 'Cairo', sans-serif; background: var(--dark-bg); color: #E5E7EB; margin: 0; padding: 6px 12px; }
         .container { max-width: 850px; margin: 0 auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 25px; }
 
         .header { text-align: center; margin-bottom: 40px; }
@@ -32,13 +32,13 @@
 
         .prompt-command { 
             background: #000; color: #10B981; font-family: 'Fira Code', monospace; 
-            padding: 15px; border-radius: 10px; margin: 15px 0; font-size: 0.95rem;
+            padding: 6px 12px; border-radius: 10px; margin: 15px 0; font-size: 0.95rem;
             border: 1px solid #1f2937; position: relative;
         }
 
         .pro-tip { 
             background: rgba(245, 158, 11, 0.1); border: 1px dashed var(--gold); 
-            padding: 15px; border-radius: 12px; margin-top: 10px; font-size: 0.9rem;
+            padding: 6px 12px; border-radius: 12px; margin-top: 10px; font-size: 0.9rem;
         }
 
         .final-badge {
@@ -48,6 +48,49 @@
         }
     </style>
     <link rel="stylesheet" href="../assets/css/style.css">
+
+
+
+
+
+
+
+
+<style>
+    .lesson-nav {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin: 40px auto 20px;
+        padding: 0 10px;
+    }
+    .nav-btn {
+        background: rgba(15, 42, 67, 0.4);
+        border: 1px solid #1AA6A6;
+        color: white;
+        padding: 6px 18px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.85rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        text-align: center;
+        min-width: 100px;
+        display: inline-block;
+    }
+    .nav-btn:hover {
+        background: rgba(26, 166, 166, 0.2);
+        box-shadow: 0 0 15px rgba(26, 166, 166, 0.3);
+        transform: translateY(-2px);
+    }
+    .nav-btn.hidden {
+        display: none;
+    }
+</style>
+
+
+
 </head>
 <body>
 <a href="../index.html" class="nav-back-btn">⬅ Dashboard</a>
@@ -110,5 +153,12 @@
 </div>
 
 <script src="../assets/js/feedback.js"></script>
+</div>
+    
+<div class="lesson-nav"><a href="ai_giants.html" class="nav-btn">الدرس السابق</a></div>
+<footer style="margin-top: 50px; text-align: center; padding: 20px; color: #475569; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); font-family: 'Cairo', sans-serif;">
+        جميع الحقوق محفوظة | <span style="color: #00f2ff; font-weight: bold;">WezaTECHNOLOGIES</span>
+    </footer>
+
 </body>
 </html>
