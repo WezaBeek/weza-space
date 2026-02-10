@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta name="description" content="Weza Technologies AI Learning Module - Empowering the next generation of engineers.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 05 | The Robot Friend</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --navy: #0F2A43; --teal: #1AA6A6; --dark: #081624; 
+            --glass: rgba(255, 255, 255, 0.08); --gold: #FFC857; 
+            --text-gray: #A0AEC0;
+        }
+
+        body { 
+            font-family: 'Cairo', sans-serif; background: var(--dark); color: white; 
+            margin: 0; padding: 10px; text-align: center; line-height: 1.6;
+        }
+
+        .container { max-width: 600px; margin: 0 auto; padding-bottom: 50px; }
+
+        .section { 
+            background: var(--glass); padding: 25px 15px; border-radius: 20px; 
+            margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1); 
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        h1, h2 { color: var(--gold); margin-bottom: 10px; font-size: 1.5rem; }
+
+        .en-line { 
+            font-family: 'Montserrat', sans-serif; color: var(--teal); font-weight: 700; 
+            font-size: 1.1rem; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+
+        .ar-line { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 15px; }
+
+        .audio-btn { 
+            background: var(--teal); border: none; color: white; width: 32px; height: 32px; 
+            border-radius: 50%; cursor: pointer; transition: 0.2s; font-size: 12px;
+        }
+
+        .vocab-grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+        @media (min-width: 480px) { .vocab-grid { grid-template-columns: 1fr 1fr; } }
+
+        .vocab-card { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 15px; border: 1px solid var(--teal); }
+
+        .quiz-box { width: 100%; margin-top: 15px; }
+        .option-group { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        .quiz-option { 
+            background: var(--navy); border: 1px solid var(--teal); color: white; 
+            padding: 12px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 0.9rem;
+        }
+        .quiz-option:hover { background: var(--teal); }
+
+        .script-box { 
+            background: #14212e; color: #e2e8f0; padding: 25px; border-radius: 20px; 
+            border-left: 4px solid var(--gold); text-align: left; width: 90%; position: relative;
+        }
+        .script-box .audio-btn { position: absolute; top: 15px; right: 15px; }
+
+        
+    </style>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="../index.html" class="nav-back-btn">⬅ Dashboard</a>
+
+<div class="container">
+    <header style="padding: 20px 0;">
+        <a href="../index.html" class="back-btn">← Dashboard | العودة للوحة التحكم</a>
+        <div style="color: var(--teal); font-weight: bold; letter-spacing: 2px;"><a href="https://weza.space" class="weza-brand">WEZA.SPACE</a></div>
+        <h1>Lesson 05: The Robot Friend</h1>
+        <p class="ar-line">الدرس الخامس: الصديق الآلي</p>
+    </header>
+
+    <div class="section">
+        <div class="en-line">I can talk to robots! <button class="audio-btn" onclick="speak('I can talk to robots!')">▶</button></div>
+        <div class="ar-line">أنا أستطيع التحدث مع الروبوتات!</div>
+    </div>
+
+    
+    <div class="section">
+        <h2>Vocabulary | الكلمات</h2>
+        <div class="vocab-grid">
+            <div class="vocab-card">
+                <div class="en-line">Robot <button class="audio-btn" onclick="speak('Robot')">▶</button></div>
+                <div class="ar-line">روبوت (الآلة الذكية)</div>
+            </div>
+            <div class="vocab-card">
+                <div class="en-line">Code <button class="audio-btn" onclick="speak('Code')">▶</button></div>
+                <div class="ar-line">كود (لغة الآلة)</div>
+            </div>
+            <div class="vocab-card">
+                <div class="en-line">Command <button class="audio-btn" onclick="speak('Command')">▶</button></div>
+                <div class="ar-line">أمر (طلب تنفيذ فعل)</div>
+            </div>
+            <div class="vocab-card">
+                <div class="en-line">Battery <button class="audio-btn" onclick="speak('Battery')">▶</button></div>
+                <div class="ar-line">بطارية (مصدر الطاقة)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Coding Missions | مهمات البرمجة</h2>
+        
+        <div class="quiz-box">
+            <div class="en-line">1. A robot needs a _____ to work. <button class="audio-btn" onclick="speak('A robot needs a battery to work')">▶</button></div>
+            <div class="ar-line">يحتاج الروبوت إلى _____ لكي يعمل.</div>
+            <div class="option-group">
+                <div class="quiz-option" onclick="check(true)">Battery</div>
+                <div class="quiz-option" onclick="check(false)">Apple</div>
+            </div>
+        </div>
+
+        <hr style="width: 80%; opacity: 0.1; margin: 20px 0;">
+
+        <div class="quiz-box">
+            <div class="en-line">2. We speak to robots using _____. <button class="audio-btn" onclick="speak('We speak to robots using code')">▶</button></div>
+            <div class="ar-line">نتحدث إلى الروبوتات باستخدام _____.</div>
+            <div class="option-group">
+                <div class="quiz-option" onclick="check(true)">Code</div>
+                <div class="quiz-option" onclick="check(false)">Music</div>
+            </div>
+        </div>
+
+        <hr style="width: 80%; opacity: 0.1; margin: 20px 0;">
+
+        <div class="quiz-box">
+            <div class="en-line">3. "Move Left" is a _____. <button class="audio-btn" onclick="speak('Move Left is a command')">▶</button></div>
+            <div class="ar-line">جملة "تحرك يساراً" تعتبر _____.</div>
+            <div class="option-group">
+                <div class="quiz-option" onclick="check(true)">Command</div>
+                <div class="quiz-option" onclick="check(false)">Game</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Final Script | العرض النهائي</h2>
+        <div class="ar-line">اشرحي كيف تبرمجين صديقك الآلي!</div>
+        
+        <div class="script-box" dir="ltr">
+            <button class="audio-btn" onclick="speak('Hello! I have a Robot friend. I give him a Command using a special Code. My robot needs a Battery for energy. I am a smart programmer. Thank you!')">▶</button>
+            <p style="margin-top:0;"><strong>English:</strong></p>
+            "Hello! I have a Robot friend. I give him a Command using a special Code. My robot needs a Battery for energy. I am a smart programmer. Thank you!"
+            
+            <div dir="rtl" style="margin-top: 20px; border-top: 1px dashed var(--teal); padding-top: 15px; color: var(--text-gray);">
+                <strong>العربي:</strong> <br>
+                "مرحباً! لدي صديق روبوت. أعطيه أمراً باستخدام كود خاص. روبوتي يحتاج بطارية للحصول على الطاقة. أنا مبرمجة ذكية. شكراً لكم!"
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Old speak function removed (handled by feedback.js)
+
+    // Old check function removed (handled by feedback.js)
+</script>
+
+<script src="../assets/js/feedback.js"></script>
+</body>
+</html>

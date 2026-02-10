@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta name="description" content="Weza Technologies AI Learning Module - The Gateway to Artificial Intelligence.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gateway | Grand Launch & AI Mastery</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Orbitron:wght@700;900&family=Montserrat:wght@500;700;900&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0F2A43;
+            --teal: #1AA6A6;
+            --dark: #020617;
+            --glass: rgba(255, 255, 255, 0.05);
+            --gold: #FFC857;
+            --secondary: #7000ff;
+            --ai-blue: #4285F4;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--dark);
+            color: white;
+            margin: 0;
+            padding: 10px;
+            text-align: center;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 50px;
+        }
+
+        .section {
+            background: var(--glass);
+            padding: 30px 20px;
+            border-radius: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--teal);
+            font-size: 1.2rem;
+        }
+
+        .en-line {
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .ar-line {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .audio-btn {
+            background: var(--teal);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .audio-btn:hover {
+            transform: scale(1.1);
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        /* Review Grid */
+        .system-check-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .check-item {
+            background: rgba(26, 166, 166, 0.05);
+            border: 1px solid rgba(26, 166, 166, 0.2);
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        /* Launch Button */
+        .launch-btn {
+            background: linear-gradient(45deg, var(--teal), var(--secondary));
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .launch-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px var(--teal);
+        }
+
+        /* AI Lab Section (Initially Hidden) */
+        #ai-lab {
+            display: none;
+            opacity: 0;
+            transform: translateY(50px);
+            border-top: 2px dashed var(--secondary);
+            padding-top: 40px;
+        }
+
+        .ai-lab-active {
+            display: block !important;
+            animation: slideUp 1s forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .phase-card {
+            background: rgba(112, 0, 255, 0.05);
+            padding: 25px;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            border: 1px solid var(--secondary);
+            position: relative;
+            text-align: left;
+            direction: ltr;
+        }
+
+        .prompt-box {
+            background: #000;
+            font-family: 'Fira Code', monospace;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+            margin: 15px 0;
+            font-size: 0.9rem;
+            color: #a5f3fc;
+        }
+
+        .certificate-box {
+            display: none;
+            border: 5px double var(--gold);
+            padding: 40px;
+            border-radius: 30px;
+            background: linear-gradient(145deg, #0c1e2e, #020617);
+            margin-top: 50px;
+            box-shadow: 0 0 100px rgba(255, 200, 87, 0.2);
+        }
+
+        .weza-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            background: linear-gradient(90deg, #fff, var(--teal));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <a href="../index.html" class="nav-back-btn">⬅ Dashboard</a>
+
+    <div class="container">
+        <header style="padding: 40px 0;">
+            <div class="weza-brand" style="font-size: 0.8rem; letter-spacing: 5px; margin-bottom: 10px;">WEZA SYSTEM
+                LOGISTICS</div>
+            <h1>MISSION: GATEWAY</h1>
+            <p class="ar-line">نهاية مرحلة التأسيس.. وبداية عصر الذكاء</p>
+        </header>
+
+        <!-- Phase 1: The Recap -->
+        <div class="section" id="recap-section">
+            <h2>System Integrity Check</h2>
+            <div class="system-check-grid">
+                <div class="check-item">🌍 Nature Systems<br>[COMPLETE]</div>
+                <div class="check-item">⚙️ Logic Gates<br>[ACTIVE]</div>
+                <div class="check-item">🏙️ Urban Core<br>[ONLINE]</div>
+                <div class="check-item">🤝 Social Link<br>[CONNECTED]</div>
+                <div class="check-item">⚡ Energy Bio<br>[POWERED]</div>
+                <div class="check-item">🌊 Network Grid<br>[STABLE]</div>
+            </div>
+            <p class="ar-line">تم مراجعة كافة الأنظمة الأساسية. رتاج مهيأة الآن للترقية.</p>
+            <button class="launch-btn" id="launch-trigger" onclick="initiateGateway()">EXECUTE GRAND LAUNCH 🚀</button>
+        </div>
+
+        <!-- Phase 2: The AI Unlock (Hidden Initially) -->
+        <div id="ai-lab">
+            <h1 style="color: var(--secondary); font-size: 1.5rem; margin-bottom: 30px;">[REWARD UNLOCKED: AI MASTER
+                CONTROLLER]</h1>
+
+            <div class="phase-card">
+                <h3 style="color: var(--gold); margin:0;">PHASE 01: Prompt Engineering</h3>
+                <p style="color: #94a3b8; font-size: 0.8rem; margin: 5px 0 15px;">المرحلة الأولى: هندسة التخاطب</p>
+                <div class="prompt-box">
+                    "Act as a Master Builder. Create a plan for a smart house."
+                </div>
+                <button class="audio-btn"
+                    onclick="speak('Act as a Master Builder. Create a plan for a smart house.')">▶</button>
+                <p class="ar-line" dir="rtl" style="text-align: right; margin-top: 15px;">لقيادة الذكاء الاصطناعي، ابدئي
+                    دائماً بعبارة <strong>"Act as"</strong> لتعطيه دوراً محدداً.</p>
+            </div>
+
+            <div class="phase-card">
+                <h3 style="color: var(--gold); margin:0;">PHASE 02: Controlling Giants</h3>
+                <p style="color: #94a3b8; font-size: 0.8rem; margin: 5px 0 15px;">المرحلة الثانية: السيطرة على العمالقة
+                </p>
+                <div class="prompt-box">
+                    "Hey Gemini, summarize my lessons into a fun story."
+                </div>
+                <button class="audio-btn"
+                    onclick="speak('Hey Gemini, summarize my lessons into a fun story.')">▶</button>
+                <p class="ar-line" dir="rtl" style="text-align: right; margin-top: 15px;">الآن يمكنك استخدام
+                    <strong>Gemini</strong> كخادمك الشخصي في المذاكرة.</p>
+            </div>
+
+            <div class="section" style="border-color: var(--gold);">
+                <h2 style="color: var(--gold);">MISSION STATUS: ASCENDED</h2>
+                <div class="en-line">"I am now a Master of AI and Systems!" <button class="audio-btn"
+                        onclick="speak('I am now a Master of AI and Systems!')">▶</button></div>
+                <div class="ar-line">"أنا الآن مهندسة أنظمة وخبيرة ذكاء اصطناعي!"</div>
+            </div>
+        </div>
+
+        <!-- Phase 3: The Certificate -->
+        <div id="certificate" class="certificate-box">
+            <div
+                style="font-family: 'Montserrat', sans-serif; font-weight: 900; color: var(--gold); font-size: 2.5rem; margin-bottom: 10px;">
+                GRADUATED</div>
+            <p class="en-line">This is to certify that Retaj Ibrahim is a:</p>
+            <h2 style="font-size: 2.5rem; color: white; font-family: 'Orbitron', sans-serif; margin: 20px 0;">SENIOR
+                SYSTEM & AI BUILDER</h2>
+            <div class="ar-line" style="font-size: 1.2rem; color: var(--teal);">خريجة معتمدة: مهندسة أنظمة وذكاء اصطناعي
+                محترفة</div>
+            <hr style="border: 0.5px solid rgba(255,255,255,0.1); margin: 30px 0;">
+            <p style="font-size: 0.8rem; color: #475569; letter-spacing: 3px;">SYSTEM VERSION v3.0 [ULTRA-TECH] //
+                WEZA.SPACE 2026</p>
+            <button class="launch-btn" style="background: var(--gold); color: black;"
+                onclick="speak('Congratulations Retaj! You have successfully mastered the foundation and entered the world of AI. I am so proud of you, my smart engineer!')">LISTEN
+                TO FINAL MESSAGE ▶</button>
+        </div>
+    </div>
+
+    <script>
+        function initiateGateway() {
+            const trigger = document.getElementById('launch-trigger');
+            const aiLab = document.getElementById('ai-lab');
+            const cert = document.getElementById('certificate');
+            const recap = document.getElementById('recap-section');
+
+            // Play Success Audio (Uncle Voice)
+            if (typeof playLocalAudio === "function") playLocalAudio('success');
+
+            // Visual Transition
+            trigger.innerHTML = "SYSTEM UPGRADED! ⚡";
+            trigger.style.background = "var(--gold)";
+            trigger.style.color = "var(--dark)";
+            trigger.disabled = true;
+
+            // Show AI Lab and Certificate
+            aiLab.classList.add('ai-lab-active');
+            cert.style.display = 'block';
+
+            // Confetti Burst
+            if (typeof fireConfetti === "function") fireConfetti();
+
+            // Smooth Scroll to Reward
+            setTimeout(() => {
+                aiLab.scrollIntoView({ behavior: 'smooth' });
+            }, 500);
+        }
+    </script>
+
+    <script src="../assets/js/feedback.js"></script>
+</body>
+
+</html>

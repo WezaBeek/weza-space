@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta name="description" content="Weza Technologies AI Learning Module - Empowering the next generation of engineers.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 08 | Health & Fuel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --navy: #0F2A43; --teal: #1AA6A6; --dark: #081624; 
+            --glass: rgba(255, 255, 255, 0.08); --gold: #FFC857; 
+            --text-gray: #A0AEC0;
+        }
+
+        body { 
+            font-family: 'Cairo', sans-serif; background: var(--dark); color: white; 
+            margin: 0; padding: 10px; text-align: center; line-height: 1.6;
+        }
+
+        .container { max-width: 600px; margin: 0 auto; padding-bottom: 50px; }
+
+        .section { 
+            background: var(--glass); padding: 25px 15px; border-radius: 20px; 
+            margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1); 
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        h1, h2 { color: var(--gold); margin-bottom: 10px; font-size: 1.5rem; }
+
+        .en-line { 
+            font-family: 'Montserrat', sans-serif; color: var(--teal); font-weight: 700; 
+            font-size: 1.1rem; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+
+        .ar-line { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 15px; }
+
+        .audio-btn { 
+            background: var(--teal); border: none; color: white; width: 32px; height: 32px; 
+            border-radius: 50%; cursor: pointer; transition: 0.2s; font-size: 12px;
+        }
+
+        .vocab-grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+        @media (min-width: 480px) { .vocab-grid { grid-template-columns: 1fr 1fr; } }
+
+        .vocab-card { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 15px; border: 1px solid var(--teal); }
+
+        .quiz-box { width: 100%; margin-top: 15px; }
+        .option-group { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        .quiz-option { 
+            background: var(--navy); border: 1px solid var(--teal); color: white; 
+            padding: 12px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 0.9rem;
+        }
+        .quiz-option:hover { background: var(--teal); }
+
+        .script-box { 
+            background: #14212e; color: #e2e8f0; padding: 25px; border-radius: 20px; 
+            border-left: 4px solid var(--gold); text-align: left; width: 90%; position: relative;
+        }
+        .script-box .audio-btn { position: absolute; top: 15px; right: 15px; }
+
+        
+    </style>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="../index.html" class="nav-back-btn">⬅ Dashboard</a>
+
+<div class="container">
+    <header style="padding: 20px 0;">
+        <a href="../index.html" class="back-btn">← Dashboard | العودة للوحة التحكم</a>
+        <div style="color: var(--teal); font-weight: bold; letter-spacing: 2px;"><a href="https://weza.space" class="weza-brand">WEZA.SPACE</a></div>
+        <h1>Lesson 08: Health & Fuel</h1>
+        <p class="ar-line">الدرس الثامن: الصحة والوقود</p>
+    </header>
+
+    <div class="section">
+        <div class="en-line">My body is high-performance hardware! <button class="audio-btn" onclick="speak('My body is high performance hardware')">▶</button></div>
+        <div class="ar-line">جسمي هو عتاد عالي الأداء!</div>
+    </div>
+
+    <div class="section">
+        <h2>Vocabulary | الكلمات</h2>
+        <div class="vocab-grid">
+            <div class="vocab-card">
+                <div class="en-line">Fuel <button class="audio-btn" onclick="speak('Fuel')">▶</button></div>
+                <div class="ar-line">وقود (الطعام الصحي)</div>
+            </div>
+            <div class="vocab-card">
+                <div class="en-line">Energy <button class="audio-btn" onclick="speak('Energy')">▶</button></div>
+                <div class="ar-line">طاقة (القدرة على التشغيل)</div>
+            </div>
+            <div class="vocab-card">
+                <div class="en-line">Strong <button class="audio-btn" onclick="speak('Strong')">▶</button></div>
+                <div class="ar-line">قوي (حالة النظام المثالية)</div>
+            </div>
+            <div class="vocab-card">
+                <div class="en-line">Brain <button class="audio-btn" onclick="speak('Brain')">▶</button></div>
+                <div class="ar-line">العقل (المعالج الرئيسي)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Maintenance Missions | مهمات الصيانة</h2>
+        
+        <div class="quiz-box">
+            <div class="en-line">1. Healthy food gives me _____. <button class="audio-btn" onclick="speak('Healthy food gives me energy')">▶</button></div>
+            <div class="ar-line">الطعام الصحي يعطيني _____.</div>
+            <div class="option-group">
+                <div class="quiz-option" onclick="check(true)">Energy</div>
+                <div class="quiz-option" onclick="check(false)">Viruses</div>
+            </div>
+        </div>
+
+        <hr style="width: 80%; opacity: 0.1; margin: 20px 0;">
+
+        <div class="quiz-box">
+            <div class="en-line">2. Apples are good _____ for my body. <button class="audio-btn" onclick="speak('Apples are good fuel for my body')">▶</button></div>
+            <div class="ar-line">التفاح هو _____ جيد لجسمي.</div>
+            <div class="option-group">
+                <div class="quiz-option" onclick="check(true)">Fuel</div>
+                <div class="quiz-option" onclick="check(false)">Paper</div>
+            </div>
+        </div>
+
+        <hr style="width: 80%; opacity: 0.1; margin: 20px 0;">
+
+        <div class="quiz-box">
+            <div class="en-line">3. Exercise makes my hardware _____. <button class="audio-btn" onclick="speak('Exercise makes my hardware strong')">▶</button></div>
+            <div class="ar-line">الرياضة تجعل عتادي (جسمي) _____.</div>
+            <div class="option-group">
+                <div class="quiz-option" onclick="check(true)">Strong</div>
+                <div class="quiz-option" onclick="check(false)">Slow</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Presentation Script | نص الإلقاء</h2>
+        <div class="ar-line">اشرحي كيف تحافظين على نظامك!</div>
+        
+        <div class="script-box" dir="ltr">
+            <button class="audio-btn" onclick="speak('Hello! My body is like a smart machine. I eat healthy food because it is clean Fuel. It gives me Energy to play and learn. My Brain works fast when I am Strong. Thank you!')">▶</button>
+            <p style="margin-top:0;"><strong>English:</strong></p>
+            "Hello! My body is like a smart machine. I eat healthy food because it is clean Fuel. It gives me Energy to play and learn. My Brain works fast when I am Strong. Thank you!"
+            
+            <div dir="rtl" style="margin-top: 20px; border-top: 1px dashed var(--teal); padding-top: 15px; color: var(--text-gray);">
+                <strong>العربي:</strong> <br>
+                "مرحباً! جسمي مثل آلة ذكية. أنا آكل طعاماً صحياً لأنه وقود نظيف. هو يعطيني طاقة للعب والتعلم. عقلي يعمل بسرعة عندما أكون قوية. شكراً لكم!"
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Old speak function removed (handled by feedback.js)
+
+    // Old check function removed (handled by feedback.js)
+</script>
+
+<script src="../assets/js/feedback.js"></script>
+</body>
+</html>

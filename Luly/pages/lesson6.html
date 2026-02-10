@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta name="description" content="Weza Technologies AI Learning Module - Empowering the next generation of engineers.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 06 | The City Heart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --navy: #0F2A43; --teal: #1AA6A6; --dark: #081624; 
+            --glass: rgba(255, 255, 255, 0.08); --gold: #FFC857; 
+            --text-gray: #A0AEC0;
+        }
+
+        body { 
+            font-family: 'Cairo', sans-serif; background: var(--dark); color: white; 
+            margin: 0; padding: 10px; text-align: center; line-height: 1.6;
+        }
+
+        .container { max-width: 600px; margin: 0 auto; padding-bottom: 50px; }
+
+        .section { 
+            background: var(--glass); padding: 25px 15px; border-radius: 20px; 
+            margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1); 
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        h1, h2 { color: var(--gold); margin-bottom: 10px; font-size: 1.5rem; }
+
+        .en-line { 
+            font-family: 'Montserrat', sans-serif; color: var(--teal); font-weight: 700; 
+            font-size: 1.1rem; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+
+        .ar-line { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 15px; }
+
+        .audio-btn { 
+            background: var(--teal); border: none; color: white; width: 32px; height: 32px; 
+            border-radius: 50%; cursor: pointer; transition: 0.2s; font-size: 12px;
+        }
+
+        .vocab-grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+        @media (min-width: 480px) { .vocab-grid { grid-template-columns: 1fr 1fr; } }
+
+        .vocab-card { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 15px; border: 1px solid var(--teal); }
+
+        .quiz-box { width: 100%; margin-top: 15px; }
+        .option-group { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        .quiz-option { 
+            background: var(--navy); border: 1px solid var(--teal); color: white; 
+            padding: 12px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 0.9rem;
+        }
+        .quiz-option:hover { background: var(--teal); }
+
+        .script-box { 
+            background: #14212e; color: #e2e8f0; padding: 25px; border-radius: 20px; 
+            border-left: 4px solid var(--gold); text-align: left; width: 90%; position: relative;
+        }
+        .script-box .audio-btn { position: absolute; top: 15px; right: 15px; }
+
+        
+    </style>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="../index.html" class="nav-back-btn">⬅ Dashboard</a>
+
+<div class="container">
+    <header style="padding: 20px 0;">
+        <a href="../index.html" class="back-btn">← Dashboard | العودة للوحة التحكم</a>
+        <div style="color: var(--teal); font-weight: bold; letter-spacing: 2px;"><a href="https://weza.space" class="weza-brand">WEZA.SPACE</a></div>
+        <h1>Lesson 06: The City Heart</h1>
+        <p class="ar-line">الدرس السادس: قلب المدينة</p>
+    </header>
+
+    <div class="section">
+        <div class="en-line">The city is a big network! <button class="audio-btn" onclick="speak('The city is a big network!')">▶</button></div>
+        <div class="ar-line">المدينة هي شبكة كبيرة!</div>
+    </div>
+
+    <div class="section">
+        <h2>Vocabulary | الكلمات</h2>
+        <div class="vocab-grid">
+            <div class="vocab-card">
+                <div class="en-line">Skyscraper <button class="audio-btn" onclick="speak('Skyscraper')">▶</button></div>
+                <div class="ar-line">ناطحة سحاب (وحدات التخزين)</div>
+            </div>
+            <div class="vocab-card">
+                <div class="en-line">Traffic Light <button class="audio-btn" onclick="speak('Traffic Light')">▶</button></div>
+                <div class="ar-line">إشارة مرور (نظام التحكم)</div>
+            </div>
+            <div class="vocab-card">
+                <div class="en-line">Electricity <button class="audio-btn" onclick="speak('Electricity')">▶</button></div>
+                <div class="ar-line">الكهرباء (الطاقة)</div>
+            </div>
+            <div class="vocab-card">
+                <div class="en-line">Metro <button class="audio-btn" onclick="speak('Metro')">▶</button></div>
+                <div class="ar-line">مترو (النقل السريع)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>City Systems | أنظمة المدينة</h2>
+        
+        <div class="quiz-box">
+            <div class="en-line">1. The _____ tells cars to stop or go. <button class="audio-btn" onclick="speak('The traffic light tells cars to stop or go')">▶</button></div>
+            <div class="ar-line">الـ _____ تخبر السيارات بالتوقف أو السير.</div>
+            <div class="option-group">
+                <div class="quiz-option" onclick="check(true)">Traffic Light</div>
+                <div class="quiz-option" onclick="check(false)">Skyscraper</div>
+            </div>
+        </div>
+
+        <hr style="width: 80%; opacity: 0.1; margin: 20px 0;">
+
+        <div class="quiz-box">
+            <div class="en-line">2. The city needs _____ to turn on lights. <button class="audio-btn" onclick="speak('The city needs electricity to turn on lights')">▶</button></div>
+            <div class="ar-line">تحتاج المدينة إلى _____ لإضاءة الأنوار.</div>
+            <div class="option-group">
+                <div class="quiz-option" onclick="check(true)">Electricity</div>
+                <div class="quiz-option" onclick="check(false)">Water</div>
+            </div>
+        </div>
+
+        <hr style="width: 80%; opacity: 0.1; margin: 20px 0;">
+
+        <div class="quiz-box">
+            <div class="en-line">3. The _____ travels underground fast. <button class="audio-btn" onclick="speak('The metro travels underground fast')">▶</button></div>
+            <div class="ar-line">الـ _____ يسافر تحت الأرض بسرعة.</div>
+            <div class="option-group">
+                <div class="quiz-option" onclick="check(true)">Metro</div>
+                <div class="quiz-option" onclick="check(false)">Bicycle</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Presentation Script | نص الإلقاء</h2>
+        <div class="ar-line">اشرحي كيف تعمل مدينتك الذكية!</div>
+        
+        <div class="script-box" dir="ltr">
+            <button class="audio-btn" onclick="speak('Hello! I am a City Architect. My city has a tall Skyscraper. The Metro moves people fast. The Traffic Light controls the cars. Everything runs on Electricity. Thank you!')">▶</button>
+            <p style="margin-top:0;"><strong>English:</strong></p>
+            "Hello! I am a City Architect. My city has a tall Skyscraper. The Metro moves people fast. The Traffic Light controls the cars. Everything runs on Electricity. Thank you!"
+            
+            <div dir="rtl" style="margin-top: 20px; border-top: 1px dashed var(--teal); padding-top: 15px; color: var(--text-gray);">
+                <strong>العربي:</strong> <br>
+                "مرحباً! أنا مهندسة معمارية للمدينة. مدينتي بها ناطحة سحاب طويلة. المترو ينقل الناس بسرعة. إشارة المرور تتحكم في السيارات. كل شيء يعمل بالكهرباء. شكراً لكم!"
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Old speak function removed (handled by feedback.js)
+
+    // Old check function removed (handled by feedback.js)
+</script>
+
+<script src="../assets/js/feedback.js"></script>
+</body>
+</html>

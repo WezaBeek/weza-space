@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta name="description" content="Weza Technologies AI Learning Module - Empowering the next generation of engineers.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Giants Protocol | Weza Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy: #0F2A43; --teal: #1AA6A6; --dark: #050b11; --gold: #FFC857; --gemini: #4285F4; --gpt: #10a37f; }
+        body { font-family: 'Cairo', sans-serif; background: var(--dark); color: white; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header { text-align: center; border-bottom: 2px solid var(--gold); padding-bottom: 20px; }
+        
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 30px 0; background: rgba(255,255,255,0.05); border-radius: 15px; overflow: hidden; }
+        .comparison-table th, .comparison-table td { padding: 20px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .th-gemini { background: var(--gemini); color: white; }
+        .th-gpt { background: var(--gpt); color: white; }
+
+        .strategy-card { background: var(--navy); padding: 25px; border-radius: 20px; margin-bottom: 25px; border-left: 5px solid var(--teal); }
+        .en-term { font-family: 'Montserrat', sans-serif; color: var(--gold); }
+        
+        .logic-step { background: rgba(26, 166, 166, 0.1); padding: 15px; border-radius: 10px; margin: 10px 0; border-right: 3px solid var(--teal); }
+        .action-btn { background: linear-gradient(45deg, var(--gemini), var(--gpt)); color: white; border: none; padding: 20px; border-radius: 50px; width: 100%; font-weight: bold; cursor: pointer; font-size: 1.2rem; }
+    </style>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="../index.html" class="nav-back-btn">⬅ Dashboard</a>
+
+<div class="container">
+    <div class="header">
+        <h1>الدرس الثاني: التخاطب مع العمالقة</h1>
+        <p>متى نستخدم Gemini؟ ومتى نستخدم GPT؟ وكيف نجعلهما يعملان معاً؟</p>
+    </div>
+
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>الميزة</th>
+                <th class="th-gemini">Google Gemini</th>
+                <th class="th-gpt">ChatGPT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>نقطة القوة</strong></td>
+                <td>البحث السريع والمعلومات الحديثة</td>
+                <td>الإبداع، الكتابة، وحل المشكلات الصعبة</td>
+            </tr>
+            <tr>
+                <td><strong>أفضل استخدام</strong></td>
+                <td>تحضير الدروس، البحث عن حقائق، ترجمة</td>
+                <td>كتابة قصص، تلخيص معقد، برمجة</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="strategy-card">
+        <h2>استراتيجية التبديل الاحترافية <span class="en-term">(The Switch Strategy)</span></h2>
+        <p>لكي تصبحي أذكى من الجميع، اتبعي هذا النظام في مذاكرتك:</p>
+        
+        <div class="logic-step">
+            <strong>الخطوة 1 (البحث):</strong> اذهبي لـ <span class="en-term">Gemini</span> وقولي: <br>
+            <small>"Search for the latest information about the Great Pyramids."</small>
+        </div>
+
+        <div class="logic-step">
+            <strong>الخطوة 2 (التطوير):</strong> خذي المعلومات واذهبي لـ <span class="en-term">ChatGPT</span> وقولي: <br>
+            <small>"Summarize this info into a fun story for my school presentation."</small>
+        </div>
+    </div>
+
+    <div class="strategy-card" style="border-left-color: var(--gold);">
+        <h2>كيف تعلمين نفسك بنفسك؟ <span class="en-term">(Self-Learning System)</span></h2>
+        <p>إذا واجهتِ مسألة صعبة أو درساً لم تفهميه، استخدمي هذا "البرومت" القوي:</p>
+        <div style="background: black; color: var(--gold); padding: 15px; font-family: monospace; direction: ltr; text-align: left; border-radius: 10px;">
+            "I don't understand [Lesson Name]. <br>
+            1. Explain it to me using a simple example. <br>
+            2. Ask me 2 questions to see if I understood. <br>
+            3. If I get them wrong, explain it again differently."
+        </div>
+        <p style="margin-top: 15px;"><strong>هذا هو سر التفوق:</strong> الذكاء لن يمل منكِ أبداً، سيشرح لكِ 100 مرة بـ 100 طريقة مختلفة!</p>
+    </div>
+
+    <button class="action-btn" onclick="check(true)">أنا الآن مهندسة أنظمة ذكاء اصطناعي 🚀</button>
+</div>
+
+<script src="../assets/js/feedback.js"></script>
+</body>
+</html>

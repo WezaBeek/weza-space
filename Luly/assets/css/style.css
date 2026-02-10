@@ -1,0 +1,416 @@
+/* Global Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette */
+    --primary: #00f2ff;
+    --secondary: #7000ff;
+    --dark: #020617;
+    --navy: #0F2A43;
+    --teal: #1AA6A6;
+    --gold: #FFC857;
+    --glass: rgba(15, 23, 42, 0.8);
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+
+    /* Global Fonts */
+    --font-head: 'Orbitron', 'Montserrat', sans-serif;
+    --font-body: 'Cairo', 'Inter', sans-serif;
+    --font-mono: 'Fira Code', monospace;
+}
+
+body {
+    background-color: var(--dark);
+    background-image: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #020617 100%);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: auto;
+    /* Natural Cursor Restored */
+}
+
+/* Typography Utilities */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-head);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+a {
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Branding System */
+.weza-brand {
+    font-family: var(--font-head);
+    font-weight: 900;
+    background: linear-gradient(90deg, #fff, var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+.weza-brand:hover {
+    background: var(--gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(255, 200, 87, 0.5);
+    transform: scale(1.05);
+}
+
+/* Navigation - Back to Dashboard */
+.nav-back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(15, 42, 67, 0.8);
+    color: var(--text-secondary);
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.nav-back-btn:hover {
+    background: var(--gold);
+    color: var(--dark);
+    transform: translateX(5px);
+    box-shadow: 0 0 20px rgba(255, 200, 87, 0.4);
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px 60px;
+}
+
+.command-header {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.command-header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+.user-name {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-family: var(--font-head);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    background: linear-gradient(to right, #ffffff, var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 10px 0;
+}
+
+/* Grid System Styles */
+.grid-section {
+    display: grid;
+    gap: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+/* Core Curriculum: 2 columns as requested */
+.core-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Pro Modules: 3 columns as requested */
+.pro-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .pro-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    /* Core grid usually stays 2 if user insisted, but for very small screens we could adjust. 
+       User said 2 in each row specifically, I will keep 2 but minimize padding for mobile. */
+    .module-card {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .core-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Maintaining user's 2-per-row request */
+        gap: 10px;
+    }
+
+    .card-title {
+        font-size: 0.9rem;
+    }
+
+    .card-meta {
+        font-size: 0.6rem;
+    }
+}
+
+.module-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 140px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.module-card:hover {
+    background: rgba(0, 242, 255, 0.05);
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.module-card.pro {
+    border-color: rgba(112, 0, 255, 0.3);
+    background: linear-gradient(145deg, rgba(112, 0, 255, 0.05) 0%, rgba(2, 6, 23, 0) 100%);
+}
+
+.module-card.pro:hover {
+    border-color: var(--secondary);
+    box-shadow: 0 0 30px rgba(112, 0, 255, 0.2);
+}
+
+.card-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+}
+
+.module-card.pro .card-badge {
+    background: var(--secondary);
+    color: white;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 20px;
+}
+
+.section-title {
+    font-family: var(--font-head);
+    margin: 40px auto 30px;
+    padding-bottom: 15px;
+    text-align: center;
+    /* Centered as requested */
+    display: block;
+    width: fit-content;
+    position: relative;
+    letter-spacing: 2px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: 3px;
+    border-radius: 2px;
+}
+
+.core-title {
+    color: var(--primary);
+}
+
+.core-title::after {
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.pro-title {
+    color: var(--secondary);
+}
+
+.pro-title::after {
+    background: var(--secondary);
+    box-shadow: 0 0 10px var(--secondary);
+}
+
+.secure-message {
+    background: rgba(245, 158, 11, 0.05);
+    border-left: 3px solid var(--gold);
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 0 12px 12px 0;
+    text-align: left;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+}
+
+/* Toast / Custom Alert Styling */
+.toast-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.toast-overlay.active {
+    display: flex;
+}
+
+.toast-box {
+    background: rgba(15, 42, 67, 0.95);
+    border: 2px solid var(--primary);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+    box-shadow: 0 0 50px rgba(0, 242, 255, 0.2);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast-overlay.active .toast-box {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.toast-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.toast-message {
+    font-family: var(--font-head);
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.toast-submessage {
+    font-family: var(--font-body);
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.toast-btn {
+    margin-top: 20px;
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    padding: 10px 30px;
+    font-family: var(--font-head);
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.toast-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Shake Animation for Wrong Answer */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-10px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(10px);
+    }
+}
+
+.shake-screen {
+    animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+    border: 2px solid #ef4444 !important;
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+}
+
+/* Confetti Canvas */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.back-btn {
+    display: none !important;
+}

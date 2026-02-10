@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta name="description" content="Weza Technologies AI Learning Module - Empowering the next generation of engineers.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Prompt Engineering | Weza Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy: #0F2A43; --teal: #1AA6A6; --dark: #050b11; --gold: #FFC857; }
+        body { font-family: 'Cairo', sans-serif; background: var(--dark); color: white; margin: 0; padding: 20px; line-height: 1.8; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header { border-bottom: 2px solid var(--teal); padding-bottom: 20px; margin-bottom: 40px; text-align: center; }
+        .concept-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; margin-bottom: 30px; border-right: 5px solid var(--gold); }
+        .formula { background: var(--navy); padding: 20px; border-radius: 15px; font-family: 'Fira Code', monospace; color: var(--gold); direction: ltr; text-align: left; }
+        .example-box { background: #1a2a3a; padding: 20px; border-radius: 15px; border: 1px dashed var(--teal); margin: 20px 0; }
+        .en-text { font-family: 'Montserrat', sans-serif; color: var(--teal); font-weight: bold; }
+        .badge { background: var(--teal); color: white; padding: 5px 15px; border-radius: 50px; font-size: 12px; margin-left: 10px; }
+        .action-btn { background: var(--gold); color: var(--dark); border: none; padding: 15px 30px; border-radius: 50px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1.1rem; }
+    </style>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="../index.html" class="nav-back-btn">⬅ Dashboard</a>
+
+<div class="container">
+    <div class="header">
+        <h1 style="color: var(--gold);">درس الاحتراف: مهندسة الأوامر الذكية</h1>
+        <p>كيف تجعلين الذكاء الاصطناعي يعمل كخادمك الشخصي ومدرسك الخصوصي</p>
+    </div>
+
+    <div class="concept-card">
+        <h2>1. ما هو الـ <span class="en-text">Prompt</span>؟</h2>
+        <p>البرومت ليس مجرد "سؤال"، هو **كود توجيهي**. الذكاء الاصطناعي مثل "المرآة"، إذا سألتِ سؤالاً بسيطاً سيعطيكِ إجابة بسيطة. إذا أعطيتِ أمراً هندسياً، سيعطيكِ كنوزاً.</p>
+    </div>
+
+    <div class="concept-card">
+        <h2>2. المعادلة الذهبية للأمر المثالي (P.R.I.C.E)</h2>
+        <p>لكي تحصلي على إجابة احترافية، استخدمي هذه المعادلة في كل مرة:</p>
+        <div class="formula">
+            P = Persona (من هو الذكاء الاصطناعي؟)<br>
+            R = Role/Task (ما هي المهمة المطلوبة؟)<br>
+            I = Information (المعلومات التي لديكِ)<br>
+            C = Context/Format (كيف تريدين شكل الإجابة؟)<br>
+            E = Extra (شروط إضافية)
+        </div>
+    </div>
+
+    <div class="concept-card">
+        <h2>3. كيف تستخدمين هذا في دراستك؟ <span class="badge">تطبيق عملي</span></h2>
+        <p>بدلاً من قول: "اشرح لي درس العلوم"، قولي هذا الأمر الاحترافي:</p>
+        
+        <div class="example-box" dir="ltr">
+            <p class="en-text">"Act as an expert Science Teacher. I will give you a lesson about 'The Solar System'. Please summarize it in 5 bullet points. Use simple English and explain it like a story. Then, give me 3 quiz questions to test my understanding."</p>
+        </div>
+
+        <div dir="rtl">
+            <p><strong>لماذا هذا الأمر قوي؟</strong></p>
+            <ul>
+                <li>حددتِ له دوراً (مدرس علوم خبير).</li>
+                <li>حددتِ شكلاً للإجابة (5 نقاط + قصة).</li>
+                <li>طلبتِ منه اختبارك (3 أسئلة اختبار).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="concept-card">
+        <h2>4. أسرار لا يعرفها إلا المحترفون <span class="badge">Secret Tips</span></h2>
+        <ul>
+            <li><strong>الكلمات المفتاحية:</strong> استخدمي <span class="en-text">"Step by Step"</span> (خطوة بخطوة) لجعله يفكر بعمق أكبر.</li>
+            <li><strong>التنسيق:</strong> اطلبي منه وضع المعلومات في جدول <span class="en-text">"Put it in a Table"</span> لتنظيم دروسك.</li>
+            <li><strong>الجمهور:</strong> قولي له <span class="en-text">"Explain like I'm 10"</span> ليشرح لكِ الأمور المعقدة ببساطة.</li>
+        </ul>
+    </div>
+
+    <button class="action-btn" onclick="check(true)">تم استيعاب الدرس الأول بنجاح!</button>
+</div>
+
+<script src="../assets/js/feedback.js"></script>
+</body>
+</html>
