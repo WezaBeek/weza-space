@@ -30,6 +30,9 @@
 
 
 
+
+
+
 <style>
     .lesson-nav {
         display: flex;
@@ -59,8 +62,17 @@
         transform: translateY(-2px);
     }
     .nav-btn.hidden {
-        visibility: hidden;
-        pointer-events: none;
+        display: none;
+    }
+    .footer-link {
+        color: #00f2ff;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    .footer-link:hover {
+        color: #FFC857;
+        text-shadow: 0 0 10px rgba(255, 200, 87, 0.4);
     }
 </style>
 
@@ -128,9 +140,12 @@
 
 <script src="../assets/js/feedback.js"></script>
 
-    <div class="lesson-nav"><a href="prompt_mastery.html" class="nav-btn">الدرس السابق</a><a href="perfection_loop.html" class="nav-btn">الدرس التالي</a></div>
-<footer style="margin-top: 50px; text-align: center; padding: 20px; color: #475569; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); font-family: 'Cairo', sans-serif;">
-        جميع الحقوق محفوظة | <span style="color: #00f2ff; font-weight: bold;">WezaTECHNOLOGIES</span>
+    
+
+
+<div class="lesson-nav"><a href="prompt_mastery.html" class="nav-btn">الدرس السابق</a><a href="perfection_loop.html" class="nav-btn">الدرس التالي</a></div>
+    <footer style="margin-top: 50px; text-align: center; padding: 20px; color: #475569; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); font-family: 'Cairo', sans-serif;" dir="rtl">
+        جميع الحقوق محفوظة | <a href="https://weza.space" target="_blank" class="footer-link">WezaTECHNOLOGIES</a>
     </footer>
 
 </body>

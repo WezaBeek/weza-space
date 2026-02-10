@@ -10,6 +10,50 @@
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+<style>
+    .lesson-nav {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin: 40px auto 20px;
+        padding: 0 10px;
+    }
+    .nav-btn {
+        background: rgba(15, 42, 67, 0.4);
+        border: 1px solid #1AA6A6;
+        color: white;
+        padding: 6px 18px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.85rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        text-align: center;
+        min-width: 100px;
+        display: inline-block;
+    }
+    .nav-btn:hover {
+        background: rgba(26, 166, 166, 0.2);
+        box-shadow: 0 0 15px rgba(26, 166, 166, 0.3);
+        transform: translateY(-2px);
+    }
+    .nav-btn.hidden {
+        display: none;
+    }
+    .footer-link {
+        color: #00f2ff;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    .footer-link:hover {
+        color: #FFC857;
+        text-shadow: 0 0 10px rgba(255, 200, 87, 0.4);
+    }
+</style>
+
 </head>
 
 <body>
@@ -156,8 +200,11 @@
 
     <script src="assets/js/feedback.js"></script>
 
-    <footer style="margin-top: 50px; text-align: center; padding: 20px; color: #475569; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); font-family: 'Cairo', sans-serif;">
-        جميع الحقوق محفوظة | <span style="color: #00f2ff; font-weight: bold;">WezaTECHNOLOGIES</span>
+    
+
+
+    <footer style="margin-top: 50px; text-align: center; padding: 20px; color: #475569; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); font-family: 'Cairo', sans-serif;" dir="rtl">
+        جميع الحقوق محفوظة | <a href="https://weza.space" target="_blank" class="footer-link">WezaTECHNOLOGIES</a>
     </footer>
 
 </body>
