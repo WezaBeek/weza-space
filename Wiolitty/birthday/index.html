@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wiolitty — Birthday Refined</title>
+<style>
+:root {
+  --bg1:#fff8fc; --bg2:#f1e7f1; --card:rgba(255,255,255,.68); --text:#24182a; --muted:#705f77;
+  --line:rgba(36,24,42,.10); --pink:#ff5fa7; --lav:#b88cff; --shadow:0 24px 70px rgba(36,24,42,.14);
+}
+[data-theme="dark"] {
+  --bg1:#0f0b14; --bg2:#1a1023; --card:rgba(21,15,29,.72); --text:#f6eef9; --muted:#c9bbd2;
+  --line:rgba(246,238,249,.11); --pink:#ff77b9; --lav:#c096ff; --shadow:0 28px 80px rgba(0,0,0,.46);
+}
+* { box-sizing:border-box; }
+html, body { height:100%; }
+body {
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(900px 650px at 12% 10%, rgba(255,95,167,.16), transparent 60%),
+    radial-gradient(900px 650px at 88% 18%, rgba(184,140,255,.12), transparent 55%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+  overflow-x:hidden;
+}
+.page { min-height:100%; padding:20px 14px 80px; }
+.topbar {
+  width:min(1140px,100%);
+  margin:0 auto 16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.leftTop, .rightTop { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.chip, .btn, .ghost {
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.48);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-radius:999px;
+  padding:10px 14px;
+  font-size:12px;
+  color:var(--muted);
+  box-shadow:0 10px 28px rgba(0,0,0,.05);
+}
+[data-theme="dark"] .chip,
+[data-theme="dark"] .btn,
+[data-theme="dark"] .ghost { background:rgba(21,15,29,.5); }
+.btn, .ghost {
+  color:var(--text);
+  cursor:pointer;
+  transition:.18s ease;
+  user-select:none;
+}
+.btn:hover, .ghost:hover { transform:translateY(-1px); border-color:rgba(255,95,167,.3); }
+
+.shell {
+  width:min(1140px,100%);
+  margin:0 auto;
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:34px;
+  background:var(--card);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  isolation:isolate;
+}
+.shell.locked { min-height:min(820px, calc(100vh - 120px)); }
+
+.ambient {
+  position:absolute;
+  inset:-90px;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(520px 300px at 15% 18%, rgba(255,95,167,.14), transparent 60%),
+    radial-gradient(460px 260px at 85% 22%, rgba(184,140,255,.12), transparent 60%);
+  filter:blur(2px);
+}
+.floatLayer {
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:1;
+}
+.petal {
+  position:absolute;
+  opacity:0;
+  animation:floatDrift linear infinite;
+  filter:drop-shadow(0 10px 18px rgba(0,0,0,.10));
+}
+@keyframes floatDrift {
+  0% { transform:translateY(0) translateX(0) scale(.9) rotate(-6deg); opacity:0; }
+  12% { opacity:.38; }
+  50% { opacity:.22; }
+  100% { transform:translateY(-160px) translateX(var(--drift)) scale(1.12) rotate(8deg); opacity:0; }
+}
+
+.content {
+  position:relative;
+  z-index:2;
+  padding:28px 26px 32px;
+  transition:filter .32s ease, opacity .32s ease, transform .32s ease;
+}
+.shell.locked .content {
+  filter:blur(18px);
+  opacity:.02;
+  transform:scale(.992);
+  pointer-events:none;
+  user-select:none;
+}
+.centerWrap { max-width:920px; margin:0 auto; }
+
+.intro, .section, .quote, .closing {
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:24px 22px;
+  margin-top:18px;
+  text-align:center;
+  background:linear-gradient(180deg, rgba(255,255,255,.52), rgba(255,255,255,.28));
+  box-shadow:0 10px 30px rgba(0,0,0,.03);
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .45s ease, transform .45s ease;
+}
+[data-theme="dark"] .intro,
+[data-theme="dark"] .section,
+[data-theme="dark"] .quote,
+[data-theme="dark"] .closing {
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+}
+.intro.show, .section.show, .quote.show, .closing.show {
+  opacity:1;
+  transform:translateY(0);
+}
+.badge {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid var(--line);
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:12px;
+  color:var(--muted);
+  background:rgba(255,255,255,.34);
+}
+.introTitle, .overlayTitle {
+  text-wrap:balance;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+.introTitle {
+  margin:16px auto 8px;
+  font-size:clamp(30px, 4vw, 46px);
+  line-height:1.08;
+  letter-spacing:-.03em;
+  max-width:14ch;
+}
+.introSub {
+  margin:0 auto;
+  max-width:42ch;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.7;
+}
+.controls {
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin-top:16px;
+}
+.seg {
+  display:inline-flex;
+  border:1px solid var(--line);
+  border-radius:999px;
+  overflow:hidden;
+  background:rgba(255,255,255,.12);
+}
+.seg button {
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  padding:10px 14px;
+  font-size:12px;
+  cursor:pointer;
+  min-width:44px;
+}
+.seg button.active {
+  color:var(--text);
+  background:linear-gradient(180deg, rgba(255,95,167,.24), rgba(255,255,255,0));
+}
+.audioBar {
+  max-width:620px;
+  margin:16px auto 0;
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transform:translateY(8px);
+  transition:max-height .35s ease, opacity .28s ease, transform .28s ease;
+}
+.audioBar.show {
+  max-height:80px;
+  opacity:1;
+  transform:translateY(0);
+}
+audio { width:100%; height:42px; }
+
+.sectionTitle, .closingTitle {
+  margin:0 0 12px;
+  font-size:22px;
+  line-height:1.25;
+  letter-spacing:-.01em;
+  text-wrap:balance;
+}
+.sectionBody, .closingBody {
+  margin:0 auto;
+  max-width:42ch;
+  font-size:18px;
+  line-height:1.9;
+  white-space:pre-wrap;
+  text-wrap:pretty;
+}
+.quoteText {
+  margin:4px auto 0;
+  max-width:16ch;
+  font-family:Georgia, "Times New Roman", serif;
+  font-size:clamp(24px, 3.6vw, 38px);
+  line-height:1.3;
+  letter-spacing:-.03em;
+}
+.quoteIcon {
+  font-size:24px;
+  color:var(--pink);
+  margin-bottom:8px;
+}
+.signature {
+  margin-top:18px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  font-size:13px;
+  color:var(--muted);
+  text-align:center;
+}
+.signature strong { color:var(--text); font-size:17px; }
+
+.overlay {
+  position:absolute;
+  inset:0;
+  z-index:6;
+  display:grid;
+  place-items:center;
+  padding:22px;
+  background:
+    radial-gradient(780px 460px at 50% 28%, rgba(255,255,255,.22), rgba(255,255,255,0)),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
+}
+.overlayBox {
+  width:min(980px, 100%);
+  display:grid;
+  grid-template-columns:minmax(320px, .98fr) minmax(360px, 1.02fr);
+  gap:18px;
+  align-items:stretch;
+  animation:fadeInUp .65s ease both;
+}
+@keyframes fadeInUp {
+  from { opacity:0; transform:translateY(18px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@media (max-width:900px) {
+  .overlayBox { grid-template-columns:1fr; }
+}
+.previewCard, .openCard {
+  border:1px solid var(--line);
+  border-radius:30px;
+  background:rgba(21,15,29,.78);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.previewImage {
+  min-height:300px;
+  height:100%;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)),
+    url('../assets/img/birthday-hero.svg') center/cover no-repeat;
+}
+@media (max-width:900px) { .previewImage { min-height:260px; } }
+.openCard {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:28px 24px;
+  text-align:center;
+}
+.overlayKicker {
+  margin:0 0 10px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  align-self:center;
+  padding:8px 14px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  font-size:12px;
+  color:#ddd1e3;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.overlayTitle {
+  margin:0 auto;
+  max-width:14ch;
+  font-size:clamp(30px, 4vw, 46px);
+  line-height:1.06;
+  letter-spacing:-.03em;
+  color:#fff;
+  animation:titleShimmer 7s linear infinite;
+  background:linear-gradient(90deg, #ffffff 0%, #ffe2f0 35%, #ffffff 65%, #ffffff 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+@keyframes titleShimmer {
+  0% { background-position:0% center; }
+  100% { background-position:200% center; }
+}
+.overlaySub {
+  margin:14px auto 22px;
+  max-width:34ch;
+  font-size:15px;
+  line-height:1.7;
+  color:#ddd0e3;
+}
+.openBtn {
+  border:1px solid rgba(255,255,255,.16);
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,.18), rgba(255,255,255,0) 55%),
+    linear-gradient(180deg, rgba(255,95,167,.34), rgba(184,140,255,.22));
+  color:#fff;
+  padding:16px 24px;
+  border-radius:20px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  justify-content:center;
+  align-self:center;
+  min-width:220px;
+  box-shadow:0 0 0 0 rgba(255,95,167,.35), 0 18px 34px rgba(0,0,0,.22);
+  animation:glowPulse 2.2s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow:0 0 0 0 rgba(255,95,167,.18), 0 18px 34px rgba(0,0,0,.22); }
+  50% { box-shadow:0 0 0 10px rgba(255,95,167,0), 0 18px 34px rgba(0,0,0,.22), 0 0 26px rgba(255,95,167,.24); }
+}
+.openBtn:hover { transform:translateY(-1px); border-color:rgba(255,95,167,.32); }
+.heartIcon {
+  display:inline-block;
+  animation:pulse 1.6s ease-in-out infinite;
+  transform-origin:center;
+}
+@keyframes pulse {
+  0%,100% { transform:scale(1); }
+  35% { transform:scale(1.18); }
+  55% { transform:scale(.94); }
+}
+.overlay.opening .heartIcon { animation:burst .5s ease forwards; }
+@keyframes burst {
+  0% { transform:scale(1); }
+  45% { transform:scale(1.7); }
+  100% { transform:scale(0); opacity:0; }
+}
+
+.toast {
+  position:fixed;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%);
+  background:rgba(20,15,27,.90);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  padding:10px 12px;
+  font-size:12px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s ease;
+  z-index:40;
+}
+.toast.show { opacity:1; }
+
+.rtl { direction:rtl; text-align:center; }
+.ltr { direction:ltr; text-align:center; }
+
+@media (max-width:640px) {
+  .page { padding:16px 10px 70px; }
+  .content { padding:20px 16px 24px; }
+  .intro, .section, .quote, .closing, .previewCard, .openCard { border-radius:24px; }
+  .sectionBody, .closingBody { font-size:17px; }
+  .overlaySub { max-width:30ch; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topbar">
+    <div class="leftTop"><div class="chip" id="dateChip">Wiolitty  Birthday 💗</div></div>
+    <div class="rightTop">
+      <button class="btn" id="themeBtn">Day / Night</button>
+      <button class="btn" id="voiceBtn">Play voice</button>
+    </div>
+  </div>
+
+  <div class="shell locked" id="shell">
+    <div class="ambient"></div>
+    <div class="floatLayer" id="floatLayer"></div>
+
+    <div class="content">
+      <div class="centerWrap">
+        <section class="intro reveal">
+          <div class="badge" id="heroKicker"></div>
+          <h1 class="introTitle" id="heroTitle"></h1>
+          <p class="introSub" id="heroSub"></p>
+
+          <div class="controls">
+            <div class="seg">
+              <button id="tabPL" class="active">PL</button>
+              <button id="tabEN">EN</button>
+              <button id="tabAR">AR</button>
+            </div>
+            <button class="ghost" id="copyBtnTop">Copy text</button>
+            <button class="ghost" id="linkBtnTop">Copy link</button>
+          </div>
+
+          <div class="audioBar" id="audioBar">
+            <audio id="audio" controls preload="auto">
+              <source src="../assets/audio/birthday.ogg" type="audio/ogg"/>
+            </audio>
+          </div>
+        </section>
+
+        <section class="section reveal"><h2 class="sectionTitle" id="section1Title"></h2><p class="sectionBody" id="section1Body"></p></section>
+        <section class="quote reveal"><div class="quoteIcon">💗</div><p class="quoteText" id="quote1"></p></section>
+        <section class="section reveal"><h2 class="sectionTitle" id="section2Title"></h2><p class="sectionBody" id="section2Body"></p></section>
+        <section class="quote reveal"><div class="quoteIcon">✨</div><p class="quoteText" id="quote2"></p></section>
+        <section class="section reveal"><h2 class="sectionTitle" id="section3Title"></h2><p class="sectionBody" id="section3Body"></p></section>
+        <section class="section reveal"><h2 class="sectionTitle" id="section4Title"></h2><p class="sectionBody" id="section4Body"></p></section>
+        <section class="section reveal"><h2 class="sectionTitle" id="section5Title"></h2><p class="sectionBody" id="section5Body"></p></section>
+        <section class="quote reveal"><div class="quoteIcon">🌸</div><p class="quoteText" id="quote3"></p></section>
+        <section class="section reveal"><h2 class="sectionTitle" id="section6Title"></h2><p class="sectionBody" id="section6Body"></p></section>
+        <section class="closing reveal"><h2 class="closingTitle" id="closingTitle"></h2><p class="closingBody" id="closingBody"></p><div class="signature"><strong id="signNick"></strong><div id="signTag"></div><div id="signLine"></div></div></section>
+      </div>
+    </div>
+
+    <div class="overlay" id="overlay">
+      <div class="overlayBox">
+        <div class="previewCard"><div class="previewImage"></div></div>
+        <div class="openCard">
+          <p class="overlayKicker" id="overlayKicker"></p>
+          <h2 class="overlayTitle" id="overlayTitle"></h2>
+          <p class="overlaySub" id="overlaySub"></p>
+          <button class="openBtn" id="openBtn"><span class="heartIcon">💗</span> <span id="openBtnText"></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Done ✓</div>
+
+<script type="application/json" id="data-json">{"nick": "Wiolitty Nitty Kamaniti", "tag": "Wiolaity :3", "pl": {"heroKicker": "Happy Birthday", "heroTitle": "Dla kobiety, która nadała sens mojemu życiu", "heroSub": "Zamknij oczy na chwilę. To moje serce — zapisane słowami.", "openBtn": "Open my heart", "playVoice": "Play voice", "copyText": "Copy text", "copyLink": "Copy link", "section1Title": "Chwila, która zmieniła wszystko", "section1Body": "Najlepsza rzecz, jaka przydarzyła mi się w życiu, to moment, w którym Cię poznałem. Nie tylko dlatego, że Cię pokochałem — ale dlatego, że od tamtej chwili moje życie nabrało ciepła, sensu i prawdziwej głębi. Przy Tobie poczułem, że moje serce naprawdę ma dokąd wracać.", "quote1": "Najlepsza rzecz, jaka przydarzyła mi się w życiu, to moment, w którym Cię poznałem.", "section2Title": "Najpiękniejsze dni mojego życia", "section2Body": "Najpiękniejsze dni mojego życia to te, które przeżyłem z Tobą. Nawet zwykłe dni obok Ciebie mają inny smak. Dzięki Tobie codzienność nie jest już tylko obowiązkiem — jest czymś, co naprawdę czuję, pamiętam i kocham.", "quote2": "Najpiękniejsze dni mojego życia to te, które przeżyłem z Tobą.", "section3Title": "To, czego mnie nauczyłaś", "section3Body": "Nauczyłaś mnie cierpliwości, wytrwałości, odpowiedzialności i tego, że miłość nie polega na wielkich słowach, tylko na obecności. Jesteś błogosławieństwem, które Bóg postawił na mojej drodze — i dzięki Tobie zmieniłem się na lepsze, jako człowiek, jako mąż i jako serce.", "section4Title": "To, jak Cię widzę każdego dnia", "section4Body": "Podziwiam Cię za Twoją siłę. Za to, że wstajesz wcześnie, wracasz późno, niesiesz tyle na swoich barkach, a mimo zmęczenia wciąż masz w sobie ciepło. Widzę Twoje poranki, drogę, pracę, zimno, zmęczenie — i szanuję to całym sercem.", "section5Title": "To, kim jesteś dla mojego życia", "section5Body": "Z Tobą czuję, że mam dom — nie miejsce, tylko uczucie. Jesteś moim spokojem, moją najpiękniejszą historią i najdroższą osobą w moim świecie. Bez Ciebie moje życie nie byłoby życiem. Byłoby tylko dniem za dniem.", "quote3": "Bez Ciebie moje życie nie byłoby życiem.", "section6Title": "Moja obietnica dla Ciebie", "section6Body": "W Twoje urodziny chcę Ci powiedzieć jedno: będę przy Tobie. W dobrych dniach i w tych trudnych. Z wdzięcznością za wszystko, co wniosłaś do mojego życia, i z miłością, która z każdym dniem staje się głębsza, spokojniejsza i pewniejsza.", "closingTitle": "Kocham Cię", "closingBody": "Dziękuję, że jesteś.\nDziękuję za Twoje serce, Twoją siłę i Twoją obecność.\nJeśli dziś potrafię dać Ci coś pięknego, to tylko dlatego, że przy Tobie uczę się być lepszym człowiekiem.\nI zawsze będę wdzięczny za to, że jesteś darem, który odmienił moje życie.", "signature": "— from your husband Hassan 🤍"}, "en": {"heroKicker": "Happy Birthday", "heroTitle": "For the woman who made my life worth living", "heroSub": "Close your eyes for one second. This is my heart, written in words.", "openBtn": "Open my heart", "playVoice": "Play voice", "copyText": "Copy text", "copyLink": "Copy link", "section1Title": "The moment that changed everything", "section1Body": "The best thing that ever happened to me was the moment I met you. Not only because I fell in love with you — but because from that moment on, my life gained warmth, meaning, and a depth I had never known before. Beside you, my heart finally felt that it had somewhere real to belong.", "quote1": "The best thing that ever happened to me was the moment I met you.", "section2Title": "The best days of my life", "section2Body": "The best days of my life are the days I have lived with you. Even ordinary days beside you carry a different sweetness. Because of you, daily life is no longer just routine — it becomes something real, memorable, and full of feeling.", "quote2": "The best days of my life are the days I lived with you.", "section3Title": "What you taught me", "section3Body": "You taught me patience, endurance, responsibility, and that love is not made of grand words — it is made of presence. You are the blessing God placed in my path, and because of you I became a better man, a better husband, and a calmer heart.", "section4Title": "How I see you every day", "section4Body": "I admire your strength. The way you leave early, come back late, carry so much on your shoulders, and still keep warmth inside you. I see the early mornings, the road, the work, the cold, the tiredness — and I respect it with all my heart.", "section5Title": "What you are to my life", "section5Body": "With you, I feel that I have a home — not a place, but a feeling. You are my calm, my most beautiful story, and the dearest person in my world. Without you, my life would not feel like life. It would only be days passing.", "quote3": "Without you, my life would not feel like life.", "section6Title": "My promise to you", "section6Body": "On your birthday, I want to tell you one thing: I will be by your side. In the good days and the hard ones. With gratitude for everything you brought into my life, and with a love that grows deeper, calmer, and more certain every day.", "closingTitle": "I love you", "closingBody": "Thank you for being here.\nThank you for your heart, your strength, and your presence.\nIf I can give you something beautiful today, it is only because beside you I am learning to be a better man.\nAnd I will always be grateful that you are the gift that changed my life.", "signature": "— from your husband Hassan 🤍"}, "ar": {"heroKicker": "عيد ميلاد سعيد", "heroTitle": "إلى روحي التي منحتني معنى الحياة", "heroSub": "أغمض عينيك للحظة. هذا قلبي… مكتوبًا بالكلمات.", "openBtn": "افتح قلبي", "playVoice": "تشغيل الصوت", "copyText": "نسخ النص", "copyLink": "نسخ الرابط", "section1Title": "اللحظة التي غيّرت كل شيء", "section1Body": "أحسن حاجة حصلت في حياتي كانت اللحظة اللي قابلتك فيها. ليس فقط لأنني أحببتك، بل لأن حياتي من بعدها صار لها دفء ومعنى وعمق حقيقي لم أعرفه من قبل. بجانبك شعرت أن قلبي وجد مكانه الحقيقي.", "quote1": "أحسن حاجة حصلت في حياتي كانت اللحظة اللي قابلتك فيها.", "section2Title": "أجمل أيام عمري", "section2Body": "أجمل أيام عمري هي الأيام التي عشتها معك. حتى الأيام العادية بجانبك لها طعم مختلف. بسببك لم تعد الحياة اليومية مجرد روتين، بل أصبحت شيئًا حيًا وحقيقيًا يبقى في القلب.", "quote2": "أجمل أيام عمري هي الأيام التي عشتها معك.", "section3Title": "ما الذي تعلّمته منك", "section3Body": "أنتِ علّمتِني الصبر والتحمّل والمسؤولية، وأن الحب ليس كلمات كبيرة، بل حضور حقيقي. أنتِ النعمة التي وضعها الله في طريقي، وبسببك تغيّرت إلى الأفضل كرجل وكزوج وكقلب صار أكثر هدوءًا ونضجًا.", "section4Title": "كيف أراك كل يوم", "section4Body": "أنا معجب بقوتك. بطريقة استيقاظك المبكر، وعودتك المتأخرة، وتحملك لكل هذا، وبرغم التعب يبقى داخلك دفء حقيقي. أنا أرى الصباح المبكر، والطريق، والشغل، والبرد، والتعب — وأحترم كل ذلك من كل قلبي.", "section5Title": "من أنتِ في حياتي", "section5Body": "معك أشعر أن لدي بيتًا — ليس مكانًا، بل إحساسًا. أنتِ سلامي، وأجمل قصة في عمري، وأغلى إنسانة في عالمي. من غيرك حياتي لن تكون حياة… ستكون فقط أيامًا تمضي.", "quote3": "من غيرك حياتي لن تكون حياة.", "section6Title": "وعدي لك", "section6Body": "في عيد ميلادك أريد أن أقول لك شيئًا واحدًا: سأبقى إلى جانبك. في الأيام الجميلة وفي الأيام الصعبة. بكل امتنان لما أضفتِه إلى حياتي، وبحب يكبر في قلبي مع كل يوم ويصبح أعمق وأهدأ وأصدق.", "closingTitle": "أنا أحبك", "closingBody": "شكرًا لأنك موجودة.\nشكرًا لقلبك، ولقوتك، ووجودك بجانبي.\nإذا كنت أستطيع أن أقدم لك شيئًا جميلًا اليوم، فذلك فقط لأنني بجانبك أتعلم كيف أكون إنسانًا أفضل.\nوسأظل دائمًا ممتنًا لأنك الهدية التي غيّرت حياتي.", "signature": "— من زوجك Hassan 🤍"}}</script>
+<script>
+const DATA = JSON.parse(document.getElementById('data-json').textContent);
+const $ = id => document.getElementById(id);
+let currentLang = 'pl';
+
+function showToast(text) {
+  const el = $('toast');
+  el.textContent = text || 'Done ✓';
+  el.classList.add('show');
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => el.classList.remove('show'), 1100);
+}
+function applyTheme() {
+  const saved = localStorage.getItem('wiolitty_refined_theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+}
+function toggleTheme() {
+  const root = document.documentElement;
+  const cur = root.getAttribute('data-theme') || 'light';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('wiolitty_refined_theme', next);
+}
+function setBlock(id, value, rtl) {
+  const el = $(id);
+  if (!el) return;
+  el.textContent = value || '';
+  el.classList.remove('rtl', 'ltr');
+  el.classList.add(rtl ? 'rtl' : 'ltr');
+}
+function setLang(lang) {
+  currentLang = (lang || 'pl').toLowerCase();
+  ['pl','en','ar'].forEach(code => $('tab' + code.toUpperCase()).classList.toggle('active', code === currentLang));
+  const d = DATA[currentLang];
+  const rtl = currentLang === 'ar';
+  document.documentElement.dir = rtl ? 'rtl' : 'ltr';
+  document.body.dir = rtl ? 'rtl' : 'ltr';
+  document.documentElement.lang = currentLang;
+
+  $('heroKicker').textContent = d.heroKicker;
+  $('heroTitle').textContent = d.heroTitle;
+  $('heroSub').textContent = d.heroSub;
+  $('overlayKicker').textContent = d.heroKicker;
+  $('overlayTitle').textContent = d.heroTitle;
+  $('overlaySub').textContent = d.heroSub;
+  $('openBtnText').textContent = d.openBtn;
+  $('voiceBtn').textContent = d.playVoice;
+  $('copyBtnTop').textContent = d.copyText;
+  $('linkBtnTop').textContent = d.copyLink;
+  $('dateChip').textContent = 'Wiolitty  Birthday 💗';
+
+  setBlock('section1Title', d.section1Title, rtl);
+  setBlock('section1Body', d.section1Body, rtl);
+  setBlock('quote1', d.quote1, rtl);
+  setBlock('section2Title', d.section2Title, rtl);
+  setBlock('section2Body', d.section2Body, rtl);
+  setBlock('quote2', d.quote2, rtl);
+  setBlock('section3Title', d.section3Title, rtl);
+  setBlock('section3Body', d.section3Body, rtl);
+  setBlock('section4Title', d.section4Title, rtl);
+  setBlock('section4Body', d.section4Body, rtl);
+  setBlock('section5Title', d.section5Title, rtl);
+  setBlock('section5Body', d.section5Body, rtl);
+  setBlock('quote3', d.quote3, rtl);
+  setBlock('section6Title', d.section6Title, rtl);
+  setBlock('section6Body', d.section6Body, rtl);
+  setBlock('closingTitle', d.closingTitle, rtl);
+  setBlock('closingBody', d.closingBody, rtl);
+  $('signNick').textContent = DATA.nick;
+  $('signTag').textContent = DATA.tag;
+  $('signLine').textContent = d.signature;
+}
+async function copyText() {
+  const d = DATA[currentLang];
+  const text = [d.section1Body, d.section2Body, d.section3Body, d.section4Body, d.section5Body, d.section6Body, d.closingBody, DATA.nick, DATA.tag].join('\n\n');
+  try { await navigator.clipboard.writeText(text); showToast('Copied ✓'); }
+  catch (e) { showToast('Copy failed'); }
+}
+async function copyLink() {
+  try { await navigator.clipboard.writeText(window.location.href); showToast('Link copied ✓'); }
+  catch (e) { showToast('Copy failed'); }
+}
+function playVoice() {
+  $('audioBar').classList.add('show');
+  const a = $('audio');
+  if (!a) return;
+  a.play().catch(() => showToast('Tap play on the audio bar'));
+}
+function spawnPetals() {
+  const layer = $('floatLayer');
+  const items = ['💗','💞','💖','🌸','✨','🎈'];
+  for (let i = 0; i < 34; i++) {
+    const el = document.createElement('div');
+    el.className = 'petal';
+    el.textContent = items[Math.floor(Math.random() * items.length)];
+    el.style.left = (Math.random() * 100) + '%';
+    el.style.top = (Math.random() * 95) + '%';
+    el.style.fontSize = (16 + Math.random() * 12) + 'px';
+    el.style.animationDuration = (10 + Math.random() * 10) + 's';
+    el.style.animationDelay = (-Math.random() * 10) + 's';
+    el.style.setProperty('--drift', ((Math.random() * 180) - 90).toFixed(0) + 'px');
+    layer.appendChild(el);
+  }
+}
+function revealOnScroll() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold:.16 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+function openExperience() {
+  $('overlay').classList.add('opening');
+  setTimeout(() => {
+    $('shell').classList.remove('locked');
+    $('overlay').style.display = 'none';
+    $('audioBar').classList.add('show');
+    const a = $('audio');
+    if (a) a.play().catch(() => showToast('Tap play on the audio bar'));
+    showToast('Opened ✓');
+  }, 420);
+}
+
+applyTheme();
+spawnPetals();
+revealOnScroll();
+setLang('pl');
+
+$('themeBtn').addEventListener('click', toggleTheme);
+$('voiceBtn').addEventListener('click', playVoice);
+$('openBtn').addEventListener('click', openExperience);
+$('tabPL').addEventListener('click', () => setLang('pl'));
+$('tabEN').addEventListener('click', () => setLang('en'));
+$('tabAR').addEventListener('click', () => setLang('ar'));
+$('copyBtnTop').addEventListener('click', copyText);
+$('linkBtnTop').addEventListener('click', copyLink);
+</script>
+</body>
+</html>
