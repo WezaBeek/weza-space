@@ -1,0 +1,50 @@
+<svg width="1400" height="1000" viewBox="0 0 1400 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1400" y2="1000" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#23142D"/>
+    <stop offset="1" stop-color="#110A18"/>
+  </linearGradient>
+  <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(240 220) rotate(40) scale(380 260)">
+    <stop stop-color="#FF92C4" stop-opacity="0.5"/>
+    <stop offset="1" stop-color="#FF92C4" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1120 230) rotate(90) scale(320 260)">
+    <stop stop-color="#C6A0FF" stop-opacity="0.42"/>
+    <stop offset="1" stop-color="#C6A0FF" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="frame" x1="320" y1="180" x2="1080" y2="840" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FFD3E8"/>
+    <stop offset="1" stop-color="#B992FF"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="360" y1="220" x2="1040" y2="780" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FFFFFF" stop-opacity="0.14"/>
+    <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.04"/>
+  </linearGradient>
+  <filter id="shadow" x="250" y="150" width="900" height="760" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000000" flood-opacity="0.26"/>
+  </filter>
+</defs>
+
+<rect width="1400" height="1000" fill="url(#bg)"/>
+<rect width="1400" height="1000" fill="url(#g1)"/>
+<rect width="1400" height="1000" fill="url(#g2)"/>
+
+<g filter="url(#shadow)">
+  <rect x="320" y="180" width="760" height="640" rx="42" fill="#181120"/>
+  <rect x="322" y="182" width="756" height="636" rx="40" stroke="url(#frame)" stroke-opacity="0.78" stroke-width="4"/>
+  <rect x="360" y="220" width="680" height="560" rx="30" fill="url(#glass)"/>
+</g>
+
+<circle cx="700" cy="420" r="150" fill="#2A1836" stroke="url(#frame)" stroke-width="3"/>
+<circle cx="700" cy="420" r="112" fill="#311D3E"/>
+<path d="M640 612C663 562 736 562 760 612C723 646 676 646 640 612Z" fill="#FFD7E9" fill-opacity="0.22"/>
+<path d="M670 370C670 335 687 310 700 310C713 310 730 335 730 370C730 404 715 426 700 426C685 426 670 404 670 370Z" fill="#FFD7E9" fill-opacity="0.15"/>
+<path d="M610 710C664 668 736 668 790 710" stroke="#F6CADF" stroke-opacity="0.3" stroke-width="4" stroke-linecap="round"/>
+
+<g opacity="0.9">
+  <path d="M698 258C730 205 803 202 830 252C849 289 834 336 790 378C752 414 711 442 700 452C689 442 648 414 610 378C566 336 551 289 570 252C597 202 670 205 698 258Z" fill="#FF82BB"/>
+  <path d="M700 285C721 251 771 250 790 283C803 307 792 337 764 365C740 389 709 411 700 419C691 411 660 389 636 365C608 337 597 307 610 283C629 250 679 251 700 285Z" fill="#FFD6E7"/>
+</g>
+
+<text x="700" y="852" fill="#F8EAF3" fill-opacity="0.95" font-family="Georgia, 'Times New Roman', serif" font-size="30" text-anchor="middle">Sample romantic cover — replace with her real photo later</text>
+</svg>
