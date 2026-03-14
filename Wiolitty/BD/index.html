@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wiolitty — Happy Birthday 💗</title>
+<meta name="description" content="A birthday gift made with love — for the woman who changed everything."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+/* ─── TOKENS ─────────────────────────────── */
+:root{
+  --bg1:#fff6fb; --bg2:#ede3f2; --card:rgba(255,255,255,.70);
+  --text:#1e1227; --muted:#7a6585; --faint:#bbaac9;
+  --line:rgba(36,18,42,.09); --pink:#ff5fa7; --pink2:#ff8cc6;
+  --lav:#b88cff; --lav2:#d4b2ff; --plum:#5a2d82;
+  --shadow:0 32px 80px rgba(36,18,42,.13);
+  --radius-xl:32px; --radius-lg:24px; --radius-md:18px; --radius-sm:999px;
+}
+[data-theme="dark"]{
+  --bg1:#0c0814; --bg2:#160e22; --card:rgba(18,12,28,.76);
+  --text:#f4eafa; --muted:#c2aed6; --faint:#7a6590;
+  --line:rgba(244,234,250,.10); --pink:#ff77b9; --pink2:#ffaad3;
+  --lav:#c096ff; --lav2:#dbbfff; --plum:#c096ff;
+  --shadow:0 36px 90px rgba(0,0,0,.52);
+}
+
+/* ─── RESET ──────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;scroll-behavior:smooth}
+
+/* ─── BODY / BACKGROUND ──────────────────── */
+body{
+  font-family:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(ellipse 900px 600px at 10% 5%,  rgba(255,95,167,.18),  transparent 55%),
+    radial-gradient(ellipse 800px 500px at 90% 15%, rgba(184,140,255,.14),  transparent 55%),
+    radial-gradient(ellipse 600px 400px at 50% 80%, rgba(255,140,198,.10),  transparent 60%),
+    linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+  overflow-x:hidden;
+  min-height:100%;
+}
+
+/* ─── PETAL LAYER (covers full viewport) ─── */
+#petalCanvas{
+  position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;
+}
+.petal{
+  position:absolute; bottom:-80px; opacity:0;
+  animation:floatUp linear infinite;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.08));
+  will-change:transform,opacity;
+}
+@keyframes floatUp{
+  0%  {transform:translateY(0)      translateX(0)   scale(.82) rotate(-10deg); opacity:0}
+  8%  {opacity:.55}
+  50% {opacity:.28}
+  100%{transform:translateY(-110vh) translateX(var(--drift)) scale(1.1) rotate(12deg); opacity:0}
+}
+
+/* ─── PAGE WRAPPER ───────────────────────── */
+.page{
+  position:relative; z-index:1;
+  min-height:100vh; padding:20px 16px 90px;
+}
+
+/* ─── TOP BAR ────────────────────────────── */
+.topbar{
+  width:min(1120px,100%); margin:0 auto 18px;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:10px; flex-wrap:wrap;
+}
+.topLeft,.topRight{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+
+/* chip / btn / ghost base */
+.chip,.btn,.ghost{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.52);
+  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border-radius:var(--radius-sm);
+  padding:10px 16px; font-size:12px; font-weight:500;
+  color:var(--muted); box-shadow:0 6px 20px rgba(0,0,0,.05);
+  letter-spacing:.01em;
+}
+[data-theme="dark"] .chip,
+[data-theme="dark"] .btn,
+[data-theme="dark"] .ghost{background:rgba(18,12,28,.55)}
+.btn,.ghost{color:var(--text);cursor:pointer;transition:transform .18s ease,border-color .2s ease,box-shadow .2s ease;user-select:none;border:none;font-family:inherit}
+.btn:hover,.ghost:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,95,167,.14);border-color:rgba(255,95,167,.28)}
+
+/* ─── GLASS SHELL ────────────────────────── */
+.shell{
+  width:min(1120px,100%); margin:0 auto;
+  border:1px solid var(--line); border-radius:var(--radius-xl);
+  background:var(--card);
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  box-shadow:var(--shadow);
+  overflow:hidden; isolation:isolate; position:relative;
+}
+.ambient{
+  position:absolute; inset:-100px; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(500px 280px at 12% 18%, rgba(255,95,167,.18),  transparent 60%),
+    radial-gradient(440px 240px at 88% 22%, rgba(184,140,255,.14), transparent 60%);
+  filter:blur(1px);
+}
+
+/* content blur when locked */
+.content{
+  position:relative; z-index:2;
+  padding:36px 28px 40px;
+  transition:filter .35s ease, opacity .35s ease, transform .35s ease;
+}
+.shell.locked .content{filter:blur(22px);opacity:.03;transform:scale(.994);pointer-events:none;user-select:none}
+.centerWrap{max-width:880px; margin:0 auto}
+
+/* ─── SECTIONS ───────────────────────────── */
+.intro,.section,.quote,.closing{
+  border:1px solid var(--line); border-radius:var(--radius-lg);
+  padding:28px 24px; margin-top:20px; text-align:center;
+  background:linear-gradient(160deg, rgba(255,255,255,.56), rgba(255,255,255,.24));
+  box-shadow:0 8px 28px rgba(0,0,0,.04);
+  opacity:0; transform:translateY(18px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+[data-theme="dark"] .intro,
+[data-theme="dark"] .section,
+[data-theme="dark"] .quote,
+[data-theme="dark"] .closing{background:linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.02))}
+.intro.show,.section.show,.quote.show,.closing.show{opacity:1;transform:translateY(0)}
+
+/* badge */
+.badge{
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid var(--line); padding:8px 14px; border-radius:var(--radius-sm);
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); background:rgba(255,255,255,.36);
+  margin-bottom:14px;
+}
+
+/* hero title — FIXED: no nowrap, proper clamp, won't overflow */
+.introTitle{
+  font-family:'Playfair Display', Georgia, serif;
+  font-size:clamp(28px, 4.2vw, 52px);
+  line-height:1.12; letter-spacing:-.02em;
+  text-wrap:balance; max-width:18ch; margin:0 auto 12px;
+  background:linear-gradient(135deg, var(--text) 0%, var(--plum) 80%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+[data-theme="dark"] .introTitle{
+  background:linear-gradient(135deg, var(--text) 0%, var(--lav2) 80%);
+  -webkit-background-clip:text; background-clip:text;
+}
+
+.introSub{
+  margin:0 auto 20px; max-width:44ch;
+  color:var(--muted); font-size:15px; line-height:1.78;
+  font-style:italic;
+}
+
+/* controls row */
+.controls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;align-items:center}
+.seg{
+  display:inline-flex; border:1px solid var(--line);
+  border-radius:var(--radius-sm); overflow:hidden;
+  background:rgba(255,255,255,.34);
+}
+[data-theme="dark"] .seg{background:rgba(255,255,255,.06)}
+.seg button{
+  border:0; background:transparent; color:var(--muted);
+  padding:10px 15px; font-size:12px; font-weight:500;
+  cursor:pointer; min-width:44px; font-family:inherit;
+  transition:color .15s ease, background .15s ease;
+}
+.seg button.active{
+  color:var(--text);
+  background:linear-gradient(180deg, rgba(255,95,167,.18), rgba(255,255,255,0));
+}
+[data-theme="dark"] .seg button.active{
+  background:linear-gradient(180deg, rgba(184,140,255,.25), rgba(255,255,255,0));
+}
+
+/* audio bar */
+.audioBar{
+  max-width:580px; margin:18px auto 0;
+  max-height:0; overflow:hidden;
+  transition:max-height .45s ease, opacity .45s ease;
+  opacity:0;
+}
+.audioBar.show{max-height:80px; opacity:1}
+audio{width:100%; height:42px; border-radius:var(--radius-md)}
+
+/* section typography */
+.sectionTitle,.closingTitle{
+  margin:0 0 14px;
+  font-family:'Playfair Display', Georgia, serif;
+  font-size:clamp(18px, 2.4vw, 24px);
+  line-height:1.28; letter-spacing:-.01em; text-wrap:balance;
+}
+.sectionBody,.closingBody{
+  margin:0 auto; max-width:52ch;
+  font-size:clamp(15px, 1.8vw, 18px);
+  line-height:2; white-space:pre-wrap; text-wrap:pretty;
+  color:var(--muted);
+}
+
+/* quote */
+.quoteText{
+  margin:6px auto 0; max-width:24ch;
+  font-family:'Playfair Display', Georgia, serif;
+  font-style:italic;
+  font-size:clamp(22px, 3.2vw, 38px);
+  line-height:1.36; letter-spacing:-.02em;
+  color:var(--text);
+}
+.quoteIcon{font-size:24px; color:var(--pink); margin-bottom:10px}
+
+/* signature */
+.signature{
+  margin-top:22px; display:flex; flex-direction:column;
+  align-items:center; gap:6px; font-size:13px;
+  color:var(--muted); text-align:center;
+}
+.signature strong{color:var(--text);font-size:18px;font-family:'Playfair Display',Georgia,serif}
+
+/* ─────────────────────────────────────────── */
+/* ─── OVERLAY ────────────────────────────── */
+/* ─────────────────────────────────────────── */
+.overlay{
+  position:absolute; inset:0; z-index:8;
+  display:grid; place-items:center; padding:28px 20px;
+  background:
+    radial-gradient(ellipse 700px 380px at 50% 30%, rgba(255,255,255,.22), transparent 65%),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
+}
+[data-theme="dark"] .overlay{
+  background:
+    radial-gradient(ellipse 700px 380px at 50% 30%, rgba(90,45,130,.18), transparent 65%),
+    linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,0));
+}
+
+.overlayBox{
+  width:min(960px,100%);
+  display:grid;
+  grid-template-columns:minmax(280px,.88fr) minmax(340px,1.12fr);
+  gap:16px; align-items:stretch;
+  animation:fadeSlideUp .65s cubic-bezier(.22,.8,.3,1) both;
+}
+@keyframes fadeSlideUp{
+  from{opacity:0;transform:translateY(28px) scale(.97)}
+  to  {opacity:1;transform:translateY(0)    scale(1)}
+}
+@media(max-width:860px){.overlayBox{grid-template-columns:1fr; max-width:480px}}
+
+/* preview image card */
+.previewCard{
+  border:1px solid var(--line); border-radius:28px;
+  background:rgba(255,255,255,.68);
+  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  box-shadow:var(--shadow); overflow:hidden;
+}
+[data-theme="dark"] .previewCard{background:rgba(18,12,28,.76)}
+.previewImage{
+  height:100%; min-height:380px;
+  background:
+    linear-gradient(180deg, rgba(255,200,220,.06) 0%, rgba(180,120,255,.04) 100%),
+    url('../assets/img/birthday-cover.svg') center / cover no-repeat;
+}
+@media(max-width:860px){.previewImage{min-height:260px}}
+
+/* open card (right panel) */
+.openCard{
+  border:1px solid var(--line); border-radius:28px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  box-shadow:var(--shadow);
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  padding:36px 28px; text-align:center; gap:0;
+}
+[data-theme="dark"] .openCard{background:rgba(18,12,28,.80)}
+
+.overlayKicker{
+  font-size:11px; color:var(--pink); letter-spacing:.22em;
+  text-transform:uppercase; margin-bottom:14px; font-weight:600;
+}
+
+/* overlay title — FIXED: proper clamp, balance, no nowrap */
+.overlayTitle{
+  font-family:'Playfair Display', Georgia, serif;
+  font-size:clamp(26px, 3.8vw, 50px);
+  line-height:1.14; letter-spacing:-.025em;
+  text-wrap:balance; max-width:16ch;
+  background:linear-gradient(135deg, var(--text) 10%, var(--plum) 90%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text; margin-bottom:0;
+}
+[data-theme="dark"] .overlayTitle{
+  background:linear-gradient(135deg, var(--text) 10%, var(--lav2) 90%);
+  -webkit-background-clip:text; background-clip:text;
+}
+
+.overlaySub{
+  margin:16px auto 24px; max-width:34ch;
+  font-size:14px; line-height:1.76;
+  color:var(--muted); font-style:italic;
+}
+
+/* ─── OPEN BUTTON ────────────────────────── */
+.openBtn{
+  position:relative;
+  border:1.5px solid rgba(255,95,167,.38);
+  background:linear-gradient(135deg, rgba(255,95,167,.22) 0%, rgba(184,140,255,.16) 100%);
+  color:var(--text);
+  padding:16px 28px; border-radius:var(--radius-md);
+  font-size:15px; font-weight:700; font-family:inherit;
+  cursor:pointer; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  display:inline-flex; align-items:center; gap:10px;
+  min-width:200px; justify-content:center;
+  box-shadow:0 0 0 0 rgba(255,95,167,0);
+  animation:glowPulse 2.4s ease-in-out infinite;
+  overflow:hidden;
+}
+.openBtn::before{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(255,255,255,.28) 0%, rgba(255,255,255,0) 60%);
+  border-radius:inherit; pointer-events:none;
+}
+[data-theme="dark"] .openBtn{
+  background:linear-gradient(135deg, rgba(184,140,255,.28) 0%, rgba(255,95,167,.18) 100%);
+  border-color:rgba(184,140,255,.42);
+}
+.openBtn:hover{
+  transform:translateY(-3px) scale(1.02);
+  box-shadow:0 16px 48px rgba(255,95,167,.34);
+  border-color:rgba(255,95,167,.6);
+  animation-play-state:paused;
+}
+@keyframes glowPulse{
+  0%,100%{box-shadow:0 0 0  0px rgba(255,95,167,.0)}
+  50%    {box-shadow:0 0 28px 8px rgba(255,95,167,.22)}
+}
+.heartIcon{display:inline-block;animation:heartbeat 1.8s ease-in-out infinite;transform-origin:center}
+@keyframes heartbeat{0%,100%{transform:scale(1)}35%{transform:scale(1.22)}55%{transform:scale(.92)}}
+.overlay.opening .heartIcon{animation:burst .5s ease forwards}
+@keyframes burst{0%{transform:scale(1)}45%{transform:scale(1.8)}100%{transform:scale(0);opacity:0}}
+
+/* ─── TOAST ──────────────────────────────── */
+.toast{
+  position:fixed; left:50%; bottom:22px;
+  transform:translateX(-50%);
+  background:rgba(14,9,22,.92); color:#fff;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius-sm); padding:10px 18px;
+  font-size:13px; opacity:0; pointer-events:none;
+  transition:opacity .2s ease; z-index:50;
+}
+.toast.show{opacity:1}
+
+/* ─── UTILITIES ──────────────────────────── */
+.rtl{direction:rtl;text-align:center}
+.ltr{direction:ltr;text-align:center}
+
+/* ─── RESPONSIVE ─────────────────────────── */
+@media(max-width:640px){
+  .page{padding:14px 10px 72px}
+  .content{padding:22px 16px 28px}
+  .intro,.section,.quote,.closing{border-radius:var(--radius-lg);padding:22px 18px}
+  .openCard{padding:28px 20px}
+  .overlayBox{gap:12px}
+}
+@media(max-width:400px){
+  .openBtn{min-width:160px;font-size:14px;padding:14px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ─── Full-page floating petals ─── -->
+<div id="petalCanvas" aria-hidden="true"></div>
+
+<div class="page">
+
+  <!-- ─── TOP BAR ─── -->
+  <div class="topbar">
+    <div class="topLeft">
+      <div class="chip" id="dateChip">Wiolitty 💗</div>
+    </div>
+    <div class="topRight">
+      <button class="btn" id="themeBtn">☀️ Day / 🌙 Night</button>
+      <button class="btn" id="voiceBtn">🎵 Play voice</button>
+    </div>
+  </div>
+
+  <!-- ─── GLASS SHELL ─── -->
+  <div class="shell locked" id="shell">
+    <div class="ambient" aria-hidden="true"></div>
+
+    <!-- ─── MAIN CONTENT (blurred while locked) ─── -->
+    <div class="content">
+      <div class="centerWrap">
+
+        <!-- INTRO -->
+        <section class="intro reveal">
+          <div class="badge" id="heroKicker"></div>
+          <h1 class="introTitle" id="heroTitle"></h1>
+          <p  class="introSub"  id="heroSub"></p>
+
+          <div class="controls">
+            <div class="seg">
+              <button id="tabPL" class="active">PL</button>
+              <button id="tabEN">EN</button>
+              <button id="tabAR">AR</button>
+            </div>
+            <button class="ghost" id="copyBtnTop">Copy text</button>
+            <button class="ghost" id="linkBtnTop">Copy link</button>
+          </div>
+
+          <div class="audioBar" id="audioBar">
+            <audio id="audio" controls preload="auto">
+              <source src="../assets/audio/birthday.ogg" type="audio/ogg"/>
+            </audio>
+          </div>
+        </section>
+
+        <!-- SECTION 1 -->
+        <section class="section reveal">
+          <h2 class="sectionTitle" id="section1Title"></h2>
+          <p  class="sectionBody"  id="section1Body"></p>
+        </section>
+
+        <!-- QUOTE 1 -->
+        <section class="quote reveal">
+          <div class="quoteIcon">💗</div>
+          <p class="quoteText" id="quote1"></p>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section class="section reveal">
+          <h2 class="sectionTitle" id="section2Title"></h2>
+          <p  class="sectionBody"  id="section2Body"></p>
+        </section>
+
+        <!-- QUOTE 2 -->
+        <section class="quote reveal">
+          <div class="quoteIcon">✨</div>
+          <p class="quoteText" id="quote2"></p>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section class="section reveal">
+          <h2 class="sectionTitle" id="section3Title"></h2>
+          <p  class="sectionBody"  id="section3Body"></p>
+        </section>
+
+        <!-- SECTION 4 -->
+        <section class="section reveal">
+          <h2 class="sectionTitle" id="section4Title"></h2>
+          <p  class="sectionBody"  id="section4Body"></p>
+        </section>
+
+        <!-- SECTION 5 -->
+        <section class="section reveal">
+          <h2 class="sectionTitle" id="section5Title"></h2>
+          <p  class="sectionBody"  id="section5Body"></p>
+        </section>
+
+        <!-- QUOTE 3 -->
+        <section class="quote reveal">
+          <div class="quoteIcon">🌸</div>
+          <p class="quoteText" id="quote3"></p>
+        </section>
+
+        <!-- SECTION 6 -->
+        <section class="section reveal">
+          <h2 class="sectionTitle" id="section6Title"></h2>
+          <p  class="sectionBody"  id="section6Body"></p>
+        </section>
+
+        <!-- CLOSING -->
+        <section class="closing reveal">
+          <h2 class="closingTitle" id="closingTitle"></h2>
+          <p  class="closingBody"  id="closingBody"></p>
+          <div class="signature">
+            <strong id="signNick"></strong>
+            <div id="signTag"></div>
+            <div id="signLine"></div>
+          </div>
+        </section>
+
+      </div>
+    </div><!-- /content -->
+
+    <!-- ─── OVERLAY (locked state) ─── -->
+    <div class="overlay" id="overlay">
+      <div class="overlayBox">
+
+        <!-- Left: cover image -->
+        <div class="previewCard">
+          <div class="previewImage" role="img" aria-label="Birthday cover"></div>
+        </div>
+
+        <!-- Right: open card -->
+        <div class="openCard">
+          <p class="overlayKicker" id="overlayKicker"></p>
+          <h2 class="overlayTitle"  id="overlayTitle"></h2>
+          <p class="overlaySub"     id="overlaySub"></p>
+          <button class="openBtn" id="openBtn">
+            <span class="heartIcon" aria-hidden="true">💗</span>
+            <span id="openBtnText"></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /shell -->
+</div><!-- /page -->
+
+<div class="toast" id="toast" role="status" aria-live="polite">Done ✓</div>
+
+<!-- ─── DATA ─── -->
+<script type="application/json" id="data-json">
+{
+  "nick": "Wiolitty Nitty Kamaniti",
+  "tag":  "Wiolaity :3",
+
+  "pl": {
+    "lang":         "pl",
+    "heroKicker":   "Wszystkiego najlepszego z okazji urodzin",
+    "heroTitle":    "Dla kobiety, która nadała sens mojemu życiu",
+    "heroSub":      "Zamknij oczy na chwilę. To moje serce — zapisane słowami.",
+    "openBtn":      "Otwórzmy to razem",
+    "overlaySub":   "List urodzinowy pisany z miłością, wdzięcznością i prawdą.",
+    "playVoice":    "🎵 Odtwórz głos",
+    "copyText":     "Kopiuj tekst",
+    "copyLink":     "Kopiuj link",
+
+    "section1Title": "Chwila, która zmieniła wszystko",
+    "section1Body":  "Najlepsza rzecz, jaka przydarzyła mi się w życiu, to moment, w którym Cię poznałem.\nNie tylko dlatego, że Cię pokochałem — ale dlatego, że od tamtej chwili moje życie nabrało ciepła, sensu i prawdziwej głębi, o jakiej wcześniej nie wiedziałem.\nPoznać Ciebie to było jak pierwszy oddech po bardzo długim czasie.",
+    "quote1":        "Poznać Ciebie to było jak pierwszy oddech.",
+
+    "section2Title": "Najpiękniejsze dni mojego życia",
+    "section2Body":  "Najpiękniejsze dni mojego życia to te, które przeżyłem z Tobą.\nNawet zwykłe dni — poranek z kubkiem kawy, cisza późnego wieczoru, droga do domu — mają inny smak, kiedy jesteś.\nDzięki Tobie codzienność przestała być tylko obowiązkiem. Stała się czymś, co naprawdę czuję, pamiętam i kocham.",
+    "quote2":        "Nawet zwykłe dni z Tobą są wyjątkowe.",
+
+    "section3Title": "To, czego mnie nauczyłaś",
+    "section3Body":  "Nauczyłaś mnie cierpliwości, wytrwałości i tego, że miłość nie polega na wielkich gestach — polega na obecności.\nJesteś błogosławieństwem, które Bóg postawił na mojej drodze.\nBez Ciebie nie byłbym tym, kim jestem teraz — jako człowiek i jako mąż.",
+
+    "section4Title": "To, jak Cię widzę każdego dnia",
+    "section4Body":  "Podziwiam Cię za Twoją siłę — za to, że wstajesz wcześnie, wracasz późno, niesiesz tyle na swoich barkach.\nA mimo zmęczenia wciąż masz w sobie ciepło.\nWidzę to wszystko. I szanuję to każdym dniem mocniej.",
+
+    "section5Title": "To, kim jesteś dla mojego życia",
+    "section5Body":  "Z Tobą czuję, że mam dom — nie miejsce, tylko uczucie.\nJesteś moim spokojem, moją najpiękniejszą historią i najdroższą osobą w moim świecie.\nBez Ciebie moje życie nie byłoby życiem. Byłoby tylko dniem za dniem.",
+    "quote3":        "Bez Ciebie moje życie nie byłoby życiem.",
+
+    "section6Title": "Moja obietnica",
+    "section6Body":  "W Twoje urodziny chcę Ci powiedzieć jedno: będę przy Tobie.\nW dobrych dniach i w tych trudniejszych.\nZ wdzięcznością za wszystko, co wniosłaś do mojego życia —\ni z miłością, która z każdym dniem staje się głębsza, spokojniejsza i pewniejsza.",
+
+    "closingTitle": "Kocham Cię",
+    "closingBody":  "Dziękuję, że jesteś.\nDziękuję za Twoje serce, Twoją siłę i Twoją obecność każdego dnia.\nJeśli dziś potrafię dać Ci coś pięknego, to tylko dlatego, że przy Tobie uczę się być lepszym człowiekiem.\nI zawsze będę wdzięczny za to, że jesteś darem, który odmienił moje życie.",
+    "signature":    "— od Twojego męża Hassan 🤍"
+  },
+
+  "en": {
+    "lang":         "en",
+    "heroKicker":   "Happy Birthday",
+    "heroTitle":    "For the woman who made my life worth living",
+    "heroSub":      "Close your eyes for a moment. This is my heart — written in words.",
+    "openBtn":      "Open my heart",
+    "overlaySub":   "A birthday letter written with love, gratitude, and truth.",
+    "playVoice":    "🎵 Play voice",
+    "copyText":     "Copy text",
+    "copyLink":     "Copy link",
+
+    "section1Title": "The moment that changed everything",
+    "section1Body":  "The best thing that ever happened to me was the moment I met you.\nNot only because I fell in love with you — but because from that moment on, my life gained warmth, meaning, and a depth I had never known before.\nMeeting you was like taking my first real breath.",
+    "quote1":        "Meeting you was like taking my first real breath.",
+
+    "section2Title": "The best days of my life",
+    "section2Body":  "The best days of my life are the days I have spent with you.\nEven the ordinary ones — a morning cup, the quiet of a late evening, the drive home — carry a different sweetness when you are there.\nBecause of you, daily life stopped being just routine. It became something real, warm, and worth remembering.",
+    "quote2":        "Even the ordinary days with you are extraordinary.",
+
+    "section3Title": "What you taught me",
+    "section3Body":  "You taught me patience, endurance, and that love is not made of grand gestures — it is made of presence.\nYou are the blessing God placed in my path.\nBecause of you I became a better man, a better husband, and a calmer heart.",
+
+    "section4Title": "How I see you every single day",
+    "section4Body":  "I admire your strength — the way you rise early, return late, and carry so much on your shoulders.\nAnd still you keep warmth inside you despite the tiredness.\nI see all of it. And I respect it more with every passing day.",
+
+    "section5Title": "What you are to my life",
+    "section5Body":  "With you I feel that I have a home — not a place, but a feeling.\nYou are my calm, my most beautiful story, and the dearest person in my world.\nWithout you, my life would not feel like life. It would only be days passing by.",
+    "quote3":        "Without you, my life would not feel like life.",
+
+    "section6Title": "My promise to you",
+    "section6Body":  "On your birthday I want to tell you one thing: I will be by your side.\nIn the good days and in the harder ones.\nWith gratitude for everything you brought into my life —\nand with a love that grows deeper, calmer, and more certain every single day.",
+
+    "closingTitle": "I love you",
+    "closingBody":  "Thank you for being here.\nThank you for your heart, your strength, and your presence every day.\nIf I can give you something beautiful today, it is only because beside you I am learning to be a better man.\nAnd I will always be grateful that you are the gift that changed my life.",
+    "signature":    "— from your husband Hassan 🤍"
+  },
+
+  "ar": {
+    "lang":         "ar",
+    "heroKicker":   "عيد ميلاد سعيد",
+    "heroTitle":    "إلى روحي… التي منحتني معنى الحياة",
+    "heroSub":      "أغمض عينيك للحظة. هذا قلبي… مكتوبًا بالكلمات.",
+    "openBtn":      "افتح قلبي",
+    "overlaySub":   "رسالة عيد ميلاد كُتبت بالحب والامتنان والصدق.",
+    "playVoice":    "🎵 تشغيل الصوت",
+    "copyText":     "نسخ النص",
+    "copyLink":     "نسخ الرابط",
+
+    "section1Title": "اللحظة التي غيّرت كل شيء",
+    "section1Body":  "أحسن حاجة حصلت في حياتي كانت اللحظة اللي قابلتك فيها.\nمش بس لأنني حبيتك — لكن لأن حياتي من بعدها صار لها دفء ومعنى وعمق حقيقي لم أعرفه من قبل.\nإن أقابلك كان زي أول نفس بعد وقت طويل من الانتظار.",
+    "quote1":        "إن أقابلك كان زي أول نفس حقيقي.",
+
+    "section2Title": "أجمل أيام عمري",
+    "section2Body":  "أجمل أيام عمري هي الأيام التي عشتها معك.\nحتى الأيام العادية — صباح كوباية قهوة، صمت آخر الليل، طريق البيت — لها طعم مختلف لما بتكوني موجودة.\nبسببك لم تعد الحياة اليومية مجرد روتين — أصبحت شيئًا حيًا وحقيقيًا يبقى في القلب.",
+    "quote2":        "حتى الأيام العادية معك تصبح استثنائية.",
+
+    "section3Title": "ما الذي تعلّمته منكِ",
+    "section3Body":  "أنتِ علّمتِني الصبر والتحمّل، وأن الحب ليس في الكلام الكبير — لكن في الحضور الحقيقي.\nأنتِ النعمة التي وضعها الله في طريقي.\nبسببك تغيّرت إلى الأفضل — كرجل وكزوج وكقلب صار أكثر هدوءًا ونضجًا.",
+
+    "section4Title": "كيف أراكِ كل يوم",
+    "section4Body":  "أنا معجب بقوتك — بطريقة استيقاظك المبكر، وعودتك المتأخرة، وتحملك لكل هذا على كتفيك.\nوبرغم التعب يبقى داخلك دفء حقيقي.\nأنا أرى كل ذلك. وأحترمه أكثر مع كل يوم يمر.",
+
+    "section5Title": "من أنتِ في حياتي",
+    "section5Body":  "معك أشعر أن لديّ بيتًا — ليس مكانًا، بل إحساسًا.\nأنتِ سلامي، وأجمل قصة في عمري، وأغلى إنسانة في عالمي.\nمن غيرك حياتي لن تكون حياة… ستكون فقط أيام تمضي.",
+    "quote3":        "من غيرك حياتي لن تكون حياة.",
+
+    "section6Title": "وعدي لكِ",
+    "section6Body":  "في عيد ميلادك أريد أن أقول لك شيئًا واحدًا: سأبقى إلى جانبك.\nفي الأيام الجميلة وفي الأيام الصعبة.\nبكل امتنان لما أضفتِه إلى حياتي —\nوبحب يكبر في قلبي مع كل يوم ويصبح أعمق وأهدأ وأصدق.",
+
+    "closingTitle": "أنا أحبكِ",
+    "closingBody":  "شكرًا لأنك موجودة.\nشكرًا لقلبك، ولقوتك، ولوجودك بجانبي كل يوم.\nإذا كنت أستطيع أن أقدم لك شيئًا جميلًا اليوم، فذلك فقط لأنني بجانبك أتعلم كيف أكون إنسانًا أفضل.\nوسأظل دائمًا ممتنًا لأنك الهدية التي غيّرت حياتي.",
+    "signature":    "— من زوجك Hassan 🤍"
+  }
+}
+</script>
+
+<script>
+/* ─────────────────────────────────────
+   INIT
+───────────────────────────────────── */
+const DATA = JSON.parse(document.getElementById('data-json').textContent);
+const $ = id => document.getElementById(id);
+let currentLang = 'pl';
+
+/* ─── Theme ─── */
+function applyTheme(){
+  const saved = localStorage.getItem('wiolitty_theme_v2');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+}
+function toggleTheme(){
+  const cur  = document.documentElement.getAttribute('data-theme') || 'light';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('wiolitty_theme_v2', next);
+}
+
+/* ─── Toast ─── */
+function showToast(msg){
+  const el = $('toast');
+  el.textContent = msg || 'Done ✓';
+  el.classList.add('show');
+  clearTimeout(window.__tt);
+  window.__tt = setTimeout(() => el.classList.remove('show'), 1300);
+}
+
+/* ─── Set text block ─── */
+function setBlock(id, val, rtl){
+  const el = $(id); if(!el) return;
+  el.textContent = val || '';
+  el.className = el.className.replace(/\b(rtl|ltr)\b/g,'').trim();
+  el.classList.add(rtl ? 'rtl' : 'ltr');
+}
+
+/* ─── Language ─── */
+function setLang(lang){
+  currentLang = (lang || 'pl').toLowerCase();
+  const d   = DATA[currentLang];
+  const rtl = currentLang === 'ar';
+
+  /* HTML dir for proper RTL layout */
+  document.documentElement.setAttribute('dir', rtl ? 'rtl' : 'ltr');
+  document.documentElement.setAttribute('lang', d.lang || currentLang);
+
+  /* Tab highlight */
+  ['pl','en','ar'].forEach(c =>
+    $('tab'+c.toUpperCase()).classList.toggle('active', c === currentLang)
+  );
+
+  /* Topbar buttons */
+  $('voiceBtn').textContent = d.playVoice;
+  $('copyBtnTop').textContent = d.copyText;
+  $('linkBtnTop').textContent = d.copyLink;
+
+  /* Overlay */
+  $('overlayKicker').textContent  = d.heroKicker;
+  $('overlayTitle').textContent   = d.heroTitle;
+  $('overlaySub').textContent     = d.overlaySub;
+  $('openBtnText').textContent    = d.openBtn;
+
+  /* Hero / intro */
+  $('heroKicker').textContent = d.heroKicker;
+  $('heroTitle').textContent  = d.heroTitle;
+  $('heroSub').textContent    = d.heroSub;
+
+  /* Sections */
+  setBlock('section1Title', d.section1Title, rtl);
+  setBlock('section1Body',  d.section1Body,  rtl);
+  setBlock('quote1',        d.quote1,        rtl);
+  setBlock('section2Title', d.section2Title, rtl);
+  setBlock('section2Body',  d.section2Body,  rtl);
+  setBlock('quote2',        d.quote2,        rtl);
+  setBlock('section3Title', d.section3Title, rtl);
+  setBlock('section3Body',  d.section3Body,  rtl);
+  setBlock('section4Title', d.section4Title, rtl);
+  setBlock('section4Body',  d.section4Body,  rtl);
+  setBlock('section5Title', d.section5Title, rtl);
+  setBlock('section5Body',  d.section5Body,  rtl);
+  setBlock('quote3',        d.quote3,        rtl);
+  setBlock('section6Title', d.section6Title, rtl);
+  setBlock('section6Body',  d.section6Body,  rtl);
+  setBlock('closingTitle',  d.closingTitle,  rtl);
+  setBlock('closingBody',   d.closingBody,   rtl);
+
+  /* Signature */
+  $('signNick').textContent = DATA.nick;
+  $('signTag').textContent  = DATA.tag;
+  $('signLine').textContent = d.signature;
+}
+
+/* ─── Copy ─── */
+async function copyText(){
+  const d = DATA[currentLang];
+  const t = [
+    d.section1Body, d.section2Body, d.section3Body,
+    d.section4Body, d.section5Body, d.section6Body,
+    d.closingBody, DATA.nick, d.signature
+  ].join('\n\n');
+  try { await navigator.clipboard.writeText(t); showToast('Copied ✓'); }
+  catch { showToast('Copy failed'); }
+}
+async function copyLink(){
+  try { await navigator.clipboard.writeText(window.location.href); showToast('Link copied ✓'); }
+  catch { showToast('Failed'); }
+}
+
+/* ─── Voice ─── */
+function playVoice(){
+  $('audioBar').classList.add('show');
+  const a = $('audio');
+  if(a) a.play().catch(() => showToast('Press ▶ on the audio bar'));
+}
+
+/* ─── Petals — fixed to full viewport ─── */
+function spawnPetals(){
+  const canvas = $('petalCanvas');
+  const emojis = ['💗','💞','💖','🌸','✨','🎀','🌺','💫','🎈'];
+  for(let i = 0; i < 28; i++){
+    const el = document.createElement('div');
+    el.className = 'petal';
+    el.setAttribute('aria-hidden','true');
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left            = (Math.random() * 100) + '%';
+    el.style.fontSize        = (12 + Math.random() * 14) + 'px';
+    el.style.animationDuration  = (9 + Math.random() * 11) + 's';
+    el.style.animationDelay     = (-Math.random() * 12) + 's';
+    el.style.setProperty('--drift', ((Math.random() * 200) - 100).toFixed(0) + 'px');
+    canvas.appendChild(el);
+  }
+}
+
+/* ─── Scroll reveal ─── */
+function initReveal(){
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('show');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+}
+
+/* ─── Open / unlock ─── */
+function openExperience(){
+  const overlay = $('overlay');
+  overlay.classList.add('opening');
+  setTimeout(() => {
+    $('shell').classList.remove('locked');
+    overlay.style.display = 'none';
+    /* show audio smoothly */
+    $('audioBar').classList.add('show');
+    const a = $('audio');
+    if(a) a.play().catch(() => {});
+    showToast('Opened ✓');
+    /* re-run reveal now that content is visible */
+    initReveal();
+  }, 440);
+}
+
+/* ─────────────────────────────────────
+   BOOT
+───────────────────────────────────── */
+applyTheme();
+spawnPetals();
+setLang('pl');
+initReveal();
+
+/* ─── Events ─── */
+$('themeBtn').addEventListener('click', toggleTheme);
+$('voiceBtn').addEventListener('click', playVoice);
+$('openBtn') .addEventListener('click', openExperience);
+$('tabPL')   .addEventListener('click', () => setLang('pl'));
+$('tabEN')   .addEventListener('click', () => setLang('en'));
+$('tabAR')   .addEventListener('click', () => setLang('ar'));
+$('copyBtnTop').addEventListener('click', copyText);
+$('linkBtnTop').addEventListener('click', copyLink);
+</script>
+</body>
+</html>
